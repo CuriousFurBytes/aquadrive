@@ -4,6 +4,7 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>AquaDrive — Components</title>
+        <script>(function(){var s=localStorage.getItem('aquadrive-theme');var t=s||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');if(t==='dark')document.documentElement.setAttribute('data-theme','dark');})()</script>
         <style>
             @import url("https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Syne:wght@400;600;700;800&display=swap");
 
@@ -30,6 +31,31 @@
                 --info: #656ea4;
                 --info-soft: #b0b5d4;
                 --info-tint: #edeef5;
+            }
+
+            [data-theme="dark"] {
+                --bg: #1c1828;
+                --surface: #261f34;
+                --border: #352c43;
+                --text: #f4eded;
+                --text-muted: #9a8e9e;
+                --primary: #8c92be;
+                --primary-hover: #c4c7df;
+                --primary-subtle: #313666;
+                --primary-light: #c4c7df;
+                --primary-border: #8c92be;
+                --error: #e66260;
+                --error-soft: #f3a8a7;
+                --error-tint: #2e1a1a;
+                --warning: #f9db6d;
+                --warning-soft: #fceea8;
+                --warning-tint: #2a2110;
+                --success: #52b788;
+                --success-soft: #95d4b3;
+                --success-tint: #0e2419;
+                --info: #8c92be;
+                --info-soft: #b0b5d4;
+                --info-tint: #313666;
             }
 
             * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -63,7 +89,7 @@
             }
             .nav a:hover, .nav a.active {
                 background: var(--primary);
-                color: #f4eded;
+                color: var(--bg);
                 border-color: var(--primary);
             }
 
@@ -605,7 +631,7 @@
             .list-item-title { font-size: 13px; font-weight: 600; }
             .list-item-sub { font-size: 11px; color: var(--text-muted); margin-top: 2px; }
 
-            /* DARK SECTION */
+            /* DARK SECTION (light mode only) */
             .dark-section {
                 background: #1c1828;
                 border-radius: 20px;
@@ -644,6 +670,53 @@
             .dark-section .tab.active { background: #352c43; color: #f4eded; }
             .dark-section .tag { background: #261f34; border-color: #352c43; color: #9a8e9e; }
 
+            /* Hide explicit dark section in dark mode (page itself is dark) */
+            [data-theme="dark"] .dark-section { display: none; }
+
+            /* Dark mode component overrides */
+            [data-theme="dark"] .btn-primary { background: var(--primary); color: #1c1828; }
+            [data-theme="dark"] .btn-secondary { background: var(--primary-subtle); color: var(--primary-border); }
+            [data-theme="dark"] .btn-ghost { background: transparent; color: var(--text-muted); border-color: var(--border); }
+            [data-theme="dark"] .btn-danger { background: var(--error); color: #1c1828; }
+            [data-theme="dark"] .btn-success { background: var(--success); color: #1c1828; }
+            [data-theme="dark"] .btn-warning { background: var(--warning); color: #1c1828; }
+            [data-theme="dark"] .badge-primary { background: #313666; color: #c4c7df; }
+            [data-theme="dark"] .badge-neutral { background: #261f34; color: #9a8e9e; }
+            [data-theme="dark"] .badge-error { background: #2e1a1a; color: #f3a8a7; }
+            [data-theme="dark"] .badge-warning { background: #2a2110; color: #c4952a; }
+            [data-theme="dark"] .badge-success { background: #0e2419; color: #95d4b3; }
+            [data-theme="dark"] .badge-info { background: #313666; color: #c4c7df; }
+            [data-theme="dark"] .card-image {
+                background: linear-gradient(135deg, #313666, #4e5688) !important;
+            }
+            [data-theme="dark"] .alert-info { background: #313666; color: #c4c7df; }
+            [data-theme="dark"] .alert-error { background: #2e1a1a; color: #f3a8a7; }
+            [data-theme="dark"] .alert-warning { background: #2a2110; color: #fceea8; }
+            [data-theme="dark"] .alert-success { background: #0e2419; color: #95d4b3; }
+            [data-theme="dark"] .modal-demo { background: rgba(0, 0, 0, 0.5); }
+            [data-theme="dark"] tr:hover td { background: rgba(140, 146, 190, 0.05); }
+
+            /* THEME TOGGLE */
+            .theme-toggle {
+                font-family: "DM Mono", monospace;
+                font-size: 11px;
+                letter-spacing: 0.08em;
+                text-transform: uppercase;
+                padding: 6px 14px;
+                border-radius: 100px;
+                border: 1px solid var(--border);
+                background: var(--surface);
+                color: var(--text-muted);
+                cursor: pointer;
+                transition: all 0.2s;
+                margin-left: auto;
+            }
+            .theme-toggle:hover {
+                background: var(--primary);
+                color: var(--bg);
+                border-color: var(--primary);
+            }
+
             @media (max-width: 640px) {
                 .component-grid { grid-template-columns: 1fr; }
                 h1 { font-size: 28px; }
@@ -657,6 +730,7 @@
             <a href="typography.html">Typography</a>
             <a href="components.html" class="active">Components</a>
             <a href="themes.html">Themes</a>
+            <button class="theme-toggle" onclick="toggleTheme()">Dark</button>
         </nav>
 
         <header>
@@ -1133,5 +1207,31 @@
                 </div>
             </div>
         </div>
+        <script>
+            (function() {
+                var saved = localStorage.getItem('aquadrive-theme');
+                var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+                var theme = saved || (prefersDark ? 'dark' : 'light');
+                if (theme === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
+                updateToggleLabel();
+            })();
+            function toggleTheme() {
+                var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+                var next = isDark ? 'light' : 'dark';
+                if (next === 'dark') {
+                    document.documentElement.setAttribute('data-theme', 'dark');
+                } else {
+                    document.documentElement.removeAttribute('data-theme');
+                }
+                localStorage.setItem('aquadrive-theme', next);
+                updateToggleLabel();
+            }
+            function updateToggleLabel() {
+                var btn = document.querySelector('.theme-toggle');
+                if (!btn) return;
+                var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+                btn.textContent = isDark ? 'Light' : 'Dark';
+            }
+        </script>
     </body>
 </html>

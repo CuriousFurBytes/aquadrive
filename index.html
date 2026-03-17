@@ -4,6 +4,7 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>AquaDrive — Color System</title>
+        <script>(function(){var s=localStorage.getItem('aquadrive-theme');var t=s||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');if(t==='dark')document.documentElement.setAttribute('data-theme','dark');})()</script>
         <style>
             @import url("https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Syne:wght@400;600;700;800&display=swap");
 
@@ -13,6 +14,26 @@
                 --border: #e0d5d5;
                 --text: #1c1828;
                 --text-muted: #7a6f7f;
+                --primary: #656ea4;
+                --primary-subtle: #edeef5;
+                --error-tint: #fceaea;
+                --warning-tint: #fef9e6;
+                --success-tint: #eaf7ef;
+                --info-tint: #edeef5;
+            }
+
+            [data-theme="dark"] {
+                --bg: #1c1828;
+                --surface: #261f34;
+                --border: #352c43;
+                --text: #f4eded;
+                --text-muted: #9a8e9e;
+                --primary: #8c92be;
+                --primary-subtle: #313666;
+                --error-tint: #2e1a1a;
+                --warning-tint: #2a2110;
+                --success-tint: #0e2419;
+                --info-tint: #313666;
             }
 
             * {
@@ -51,7 +72,7 @@
             }
 
             h1 span {
-                color: #656ea4;
+                color: var(--primary);
             }
 
             .subtitle {
@@ -369,10 +390,58 @@
                 transition: all 0.2s;
             }
             .nav a:hover, .nav a.active {
-                background: #656ea4;
-                color: #f4eded;
-                border-color: #656ea4;
+                background: var(--primary);
+                color: var(--bg);
+                border-color: var(--primary);
             }
+
+            /* THEME TOGGLE */
+            .theme-toggle {
+                font-family: "DM Mono", monospace;
+                font-size: 11px;
+                letter-spacing: 0.08em;
+                text-transform: uppercase;
+                padding: 6px 14px;
+                border-radius: 100px;
+                border: 1px solid var(--border);
+                background: var(--surface);
+                color: var(--text-muted);
+                cursor: pointer;
+                transition: all 0.2s;
+                margin-left: auto;
+            }
+            .theme-toggle:hover {
+                background: var(--primary);
+                color: var(--bg);
+                border-color: var(--primary);
+            }
+
+            /* THEME VISIBILITY */
+            .theme-only-light { display: block; }
+            .theme-only-dark { display: none; }
+            [data-theme="dark"] .theme-only-light { display: none; }
+            [data-theme="dark"] .theme-only-dark { display: block; }
+
+            /* DARK OVERRIDES for inline-styled semantic banners */
+            [data-theme="dark"] .semantic-banner[data-status="error"] { background: var(--error-tint) !important; }
+            [data-theme="dark"] .semantic-banner[data-status="warning"] { background: var(--warning-tint) !important; }
+            [data-theme="dark"] .semantic-banner[data-status="success"] { background: var(--success-tint) !important; }
+            [data-theme="dark"] .semantic-banner[data-status="info"] { background: var(--info-tint) !important; }
+
+            /* Dark overrides for UI Preview inline styles */
+            [data-theme="dark"] .preview-box { background: #261f34 !important; border-color: #352c43 !important; }
+            [data-theme="dark"] .preview-title { color: #f4eded !important; }
+            [data-theme="dark"] .status-badge { background: #313666 !important; color: #c4c7df !important; }
+            [data-theme="dark"] .btn { background: #8c92be !important; color: #1c1828 !important; }
+            [data-theme="dark"] .btn.btn-secondary { background: #313666 !important; color: #c4c7df !important; }
+            [data-theme="dark"] .btn.btn-ghost { background: #1c1828 !important; color: #9a8e9e !important; border: 1px solid #352c43 !important; }
+            [data-theme="dark"] .mini-card.card-error { background: #2e1a1a !important; color: #f3a8a7 !important; }
+            [data-theme="dark"] .mini-card.card-warning { background: #2a2110 !important; color: #fceea8 !important; }
+            [data-theme="dark"] .mini-card.card-success { background: #0e2419 !important; color: #95d4b3 !important; }
+            [data-theme="dark"] .mini-card .mini-label { color: inherit !important; }
+
+            /* Theme panels: show only one at a time */
+            .theme-panels { grid-template-columns: 1fr; }
         </style>
     </head>
     <body>
@@ -381,6 +450,7 @@
             <a href="typography.html">Typography</a>
             <a href="components.html">Components</a>
             <a href="themes.html">Themes</a>
+            <button class="theme-toggle" onclick="toggleTheme()">Dark</button>
         </nav>
 
         <header>
@@ -526,7 +596,7 @@
             <div class="section-label">Semantic — Status Colors</div>
             <div class="semantic-row">
                 <div class="semantic-card">
-                    <div class="semantic-banner" style="background: #fceaea">
+                    <div class="semantic-banner" data-status="error" style="background: #fceaea">
                         <div class="sem-dot" style="background: #e66260"></div>
                         <div
                             class="sem-dot soft"
@@ -576,7 +646,7 @@
                 </div>
 
                 <div class="semantic-card">
-                    <div class="semantic-banner" style="background: #fef9e6">
+                    <div class="semantic-banner" data-status="warning" style="background: #fef9e6">
                         <div class="sem-dot" style="background: #f9db6d"></div>
                         <div
                             class="sem-dot soft"
@@ -626,7 +696,7 @@
                 </div>
 
                 <div class="semantic-card">
-                    <div class="semantic-banner" style="background: #eaf7ef">
+                    <div class="semantic-banner" data-status="success" style="background: #eaf7ef">
                         <div class="sem-dot" style="background: #52b788"></div>
                         <div
                             class="sem-dot soft"
@@ -676,7 +746,7 @@
                 </div>
 
                 <div class="semantic-card">
-                    <div class="semantic-banner" style="background: #edeef5">
+                    <div class="semantic-banner" data-status="info" style="background: #edeef5">
                         <div class="sem-dot" style="background: #656ea4"></div>
                         <div
                             class="sem-dot soft"
@@ -731,9 +801,9 @@
         <div class="section">
             <div class="section-label">Semantic Tokens — Light &amp; Dark</div>
             <div class="theme-panels">
-                <div class="theme-panel light-panel">
+                <div class="theme-panel light-panel theme-only-light">
                     <div class="panel-title" style="color: #1c1828">
-                        ☀️ Light Theme
+                        Light Theme
                     </div>
                     <div class="panel-swatches">
                         <div class="panel-swatch">
@@ -889,9 +959,9 @@
                     </div>
                 </div>
 
-                <div class="theme-panel dark-panel">
+                <div class="theme-panel dark-panel theme-only-dark">
                     <div class="panel-title" style="color: #f4eded">
-                        🌙 Dark Theme
+                        Dark Theme
                     </div>
                     <div class="panel-swatches">
                         <div class="panel-swatch">
@@ -1051,138 +1121,166 @@
 
         <!-- UI PREVIEW -->
         <div class="section">
-            <div class="section-label">UI Preview — Light</div>
-            <div class="preview-box" style="background: #ffffff">
-                <div class="preview-header">
-                    <div class="preview-title" style="color: #1c1828">
-                        Schedule a Wash
-                    </div>
-                    <span
-                        class="status-badge"
-                        style="background: #eaf7ef; color: #2e8c61"
-                        >● Confirmed</span
-                    >
-                </div>
-                <div class="btn-row">
-                    <button
-                        class="btn"
-                        style="background: #656ea4; color: #f4eded"
-                    >
-                        Book Now
-                    </button>
-                    <button
-                        class="btn"
-                        style="background: #edeef5; color: #4e5688"
-                    >
-                        View History
-                    </button>
-                    <button
-                        class="btn"
-                        style="background: #f4eded; color: #9a8e8e"
-                    >
-                        Cancel
-                    </button>
-                </div>
-                <div class="card-row">
-                    <div
-                        class="mini-card"
-                        style="background: #fceaea; color: #c94442"
-                    >
-                        <div class="mini-label" style="color: #c94442">
-                            Payment
+            <div class="theme-only-light">
+                <div class="section-label">UI Preview</div>
+                <div class="preview-box" style="background: #ffffff">
+                    <div class="preview-header">
+                        <div class="preview-title" style="color: #1c1828">
+                            Schedule a Wash
                         </div>
-                        ✕ Declined
+                        <span
+                            class="status-badge"
+                            style="background: #eaf7ef; color: #2e8c61"
+                            >● Confirmed</span
+                        >
                     </div>
-                    <div
-                        class="mini-card"
-                        style="background: #fef9e6; color: #c4952a"
-                    >
-                        <div class="mini-label" style="color: #c4952a">
-                            Status
-                        </div>
-                        ⏳ In Progress
+                    <div class="btn-row">
+                        <button
+                            class="btn"
+                            style="background: #656ea4; color: #f4eded"
+                        >
+                            Book Now
+                        </button>
+                        <button
+                            class="btn btn-secondary"
+                            style="background: #edeef5; color: #4e5688"
+                        >
+                            View History
+                        </button>
+                        <button
+                            class="btn btn-ghost"
+                            style="background: #f4eded; color: #9a8e8e"
+                        >
+                            Cancel
+                        </button>
                     </div>
-                    <div
-                        class="mini-card"
-                        style="background: #eaf7ef; color: #2e8c61"
-                    >
-                        <div class="mini-label" style="color: #2e8c61">
-                            Wash
+                    <div class="card-row">
+                        <div
+                            class="mini-card card-error"
+                            style="background: #fceaea; color: #c94442"
+                        >
+                            <div class="mini-label" style="color: #c94442">
+                                Payment
+                            </div>
+                            ✕ Declined
                         </div>
-                        ✓ Complete
+                        <div
+                            class="mini-card card-warning"
+                            style="background: #fef9e6; color: #c4952a"
+                        >
+                            <div class="mini-label" style="color: #c4952a">
+                                Status
+                            </div>
+                            ⏳ In Progress
+                        </div>
+                        <div
+                            class="mini-card card-success"
+                            style="background: #eaf7ef; color: #2e8c61"
+                        >
+                            <div class="mini-label" style="color: #2e8c61">
+                                Wash
+                            </div>
+                            ✓ Complete
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <div class="section-label" style="margin-top: 32px">
-                UI Preview — Dark
-            </div>
-            <div
-                class="preview-box"
-                style="background: #261f34; border-color: #352c43"
-            >
-                <div class="preview-header">
-                    <div class="preview-title" style="color: #f4eded">
-                        Provider Dashboard
-                    </div>
-                    <span
-                        class="status-badge"
-                        style="background: #313666; color: #c4c7df"
-                        >● 3 Incoming</span
-                    >
-                </div>
-                <div class="btn-row">
-                    <button
-                        class="btn"
-                        style="background: #8c92be; color: #1c1828"
-                    >
-                        Accept Job
-                    </button>
-                    <button
-                        class="btn"
-                        style="background: #313666; color: #c4c7df"
-                    >
-                        View Earnings
-                    </button>
-                    <button
-                        class="btn"
-                        style="
-                            background: #1c1828;
-                            color: #9a8e9e;
-                            border: 1px solid #352c43;
-                        "
-                    >
-                        Decline
-                    </button>
-                </div>
-                <div class="card-row">
-                    <div
-                        class="mini-card"
-                        style="background: #2e1a1a; color: #f3a8a7"
-                    >
-                        <div class="mini-label" style="color: #f3a8a7">
-                            Alert
+            <div class="theme-only-dark">
+                <div class="section-label">UI Preview</div>
+                <div
+                    class="preview-box"
+                    style="background: #261f34; border-color: #352c43"
+                >
+                    <div class="preview-header">
+                        <div class="preview-title" style="color: #f4eded">
+                            Provider Dashboard
                         </div>
-                        ✕ No-show
+                        <span
+                            class="status-badge"
+                            style="background: #313666; color: #c4c7df"
+                            >● 3 Incoming</span
+                        >
                     </div>
-                    <div
-                        class="mini-card"
-                        style="background: #2a2110; color: #fceea8"
-                    >
-                        <div class="mini-label" style="color: #fceea8">ETA</div>
-                        ⏳ 12 min
+                    <div class="btn-row">
+                        <button
+                            class="btn"
+                            style="background: #8c92be; color: #1c1828"
+                        >
+                            Accept Job
+                        </button>
+                        <button
+                            class="btn"
+                            style="background: #313666; color: #c4c7df"
+                        >
+                            View Earnings
+                        </button>
+                        <button
+                            class="btn"
+                            style="
+                                background: #1c1828;
+                                color: #9a8e9e;
+                                border: 1px solid #352c43;
+                            "
+                        >
+                            Decline
+                        </button>
                     </div>
-                    <div
-                        class="mini-card"
-                        style="background: #0e2419; color: #95d4b3"
-                    >
-                        <div class="mini-label" style="color: #95d4b3">
-                            Payout
+                    <div class="card-row">
+                        <div
+                            class="mini-card"
+                            style="background: #2e1a1a; color: #f3a8a7"
+                        >
+                            <div class="mini-label" style="color: #f3a8a7">
+                                Alert
+                            </div>
+                            ✕ No-show
                         </div>
-                        ✓ $34.00
+                        <div
+                            class="mini-card"
+                            style="background: #2a2110; color: #fceea8"
+                        >
+                            <div class="mini-label" style="color: #fceea8">ETA</div>
+                            ⏳ 12 min
+                        </div>
+                        <div
+                            class="mini-card"
+                            style="background: #0e2419; color: #95d4b3"
+                        >
+                            <div class="mini-label" style="color: #95d4b3">
+                                Payout
+                            </div>
+                            ✓ $34.00
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
+        <script>
+            (function() {
+                var saved = localStorage.getItem('aquadrive-theme');
+                var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+                var theme = saved || (prefersDark ? 'dark' : 'light');
+                if (theme === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
+                updateToggleLabel();
+            })();
+            function toggleTheme() {
+                var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+                var next = isDark ? 'light' : 'dark';
+                if (next === 'dark') {
+                    document.documentElement.setAttribute('data-theme', 'dark');
+                } else {
+                    document.documentElement.removeAttribute('data-theme');
+                }
+                localStorage.setItem('aquadrive-theme', next);
+                updateToggleLabel();
+            }
+            function updateToggleLabel() {
+                var btn = document.querySelector('.theme-toggle');
+                if (!btn) return;
+                var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+                btn.textContent = isDark ? 'Light' : 'Dark';
+            }
+        </script>
     </body>
 </html>

@@ -4,6 +4,7 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>AquaDrive — Themes</title>
+        <script>(function(){var s=localStorage.getItem('aquadrive-theme');var t=s||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');if(t==='dark')document.documentElement.setAttribute('data-theme','dark');})()</script>
         <style>
             @import url("https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Syne:wght@400;600;700;800&display=swap");
 
@@ -18,6 +19,22 @@
                 --primary-subtle: #edeef5;
                 --primary-light: #8c92be;
                 --primary-border: #c4c7df;
+                --error: #e66260;
+                --warning: #f9db6d;
+                --success: #52b788;
+            }
+
+            [data-theme="dark"] {
+                --bg: #1c1828;
+                --surface: #261f34;
+                --border: #352c43;
+                --text: #f4eded;
+                --text-muted: #9a8e9e;
+                --primary: #8c92be;
+                --primary-hover: #c4c7df;
+                --primary-subtle: #313666;
+                --primary-light: #c4c7df;
+                --primary-border: #8c92be;
                 --error: #e66260;
                 --warning: #f9db6d;
                 --success: #52b788;
@@ -54,7 +71,28 @@
             }
             .nav a:hover, .nav a.active {
                 background: var(--primary);
-                color: #f4eded;
+                color: var(--bg);
+                border-color: var(--primary);
+            }
+
+            /* THEME TOGGLE */
+            .theme-toggle {
+                font-family: "DM Mono", monospace;
+                font-size: 11px;
+                letter-spacing: 0.08em;
+                text-transform: uppercase;
+                padding: 6px 14px;
+                border-radius: 100px;
+                border: 1px solid var(--border);
+                background: var(--surface);
+                color: var(--text-muted);
+                cursor: pointer;
+                transition: all 0.2s;
+                margin-left: auto;
+            }
+            .theme-toggle:hover {
+                background: var(--primary);
+                color: var(--bg);
                 border-color: var(--primary);
             }
 
@@ -434,6 +472,7 @@
             <a href="typography.html">Typography</a>
             <a href="components.html">Components</a>
             <a href="themes.html" class="active">Themes</a>
+            <button class="theme-toggle" onclick="toggleTheme()">Dark</button>
         </nav>
 
         <header>
@@ -803,5 +842,31 @@
                 }
             </div>
         </div>
+        <script>
+            (function() {
+                var saved = localStorage.getItem('aquadrive-theme');
+                var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+                var theme = saved || (prefersDark ? 'dark' : 'light');
+                if (theme === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
+                updateToggleLabel();
+            })();
+            function toggleTheme() {
+                var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+                var next = isDark ? 'light' : 'dark';
+                if (next === 'dark') {
+                    document.documentElement.setAttribute('data-theme', 'dark');
+                } else {
+                    document.documentElement.removeAttribute('data-theme');
+                }
+                localStorage.setItem('aquadrive-theme', next);
+                updateToggleLabel();
+            }
+            function updateToggleLabel() {
+                var btn = document.querySelector('.theme-toggle');
+                if (!btn) return;
+                var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+                btn.textContent = isDark ? 'Light' : 'Dark';
+            }
+        </script>
     </body>
 </html>

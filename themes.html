@@ -1,0 +1,807 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>AquaDrive — Themes</title>
+        <style>
+            @import url("https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Syne:wght@400;600;700;800&display=swap");
+
+            :root {
+                --bg: #f4eded;
+                --surface: #ffffff;
+                --border: #e0d5d5;
+                --text: #1c1828;
+                --text-muted: #7a6f7f;
+                --primary: #656ea4;
+                --primary-hover: #4e5688;
+                --primary-subtle: #edeef5;
+                --primary-light: #8c92be;
+                --primary-border: #c4c7df;
+                --error: #e66260;
+                --warning: #f9db6d;
+                --success: #52b788;
+            }
+
+            * { margin: 0; padding: 0; box-sizing: border-box; }
+
+            body {
+                background: var(--bg);
+                color: var(--text);
+                font-family: "Syne", sans-serif;
+                padding: 48px 32px;
+                min-height: 100vh;
+            }
+
+            /* NAV */
+            .nav {
+                display: flex;
+                gap: 6px;
+                margin-bottom: 40px;
+                flex-wrap: wrap;
+            }
+            .nav a {
+                font-family: "DM Mono", monospace;
+                font-size: 11px;
+                letter-spacing: 0.08em;
+                text-transform: uppercase;
+                text-decoration: none;
+                padding: 6px 14px;
+                border-radius: 100px;
+                border: 1px solid var(--border);
+                color: var(--text-muted);
+                transition: all 0.2s;
+            }
+            .nav a:hover, .nav a.active {
+                background: var(--primary);
+                color: #f4eded;
+                border-color: var(--primary);
+            }
+
+            header { margin-bottom: 56px; }
+
+            .brand-tag {
+                font-family: "DM Mono", monospace;
+                font-size: 11px;
+                letter-spacing: 0.2em;
+                text-transform: uppercase;
+                color: var(--text-muted);
+                margin-bottom: 8px;
+            }
+
+            h1 {
+                font-size: 42px;
+                font-weight: 800;
+                letter-spacing: -0.02em;
+                line-height: 1;
+            }
+            h1 span { color: var(--primary); }
+
+            .subtitle {
+                font-size: 14px;
+                color: var(--text-muted);
+                margin-top: 8px;
+                font-weight: 400;
+            }
+
+            .section { margin-bottom: 48px; }
+
+            .section-label {
+                font-family: "DM Mono", monospace;
+                font-size: 10px;
+                letter-spacing: 0.25em;
+                text-transform: uppercase;
+                color: var(--text-muted);
+                margin-bottom: 16px;
+                display: flex;
+                align-items: center;
+                gap: 12px;
+            }
+            .section-label::after {
+                content: "";
+                flex: 1;
+                height: 1px;
+                background: var(--border);
+            }
+
+            .demo-box {
+                background: var(--surface);
+                border: 1px solid var(--border);
+                border-radius: 16px;
+                padding: 28px;
+                margin-bottom: 16px;
+            }
+
+            .demo-label {
+                font-family: "DM Mono", monospace;
+                font-size: 10px;
+                color: var(--text-muted);
+                letter-spacing: 0.1em;
+                text-transform: uppercase;
+                margin-bottom: 10px;
+            }
+
+            /* THEME COMPARISON */
+            .theme-grid {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 16px;
+            }
+
+            .theme-card {
+                border-radius: 20px;
+                padding: 32px;
+                border: 1px solid var(--border);
+            }
+            .theme-card.light {
+                background: #f4eded;
+                color: #1c1828;
+            }
+            .theme-card.dark {
+                background: #1c1828;
+                color: #f4eded;
+                border-color: #352c43;
+            }
+            .theme-card-title {
+                font-size: 20px;
+                font-weight: 700;
+                margin-bottom: 4px;
+            }
+            .theme-card-subtitle {
+                font-family: "DM Mono", monospace;
+                font-size: 10px;
+                letter-spacing: 0.15em;
+                text-transform: uppercase;
+                margin-bottom: 24px;
+            }
+            .theme-card.light .theme-card-subtitle { color: #7a6f7f; }
+            .theme-card.dark .theme-card-subtitle { color: #9a8e9e; }
+
+            /* TOKEN ROW */
+            .token-row {
+                display: flex;
+                align-items: center;
+                gap: 12px;
+                padding: 10px 0;
+                border-bottom: 1px solid;
+                font-size: 13px;
+            }
+            .theme-card.light .token-row { border-color: #e0d5d5; }
+            .theme-card.dark .token-row { border-color: #352c43; }
+            .token-row:last-child { border-bottom: none; }
+
+            .token-swatch {
+                width: 28px;
+                height: 28px;
+                border-radius: 8px;
+                flex-shrink: 0;
+                border: 1px solid rgba(0,0,0,0.08);
+            }
+            .token-name {
+                font-family: "DM Mono", monospace;
+                font-size: 11px;
+                font-weight: 500;
+                flex: 1;
+            }
+            .theme-card.light .token-name { color: #1c1828; }
+            .theme-card.dark .token-name { color: #f4eded; }
+
+            .token-value {
+                font-family: "DM Mono", monospace;
+                font-size: 10px;
+                letter-spacing: 0.05em;
+            }
+            .theme-card.light .token-value { color: #7a6f7f; }
+            .theme-card.dark .token-value { color: #9a8e9e; }
+
+            /* TOKEN TABLE */
+            .token-table {
+                width: 100%;
+                border-collapse: collapse;
+            }
+            .token-table th {
+                font-family: "DM Mono", monospace;
+                font-size: 10px;
+                letter-spacing: 0.12em;
+                text-transform: uppercase;
+                color: var(--text-muted);
+                text-align: left;
+                padding: 12px 16px;
+                border-bottom: 1px solid var(--border);
+                font-weight: 500;
+            }
+            .token-table td {
+                padding: 12px 16px;
+                border-bottom: 1px solid var(--border);
+                font-size: 13px;
+            }
+            .token-table tr:last-child td { border-bottom: none; }
+            .token-table .mono {
+                font-family: "DM Mono", monospace;
+                font-size: 11px;
+            }
+            .token-table .swatch-cell {
+                display: flex;
+                align-items: center;
+                gap: 10px;
+            }
+            .token-table .mini-swatch {
+                width: 20px;
+                height: 20px;
+                border-radius: 6px;
+                flex-shrink: 0;
+                border: 1px solid rgba(0,0,0,0.06);
+            }
+
+            /* PREVIEW CARDS */
+            .preview-grid {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 16px;
+            }
+            .preview-panel {
+                border-radius: 20px;
+                padding: 28px;
+                overflow: hidden;
+            }
+            .preview-panel.light {
+                background: #f4eded;
+                color: #1c1828;
+                border: 1px solid #e0d5d5;
+            }
+            .preview-panel.dark {
+                background: #1c1828;
+                color: #f4eded;
+                border: 1px solid #352c43;
+            }
+            .preview-surface {
+                border-radius: 12px;
+                padding: 20px;
+                margin-bottom: 12px;
+            }
+            .preview-panel.light .preview-surface {
+                background: #ffffff;
+                border: 1px solid #e0d5d5;
+            }
+            .preview-panel.dark .preview-surface {
+                background: #261f34;
+                border: 1px solid #352c43;
+            }
+            .preview-title {
+                font-size: 15px;
+                font-weight: 700;
+                margin-bottom: 6px;
+            }
+            .preview-body {
+                font-size: 13px;
+                line-height: 1.6;
+                margin-bottom: 12px;
+            }
+            .preview-panel.light .preview-body { color: #7a6f7f; }
+            .preview-panel.dark .preview-body { color: #9a8e9e; }
+            .preview-btn {
+                display: inline-block;
+                font-family: "Syne", sans-serif;
+                font-size: 13px;
+                font-weight: 600;
+                padding: 8px 20px;
+                border-radius: 10px;
+                text-decoration: none;
+                border: none;
+                cursor: pointer;
+            }
+            .preview-panel.light .preview-btn {
+                background: #656ea4;
+                color: #f4eded;
+            }
+            .preview-panel.dark .preview-btn {
+                background: #8c92be;
+                color: #1c1828;
+            }
+            .preview-badge {
+                display: inline-block;
+                font-family: "DM Mono", monospace;
+                font-size: 10px;
+                font-weight: 500;
+                letter-spacing: 0.04em;
+                padding: 4px 11px;
+                border-radius: 100px;
+                margin-left: 8px;
+            }
+            .preview-panel.light .preview-badge {
+                background: #eaf7ef;
+                color: #2e8c61;
+            }
+            .preview-panel.dark .preview-badge {
+                background: #1a3d2a;
+                color: #95d4b3;
+            }
+            .preview-input {
+                width: 100%;
+                font-family: "Syne", sans-serif;
+                font-size: 13px;
+                padding: 10px 14px;
+                border-radius: 10px;
+                outline: none;
+                margin-bottom: 12px;
+            }
+            .preview-panel.light .preview-input {
+                background: #f4eded;
+                border: 1px solid #e0d5d5;
+                color: #1c1828;
+            }
+            .preview-panel.dark .preview-input {
+                background: #1c1828;
+                border: 1px solid #352c43;
+                color: #f4eded;
+            }
+
+            /* CODE BLOCK */
+            .code-block {
+                background: #1c1828;
+                border-radius: 12px;
+                padding: 20px;
+                font-family: "DM Mono", monospace;
+                font-size: 12px;
+                line-height: 1.8;
+                color: #c4c7df;
+                overflow-x: auto;
+            }
+            .code-comment { color: #9a8e9e; }
+            .code-prop { color: #8c92be; }
+            .code-val { color: #95d4b3; }
+            .code-str { color: #f9db6d; }
+            .code-key { color: #e66260; }
+
+            /* VS CODE SECTION */
+            .vscode-preview {
+                background: #1c1828;
+                border-radius: 20px;
+                overflow: hidden;
+                border: 1px solid #352c43;
+            }
+            .vscode-titlebar {
+                display: flex;
+                align-items: center;
+                gap: 8px;
+                padding: 10px 16px;
+                background: #161222;
+                border-bottom: 1px solid #352c43;
+            }
+            .vscode-dot {
+                width: 10px;
+                height: 10px;
+                border-radius: 50%;
+            }
+            .vscode-titlebar-text {
+                font-family: "DM Mono", monospace;
+                font-size: 11px;
+                color: #9a8e9e;
+                margin-left: 8px;
+            }
+            .vscode-body {
+                display: grid;
+                grid-template-columns: 200px 1fr;
+                min-height: 280px;
+            }
+            .vscode-sidebar {
+                background: #1c1828;
+                padding: 12px 0;
+                border-right: 1px solid #352c43;
+            }
+            .vscode-sidebar-item {
+                font-family: "DM Mono", monospace;
+                font-size: 11px;
+                padding: 5px 16px;
+                color: #9a8e9e;
+                cursor: default;
+            }
+            .vscode-sidebar-item.active {
+                background: #261f34;
+                color: #c4c7df;
+                border-left: 2px solid #656ea4;
+                padding-left: 14px;
+            }
+            .vscode-editor {
+                padding: 16px;
+                font-family: "DM Mono", monospace;
+                font-size: 12px;
+                line-height: 1.8;
+                color: #c4c7df;
+            }
+            .vscode-ln {
+                color: #4a4258;
+                display: inline-block;
+                width: 30px;
+                text-align: right;
+                margin-right: 16px;
+                user-select: none;
+            }
+
+            @media (max-width: 768px) {
+                .theme-grid,
+                .preview-grid { grid-template-columns: 1fr; }
+                .vscode-body { grid-template-columns: 1fr; }
+                .vscode-sidebar { display: none; }
+                h1 { font-size: 28px; }
+                body { padding: 24px 16px; }
+            }
+        </style>
+    </head>
+    <body>
+        <nav class="nav">
+            <a href="index.html">Colors</a>
+            <a href="typography.html">Typography</a>
+            <a href="components.html">Components</a>
+            <a href="themes.html" class="active">Themes</a>
+        </nav>
+
+        <header>
+            <div class="brand-tag">AquaDrive &middot; Design System</div>
+            <h1>The<span>mes</span></h1>
+            <p class="subtitle">Light &amp; dark theme tokens, VS Code integration, and CSS custom properties</p>
+        </header>
+
+        <!-- THEME COMPARISON -->
+        <div class="section">
+            <div class="section-label">Theme Comparison</div>
+            <div class="theme-grid">
+                <div class="theme-card light">
+                    <div class="theme-card-title">Light Theme</div>
+                    <div class="theme-card-subtitle">Customer-facing &middot; Default</div>
+                    <div class="token-row">
+                        <div class="token-swatch" style="background: #f4eded;"></div>
+                        <div class="token-name">background</div>
+                        <div class="token-value">#F4EDED</div>
+                    </div>
+                    <div class="token-row">
+                        <div class="token-swatch" style="background: #ffffff;"></div>
+                        <div class="token-name">surface</div>
+                        <div class="token-value">#FFFFFF</div>
+                    </div>
+                    <div class="token-row">
+                        <div class="token-swatch" style="background: #e0d5d5;"></div>
+                        <div class="token-name">border</div>
+                        <div class="token-value">#E0D5D5</div>
+                    </div>
+                    <div class="token-row">
+                        <div class="token-swatch" style="background: #1c1828;"></div>
+                        <div class="token-name">text.primary</div>
+                        <div class="token-value">#1C1828</div>
+                    </div>
+                    <div class="token-row">
+                        <div class="token-swatch" style="background: #9a8e8e;"></div>
+                        <div class="token-name">text.secondary</div>
+                        <div class="token-value">#9A8E8E</div>
+                    </div>
+                    <div class="token-row">
+                        <div class="token-swatch" style="background: #656ea4;"></div>
+                        <div class="token-name">interactive.primary</div>
+                        <div class="token-value">#656EA4</div>
+                    </div>
+                    <div class="token-row">
+                        <div class="token-swatch" style="background: #4e5688;"></div>
+                        <div class="token-name">interactive.hover</div>
+                        <div class="token-value">#4E5688</div>
+                    </div>
+                    <div class="token-row">
+                        <div class="token-swatch" style="background: #edeef5;"></div>
+                        <div class="token-name">interactive.subtle</div>
+                        <div class="token-value">#EDEEF5</div>
+                    </div>
+                </div>
+                <div class="theme-card dark">
+                    <div class="theme-card-title">Dark Theme</div>
+                    <div class="theme-card-subtitle">Provider dashboard &middot; Alternate</div>
+                    <div class="token-row">
+                        <div class="token-swatch" style="background: #1c1828;"></div>
+                        <div class="token-name">background</div>
+                        <div class="token-value">#1C1828</div>
+                    </div>
+                    <div class="token-row">
+                        <div class="token-swatch" style="background: #261f34;"></div>
+                        <div class="token-name">surface</div>
+                        <div class="token-value">#261F34</div>
+                    </div>
+                    <div class="token-row">
+                        <div class="token-swatch" style="background: #352c43;"></div>
+                        <div class="token-name">border</div>
+                        <div class="token-value">#352C43</div>
+                    </div>
+                    <div class="token-row">
+                        <div class="token-swatch" style="background: #f4eded;"></div>
+                        <div class="token-name">text.primary</div>
+                        <div class="token-value">#F4EDED</div>
+                    </div>
+                    <div class="token-row">
+                        <div class="token-swatch" style="background: #9a8e9e;"></div>
+                        <div class="token-name">text.secondary</div>
+                        <div class="token-value">#9A8E9E</div>
+                    </div>
+                    <div class="token-row">
+                        <div class="token-swatch" style="background: #8c92be;"></div>
+                        <div class="token-name">interactive.primary</div>
+                        <div class="token-value">#8C92BE</div>
+                    </div>
+                    <div class="token-row">
+                        <div class="token-swatch" style="background: #c4c7df;"></div>
+                        <div class="token-name">interactive.hover</div>
+                        <div class="token-value">#C4C7DF</div>
+                    </div>
+                    <div class="token-row">
+                        <div class="token-swatch" style="background: #313666;"></div>
+                        <div class="token-name">interactive.subtle</div>
+                        <div class="token-value">#313666</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SEMANTIC TOKEN MAP -->
+        <div class="section">
+            <div class="section-label">Semantic Token Map</div>
+            <div class="demo-box" style="padding: 0; overflow: hidden;">
+                <table class="token-table">
+                    <thead>
+                        <tr>
+                            <th>Token</th>
+                            <th>Purpose</th>
+                            <th>Light</th>
+                            <th>Dark</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="mono">--bg</td>
+                            <td>Page background</td>
+                            <td class="swatch-cell"><div class="mini-swatch" style="background: #f4eded;"></div><span class="mono">#F4EDED</span></td>
+                            <td class="swatch-cell"><div class="mini-swatch" style="background: #1c1828;"></div><span class="mono">#1C1828</span></td>
+                        </tr>
+                        <tr>
+                            <td class="mono">--surface</td>
+                            <td>Card / panel fill</td>
+                            <td class="swatch-cell"><div class="mini-swatch" style="background: #ffffff;"></div><span class="mono">#FFFFFF</span></td>
+                            <td class="swatch-cell"><div class="mini-swatch" style="background: #261f34;"></div><span class="mono">#261F34</span></td>
+                        </tr>
+                        <tr>
+                            <td class="mono">--border</td>
+                            <td>Dividers &amp; outlines</td>
+                            <td class="swatch-cell"><div class="mini-swatch" style="background: #e0d5d5;"></div><span class="mono">#E0D5D5</span></td>
+                            <td class="swatch-cell"><div class="mini-swatch" style="background: #352c43;"></div><span class="mono">#352C43</span></td>
+                        </tr>
+                        <tr>
+                            <td class="mono">--text</td>
+                            <td>Primary text</td>
+                            <td class="swatch-cell"><div class="mini-swatch" style="background: #1c1828;"></div><span class="mono">#1C1828</span></td>
+                            <td class="swatch-cell"><div class="mini-swatch" style="background: #f4eded;"></div><span class="mono">#F4EDED</span></td>
+                        </tr>
+                        <tr>
+                            <td class="mono">--text-muted</td>
+                            <td>Secondary text</td>
+                            <td class="swatch-cell"><div class="mini-swatch" style="background: #7a6f7f;"></div><span class="mono">#7A6F7F</span></td>
+                            <td class="swatch-cell"><div class="mini-swatch" style="background: #9a8e9e;"></div><span class="mono">#9A8E9E</span></td>
+                        </tr>
+                        <tr>
+                            <td class="mono">--primary</td>
+                            <td>Interactive primary</td>
+                            <td class="swatch-cell"><div class="mini-swatch" style="background: #656ea4;"></div><span class="mono">#656EA4</span></td>
+                            <td class="swatch-cell"><div class="mini-swatch" style="background: #8c92be;"></div><span class="mono">#8C92BE</span></td>
+                        </tr>
+                        <tr>
+                            <td class="mono">--primary-hover</td>
+                            <td>Hover / pressed</td>
+                            <td class="swatch-cell"><div class="mini-swatch" style="background: #4e5688;"></div><span class="mono">#4E5688</span></td>
+                            <td class="swatch-cell"><div class="mini-swatch" style="background: #c4c7df;"></div><span class="mono">#C4C7DF</span></td>
+                        </tr>
+                        <tr>
+                            <td class="mono">--primary-subtle</td>
+                            <td>Tinted backgrounds</td>
+                            <td class="swatch-cell"><div class="mini-swatch" style="background: #edeef5;"></div><span class="mono">#EDEEF5</span></td>
+                            <td class="swatch-cell"><div class="mini-swatch" style="background: #313666;"></div><span class="mono">#313666</span></td>
+                        </tr>
+                        <tr>
+                            <td class="mono">--error</td>
+                            <td>Error state</td>
+                            <td class="swatch-cell"><div class="mini-swatch" style="background: #e66260;"></div><span class="mono">#E66260</span></td>
+                            <td class="swatch-cell"><div class="mini-swatch" style="background: #e66260;"></div><span class="mono">#E66260</span></td>
+                        </tr>
+                        <tr>
+                            <td class="mono">--warning</td>
+                            <td>Warning state</td>
+                            <td class="swatch-cell"><div class="mini-swatch" style="background: #f9db6d;"></div><span class="mono">#F9DB6D</span></td>
+                            <td class="swatch-cell"><div class="mini-swatch" style="background: #f9db6d;"></div><span class="mono">#F9DB6D</span></td>
+                        </tr>
+                        <tr>
+                            <td class="mono">--success</td>
+                            <td>Success state</td>
+                            <td class="swatch-cell"><div class="mini-swatch" style="background: #52b788;"></div><span class="mono">#52B788</span></td>
+                            <td class="swatch-cell"><div class="mini-swatch" style="background: #52b788;"></div><span class="mono">#52B788</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- LIVE PREVIEW -->
+        <div class="section">
+            <div class="section-label">Live Preview</div>
+            <div class="preview-grid">
+                <div class="preview-panel light">
+                    <div style="font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.25em; text-transform: uppercase; color: #7a6f7f; margin-bottom: 16px;">Light Theme</div>
+                    <div class="preview-surface">
+                        <div class="preview-title">Upcoming Wash</div>
+                        <div class="preview-body">Premium Detail Package at Downtown Station. Estimated completion in 45 minutes.</div>
+                        <input class="preview-input" type="text" value="Search services..." readonly>
+                        <div style="display: flex; align-items: center; gap: 8px;">
+                            <span class="preview-btn">Book Now</span>
+                            <span class="preview-badge">&#x25CF; Available</span>
+                        </div>
+                    </div>
+                    <div class="preview-surface">
+                        <div class="preview-title">Recent Activity</div>
+                        <div class="preview-body">Basic Exterior Wash completed on Mar 15 at 3:45 PM.</div>
+                        <div style="display: flex; gap: 8px;">
+                            <span style="font-family: 'DM Mono', monospace; font-size: 10px; background: #edeef5; color: #656ea4; padding: 4px 11px; border-radius: 100px;">$18.00</span>
+                            <span style="font-family: 'DM Mono', monospace; font-size: 10px; background: #eaf7ef; color: #2e8c61; padding: 4px 11px; border-radius: 100px;">&#x25CF; Completed</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="preview-panel dark">
+                    <div style="font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.25em; text-transform: uppercase; color: #9a8e9e; margin-bottom: 16px;">Dark Theme</div>
+                    <div class="preview-surface">
+                        <div class="preview-title">Upcoming Wash</div>
+                        <div class="preview-body">Premium Detail Package at Downtown Station. Estimated completion in 45 minutes.</div>
+                        <input class="preview-input" type="text" value="Search services..." readonly>
+                        <div style="display: flex; align-items: center; gap: 8px;">
+                            <span class="preview-btn">Book Now</span>
+                            <span class="preview-badge">&#x25CF; Available</span>
+                        </div>
+                    </div>
+                    <div class="preview-surface">
+                        <div class="preview-title">Recent Activity</div>
+                        <div class="preview-body">Basic Exterior Wash completed on Mar 15 at 3:45 PM.</div>
+                        <div style="display: flex; gap: 8px;">
+                            <span style="font-family: 'DM Mono', monospace; font-size: 10px; background: #313666; color: #c4c7df; padding: 4px 11px; border-radius: 100px;">$18.00</span>
+                            <span style="font-family: 'DM Mono', monospace; font-size: 10px; background: #1a3d2a; color: #95d4b3; padding: 4px 11px; border-radius: 100px;">&#x25CF; Completed</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- VS CODE THEME -->
+        <div class="section">
+            <div class="section-label">VS Code Theme Preview</div>
+            <div class="vscode-preview">
+                <div class="vscode-titlebar">
+                    <div class="vscode-dot" style="background: #e66260;"></div>
+                    <div class="vscode-dot" style="background: #f9db6d;"></div>
+                    <div class="vscode-dot" style="background: #52b788;"></div>
+                    <div class="vscode-titlebar-text">app.tsx &mdash; AquaDrive</div>
+                </div>
+                <div class="vscode-body">
+                    <div class="vscode-sidebar">
+                        <div class="vscode-sidebar-item active">app.tsx</div>
+                        <div class="vscode-sidebar-item">theme.ts</div>
+                        <div class="vscode-sidebar-item">tokens.css</div>
+                        <div class="vscode-sidebar-item">components/</div>
+                        <div class="vscode-sidebar-item">&nbsp;&nbsp;Button.tsx</div>
+                        <div class="vscode-sidebar-item">&nbsp;&nbsp;Card.tsx</div>
+                        <div class="vscode-sidebar-item">&nbsp;&nbsp;Badge.tsx</div>
+                    </div>
+                    <div class="vscode-editor">
+                        <span class="vscode-ln">1</span><span class="code-comment">// AquaDrive theme configuration</span><br>
+                        <span class="vscode-ln">2</span><span class="code-key">import</span> { <span class="code-prop">createTheme</span> } <span class="code-key">from</span> <span class="code-str">'@aquadrive/tokens'</span>;<br>
+                        <span class="vscode-ln">3</span><br>
+                        <span class="vscode-ln">4</span><span class="code-key">export const</span> <span class="code-prop">theme</span> = <span class="code-prop">createTheme</span>({<br>
+                        <span class="vscode-ln">5</span>&nbsp;&nbsp;<span class="code-prop">colors</span>: {<br>
+                        <span class="vscode-ln">6</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-prop">background</span>: <span class="code-str">'#1C1828'</span>,<br>
+                        <span class="vscode-ln">7</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-prop">surface</span>: <span class="code-str">'#261F34'</span>,<br>
+                        <span class="vscode-ln">8</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-prop">border</span>: <span class="code-str">'#352C43'</span>,<br>
+                        <span class="vscode-ln">9</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-prop">primary</span>: <span class="code-str">'#8C92BE'</span>,<br>
+                        <span class="vscode-ln">10</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-prop">text</span>: <span class="code-str">'#F4EDED'</span>,<br>
+                        <span class="vscode-ln">11</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-prop">muted</span>: <span class="code-str">'#9A8E9E'</span>,<br>
+                        <span class="vscode-ln">12</span>&nbsp;&nbsp;},<br>
+                        <span class="vscode-ln">13</span>&nbsp;&nbsp;<span class="code-prop">syntax</span>: {<br>
+                        <span class="vscode-ln">14</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-prop">keyword</span>: <span class="code-str">'#E66260'</span>,<br>
+                        <span class="vscode-ln">15</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-prop">string</span>: <span class="code-str">'#F9DB6D'</span>,<br>
+                        <span class="vscode-ln">16</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-prop">function</span>: <span class="code-str">'#8C92BE'</span>,<br>
+                        <span class="vscode-ln">17</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-prop">variable</span>: <span class="code-str">'#95D4B3'</span>,<br>
+                        <span class="vscode-ln">18</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-prop">comment</span>: <span class="code-str">'#9A8E9E'</span>,<br>
+                        <span class="vscode-ln">19</span>&nbsp;&nbsp;}<br>
+                        <span class="vscode-ln">20</span>});<br>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- CSS CUSTOM PROPERTIES -->
+        <div class="section">
+            <div class="section-label">CSS Custom Properties</div>
+            <div class="code-block">
+                <span class="code-comment">/* Light theme (default) */</span><br>
+                <span class="code-prop">:root</span> {<br>
+                &nbsp;&nbsp;<span class="code-prop">--bg</span>: <span class="code-val">#f4eded</span>;<br>
+                &nbsp;&nbsp;<span class="code-prop">--surface</span>: <span class="code-val">#ffffff</span>;<br>
+                &nbsp;&nbsp;<span class="code-prop">--border</span>: <span class="code-val">#e0d5d5</span>;<br>
+                &nbsp;&nbsp;<span class="code-prop">--text</span>: <span class="code-val">#1c1828</span>;<br>
+                &nbsp;&nbsp;<span class="code-prop">--text-muted</span>: <span class="code-val">#7a6f7f</span>;<br>
+                &nbsp;&nbsp;<span class="code-prop">--primary</span>: <span class="code-val">#656ea4</span>;<br>
+                &nbsp;&nbsp;<span class="code-prop">--primary-hover</span>: <span class="code-val">#4e5688</span>;<br>
+                &nbsp;&nbsp;<span class="code-prop">--primary-subtle</span>: <span class="code-val">#edeef5</span>;<br>
+                &nbsp;&nbsp;<span class="code-prop">--error</span>: <span class="code-val">#e66260</span>;<br>
+                &nbsp;&nbsp;<span class="code-prop">--warning</span>: <span class="code-val">#f9db6d</span>;<br>
+                &nbsp;&nbsp;<span class="code-prop">--success</span>: <span class="code-val">#52b788</span>;<br>
+                }<br><br>
+                <span class="code-comment">/* Dark theme */</span><br>
+                <span class="code-prop">[data-theme="dark"]</span> {<br>
+                &nbsp;&nbsp;<span class="code-prop">--bg</span>: <span class="code-val">#1c1828</span>;<br>
+                &nbsp;&nbsp;<span class="code-prop">--surface</span>: <span class="code-val">#261f34</span>;<br>
+                &nbsp;&nbsp;<span class="code-prop">--border</span>: <span class="code-val">#352c43</span>;<br>
+                &nbsp;&nbsp;<span class="code-prop">--text</span>: <span class="code-val">#f4eded</span>;<br>
+                &nbsp;&nbsp;<span class="code-prop">--text-muted</span>: <span class="code-val">#9a8e9e</span>;<br>
+                &nbsp;&nbsp;<span class="code-prop">--primary</span>: <span class="code-val">#8c92be</span>;<br>
+                &nbsp;&nbsp;<span class="code-prop">--primary-hover</span>: <span class="code-val">#c4c7df</span>;<br>
+                &nbsp;&nbsp;<span class="code-prop">--primary-subtle</span>: <span class="code-val">#313666</span>;<br>
+                &nbsp;&nbsp;<span class="code-prop">--error</span>: <span class="code-val">#e66260</span>;<br>
+                &nbsp;&nbsp;<span class="code-prop">--warning</span>: <span class="code-val">#f9db6d</span>;<br>
+                &nbsp;&nbsp;<span class="code-prop">--success</span>: <span class="code-val">#52b788</span>;<br>
+                }
+            </div>
+        </div>
+
+        <!-- THEME TOGGLE SNIPPET -->
+        <div class="section">
+            <div class="section-label">Theme Toggle — JavaScript</div>
+            <div class="code-block">
+                <span class="code-comment">// Toggle between light and dark themes</span><br>
+                <span class="code-key">function</span> <span class="code-prop">toggleTheme</span>() {<br>
+                &nbsp;&nbsp;<span class="code-key">const</span> <span class="code-val">root</span> = document.documentElement;<br>
+                &nbsp;&nbsp;<span class="code-key">const</span> <span class="code-val">current</span> = root.getAttribute(<span class="code-str">'data-theme'</span>);<br>
+                &nbsp;&nbsp;<span class="code-key">const</span> <span class="code-val">next</span> = current === <span class="code-str">'dark'</span> ? <span class="code-str">'light'</span> : <span class="code-str">'dark'</span>;<br>
+                &nbsp;&nbsp;root.setAttribute(<span class="code-str">'data-theme'</span>, <span class="code-val">next</span>);<br>
+                &nbsp;&nbsp;localStorage.setItem(<span class="code-str">'aquadrive-theme'</span>, <span class="code-val">next</span>);<br>
+                }<br><br>
+                <span class="code-comment">// Restore saved preference on load</span><br>
+                <span class="code-key">const</span> <span class="code-val">saved</span> = localStorage.getItem(<span class="code-str">'aquadrive-theme'</span>);<br>
+                <span class="code-key">if</span> (<span class="code-val">saved</span>) document.documentElement.setAttribute(<span class="code-str">'data-theme'</span>, <span class="code-val">saved</span>);
+            </div>
+        </div>
+
+        <!-- VS CODE SETTINGS -->
+        <div class="section">
+            <div class="section-label">VS Code Theme Settings</div>
+            <div class="code-block">
+                <span class="code-comment">// .vscode/settings.json — AquaDrive theme colors</span><br>
+                {<br>
+                &nbsp;&nbsp;<span class="code-str">"workbench.colorCustomizations"</span>: {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-str">"editor.background"</span>: <span class="code-val">"#1C1828"</span>,<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-str">"editor.foreground"</span>: <span class="code-val">"#F4EDED"</span>,<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-str">"sideBar.background"</span>: <span class="code-val">"#1C1828"</span>,<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-str">"sideBar.foreground"</span>: <span class="code-val">"#9A8E9E"</span>,<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-str">"activityBar.background"</span>: <span class="code-val">"#161222"</span>,<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-str">"titleBar.activeBackground"</span>: <span class="code-val">"#161222"</span>,<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-str">"titleBar.activeForeground"</span>: <span class="code-val">"#9A8E9E"</span>,<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-str">"tab.activeBackground"</span>: <span class="code-val">"#261F34"</span>,<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-str">"tab.inactiveBackground"</span>: <span class="code-val">"#1C1828"</span>,<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-str">"panel.background"</span>: <span class="code-val">"#1C1828"</span>,<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-str">"panel.border"</span>: <span class="code-val">"#352C43"</span>,<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-str">"statusBar.background"</span>: <span class="code-val">"#656EA4"</span>,<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-str">"statusBar.foreground"</span>: <span class="code-val">"#F4EDED"</span>,<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-str">"focusBorder"</span>: <span class="code-val">"#656EA4"</span>,<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-str">"selection.background"</span>: <span class="code-val">"#31366666"</span><br>
+                &nbsp;&nbsp;},<br>
+                &nbsp;&nbsp;<span class="code-str">"editor.tokenColorCustomizations"</span>: {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-str">"comments"</span>: <span class="code-val">"#9A8E9E"</span>,<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-str">"keywords"</span>: <span class="code-val">"#E66260"</span>,<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-str">"strings"</span>: <span class="code-val">"#F9DB6D"</span>,<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-str">"functions"</span>: <span class="code-val">"#8C92BE"</span>,<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-str">"variables"</span>: <span class="code-val">"#95D4B3"</span>,<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-str">"numbers"</span>: <span class="code-val">"#C4C7DF"</span>,<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-str">"types"</span>: <span class="code-val">"#8C92BE"</span><br>
+                &nbsp;&nbsp;}<br>
+                }
+            </div>
+        </div>
+    </body>
+</html>

@@ -4,6 +4,7 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>AquaDrive — Typography</title>
+        <script>(function(){var s=localStorage.getItem('aquadrive-theme');var t=s||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');if(t==='dark')document.documentElement.setAttribute('data-theme','dark');})()</script>
         <style>
             @import url("https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Syne:wght@400;600;700;800&display=swap");
 
@@ -16,6 +17,17 @@
                 --primary: #656ea4;
                 --primary-hover: #4e5688;
                 --primary-subtle: #edeef5;
+            }
+
+            [data-theme="dark"] {
+                --bg: #1c1828;
+                --surface: #261f34;
+                --border: #352c43;
+                --text: #f4eded;
+                --text-muted: #9a8e9e;
+                --primary: #8c92be;
+                --primary-hover: #c4c7df;
+                --primary-subtle: #313666;
             }
 
             * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -48,7 +60,7 @@
             }
             .nav a:hover, .nav a.active {
                 background: var(--primary);
-                color: #f4eded;
+                color: var(--bg);
                 border-color: var(--primary);
             }
 
@@ -315,6 +327,50 @@
             .code-val { color: #95d4b3; }
             .code-str { color: #f9db6d; }
 
+            /* THEME TOGGLE */
+            .theme-toggle {
+                font-family: "DM Mono", monospace;
+                font-size: 11px;
+                letter-spacing: 0.08em;
+                text-transform: uppercase;
+                padding: 6px 14px;
+                border-radius: 100px;
+                border: 1px solid var(--border);
+                background: var(--surface);
+                color: var(--text-muted);
+                cursor: pointer;
+                transition: all 0.2s;
+                margin-left: auto;
+            }
+            .theme-toggle:hover {
+                background: var(--primary);
+                color: var(--bg);
+                border-color: var(--primary);
+            }
+
+            /* THEME VISIBILITY */
+            .theme-only-light { display: block; }
+            .theme-only-dark { display: none; }
+            [data-theme="dark"] .theme-only-light { display: none; }
+            [data-theme="dark"] .theme-only-dark { display: block; }
+
+            /* Dark mode overrides for pairing cards */
+            [data-theme="dark"] .pairing-card {
+                background: #1c1828;
+                color: #f4eded;
+                border-color: #352c43;
+            }
+            [data-theme="dark"] .pairing-body { color: #9a8e9e; }
+            [data-theme="dark"] .pairing-mono {
+                background: var(--primary-subtle);
+                color: var(--primary);
+            }
+
+            /* Dark mode overrides for usage table */
+            [data-theme="dark"] .usage-table th { color: #9a8e9e; }
+
+            /* Dark mode overrides for code block — already dark, no change needed */
+
             @media (max-width: 640px) {
                 .specimen-grid { grid-template-columns: 1fr; }
                 .type-row { flex-direction: column; gap: 8px; }
@@ -330,6 +386,7 @@
             <a href="typography.html" class="active">Typography</a>
             <a href="components.html">Components</a>
             <a href="themes.html">Themes</a>
+            <button class="theme-toggle" onclick="toggleTheme()">Dark</button>
         </nav>
 
         <header>
@@ -407,8 +464,8 @@
         </div>
 
         <!-- TYPE SCALE -->
-        <div class="section">
-            <div class="section-label">Type Scale — Light</div>
+        <div class="section theme-only-light">
+            <div class="section-label">Type Scale</div>
             <div class="demo-box" style="padding: 12px 28px;">
                 <div class="type-row">
                     <div class="type-meta">
@@ -513,8 +570,8 @@
         </div>
 
         <!-- DARK TYPE SCALE -->
-        <div class="section">
-            <div class="section-label">Type Scale — Dark</div>
+        <div class="section theme-only-dark">
+            <div class="section-label">Type Scale</div>
             <div class="dark-specimen">
                 <div class="type-row">
                     <div class="type-meta">
@@ -567,28 +624,32 @@
         <!-- FONT PAIRING -->
         <div class="section">
             <div class="section-label">Font Pairing in Context</div>
-            <div class="pairing-card">
-                <div style="font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.25em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 12px;">Service Detail</div>
-                <div class="pairing-heading">Premium Interior + Exterior Detail</div>
-                <div class="pairing-body">
-                    Includes hand wash, clay bar treatment, machine polish, carnauba wax, full interior vacuum, leather conditioning, and dashboard treatment. Windows cleaned inside and out. Tires dressed and wheel wells degreased.
-                </div>
-                <div style="display: flex; gap: 12px; align-items: center; flex-wrap: wrap;">
-                    <span class="pairing-mono">~90 min</span>
-                    <span class="pairing-mono">$89.00</span>
-                    <span style="font-family: 'DM Mono', monospace; font-size: 10px; font-weight: 500; letter-spacing: 0.04em; background: #eaf7ef; color: #2e8c61; padding: 4px 11px; border-radius: 100px;">&#x25CF; Available</span>
+            <div class="theme-only-light">
+                <div class="pairing-card">
+                    <div style="font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.25em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 12px;">Service Detail</div>
+                    <div class="pairing-heading">Premium Interior + Exterior Detail</div>
+                    <div class="pairing-body">
+                        Includes hand wash, clay bar treatment, machine polish, carnauba wax, full interior vacuum, leather conditioning, and dashboard treatment. Windows cleaned inside and out. Tires dressed and wheel wells degreased.
+                    </div>
+                    <div style="display: flex; gap: 12px; align-items: center; flex-wrap: wrap;">
+                        <span class="pairing-mono">~90 min</span>
+                        <span class="pairing-mono">$89.00</span>
+                        <span style="font-family: 'DM Mono', monospace; font-size: 10px; font-weight: 500; letter-spacing: 0.04em; background: #eaf7ef; color: #2e8c61; padding: 4px 11px; border-radius: 100px;">&#x25CF; Available</span>
+                    </div>
                 </div>
             </div>
-            <div class="pairing-card" style="background: #1c1828; color: #f4eded; border-color: #352c43;">
-                <div style="font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.25em; text-transform: uppercase; color: #9a8e9e; margin-bottom: 12px;">Job Summary</div>
-                <div class="pairing-heading">Ceramic Coating — Tesla Model 3</div>
-                <div class="pairing-body" style="color: #9a8e9e;">
-                    Multi-stage paint correction followed by professional-grade SiO2 ceramic coating application. Includes decontamination wash, iron fallout removal, and 48-hour curing period.
-                </div>
-                <div style="display: flex; gap: 12px; align-items: center; flex-wrap: wrap;">
-                    <span class="pairing-mono" style="background: #313666; color: #c4c7df;">~3 hours</span>
-                    <span class="pairing-mono" style="background: #313666; color: #c4c7df;">$249.00</span>
-                    <span style="font-family: 'DM Mono', monospace; font-size: 10px; font-weight: 500; letter-spacing: 0.04em; background: #313666; color: #c4c7df; padding: 4px 11px; border-radius: 100px;">&#x25CF; Scheduled</span>
+            <div class="theme-only-dark">
+                <div class="pairing-card" style="background: #1c1828; color: #f4eded; border-color: #352c43;">
+                    <div style="font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.25em; text-transform: uppercase; color: #9a8e9e; margin-bottom: 12px;">Job Summary</div>
+                    <div class="pairing-heading">Ceramic Coating — Tesla Model 3</div>
+                    <div class="pairing-body" style="color: #9a8e9e;">
+                        Multi-stage paint correction followed by professional-grade SiO2 ceramic coating application. Includes decontamination wash, iron fallout removal, and 48-hour curing period.
+                    </div>
+                    <div style="display: flex; gap: 12px; align-items: center; flex-wrap: wrap;">
+                        <span class="pairing-mono" style="background: #313666; color: #c4c7df;">~3 hours</span>
+                        <span class="pairing-mono" style="background: #313666; color: #c4c7df;">$249.00</span>
+                        <span style="font-family: 'DM Mono', monospace; font-size: 10px; font-weight: 500; letter-spacing: 0.04em; background: #313666; color: #c4c7df; padding: 4px 11px; border-radius: 100px;">&#x25CF; Scheduled</span>
+                    </div>
                 </div>
             </div>
         </div>
@@ -732,5 +793,31 @@
                 }
             </div>
         </div>
+        <script>
+            (function() {
+                var saved = localStorage.getItem('aquadrive-theme');
+                var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+                var theme = saved || (prefersDark ? 'dark' : 'light');
+                if (theme === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
+                updateToggleLabel();
+            })();
+            function toggleTheme() {
+                var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+                var next = isDark ? 'light' : 'dark';
+                if (next === 'dark') {
+                    document.documentElement.setAttribute('data-theme', 'dark');
+                } else {
+                    document.documentElement.removeAttribute('data-theme');
+                }
+                localStorage.setItem('aquadrive-theme', next);
+                updateToggleLabel();
+            }
+            function updateToggleLabel() {
+                var btn = document.querySelector('.theme-toggle');
+                if (!btn) return;
+                var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+                btn.textContent = isDark ? 'Light' : 'Dark';
+            }
+        </script>
     </body>
 </html>

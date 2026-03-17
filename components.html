@@ -1,0 +1,1137 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>AquaDrive — Components</title>
+        <style>
+            @import url("https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Syne:wght@400;600;700;800&display=swap");
+
+            :root {
+                --bg: #f4eded;
+                --surface: #ffffff;
+                --border: #e0d5d5;
+                --text: #1c1828;
+                --text-muted: #7a6f7f;
+                --primary: #656ea4;
+                --primary-hover: #4e5688;
+                --primary-subtle: #edeef5;
+                --primary-light: #8c92be;
+                --primary-border: #c4c7df;
+                --error: #e66260;
+                --error-soft: #f3a8a7;
+                --error-tint: #fceaea;
+                --warning: #f9db6d;
+                --warning-soft: #fceea8;
+                --warning-tint: #fef9e6;
+                --success: #52b788;
+                --success-soft: #95d4b3;
+                --success-tint: #eaf7ef;
+                --info: #656ea4;
+                --info-soft: #b0b5d4;
+                --info-tint: #edeef5;
+            }
+
+            * { margin: 0; padding: 0; box-sizing: border-box; }
+
+            body {
+                background: var(--bg);
+                color: var(--text);
+                font-family: "Syne", sans-serif;
+                padding: 48px 32px;
+                min-height: 100vh;
+            }
+
+            /* NAV */
+            .nav {
+                display: flex;
+                gap: 6px;
+                margin-bottom: 40px;
+                flex-wrap: wrap;
+            }
+            .nav a {
+                font-family: "DM Mono", monospace;
+                font-size: 11px;
+                letter-spacing: 0.08em;
+                text-transform: uppercase;
+                text-decoration: none;
+                padding: 6px 14px;
+                border-radius: 100px;
+                border: 1px solid var(--border);
+                color: var(--text-muted);
+                transition: all 0.2s;
+            }
+            .nav a:hover, .nav a.active {
+                background: var(--primary);
+                color: #f4eded;
+                border-color: var(--primary);
+            }
+
+            header { margin-bottom: 56px; }
+
+            .brand-tag {
+                font-family: "DM Mono", monospace;
+                font-size: 11px;
+                letter-spacing: 0.2em;
+                text-transform: uppercase;
+                color: var(--text-muted);
+                margin-bottom: 8px;
+            }
+
+            h1 {
+                font-size: 42px;
+                font-weight: 800;
+                letter-spacing: -0.02em;
+                line-height: 1;
+            }
+            h1 span { color: var(--primary); }
+
+            .subtitle {
+                font-size: 14px;
+                color: var(--text-muted);
+                margin-top: 8px;
+                font-weight: 400;
+            }
+
+            .section { margin-bottom: 48px; }
+
+            .section-label {
+                font-family: "DM Mono", monospace;
+                font-size: 10px;
+                letter-spacing: 0.25em;
+                text-transform: uppercase;
+                color: var(--text-muted);
+                margin-bottom: 16px;
+                display: flex;
+                align-items: center;
+                gap: 12px;
+            }
+            .section-label::after {
+                content: "";
+                flex: 1;
+                height: 1px;
+                background: var(--border);
+            }
+
+            /* BUTTONS */
+            .btn {
+                font-family: "Syne", sans-serif;
+                font-size: 13px;
+                font-weight: 600;
+                padding: 10px 20px;
+                border-radius: 10px;
+                border: none;
+                cursor: pointer;
+                transition: opacity 0.15s, transform 0.15s;
+                display: inline-flex;
+                align-items: center;
+                gap: 6px;
+            }
+            .btn:hover { opacity: 0.85; }
+            .btn:active { transform: scale(0.97); }
+
+            .btn-primary { background: var(--primary); color: #f4eded; }
+            .btn-secondary { background: var(--primary-subtle); color: var(--primary-hover); }
+            .btn-ghost { background: transparent; color: var(--text-muted); border: 1px solid var(--border); }
+            .btn-danger { background: var(--error); color: #fff; }
+            .btn-success { background: var(--success); color: #fff; }
+            .btn-warning { background: var(--warning); color: #3d3240; }
+
+            .btn-sm { font-size: 11px; padding: 6px 14px; border-radius: 8px; }
+            .btn-lg { font-size: 15px; padding: 14px 28px; border-radius: 12px; }
+            .btn-pill { border-radius: 100px; }
+            .btn-icon { padding: 10px; width: 40px; height: 40px; justify-content: center; }
+            .btn:disabled { opacity: 0.4; cursor: not-allowed; }
+
+            .component-row {
+                display: flex;
+                gap: 10px;
+                flex-wrap: wrap;
+                align-items: center;
+                margin-bottom: 16px;
+            }
+
+            .component-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+                gap: 16px;
+            }
+
+            .demo-label {
+                font-family: "DM Mono", monospace;
+                font-size: 10px;
+                color: var(--text-muted);
+                letter-spacing: 0.1em;
+                text-transform: uppercase;
+                margin-bottom: 10px;
+            }
+
+            .demo-box {
+                background: var(--surface);
+                border: 1px solid var(--border);
+                border-radius: 16px;
+                padding: 24px;
+            }
+
+            /* INPUT FIELDS */
+            .input {
+                font-family: "Syne", sans-serif;
+                font-size: 13px;
+                padding: 10px 14px;
+                border-radius: 10px;
+                border: 1px solid var(--border);
+                background: var(--surface);
+                color: var(--text);
+                outline: none;
+                transition: border-color 0.2s, box-shadow 0.2s;
+                width: 100%;
+            }
+            .input:focus {
+                border-color: var(--primary);
+                box-shadow: 0 0 0 3px rgba(101, 110, 164, 0.12);
+            }
+            .input::placeholder { color: var(--text-muted); opacity: 0.6; }
+            .input-error { border-color: var(--error); }
+            .input-error:focus { box-shadow: 0 0 0 3px rgba(230, 98, 96, 0.12); }
+            .input-success { border-color: var(--success); }
+
+            .input-group { margin-bottom: 16px; }
+            .input-label {
+                font-size: 12px;
+                font-weight: 600;
+                margin-bottom: 6px;
+                display: block;
+            }
+            .input-hint {
+                font-size: 11px;
+                color: var(--text-muted);
+                margin-top: 4px;
+            }
+            .input-hint.error { color: var(--error); }
+            .input-hint.success { color: var(--success); }
+
+            /* SELECT */
+            .select {
+                font-family: "Syne", sans-serif;
+                font-size: 13px;
+                padding: 10px 14px;
+                border-radius: 10px;
+                border: 1px solid var(--border);
+                background: var(--surface);
+                color: var(--text);
+                outline: none;
+                width: 100%;
+                appearance: none;
+                background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%237a6f7f' viewBox='0 0 16 16'%3E%3Cpath d='M8 11L3 6h10z'/%3E%3C/svg%3E");
+                background-repeat: no-repeat;
+                background-position: right 12px center;
+                padding-right: 32px;
+                cursor: pointer;
+            }
+            .select:focus {
+                border-color: var(--primary);
+                box-shadow: 0 0 0 3px rgba(101, 110, 164, 0.12);
+            }
+
+            /* TEXTAREA */
+            .textarea {
+                font-family: "Syne", sans-serif;
+                font-size: 13px;
+                padding: 10px 14px;
+                border-radius: 10px;
+                border: 1px solid var(--border);
+                background: var(--surface);
+                color: var(--text);
+                outline: none;
+                width: 100%;
+                min-height: 80px;
+                resize: vertical;
+            }
+            .textarea:focus {
+                border-color: var(--primary);
+                box-shadow: 0 0 0 3px rgba(101, 110, 164, 0.12);
+            }
+
+            /* CHECKBOX & RADIO */
+            .check-group {
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+            }
+            .check-item {
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                font-size: 13px;
+                cursor: pointer;
+            }
+            .check-item input[type="checkbox"],
+            .check-item input[type="radio"] {
+                accent-color: var(--primary);
+                width: 16px;
+                height: 16px;
+                cursor: pointer;
+            }
+
+            /* TOGGLE */
+            .toggle {
+                position: relative;
+                width: 44px;
+                height: 24px;
+                display: inline-block;
+            }
+            .toggle input { opacity: 0; width: 0; height: 0; }
+            .toggle-slider {
+                position: absolute;
+                inset: 0;
+                background: var(--border);
+                border-radius: 100px;
+                cursor: pointer;
+                transition: background 0.2s;
+            }
+            .toggle-slider::before {
+                content: "";
+                position: absolute;
+                width: 18px;
+                height: 18px;
+                left: 3px;
+                top: 3px;
+                background: #fff;
+                border-radius: 50%;
+                transition: transform 0.2s;
+            }
+            .toggle input:checked + .toggle-slider { background: var(--primary); }
+            .toggle input:checked + .toggle-slider::before { transform: translateX(20px); }
+
+            /* BADGES */
+            .badge {
+                font-family: "DM Mono", monospace;
+                font-size: 10px;
+                font-weight: 500;
+                padding: 4px 11px;
+                border-radius: 100px;
+                letter-spacing: 0.04em;
+                display: inline-flex;
+                align-items: center;
+                gap: 4px;
+            }
+            .badge-primary { background: var(--primary-subtle); color: var(--primary-hover); }
+            .badge-error { background: var(--error-tint); color: #c94442; }
+            .badge-warning { background: var(--warning-tint); color: #c4952a; }
+            .badge-success { background: var(--success-tint); color: #2e8c61; }
+            .badge-info { background: var(--info-tint); color: var(--primary-hover); }
+            .badge-neutral { background: var(--bg); color: var(--text-muted); }
+            .badge-dot::before {
+                content: "";
+                width: 6px;
+                height: 6px;
+                border-radius: 50%;
+                background: currentColor;
+            }
+
+            /* ALERTS */
+            .alert {
+                padding: 14px 18px;
+                border-radius: 12px;
+                font-size: 13px;
+                display: flex;
+                align-items: flex-start;
+                gap: 10px;
+                margin-bottom: 12px;
+            }
+            .alert-icon { flex-shrink: 0; font-size: 16px; line-height: 1.2; }
+            .alert-content { flex: 1; }
+            .alert-title { font-weight: 700; margin-bottom: 2px; }
+            .alert-body { font-size: 12px; opacity: 0.8; }
+
+            .alert-error { background: var(--error-tint); color: #c94442; }
+            .alert-warning { background: var(--warning-tint); color: #96720f; }
+            .alert-success { background: var(--success-tint); color: #2e8c61; }
+            .alert-info { background: var(--info-tint); color: var(--primary-hover); }
+
+            /* CARDS */
+            .card {
+                background: var(--surface);
+                border: 1px solid var(--border);
+                border-radius: 16px;
+                overflow: hidden;
+                transition: transform 0.2s, box-shadow 0.2s;
+            }
+            .card:hover {
+                transform: translateY(-3px);
+                box-shadow: 0 12px 32px rgba(101, 110, 164, 0.15);
+            }
+            .card-image {
+                height: 140px;
+                background: linear-gradient(135deg, var(--primary-subtle), var(--primary-border));
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 32px;
+            }
+            .card-body { padding: 18px; }
+            .card-title { font-size: 15px; font-weight: 700; margin-bottom: 4px; }
+            .card-desc { font-size: 12px; color: var(--text-muted); margin-bottom: 14px; line-height: 1.5; }
+            .card-footer {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+            }
+            .card-price { font-size: 18px; font-weight: 800; color: var(--primary); }
+            .card-meta {
+                font-family: "DM Mono", monospace;
+                font-size: 10px;
+                color: var(--text-muted);
+            }
+
+            /* AVATAR */
+            .avatar {
+                width: 40px;
+                height: 40px;
+                border-radius: 50%;
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                font-weight: 700;
+                font-size: 14px;
+                flex-shrink: 0;
+            }
+            .avatar-sm { width: 28px; height: 28px; font-size: 11px; }
+            .avatar-lg { width: 56px; height: 56px; font-size: 20px; }
+            .avatar-primary { background: var(--primary-subtle); color: var(--primary); }
+            .avatar-success { background: var(--success-tint); color: #2e8c61; }
+            .avatar-warning { background: var(--warning-tint); color: #c4952a; }
+
+            /* PROGRESS BAR */
+            .progress {
+                width: 100%;
+                height: 8px;
+                background: var(--bg);
+                border-radius: 100px;
+                overflow: hidden;
+            }
+            .progress-bar {
+                height: 100%;
+                border-radius: 100px;
+                transition: width 0.4s ease;
+            }
+            .progress-sm { height: 4px; }
+            .progress-lg { height: 12px; }
+
+            /* DIVIDER */
+            .divider {
+                height: 1px;
+                background: var(--border);
+                margin: 20px 0;
+            }
+
+            /* TOOLTIP - static demo */
+            .tooltip-demo {
+                position: relative;
+                display: inline-block;
+            }
+            .tooltip-bubble {
+                background: var(--text);
+                color: var(--bg);
+                font-size: 11px;
+                font-family: "DM Mono", monospace;
+                padding: 6px 10px;
+                border-radius: 8px;
+                position: absolute;
+                bottom: calc(100% + 8px);
+                left: 50%;
+                transform: translateX(-50%);
+                white-space: nowrap;
+            }
+            .tooltip-bubble::after {
+                content: "";
+                position: absolute;
+                top: 100%;
+                left: 50%;
+                transform: translateX(-50%);
+                border: 5px solid transparent;
+                border-top-color: var(--text);
+            }
+
+            /* MODAL */
+            .modal-demo {
+                background: rgba(28, 24, 40, 0.4);
+                border-radius: 16px;
+                padding: 40px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            .modal-card {
+                background: var(--surface);
+                border-radius: 20px;
+                padding: 28px;
+                max-width: 360px;
+                width: 100%;
+                box-shadow: 0 24px 64px rgba(28, 24, 40, 0.25);
+            }
+            .modal-title { font-size: 18px; font-weight: 700; margin-bottom: 8px; }
+            .modal-body { font-size: 13px; color: var(--text-muted); margin-bottom: 20px; line-height: 1.6; }
+            .modal-actions { display: flex; gap: 10px; justify-content: flex-end; }
+
+            /* TABLE */
+            .table-wrapper {
+                overflow-x: auto;
+                border-radius: 16px;
+                border: 1px solid var(--border);
+                background: var(--surface);
+            }
+            table {
+                width: 100%;
+                border-collapse: collapse;
+                font-size: 13px;
+            }
+            th {
+                font-family: "DM Mono", monospace;
+                font-size: 10px;
+                letter-spacing: 0.12em;
+                text-transform: uppercase;
+                color: var(--text-muted);
+                text-align: left;
+                padding: 14px 18px;
+                border-bottom: 1px solid var(--border);
+                font-weight: 500;
+            }
+            td {
+                padding: 14px 18px;
+                border-bottom: 1px solid var(--border);
+            }
+            tr:last-child td { border-bottom: none; }
+            tr:hover td { background: rgba(101, 110, 164, 0.03); }
+
+            /* TABS */
+            .tabs {
+                display: flex;
+                gap: 2px;
+                background: var(--bg);
+                border-radius: 12px;
+                padding: 4px;
+                width: fit-content;
+            }
+            .tab {
+                font-family: "DM Mono", monospace;
+                font-size: 11px;
+                letter-spacing: 0.06em;
+                padding: 8px 16px;
+                border-radius: 8px;
+                border: none;
+                background: transparent;
+                color: var(--text-muted);
+                cursor: pointer;
+                transition: all 0.2s;
+            }
+            .tab:hover { color: var(--text); }
+            .tab.active {
+                background: var(--surface);
+                color: var(--text);
+                font-weight: 500;
+                box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+            }
+
+            /* TAG / CHIP */
+            .tag {
+                font-family: "DM Mono", monospace;
+                font-size: 10px;
+                letter-spacing: 0.06em;
+                padding: 5px 12px;
+                border-radius: 8px;
+                border: 1px solid var(--border);
+                background: var(--surface);
+                color: var(--text-muted);
+                display: inline-flex;
+                align-items: center;
+                gap: 6px;
+                cursor: default;
+            }
+            .tag-close {
+                width: 14px;
+                height: 14px;
+                border-radius: 50%;
+                background: var(--bg);
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 9px;
+                cursor: pointer;
+                line-height: 1;
+            }
+
+            /* BREADCRUMB */
+            .breadcrumb {
+                display: flex;
+                align-items: center;
+                gap: 8px;
+                font-size: 12px;
+            }
+            .breadcrumb a {
+                color: var(--primary);
+                text-decoration: none;
+            }
+            .breadcrumb a:hover { text-decoration: underline; }
+            .breadcrumb-sep { color: var(--text-muted); opacity: 0.5; }
+            .breadcrumb-current { color: var(--text-muted); }
+
+            /* SKELETON */
+            @keyframes shimmer {
+                0% { background-position: -200px 0; }
+                100% { background-position: 200px 0; }
+            }
+            .skeleton {
+                background: linear-gradient(90deg, var(--bg) 25%, var(--border) 50%, var(--bg) 75%);
+                background-size: 400px 100%;
+                animation: shimmer 1.5s infinite;
+                border-radius: 8px;
+            }
+            .skeleton-text { height: 12px; margin-bottom: 8px; }
+            .skeleton-title { height: 20px; width: 60%; margin-bottom: 12px; }
+            .skeleton-avatar { width: 40px; height: 40px; border-radius: 50%; }
+            .skeleton-block { height: 80px; }
+
+            /* LIST */
+            .list-item {
+                display: flex;
+                align-items: center;
+                gap: 14px;
+                padding: 14px 0;
+                border-bottom: 1px solid var(--border);
+            }
+            .list-item:last-child { border-bottom: none; }
+            .list-item-content { flex: 1; }
+            .list-item-title { font-size: 13px; font-weight: 600; }
+            .list-item-sub { font-size: 11px; color: var(--text-muted); margin-top: 2px; }
+
+            /* DARK SECTION */
+            .dark-section {
+                background: #1c1828;
+                border-radius: 20px;
+                padding: 32px;
+                margin-top: 16px;
+                color: #f4eded;
+            }
+            .dark-section .demo-label { color: #9a8e9e; }
+            .dark-section .btn-primary { background: #8c92be; color: #1c1828; }
+            .dark-section .btn-secondary { background: #313666; color: #c4c7df; }
+            .dark-section .btn-ghost { background: transparent; color: #9a8e9e; border-color: #352c43; }
+            .dark-section .badge-primary { background: #313666; color: #c4c7df; }
+            .dark-section .badge-neutral { background: #261f34; color: #9a8e9e; }
+            .dark-section .input {
+                background: #261f34;
+                border-color: #352c43;
+                color: #f4eded;
+            }
+            .dark-section .input:focus {
+                border-color: #8c92be;
+                box-shadow: 0 0 0 3px rgba(140, 146, 190, 0.15);
+            }
+            .dark-section .card {
+                background: #261f34;
+                border-color: #352c43;
+            }
+            .dark-section .card-desc { color: #9a8e9e; }
+            .dark-section .card-image {
+                background: linear-gradient(135deg, #313666, #4e5688);
+            }
+            .dark-section .alert-info { background: #313666; color: #c4c7df; }
+            .dark-section .alert-error { background: #2e1a1a; color: #f3a8a7; }
+            .dark-section .alert-success { background: #0e2419; color: #95d4b3; }
+            .dark-section .progress { background: #261f34; }
+            .dark-section .tabs { background: #261f34; }
+            .dark-section .tab.active { background: #352c43; color: #f4eded; }
+            .dark-section .tag { background: #261f34; border-color: #352c43; color: #9a8e9e; }
+
+            @media (max-width: 640px) {
+                .component-grid { grid-template-columns: 1fr; }
+                h1 { font-size: 28px; }
+                body { padding: 24px 16px; }
+            }
+        </style>
+    </head>
+    <body>
+        <nav class="nav">
+            <a href="index.html">Colors</a>
+            <a href="typography.html">Typography</a>
+            <a href="components.html" class="active">Components</a>
+            <a href="themes.html">Themes</a>
+        </nav>
+
+        <header>
+            <div class="brand-tag">AquaDrive · Design System</div>
+            <h1>UI <span>Components</span></h1>
+            <p class="subtitle">Buttons, inputs, cards, alerts, and more — light &amp; dark</p>
+        </header>
+
+        <!-- BUTTONS -->
+        <div class="section">
+            <div class="section-label">Buttons — Variants</div>
+            <div class="demo-box">
+                <div class="demo-label">Filled variants</div>
+                <div class="component-row">
+                    <button class="btn btn-primary">Primary</button>
+                    <button class="btn btn-secondary">Secondary</button>
+                    <button class="btn btn-ghost">Ghost</button>
+                    <button class="btn btn-danger">Danger</button>
+                    <button class="btn btn-success">Success</button>
+                    <button class="btn btn-warning">Warning</button>
+                </div>
+                <div class="demo-label">Sizes</div>
+                <div class="component-row">
+                    <button class="btn btn-primary btn-sm">Small</button>
+                    <button class="btn btn-primary">Default</button>
+                    <button class="btn btn-primary btn-lg">Large</button>
+                </div>
+                <div class="demo-label">Shapes &amp; states</div>
+                <div class="component-row">
+                    <button class="btn btn-primary btn-pill">Pill Button</button>
+                    <button class="btn btn-primary btn-icon">+</button>
+                    <button class="btn btn-primary" disabled>Disabled</button>
+                </div>
+                <div class="demo-label">With icons</div>
+                <div class="component-row">
+                    <button class="btn btn-primary">&#x2795; Book Wash</button>
+                    <button class="btn btn-success">&#x2713; Confirm</button>
+                    <button class="btn btn-danger">&#x2717; Cancel</button>
+                    <button class="btn btn-secondary">&#x2190; Back</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- INPUTS -->
+        <div class="section">
+            <div class="section-label">Form Inputs</div>
+            <div class="component-grid">
+                <div class="demo-box">
+                    <div class="demo-label">Text inputs</div>
+                    <div class="input-group">
+                        <label class="input-label">Full Name</label>
+                        <input class="input" type="text" placeholder="e.g. Alex Rivera" />
+                    </div>
+                    <div class="input-group">
+                        <label class="input-label">Email Address</label>
+                        <input class="input input-error" type="email" value="bad@email" />
+                        <div class="input-hint error">Please enter a valid email address</div>
+                    </div>
+                    <div class="input-group">
+                        <label class="input-label">Phone</label>
+                        <input class="input input-success" type="tel" value="+1 (555) 012-3456" />
+                        <div class="input-hint success">Phone number verified</div>
+                    </div>
+                </div>
+                <div class="demo-box">
+                    <div class="demo-label">Select &amp; Textarea</div>
+                    <div class="input-group">
+                        <label class="input-label">Wash Package</label>
+                        <select class="select">
+                            <option>Basic Exterior</option>
+                            <option>Interior + Exterior</option>
+                            <option>Premium Detail</option>
+                            <option>Full Ceramic Coat</option>
+                        </select>
+                    </div>
+                    <div class="input-group">
+                        <label class="input-label">Special Instructions</label>
+                        <textarea class="textarea" placeholder="Any notes for the washer..."></textarea>
+                    </div>
+                </div>
+                <div class="demo-box">
+                    <div class="demo-label">Checkboxes &amp; radios</div>
+                    <div class="check-group" style="margin-bottom: 16px;">
+                        <label class="check-item"><input type="checkbox" checked /> Interior vacuum</label>
+                        <label class="check-item"><input type="checkbox" checked /> Tire shine</label>
+                        <label class="check-item"><input type="checkbox" /> Air freshener</label>
+                        <label class="check-item"><input type="checkbox" /> Dashboard wipe</label>
+                    </div>
+                    <div class="demo-label">Toggle switches</div>
+                    <div class="component-row">
+                        <label class="toggle"><input type="checkbox" checked /><span class="toggle-slider"></span></label>
+                        <span style="font-size: 12px;">Push notifications</span>
+                    </div>
+                    <div class="component-row">
+                        <label class="toggle"><input type="checkbox" /><span class="toggle-slider"></span></label>
+                        <span style="font-size: 12px;">Email receipts</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- BADGES -->
+        <div class="section">
+            <div class="section-label">Badges &amp; Tags</div>
+            <div class="demo-box">
+                <div class="demo-label">Status badges</div>
+                <div class="component-row">
+                    <span class="badge badge-primary badge-dot">Scheduled</span>
+                    <span class="badge badge-success badge-dot">Completed</span>
+                    <span class="badge badge-warning badge-dot">In Progress</span>
+                    <span class="badge badge-error badge-dot">Failed</span>
+                    <span class="badge badge-info badge-dot">Info</span>
+                    <span class="badge badge-neutral badge-dot">Archived</span>
+                </div>
+                <div class="demo-label">Tags / Chips</div>
+                <div class="component-row">
+                    <span class="tag">SUV <span class="tag-close">&times;</span></span>
+                    <span class="tag">Sedan <span class="tag-close">&times;</span></span>
+                    <span class="tag">Truck <span class="tag-close">&times;</span></span>
+                    <span class="tag">Premium</span>
+                    <span class="tag">Recurring</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- ALERTS -->
+        <div class="section">
+            <div class="section-label">Alerts &amp; Notifications</div>
+            <div class="alert alert-error">
+                <span class="alert-icon">&#x26A0;</span>
+                <div class="alert-content">
+                    <div class="alert-title">Payment Declined</div>
+                    <div class="alert-body">Your card ending in 4242 was declined. Please update your payment method.</div>
+                </div>
+            </div>
+            <div class="alert alert-warning">
+                <span class="alert-icon">&#x23F3;</span>
+                <div class="alert-content">
+                    <div class="alert-title">Wash In Progress</div>
+                    <div class="alert-body">Your vehicle is currently being serviced. Estimated completion: 25 min.</div>
+                </div>
+            </div>
+            <div class="alert alert-success">
+                <span class="alert-icon">&#x2713;</span>
+                <div class="alert-content">
+                    <div class="alert-title">Booking Confirmed</div>
+                    <div class="alert-body">Premium Detail for Toyota Camry — March 18, 2:00 PM</div>
+                </div>
+            </div>
+            <div class="alert alert-info">
+                <span class="alert-icon">&#x2139;</span>
+                <div class="alert-content">
+                    <div class="alert-title">Tip</div>
+                    <div class="alert-body">Book 3 washes this month to unlock 15% off your next visit.</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- CARDS -->
+        <div class="section">
+            <div class="section-label">Cards</div>
+            <div class="component-grid">
+                <div class="card">
+                    <div class="card-image">&#x1F6BF;</div>
+                    <div class="card-body">
+                        <div class="card-title">Basic Exterior Wash</div>
+                        <div class="card-desc">Hand wash, rinse, and dry. Includes wheel cleaning and window spray.</div>
+                        <div class="card-footer">
+                            <span class="card-price">$18</span>
+                            <span class="card-meta">~20 min</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-image">&#x2728;</div>
+                    <div class="card-body">
+                        <div class="card-title">Premium Detail</div>
+                        <div class="card-desc">Full interior + exterior detail with clay bar, wax, and leather conditioning.</div>
+                        <div class="card-footer">
+                            <span class="card-price">$89</span>
+                            <span class="card-meta">~90 min</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-image">&#x1F48E;</div>
+                    <div class="card-body">
+                        <div class="card-title">Ceramic Coating</div>
+                        <div class="card-desc">Long-lasting hydrophobic ceramic coat for paint protection up to 2 years.</div>
+                        <div class="card-footer">
+                            <span class="card-price">$249</span>
+                            <span class="card-meta">~3 hrs</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- AVATARS -->
+        <div class="section">
+            <div class="section-label">Avatars</div>
+            <div class="demo-box">
+                <div class="demo-label">Sizes &amp; colors</div>
+                <div class="component-row">
+                    <div class="avatar avatar-sm avatar-primary">A</div>
+                    <div class="avatar avatar-primary">AR</div>
+                    <div class="avatar avatar-lg avatar-primary">AR</div>
+                    <div class="avatar avatar-success">JD</div>
+                    <div class="avatar avatar-warning">KL</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- PROGRESS -->
+        <div class="section">
+            <div class="section-label">Progress Bars</div>
+            <div class="demo-box">
+                <div class="demo-label">Default</div>
+                <div class="progress" style="margin-bottom: 16px;">
+                    <div class="progress-bar" style="width: 65%; background: var(--primary);"></div>
+                </div>
+                <div class="demo-label">Semantic colors</div>
+                <div class="progress" style="margin-bottom: 8px;">
+                    <div class="progress-bar" style="width: 85%; background: var(--success);"></div>
+                </div>
+                <div class="progress" style="margin-bottom: 8px;">
+                    <div class="progress-bar" style="width: 45%; background: var(--warning);"></div>
+                </div>
+                <div class="progress" style="margin-bottom: 8px;">
+                    <div class="progress-bar" style="width: 25%; background: var(--error);"></div>
+                </div>
+                <div class="demo-label">Sizes</div>
+                <div class="progress progress-sm" style="margin-bottom: 8px;">
+                    <div class="progress-bar" style="width: 70%; background: var(--primary);"></div>
+                </div>
+                <div class="progress progress-lg">
+                    <div class="progress-bar" style="width: 70%; background: var(--primary);"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- TABS -->
+        <div class="section">
+            <div class="section-label">Tabs &amp; Navigation</div>
+            <div class="demo-box">
+                <div class="demo-label">Tabs</div>
+                <div class="tabs" style="margin-bottom: 20px;">
+                    <button class="tab active">Upcoming</button>
+                    <button class="tab">History</button>
+                    <button class="tab">Favorites</button>
+                </div>
+                <div class="demo-label">Breadcrumbs</div>
+                <div class="breadcrumb">
+                    <a href="#">Home</a>
+                    <span class="breadcrumb-sep">/</span>
+                    <a href="#">Services</a>
+                    <span class="breadcrumb-sep">/</span>
+                    <span class="breadcrumb-current">Premium Detail</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- TABLE -->
+        <div class="section">
+            <div class="section-label">Table</div>
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Service</th>
+                            <th>Vehicle</th>
+                            <th>Amount</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Mar 15, 2026</td>
+                            <td>Premium Detail</td>
+                            <td>Toyota Camry</td>
+                            <td>$89.00</td>
+                            <td><span class="badge badge-success badge-dot">Completed</span></td>
+                        </tr>
+                        <tr>
+                            <td>Mar 12, 2026</td>
+                            <td>Basic Exterior</td>
+                            <td>Honda CR-V</td>
+                            <td>$18.00</td>
+                            <td><span class="badge badge-success badge-dot">Completed</span></td>
+                        </tr>
+                        <tr>
+                            <td>Mar 18, 2026</td>
+                            <td>Ceramic Coating</td>
+                            <td>Tesla Model 3</td>
+                            <td>$249.00</td>
+                            <td><span class="badge badge-warning badge-dot">Scheduled</span></td>
+                        </tr>
+                        <tr>
+                            <td>Mar 10, 2026</td>
+                            <td>Interior + Exterior</td>
+                            <td>Ford F-150</td>
+                            <td>$45.00</td>
+                            <td><span class="badge badge-error badge-dot">Refunded</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- TOOLTIP & MODAL -->
+        <div class="section">
+            <div class="section-label">Tooltip &amp; Modal</div>
+            <div class="component-grid">
+                <div class="demo-box" style="text-align: center; padding: 48px 24px;">
+                    <div class="demo-label">Tooltip</div>
+                    <div class="tooltip-demo">
+                        <div class="tooltip-bubble">Schedule a car wash</div>
+                        <button class="btn btn-primary">Hover me</button>
+                    </div>
+                </div>
+                <div>
+                    <div class="demo-label">Modal dialog</div>
+                    <div class="modal-demo">
+                        <div class="modal-card">
+                            <div class="modal-title">Cancel Booking?</div>
+                            <div class="modal-body">This will cancel your Premium Detail scheduled for March 18 at 2:00 PM. A full refund will be issued within 3-5 business days.</div>
+                            <div class="modal-actions">
+                                <button class="btn btn-ghost">Keep Booking</button>
+                                <button class="btn btn-danger">Cancel Booking</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- LIST -->
+        <div class="section">
+            <div class="section-label">List Items</div>
+            <div class="demo-box">
+                <div class="list-item">
+                    <div class="avatar avatar-primary">JD</div>
+                    <div class="list-item-content">
+                        <div class="list-item-title">John Davis</div>
+                        <div class="list-item-sub">Premium Detail — Toyota Camry</div>
+                    </div>
+                    <span class="badge badge-success badge-dot">Completed</span>
+                </div>
+                <div class="list-item">
+                    <div class="avatar avatar-success">SM</div>
+                    <div class="list-item-content">
+                        <div class="list-item-title">Sarah Mitchell</div>
+                        <div class="list-item-sub">Basic Exterior — Honda Accord</div>
+                    </div>
+                    <span class="badge badge-warning badge-dot">In Progress</span>
+                </div>
+                <div class="list-item">
+                    <div class="avatar avatar-warning">KL</div>
+                    <div class="list-item-content">
+                        <div class="list-item-title">Kevin Lee</div>
+                        <div class="list-item-sub">Ceramic Coating — Tesla Model 3</div>
+                    </div>
+                    <span class="badge badge-primary badge-dot">Scheduled</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- SKELETON LOADING -->
+        <div class="section">
+            <div class="section-label">Skeleton Loading</div>
+            <div class="demo-box">
+                <div style="display: flex; gap: 14px; align-items: center; margin-bottom: 16px;">
+                    <div class="skeleton skeleton-avatar"></div>
+                    <div style="flex: 1;">
+                        <div class="skeleton skeleton-title"></div>
+                        <div class="skeleton skeleton-text" style="width: 80%;"></div>
+                    </div>
+                </div>
+                <div class="skeleton skeleton-block"></div>
+            </div>
+        </div>
+
+        <!-- DARK MODE COMPONENTS -->
+        <div class="section">
+            <div class="section-label">Dark Mode — Components</div>
+            <div class="dark-section">
+                <div class="demo-label">Buttons</div>
+                <div class="component-row" style="margin-bottom: 20px;">
+                    <button class="btn btn-primary">Accept Job</button>
+                    <button class="btn btn-secondary">View Earnings</button>
+                    <button class="btn btn-ghost">Decline</button>
+                    <button class="btn btn-danger">Report</button>
+                </div>
+
+                <div class="demo-label">Badges</div>
+                <div class="component-row" style="margin-bottom: 20px;">
+                    <span class="badge badge-primary badge-dot">Active</span>
+                    <span class="badge badge-success badge-dot">Paid</span>
+                    <span class="badge badge-warning badge-dot">Pending</span>
+                    <span class="badge badge-error badge-dot">Cancelled</span>
+                    <span class="badge badge-neutral badge-dot">Offline</span>
+                </div>
+
+                <div class="demo-label">Input</div>
+                <input class="input" type="text" placeholder="Search bookings..." style="max-width: 320px; margin-bottom: 20px;" />
+
+                <div class="demo-label">Alerts</div>
+                <div class="alert alert-info" style="margin-bottom: 8px;">
+                    <span class="alert-icon">&#x2139;</span>
+                    <div class="alert-content">
+                        <div class="alert-title">New Feature</div>
+                        <div class="alert-body">Route optimization is now available for premium providers.</div>
+                    </div>
+                </div>
+                <div class="alert alert-success" style="margin-bottom: 8px;">
+                    <span class="alert-icon">&#x2713;</span>
+                    <div class="alert-content">
+                        <div class="alert-title">Payout Sent</div>
+                        <div class="alert-body">$156.00 has been transferred to your account.</div>
+                    </div>
+                </div>
+                <div class="alert alert-error" style="margin-bottom: 20px;">
+                    <span class="alert-icon">&#x26A0;</span>
+                    <div class="alert-content">
+                        <div class="alert-title">No-Show Reported</div>
+                        <div class="alert-body">Customer did not arrive at the scheduled time.</div>
+                    </div>
+                </div>
+
+                <div class="demo-label">Tabs</div>
+                <div class="tabs" style="margin-bottom: 20px;">
+                    <button class="tab active">Dashboard</button>
+                    <button class="tab">Schedule</button>
+                    <button class="tab">Earnings</button>
+                </div>
+
+                <div class="demo-label">Tags</div>
+                <div class="component-row" style="margin-bottom: 20px;">
+                    <span class="tag">Zone A</span>
+                    <span class="tag">Premium</span>
+                    <span class="tag">Top Rated</span>
+                </div>
+
+                <div class="demo-label">Progress</div>
+                <div class="progress" style="margin-bottom: 8px;">
+                    <div class="progress-bar" style="width: 72%; background: #8c92be;"></div>
+                </div>
+
+                <div class="demo-label">Cards</div>
+                <div class="component-grid" style="margin-top: 8px;">
+                    <div class="card">
+                        <div class="card-image">&#x1F697;</div>
+                        <div class="card-body">
+                            <div class="card-title" style="color: #f4eded;">Next Appointment</div>
+                            <div class="card-desc">Premium Detail — 2:00 PM Today</div>
+                            <div class="card-footer">
+                                <span class="card-price" style="color: #8c92be;">$89</span>
+                                <span class="card-meta" style="color: #9a8e9e;">Toyota Camry</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-image">&#x1F4B0;</div>
+                        <div class="card-body">
+                            <div class="card-title" style="color: #f4eded;">Today's Earnings</div>
+                            <div class="card-desc">4 jobs completed, 1 remaining</div>
+                            <div class="card-footer">
+                                <span class="card-price" style="color: #8c92be;">$312</span>
+                                <span class="card-meta" style="color: #9a8e9e;">5 total</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

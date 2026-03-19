@@ -22,6 +22,9 @@
                 --error: #e66260;
                 --warning: #f9db6d;
                 --success: #52b788;
+                --purple: #8e6aa0;
+                --cyan: #3aafa0;
+                --rose: #d4738c;
             }
 
             [data-theme="dark"] {
@@ -38,6 +41,9 @@
                 --error: #e66260;
                 --warning: #f9db6d;
                 --success: #52b788;
+                --purple: #b08ec5;
+                --cyan: #6ec5ba;
+                --rose: #e295ac;
             }
 
             * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -390,6 +396,9 @@
             .code-val { color: #95d4b3; }
             .code-str { color: #f9db6d; }
             .code-key { color: #e66260; }
+            .code-type { color: #b08ec5; }
+            .code-link { color: #6ec5ba; }
+            .code-const { color: #e295ac; }
 
             /* VS CODE SECTION */
             .vscode-preview {
@@ -528,6 +537,21 @@
                         <div class="token-name">interactive.subtle</div>
                         <div class="token-value">#EDEEF5</div>
                     </div>
+                    <div class="token-row">
+                        <div class="token-swatch" style="background: #8e6aa0;"></div>
+                        <div class="token-name">purple</div>
+                        <div class="token-value">#8E6AA0</div>
+                    </div>
+                    <div class="token-row">
+                        <div class="token-swatch" style="background: #3aafa0;"></div>
+                        <div class="token-name">cyan</div>
+                        <div class="token-value">#3AAFA0</div>
+                    </div>
+                    <div class="token-row">
+                        <div class="token-swatch" style="background: #d4738c;"></div>
+                        <div class="token-name">rosé</div>
+                        <div class="token-value">#D4738C</div>
+                    </div>
                 </div>
                 <div class="theme-card dark">
                     <div class="theme-card-title">Dark Theme</div>
@@ -571,6 +595,21 @@
                         <div class="token-swatch" style="background: #313666;"></div>
                         <div class="token-name">interactive.subtle</div>
                         <div class="token-value">#313666</div>
+                    </div>
+                    <div class="token-row">
+                        <div class="token-swatch" style="background: #b08ec5;"></div>
+                        <div class="token-name">purple</div>
+                        <div class="token-value">#B08EC5</div>
+                    </div>
+                    <div class="token-row">
+                        <div class="token-swatch" style="background: #6ec5ba;"></div>
+                        <div class="token-name">cyan</div>
+                        <div class="token-value">#6EC5BA</div>
+                    </div>
+                    <div class="token-row">
+                        <div class="token-swatch" style="background: #e295ac;"></div>
+                        <div class="token-name">rosé</div>
+                        <div class="token-value">#E295AC</div>
                     </div>
                 </div>
             </div>
@@ -656,6 +695,24 @@
                             <td class="swatch-cell"><div class="mini-swatch" style="background: #52b788;"></div><span class="mono">#52B788</span></td>
                             <td class="swatch-cell"><div class="mini-swatch" style="background: #52b788;"></div><span class="mono">#52B788</span></td>
                         </tr>
+                        <tr>
+                            <td class="mono">--purple</td>
+                            <td>Premium / tags</td>
+                            <td class="swatch-cell"><div class="mini-swatch" style="background: #8e6aa0;"></div><span class="mono">#8E6AA0</span></td>
+                            <td class="swatch-cell"><div class="mini-swatch" style="background: #b08ec5;"></div><span class="mono">#B08EC5</span></td>
+                        </tr>
+                        <tr>
+                            <td class="mono">--cyan</td>
+                            <td>Highlights / links</td>
+                            <td class="swatch-cell"><div class="mini-swatch" style="background: #3aafa0;"></div><span class="mono">#3AAFA0</span></td>
+                            <td class="swatch-cell"><div class="mini-swatch" style="background: #6ec5ba;"></div><span class="mono">#6EC5BA</span></td>
+                        </tr>
+                        <tr>
+                            <td class="mono">--rose</td>
+                            <td>Promotions / favorites</td>
+                            <td class="swatch-cell"><div class="mini-swatch" style="background: #d4738c;"></div><span class="mono">#D4738C</span></td>
+                            <td class="swatch-cell"><div class="mini-swatch" style="background: #e295ac;"></div><span class="mono">#E295AC</span></td>
+                        </tr>
                     </tbody>
                 </table>
             </div>
@@ -679,9 +736,12 @@
                     <div class="preview-surface">
                         <div class="preview-title">Recent Activity</div>
                         <div class="preview-body">Basic Exterior Wash completed on Mar 15 at 3:45 PM.</div>
-                        <div style="display: flex; gap: 8px;">
+                        <div style="display: flex; gap: 8px; flex-wrap: wrap;">
                             <span style="font-family: 'DM Mono', monospace; font-size: 10px; background: #edeef5; color: #656ea4; padding: 4px 11px; border-radius: 100px;">$18.00</span>
                             <span style="font-family: 'DM Mono', monospace; font-size: 10px; background: #eaf7ef; color: #2e8c61; padding: 4px 11px; border-radius: 100px;">&#x25CF; Completed</span>
+                            <span style="font-family: 'DM Mono', monospace; font-size: 10px; background: #f3edf7; color: #6f4f82; padding: 4px 11px; border-radius: 100px;">★ Premium</span>
+                            <span style="font-family: 'DM Mono', monospace; font-size: 10px; background: #e8f6f4; color: #2d8a7e; padding: 4px 11px; border-radius: 100px;">↗ Promo</span>
+                            <span style="font-family: 'DM Mono', monospace; font-size: 10px; background: #fcf0f3; color: #b85a73; padding: 4px 11px; border-radius: 100px;">♥ Favorite</span>
                         </div>
                     </div>
                 </div>
@@ -699,9 +759,12 @@
                     <div class="preview-surface">
                         <div class="preview-title">Recent Activity</div>
                         <div class="preview-body">Basic Exterior Wash completed on Mar 15 at 3:45 PM.</div>
-                        <div style="display: flex; gap: 8px;">
+                        <div style="display: flex; gap: 8px; flex-wrap: wrap;">
                             <span style="font-family: 'DM Mono', monospace; font-size: 10px; background: #313666; color: #c4c7df; padding: 4px 11px; border-radius: 100px;">$18.00</span>
                             <span style="font-family: 'DM Mono', monospace; font-size: 10px; background: #1a3d2a; color: #95d4b3; padding: 4px 11px; border-radius: 100px;">&#x25CF; Completed</span>
+                            <span style="font-family: 'DM Mono', monospace; font-size: 10px; background: #2a1a32; color: #c4a5d2; padding: 4px 11px; border-radius: 100px;">★ Premium</span>
+                            <span style="font-family: 'DM Mono', monospace; font-size: 10px; background: #0e2a27; color: #8ad4cb; padding: 4px 11px; border-radius: 100px;">↗ Promo</span>
+                            <span style="font-family: 'DM Mono', monospace; font-size: 10px; background: #321a22; color: #e8adc0; padding: 4px 11px; border-radius: 100px;">♥ Favorite</span>
                         </div>
                     </div>
                 </div>
@@ -727,28 +790,31 @@
                         <div class="vscode-sidebar-item">&nbsp;&nbsp;Button.tsx</div>
                         <div class="vscode-sidebar-item">&nbsp;&nbsp;Card.tsx</div>
                         <div class="vscode-sidebar-item">&nbsp;&nbsp;Badge.tsx</div>
+                        <div class="vscode-sidebar-item">palette.ts</div>
                     </div>
                     <div class="vscode-editor">
                         <span class="vscode-ln">1</span><span class="code-comment">// AquaDrive theme configuration</span><br>
-                        <span class="vscode-ln">2</span><span class="code-key">import</span> { <span class="code-prop">createTheme</span> } <span class="code-key">from</span> <span class="code-str">'@aquadrive/tokens'</span>;<br>
-                        <span class="vscode-ln">3</span><br>
-                        <span class="vscode-ln">4</span><span class="code-key">export const</span> <span class="code-prop">theme</span> = <span class="code-prop">createTheme</span>({<br>
-                        <span class="vscode-ln">5</span>&nbsp;&nbsp;<span class="code-prop">colors</span>: {<br>
-                        <span class="vscode-ln">6</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-prop">background</span>: <span class="code-str">'#1C1828'</span>,<br>
-                        <span class="vscode-ln">7</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-prop">surface</span>: <span class="code-str">'#261F34'</span>,<br>
-                        <span class="vscode-ln">8</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-prop">border</span>: <span class="code-str">'#352C43'</span>,<br>
-                        <span class="vscode-ln">9</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-prop">primary</span>: <span class="code-str">'#8C92BE'</span>,<br>
-                        <span class="vscode-ln">10</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-prop">text</span>: <span class="code-str">'#F4EDED'</span>,<br>
-                        <span class="vscode-ln">11</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-prop">muted</span>: <span class="code-str">'#9A8E9E'</span>,<br>
-                        <span class="vscode-ln">12</span>&nbsp;&nbsp;},<br>
-                        <span class="vscode-ln">13</span>&nbsp;&nbsp;<span class="code-prop">syntax</span>: {<br>
-                        <span class="vscode-ln">14</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-prop">keyword</span>: <span class="code-str">'#E66260'</span>,<br>
-                        <span class="vscode-ln">15</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-prop">string</span>: <span class="code-str">'#F9DB6D'</span>,<br>
-                        <span class="vscode-ln">16</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-prop">function</span>: <span class="code-str">'#8C92BE'</span>,<br>
-                        <span class="vscode-ln">17</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-prop">variable</span>: <span class="code-str">'#95D4B3'</span>,<br>
-                        <span class="vscode-ln">18</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-prop">comment</span>: <span class="code-str">'#9A8E9E'</span>,<br>
-                        <span class="vscode-ln">19</span>&nbsp;&nbsp;}<br>
-                        <span class="vscode-ln">20</span>});<br>
+                        <span class="vscode-ln">2</span><span class="code-key">import</span> { <span class="code-type">ThemeConfig</span> } <span class="code-key">from</span> <span class="code-str">'@aquadrive/tokens'</span>;<br>
+                        <span class="vscode-ln">3</span><span class="code-key">import</span> { <span class="code-prop">createTheme</span> } <span class="code-key">from</span> <span class="code-str">'@aquadrive/core'</span>;<br>
+                        <span class="vscode-ln">4</span><br>
+                        <span class="vscode-ln">5</span><span class="code-key">const</span> <span class="code-const">BRAND</span> = <span class="code-str">'AquaDrive'</span>;<br>
+                        <span class="vscode-ln">6</span><br>
+                        <span class="vscode-ln">7</span><span class="code-key">export const</span> <span class="code-prop">theme</span>: <span class="code-type">ThemeConfig</span> = <span class="code-prop">createTheme</span>({<br>
+                        <span class="vscode-ln">8</span>&nbsp;&nbsp;<span class="code-prop">name</span>: <span class="code-const">BRAND</span>,<br>
+                        <span class="vscode-ln">9</span>&nbsp;&nbsp;<span class="code-prop">colors</span>: {<br>
+                        <span class="vscode-ln">10</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-prop">primary</span>: <span class="code-str">'#8C92BE'</span>,<br>
+                        <span class="vscode-ln">11</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-prop">purple</span>: <span class="code-str">'#B08EC5'</span>,<br>
+                        <span class="vscode-ln">12</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-prop">cyan</span>: <span class="code-str">'#6EC5BA'</span>,<br>
+                        <span class="vscode-ln">13</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-prop">rose</span>: <span class="code-str">'#E295AC'</span>,<br>
+                        <span class="vscode-ln">14</span>&nbsp;&nbsp;},<br>
+                        <span class="vscode-ln">15</span>&nbsp;&nbsp;<span class="code-prop">syntax</span>: {<br>
+                        <span class="vscode-ln">16</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-prop">keyword</span>: <span class="code-str">'#E66260'</span>,  <span class="code-comment">// red</span><br>
+                        <span class="vscode-ln">17</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-prop">string</span>: <span class="code-str">'#F9DB6D'</span>,   <span class="code-comment">// yellow</span><br>
+                        <span class="vscode-ln">18</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-prop">type</span>: <span class="code-str">'#B08EC5'</span>,     <span class="code-comment">// purple</span><br>
+                        <span class="vscode-ln">19</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-prop">link</span>: <span class="code-str">'#6EC5BA'</span>,     <span class="code-comment">// cyan</span><br>
+                        <span class="vscode-ln">20</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-prop">constant</span>: <span class="code-str">'#E295AC'</span>, <span class="code-comment">// rosé</span><br>
+                        <span class="vscode-ln">21</span>&nbsp;&nbsp;}<br>
+                        <span class="vscode-ln">22</span>});<br>
                     </div>
                 </div>
             </div>
@@ -771,6 +837,9 @@
                 &nbsp;&nbsp;<span class="code-prop">--error</span>: <span class="code-val">#e66260</span>;<br>
                 &nbsp;&nbsp;<span class="code-prop">--warning</span>: <span class="code-val">#f9db6d</span>;<br>
                 &nbsp;&nbsp;<span class="code-prop">--success</span>: <span class="code-val">#52b788</span>;<br>
+                &nbsp;&nbsp;<span class="code-prop">--purple</span>: <span class="code-val">#8e6aa0</span>;<br>
+                &nbsp;&nbsp;<span class="code-prop">--cyan</span>: <span class="code-val">#3aafa0</span>;<br>
+                &nbsp;&nbsp;<span class="code-prop">--rose</span>: <span class="code-val">#d4738c</span>;<br>
                 }<br><br>
                 <span class="code-comment">/* Dark theme */</span><br>
                 <span class="code-prop">[data-theme="dark"]</span> {<br>
@@ -785,6 +854,9 @@
                 &nbsp;&nbsp;<span class="code-prop">--error</span>: <span class="code-val">#e66260</span>;<br>
                 &nbsp;&nbsp;<span class="code-prop">--warning</span>: <span class="code-val">#f9db6d</span>;<br>
                 &nbsp;&nbsp;<span class="code-prop">--success</span>: <span class="code-val">#52b788</span>;<br>
+                &nbsp;&nbsp;<span class="code-prop">--purple</span>: <span class="code-val">#b08ec5</span>;<br>
+                &nbsp;&nbsp;<span class="code-prop">--cyan</span>: <span class="code-val">#6ec5ba</span>;<br>
+                &nbsp;&nbsp;<span class="code-prop">--rose</span>: <span class="code-val">#e295ac</span>;<br>
                 }
             </div>
         </div>
@@ -837,7 +909,9 @@
                 &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-str">"functions"</span>: <span class="code-val">"#8C92BE"</span>,<br>
                 &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-str">"variables"</span>: <span class="code-val">"#95D4B3"</span>,<br>
                 &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-str">"numbers"</span>: <span class="code-val">"#C4C7DF"</span>,<br>
-                &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-str">"types"</span>: <span class="code-val">"#8C92BE"</span><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-str">"types"</span>: <span class="code-val">"#B08EC5"</span>,<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-str">"constants"</span>: <span class="code-val">"#E295AC"</span>,<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-str">"links"</span>: <span class="code-val">"#6EC5BA"</span><br>
                 &nbsp;&nbsp;}<br>
                 }
             </div>

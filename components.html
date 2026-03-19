@@ -31,6 +31,15 @@
                 --info: #656ea4;
                 --info-soft: #b0b5d4;
                 --info-tint: #edeef5;
+                --purple: #8e6aa0;
+                --purple-soft: #c4a5d2;
+                --purple-tint: #f3edf7;
+                --cyan: #3aafa0;
+                --cyan-soft: #8ad4cb;
+                --cyan-tint: #e8f6f4;
+                --rose: #d4738c;
+                --rose-soft: #e8adc0;
+                --rose-tint: #fcf0f3;
             }
 
             [data-theme="dark"] {
@@ -56,6 +65,15 @@
                 --info: #8c92be;
                 --info-soft: #b0b5d4;
                 --info-tint: #313666;
+                --purple: #b08ec5;
+                --purple-soft: #c4a5d2;
+                --purple-tint: #2a1a32;
+                --cyan: #6ec5ba;
+                --cyan-soft: #8ad4cb;
+                --cyan-tint: #0e2a27;
+                --rose: #e295ac;
+                --rose-soft: #e8adc0;
+                --rose-tint: #321a22;
             }
 
             * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -162,6 +180,9 @@
             .btn-danger { background: var(--error); color: #fff; }
             .btn-success { background: var(--success); color: #fff; }
             .btn-warning { background: var(--warning); color: #3d3240; }
+            .btn-purple { background: var(--purple); color: #fff; }
+            .btn-cyan { background: var(--cyan); color: #fff; }
+            .btn-rose { background: var(--rose); color: #fff; }
 
             .btn-sm { font-size: 11px; padding: 6px 14px; border-radius: 8px; }
             .btn-lg { font-size: 15px; padding: 14px 28px; border-radius: 12px; }
@@ -347,6 +368,9 @@
             .badge-success { background: var(--success-tint); color: #2e8c61; }
             .badge-info { background: var(--info-tint); color: var(--primary-hover); }
             .badge-neutral { background: var(--bg); color: var(--text-muted); }
+            .badge-purple { background: var(--purple-tint); color: #6f4f82; }
+            .badge-cyan { background: var(--cyan-tint); color: #2d8a7e; }
+            .badge-rose { background: var(--rose-tint); color: #b85a73; }
             .badge-dot::before {
                 content: "";
                 width: 6px;
@@ -374,6 +398,9 @@
             .alert-warning { background: var(--warning-tint); color: #96720f; }
             .alert-success { background: var(--success-tint); color: #2e8c61; }
             .alert-info { background: var(--info-tint); color: var(--primary-hover); }
+            .alert-purple { background: var(--purple-tint); color: #6f4f82; }
+            .alert-cyan { background: var(--cyan-tint); color: #2d8a7e; }
+            .alert-rose { background: var(--rose-tint); color: #b85a73; }
 
             /* CARDS */
             .card {
@@ -427,6 +454,9 @@
             .avatar-primary { background: var(--primary-subtle); color: var(--primary); }
             .avatar-success { background: var(--success-tint); color: #2e8c61; }
             .avatar-warning { background: var(--warning-tint); color: #c4952a; }
+            .avatar-purple { background: var(--purple-tint); color: #6f4f82; }
+            .avatar-cyan { background: var(--cyan-tint); color: #2d8a7e; }
+            .avatar-rose { background: var(--rose-tint); color: #b85a73; }
 
             /* PROGRESS BAR */
             .progress {
@@ -665,6 +695,15 @@
             .dark-section .alert-info { background: #313666; color: #c4c7df; }
             .dark-section .alert-error { background: #2e1a1a; color: #f3a8a7; }
             .dark-section .alert-success { background: #0e2419; color: #95d4b3; }
+            .dark-section .alert-purple { background: #2a1a32; color: #c4a5d2; }
+            .dark-section .alert-cyan { background: #0e2a27; color: #8ad4cb; }
+            .dark-section .alert-rose { background: #321a22; color: #e8adc0; }
+            .dark-section .btn-purple { background: #b08ec5; color: #1c1828; }
+            .dark-section .btn-cyan { background: #6ec5ba; color: #1c1828; }
+            .dark-section .btn-rose { background: #e295ac; color: #1c1828; }
+            .dark-section .badge-purple { background: #2a1a32; color: #c4a5d2; }
+            .dark-section .badge-cyan { background: #0e2a27; color: #8ad4cb; }
+            .dark-section .badge-rose { background: #321a22; color: #e8adc0; }
             .dark-section .progress { background: #261f34; }
             .dark-section .tabs { background: #261f34; }
             .dark-section .tab.active { background: #352c43; color: #f4eded; }
@@ -680,12 +719,18 @@
             [data-theme="dark"] .btn-danger { background: var(--error); color: #1c1828; }
             [data-theme="dark"] .btn-success { background: var(--success); color: #1c1828; }
             [data-theme="dark"] .btn-warning { background: var(--warning); color: #1c1828; }
+            [data-theme="dark"] .btn-purple { background: var(--purple); color: #1c1828; }
+            [data-theme="dark"] .btn-cyan { background: var(--cyan); color: #1c1828; }
+            [data-theme="dark"] .btn-rose { background: var(--rose); color: #1c1828; }
             [data-theme="dark"] .badge-primary { background: #313666; color: #c4c7df; }
             [data-theme="dark"] .badge-neutral { background: #261f34; color: #9a8e9e; }
             [data-theme="dark"] .badge-error { background: #2e1a1a; color: #f3a8a7; }
             [data-theme="dark"] .badge-warning { background: #2a2110; color: #c4952a; }
             [data-theme="dark"] .badge-success { background: #0e2419; color: #95d4b3; }
             [data-theme="dark"] .badge-info { background: #313666; color: #c4c7df; }
+            [data-theme="dark"] .badge-purple { background: #2a1a32; color: #c4a5d2; }
+            [data-theme="dark"] .badge-cyan { background: #0e2a27; color: #8ad4cb; }
+            [data-theme="dark"] .badge-rose { background: #321a22; color: #e8adc0; }
             [data-theme="dark"] .card-image {
                 background: linear-gradient(135deg, #313666, #4e5688) !important;
             }
@@ -693,6 +738,9 @@
             [data-theme="dark"] .alert-error { background: #2e1a1a; color: #f3a8a7; }
             [data-theme="dark"] .alert-warning { background: #2a2110; color: #fceea8; }
             [data-theme="dark"] .alert-success { background: #0e2419; color: #95d4b3; }
+            [data-theme="dark"] .alert-purple { background: #2a1a32; color: #c4a5d2; }
+            [data-theme="dark"] .alert-cyan { background: #0e2a27; color: #8ad4cb; }
+            [data-theme="dark"] .alert-rose { background: #321a22; color: #e8adc0; }
             [data-theme="dark"] .modal-demo { background: rgba(0, 0, 0, 0.5); }
             [data-theme="dark"] tr:hover td { background: rgba(140, 146, 190, 0.05); }
 
@@ -751,6 +799,9 @@
                     <button class="btn btn-danger">Danger</button>
                     <button class="btn btn-success">Success</button>
                     <button class="btn btn-warning">Warning</button>
+                    <button class="btn btn-purple">Purple</button>
+                    <button class="btn btn-cyan">Cyan</button>
+                    <button class="btn btn-rose">Rosé</button>
                 </div>
                 <div class="demo-label">Sizes</div>
                 <div class="component-row">
@@ -844,6 +895,9 @@
                     <span class="badge badge-error badge-dot">Failed</span>
                     <span class="badge badge-info badge-dot">Info</span>
                     <span class="badge badge-neutral badge-dot">Archived</span>
+                    <span class="badge badge-purple badge-dot">Premium</span>
+                    <span class="badge badge-cyan badge-dot">Highlight</span>
+                    <span class="badge badge-rose badge-dot">Favorite</span>
                 </div>
                 <div class="demo-label">Tags / Chips</div>
                 <div class="component-row">
@@ -885,6 +939,27 @@
                 <div class="alert-content">
                     <div class="alert-title">Tip</div>
                     <div class="alert-body">Book 3 washes this month to unlock 15% off your next visit.</div>
+                </div>
+            </div>
+            <div class="alert alert-purple">
+                <span class="alert-icon">★</span>
+                <div class="alert-content">
+                    <div class="alert-title">Premium Tier</div>
+                    <div class="alert-body">You've been upgraded to Premium status. Enjoy priority booking.</div>
+                </div>
+            </div>
+            <div class="alert alert-cyan">
+                <span class="alert-icon">↗</span>
+                <div class="alert-content">
+                    <div class="alert-title">New Promo Available</div>
+                    <div class="alert-body">Use code SHINE20 for 20% off your next ceramic coating.</div>
+                </div>
+            </div>
+            <div class="alert alert-rose">
+                <span class="alert-icon">♥</span>
+                <div class="alert-content">
+                    <div class="alert-title">Added to Favorites</div>
+                    <div class="alert-body">Downtown Station saved. You'll get notified about deals nearby.</div>
                 </div>
             </div>
         </div>
@@ -940,6 +1015,9 @@
                     <div class="avatar avatar-lg avatar-primary">AR</div>
                     <div class="avatar avatar-success">JD</div>
                     <div class="avatar avatar-warning">KL</div>
+                    <div class="avatar avatar-purple">NP</div>
+                    <div class="avatar avatar-cyan">TC</div>
+                    <div class="avatar avatar-rose">MR</div>
                 </div>
             </div>
         </div>
@@ -961,6 +1039,15 @@
                 </div>
                 <div class="progress" style="margin-bottom: 8px;">
                     <div class="progress-bar" style="width: 25%; background: var(--error);"></div>
+                </div>
+                <div class="progress" style="margin-bottom: 8px;">
+                    <div class="progress-bar" style="width: 55%; background: var(--purple);"></div>
+                </div>
+                <div class="progress" style="margin-bottom: 8px;">
+                    <div class="progress-bar" style="width: 75%; background: var(--cyan);"></div>
+                </div>
+                <div class="progress" style="margin-bottom: 8px;">
+                    <div class="progress-bar" style="width: 40%; background: var(--rose);"></div>
                 </div>
                 <div class="demo-label">Sizes</div>
                 <div class="progress progress-sm" style="margin-bottom: 8px;">
@@ -1133,6 +1220,9 @@
                     <span class="badge badge-warning badge-dot">Pending</span>
                     <span class="badge badge-error badge-dot">Cancelled</span>
                     <span class="badge badge-neutral badge-dot">Offline</span>
+                    <span class="badge badge-purple badge-dot">Premium</span>
+                    <span class="badge badge-cyan badge-dot">Promo</span>
+                    <span class="badge badge-rose badge-dot">Favorite</span>
                 </div>
 
                 <div class="demo-label">Input</div>

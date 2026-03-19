@@ -20,6 +20,9 @@
                 --warning-tint: #fef9e6;
                 --success-tint: #eaf7ef;
                 --info-tint: #edeef5;
+                --purple-tint: #f3edf7;
+                --cyan-tint: #e8f6f4;
+                --rose-tint: #fcf0f3;
             }
 
             [data-theme="dark"] {
@@ -34,6 +37,9 @@
                 --warning-tint: #2a2110;
                 --success-tint: #0e2419;
                 --info-tint: #313666;
+                --purple-tint: #2a1a32;
+                --cyan-tint: #0e2a27;
+                --rose-tint: #321a22;
             }
 
             * {
@@ -161,7 +167,7 @@
 
             .semantic-row {
                 display: grid;
-                grid-template-columns: repeat(4, 1fr);
+                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
                 gap: 12px;
             }
 
@@ -427,6 +433,9 @@
             [data-theme="dark"] .semantic-banner[data-status="warning"] { background: var(--warning-tint) !important; }
             [data-theme="dark"] .semantic-banner[data-status="success"] { background: var(--success-tint) !important; }
             [data-theme="dark"] .semantic-banner[data-status="info"] { background: var(--info-tint) !important; }
+            [data-theme="dark"] .semantic-banner[data-status="purple"] { background: var(--purple-tint) !important; }
+            [data-theme="dark"] .semantic-banner[data-status="cyan"] { background: var(--cyan-tint) !important; }
+            [data-theme="dark"] .semantic-banner[data-status="rose"] { background: var(--rose-tint) !important; }
 
             /* Dark overrides for UI Preview inline styles */
             [data-theme="dark"] .preview-box { background: #261f34 !important; border-color: #352c43 !important; }
@@ -438,6 +447,9 @@
             [data-theme="dark"] .mini-card.card-error { background: #2e1a1a !important; color: #f3a8a7 !important; }
             [data-theme="dark"] .mini-card.card-warning { background: #2a2110 !important; color: #fceea8 !important; }
             [data-theme="dark"] .mini-card.card-success { background: #0e2419 !important; color: #95d4b3 !important; }
+            [data-theme="dark"] .mini-card.card-purple { background: #2a1a32 !important; color: #c4a5d2 !important; }
+            [data-theme="dark"] .mini-card.card-cyan { background: #0e2a27 !important; color: #8ad4cb !important; }
+            [data-theme="dark"] .mini-card.card-rose { background: #321a22 !important; color: #e8adc0 !important; }
             [data-theme="dark"] .mini-card .mini-label { color: inherit !important; }
 
             /* Theme panels: show only one at a time */
@@ -509,6 +521,171 @@
                         <div class="swatch-name">Blue 800</div>
                         <div class="swatch-role">Dark mode tint surface</div>
                         <span class="hex-chip">#313666</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- PURPLE SCALE -->
+        <div class="section">
+            <div class="section-label">Accent — Purple Scale (base #8E6AA0)</div>
+            <div class="palette-grid">
+                <div class="swatch-card">
+                    <div class="swatch-color" style="background: #f3edf7"></div>
+                    <div class="swatch-info">
+                        <div class="swatch-name">Purple 50</div>
+                        <div class="swatch-role">Tinted backgrounds</div>
+                        <span class="hex-chip">#F3EDF7</span>
+                    </div>
+                </div>
+                <div class="swatch-card">
+                    <div class="swatch-color" style="background: #d4c4de"></div>
+                    <div class="swatch-info">
+                        <div class="swatch-name">Purple 200</div>
+                        <div class="swatch-role">Subtle borders</div>
+                        <span class="hex-chip">#D4C4DE</span>
+                    </div>
+                </div>
+                <div class="swatch-card">
+                    <div class="swatch-color" style="background: #b08ec5"></div>
+                    <div class="swatch-info">
+                        <div class="swatch-name">Purple 400</div>
+                        <div class="swatch-role">Hover states</div>
+                        <span class="hex-chip">#B08EC5</span>
+                    </div>
+                </div>
+                <div class="swatch-card">
+                    <div class="swatch-color" style="background: #8e6aa0"></div>
+                    <div class="swatch-info">
+                        <div class="swatch-name">Purple 500 ★</div>
+                        <div class="swatch-role">Secondary accent · Tags</div>
+                        <span class="hex-chip">#8E6AA0</span>
+                    </div>
+                </div>
+                <div class="swatch-card">
+                    <div class="swatch-color" style="background: #6f4f82"></div>
+                    <div class="swatch-info">
+                        <div class="swatch-name">Purple 600</div>
+                        <div class="swatch-role">Active / pressed</div>
+                        <span class="hex-chip">#6F4F82</span>
+                    </div>
+                </div>
+                <div class="swatch-card">
+                    <div class="swatch-color" style="background: #432e54"></div>
+                    <div class="swatch-info">
+                        <div class="swatch-name">Purple 800</div>
+                        <div class="swatch-role">Dark mode tint surface</div>
+                        <span class="hex-chip">#432E54</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- CYAN SCALE -->
+        <div class="section">
+            <div class="section-label">Accent — Cyan Scale (base #3AAFA0)</div>
+            <div class="palette-grid">
+                <div class="swatch-card">
+                    <div class="swatch-color" style="background: #e8f6f4"></div>
+                    <div class="swatch-info">
+                        <div class="swatch-name">Cyan 50</div>
+                        <div class="swatch-role">Tinted backgrounds</div>
+                        <span class="hex-chip">#E8F6F4</span>
+                    </div>
+                </div>
+                <div class="swatch-card">
+                    <div class="swatch-color" style="background: #b5e2dc"></div>
+                    <div class="swatch-info">
+                        <div class="swatch-name">Cyan 200</div>
+                        <div class="swatch-role">Subtle borders</div>
+                        <span class="hex-chip">#B5E2DC</span>
+                    </div>
+                </div>
+                <div class="swatch-card">
+                    <div class="swatch-color" style="background: #6ec5ba"></div>
+                    <div class="swatch-info">
+                        <div class="swatch-name">Cyan 400</div>
+                        <div class="swatch-role">Hover states</div>
+                        <span class="hex-chip">#6EC5BA</span>
+                    </div>
+                </div>
+                <div class="swatch-card">
+                    <div class="swatch-color" style="background: #3aafa0"></div>
+                    <div class="swatch-info">
+                        <div class="swatch-name">Cyan 500 ★</div>
+                        <div class="swatch-role">Highlight accent · Links</div>
+                        <span class="hex-chip">#3AAFA0</span>
+                    </div>
+                </div>
+                <div class="swatch-card">
+                    <div class="swatch-color" style="background: #2d8a7e"></div>
+                    <div class="swatch-info">
+                        <div class="swatch-name">Cyan 600</div>
+                        <div class="swatch-role">Active / pressed</div>
+                        <span class="hex-chip">#2D8A7E</span>
+                    </div>
+                </div>
+                <div class="swatch-card">
+                    <div class="swatch-color" style="background: #1a524c"></div>
+                    <div class="swatch-info">
+                        <div class="swatch-name">Cyan 800</div>
+                        <div class="swatch-role">Dark mode tint surface</div>
+                        <span class="hex-chip">#1A524C</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ROSÉ SCALE -->
+        <div class="section">
+            <div class="section-label">Accent — Rosé Scale (base #D4738C)</div>
+            <div class="palette-grid">
+                <div class="swatch-card">
+                    <div class="swatch-color" style="background: #fcf0f3"></div>
+                    <div class="swatch-info">
+                        <div class="swatch-name">Rosé 50</div>
+                        <div class="swatch-role">Tinted backgrounds</div>
+                        <span class="hex-chip">#FCF0F3</span>
+                    </div>
+                </div>
+                <div class="swatch-card">
+                    <div class="swatch-color" style="background: #f0c4d0"></div>
+                    <div class="swatch-info">
+                        <div class="swatch-name">Rosé 200</div>
+                        <div class="swatch-role">Subtle borders</div>
+                        <span class="hex-chip">#F0C4D0</span>
+                    </div>
+                </div>
+                <div class="swatch-card">
+                    <div class="swatch-color" style="background: #e295ac"></div>
+                    <div class="swatch-info">
+                        <div class="swatch-name">Rosé 400</div>
+                        <div class="swatch-role">Hover states</div>
+                        <span class="hex-chip">#E295AC</span>
+                    </div>
+                </div>
+                <div class="swatch-card">
+                    <div class="swatch-color" style="background: #d4738c"></div>
+                    <div class="swatch-info">
+                        <div class="swatch-name">Rosé 500 ★</div>
+                        <div class="swatch-role">Warm accent · Promotions</div>
+                        <span class="hex-chip">#D4738C</span>
+                    </div>
+                </div>
+                <div class="swatch-card">
+                    <div class="swatch-color" style="background: #b85a73"></div>
+                    <div class="swatch-info">
+                        <div class="swatch-name">Rosé 600</div>
+                        <div class="swatch-role">Active / pressed</div>
+                        <span class="hex-chip">#B85A73</span>
+                    </div>
+                </div>
+                <div class="swatch-card">
+                    <div class="swatch-color" style="background: #6e2f40"></div>
+                    <div class="swatch-info">
+                        <div class="swatch-name">Rosé 800</div>
+                        <div class="swatch-role">Dark mode tint surface</div>
+                        <span class="hex-chip">#6E2F40</span>
                     </div>
                 </div>
             </div>
@@ -794,6 +971,89 @@
                         </div>
                     </div>
                 </div>
+                <div class="semantic-card">
+                    <div class="semantic-banner" data-status="purple" style="background: #f3edf7">
+                        <div class="sem-dot" style="background: #8e6aa0"></div>
+                        <div class="sem-dot soft" style="background: #8e6aa0"></div>
+                        <div class="sem-dot tint" style="background: #8e6aa0"></div>
+                    </div>
+                    <div class="semantic-info">
+                        <div class="swatch-name">Purple</div>
+                        <div class="swatch-role" style="font-size: 11px; color: var(--text-muted); margin-bottom: 0;">
+                            Premium tiers, tags
+                        </div>
+                        <div class="tier-row">
+                            <div class="tier">
+                                <div class="tier-swatch" style="background: #8e6aa0"></div>
+                                #8E6AA0 · Main
+                            </div>
+                            <div class="tier">
+                                <div class="tier-swatch" style="background: #c4a5d2"></div>
+                                #C4A5D2 · Soft
+                            </div>
+                            <div class="tier">
+                                <div class="tier-swatch" style="background: #f3edf7"></div>
+                                #F3EDF7 · Tint
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="semantic-card">
+                    <div class="semantic-banner" data-status="cyan" style="background: #e8f6f4">
+                        <div class="sem-dot" style="background: #3aafa0"></div>
+                        <div class="sem-dot soft" style="background: #3aafa0"></div>
+                        <div class="sem-dot tint" style="background: #3aafa0"></div>
+                    </div>
+                    <div class="semantic-info">
+                        <div class="swatch-name">Cyan</div>
+                        <div class="swatch-role" style="font-size: 11px; color: var(--text-muted); margin-bottom: 0;">
+                            Highlights, links
+                        </div>
+                        <div class="tier-row">
+                            <div class="tier">
+                                <div class="tier-swatch" style="background: #3aafa0"></div>
+                                #3AAFA0 · Main
+                            </div>
+                            <div class="tier">
+                                <div class="tier-swatch" style="background: #8ad4cb"></div>
+                                #8AD4CB · Soft
+                            </div>
+                            <div class="tier">
+                                <div class="tier-swatch" style="background: #e8f6f4"></div>
+                                #E8F6F4 · Tint
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="semantic-card">
+                    <div class="semantic-banner" data-status="rose" style="background: #fcf0f3">
+                        <div class="sem-dot" style="background: #d4738c"></div>
+                        <div class="sem-dot soft" style="background: #d4738c"></div>
+                        <div class="sem-dot tint" style="background: #d4738c"></div>
+                    </div>
+                    <div class="semantic-info">
+                        <div class="swatch-name">Rosé</div>
+                        <div class="swatch-role" style="font-size: 11px; color: var(--text-muted); margin-bottom: 0;">
+                            Promotions, favorites
+                        </div>
+                        <div class="tier-row">
+                            <div class="tier">
+                                <div class="tier-swatch" style="background: #d4738c"></div>
+                                #D4738C · Main
+                            </div>
+                            <div class="tier">
+                                <div class="tier-swatch" style="background: #e8adc0"></div>
+                                #E8ADC0 · Soft
+                            </div>
+                            <div class="tier">
+                                <div class="tier-swatch" style="background: #fcf0f3"></div>
+                                #FCF0F3 · Tint
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -956,6 +1216,21 @@
                                 #EDEEF5
                             </div>
                         </div>
+                        <div class="panel-swatch">
+                            <div class="panel-dot" style="background: #8e6aa0"></div>
+                            <div class="panel-swatch-name" style="color: #3d3240">purple</div>
+                            <div class="panel-swatch-hex" style="color: #3d3240">#8E6AA0</div>
+                        </div>
+                        <div class="panel-swatch">
+                            <div class="panel-dot" style="background: #3aafa0"></div>
+                            <div class="panel-swatch-name" style="color: #3d3240">cyan</div>
+                            <div class="panel-swatch-hex" style="color: #3d3240">#3AAFA0</div>
+                        </div>
+                        <div class="panel-swatch">
+                            <div class="panel-dot" style="background: #d4738c"></div>
+                            <div class="panel-swatch-name" style="color: #3d3240">rosé</div>
+                            <div class="panel-swatch-hex" style="color: #3d3240">#D4738C</div>
+                        </div>
                     </div>
                 </div>
 
@@ -1114,6 +1389,21 @@
                                 #313666
                             </div>
                         </div>
+                        <div class="panel-swatch">
+                            <div class="panel-dot" style="background: #b08ec5"></div>
+                            <div class="panel-swatch-name" style="color: #f4eded">purple</div>
+                            <div class="panel-swatch-hex" style="color: #f4eded">#B08EC5</div>
+                        </div>
+                        <div class="panel-swatch">
+                            <div class="panel-dot" style="background: #6ec5ba"></div>
+                            <div class="panel-swatch-name" style="color: #f4eded">cyan</div>
+                            <div class="panel-swatch-hex" style="color: #f4eded">#6EC5BA</div>
+                        </div>
+                        <div class="panel-swatch">
+                            <div class="panel-dot" style="background: #e295ac"></div>
+                            <div class="panel-swatch-name" style="color: #f4eded">rosé</div>
+                            <div class="panel-swatch-hex" style="color: #f4eded">#E295AC</div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -1154,7 +1444,7 @@
                             Cancel
                         </button>
                     </div>
-                    <div class="card-row">
+                    <div class="card-row" style="grid-template-columns: repeat(3, 1fr);">
                         <div
                             class="mini-card card-error"
                             style="background: #fceaea; color: #c94442"
@@ -1181,6 +1471,33 @@
                                 Wash
                             </div>
                             ✓ Complete
+                        </div>
+                        <div
+                            class="mini-card card-purple"
+                            style="background: #f3edf7; color: #6f4f82"
+                        >
+                            <div class="mini-label" style="color: #6f4f82">
+                                Tier
+                            </div>
+                            ★ Premium
+                        </div>
+                        <div
+                            class="mini-card card-cyan"
+                            style="background: #e8f6f4; color: #2d8a7e"
+                        >
+                            <div class="mini-label" style="color: #2d8a7e">
+                                Promo
+                            </div>
+                            ↗ Active
+                        </div>
+                        <div
+                            class="mini-card card-rose"
+                            style="background: #fcf0f3; color: #b85a73"
+                        >
+                            <div class="mini-label" style="color: #b85a73">
+                                Favorite
+                            </div>
+                            ♥ Saved
                         </div>
                     </div>
                 </div>
@@ -1226,7 +1543,7 @@
                             Decline
                         </button>
                     </div>
-                    <div class="card-row">
+                    <div class="card-row" style="grid-template-columns: repeat(3, 1fr);">
                         <div
                             class="mini-card"
                             style="background: #2e1a1a; color: #f3a8a7"
@@ -1251,6 +1568,33 @@
                                 Payout
                             </div>
                             ✓ $34.00
+                        </div>
+                        <div
+                            class="mini-card"
+                            style="background: #2a1a32; color: #c4a5d2"
+                        >
+                            <div class="mini-label" style="color: #c4a5d2">
+                                Tier
+                            </div>
+                            ★ Premium
+                        </div>
+                        <div
+                            class="mini-card"
+                            style="background: #0e2a27; color: #8ad4cb"
+                        >
+                            <div class="mini-label" style="color: #8ad4cb">
+                                Promo
+                            </div>
+                            ↗ Active
+                        </div>
+                        <div
+                            class="mini-card"
+                            style="background: #321a22; color: #e8adc0"
+                        >
+                            <div class="mini-label" style="color: #e8adc0">
+                                Favorite
+                            </div>
+                            ♥ Saved
                         </div>
                     </div>
                 </div>

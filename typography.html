@@ -17,6 +17,9 @@
                 --primary: #656ea4;
                 --primary-hover: #4e5688;
                 --primary-subtle: #edeef5;
+                --purple: #8e6aa0;
+                --cyan: #3aafa0;
+                --rose: #d4738c;
             }
 
             [data-theme="dark"] {
@@ -28,6 +31,9 @@
                 --primary: #8c92be;
                 --primary-hover: #c4c7df;
                 --primary-subtle: #313666;
+                --purple: #b08ec5;
+                --cyan: #6ec5ba;
+                --rose: #e295ac;
             }
 
             * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -326,6 +332,9 @@
             .code-prop { color: #8c92be; }
             .code-val { color: #95d4b3; }
             .code-str { color: #f9db6d; }
+            .code-type { color: #b08ec5; }
+            .code-link { color: #6ec5ba; }
+            .code-const { color: #e295ac; }
 
             /* THEME TOGGLE */
             .theme-toggle {
@@ -544,8 +553,11 @@
                         <div class="type-meta-name">Badge</div>
                         <div class="type-meta-spec">DM Mono 500<br>10px / 0.04em</div>
                     </div>
-                    <div class="type-sample">
+                    <div class="type-sample" style="display: flex; gap: 8px; flex-wrap: wrap; align-items: center;">
                         <span style="font-family: 'DM Mono', monospace; font-size: 10px; font-weight: 500; letter-spacing: 0.04em; background: #eaf7ef; color: #2e8c61; padding: 4px 11px; border-radius: 100px;">&#x25CF; Confirmed</span>
+                        <span style="font-family: 'DM Mono', monospace; font-size: 10px; font-weight: 500; letter-spacing: 0.04em; background: #f3edf7; color: #6f4f82; padding: 4px 11px; border-radius: 100px;">★ Premium</span>
+                        <span style="font-family: 'DM Mono', monospace; font-size: 10px; font-weight: 500; letter-spacing: 0.04em; background: #e8f6f4; color: #2d8a7e; padding: 4px 11px; border-radius: 100px;">↗ Promo</span>
+                        <span style="font-family: 'DM Mono', monospace; font-size: 10px; font-weight: 500; letter-spacing: 0.04em; background: #fcf0f3; color: #b85a73; padding: 4px 11px; border-radius: 100px;">♥ Favorite</span>
                     </div>
                 </div>
                 <div class="type-row">
@@ -614,8 +626,11 @@
                         <div class="type-meta-name">Badge (dark)</div>
                         <div class="type-meta-spec">DM Mono 500 · 10px</div>
                     </div>
-                    <div class="type-sample">
+                    <div class="type-sample" style="display: flex; gap: 8px; flex-wrap: wrap; align-items: center;">
                         <span style="font-family: 'DM Mono', monospace; font-size: 10px; font-weight: 500; letter-spacing: 0.04em; background: #313666; color: #c4c7df; padding: 4px 11px; border-radius: 100px;">&#x25CF; 3 Incoming</span>
+                        <span style="font-family: 'DM Mono', monospace; font-size: 10px; font-weight: 500; letter-spacing: 0.04em; background: #2a1a32; color: #c4a5d2; padding: 4px 11px; border-radius: 100px;">★ Premium</span>
+                        <span style="font-family: 'DM Mono', monospace; font-size: 10px; font-weight: 500; letter-spacing: 0.04em; background: #0e2a27; color: #8ad4cb; padding: 4px 11px; border-radius: 100px;">↗ Promo</span>
+                        <span style="font-family: 'DM Mono', monospace; font-size: 10px; font-weight: 500; letter-spacing: 0.04em; background: #321a22; color: #e8adc0; padding: 4px 11px; border-radius: 100px;">♥ Favorite</span>
                     </div>
                 </div>
             </div>
@@ -635,6 +650,7 @@
                         <span class="pairing-mono">~90 min</span>
                         <span class="pairing-mono">$89.00</span>
                         <span style="font-family: 'DM Mono', monospace; font-size: 10px; font-weight: 500; letter-spacing: 0.04em; background: #eaf7ef; color: #2e8c61; padding: 4px 11px; border-radius: 100px;">&#x25CF; Available</span>
+                        <span style="font-family: 'DM Mono', monospace; font-size: 10px; font-weight: 500; letter-spacing: 0.04em; background: #f3edf7; color: #6f4f82; padding: 4px 11px; border-radius: 100px;">★ Premium</span>
                     </div>
                 </div>
             </div>
@@ -649,6 +665,7 @@
                         <span class="pairing-mono" style="background: #313666; color: #c4c7df;">~3 hours</span>
                         <span class="pairing-mono" style="background: #313666; color: #c4c7df;">$249.00</span>
                         <span style="font-family: 'DM Mono', monospace; font-size: 10px; font-weight: 500; letter-spacing: 0.04em; background: #313666; color: #c4c7df; padding: 4px 11px; border-radius: 100px;">&#x25CF; Scheduled</span>
+                        <span style="font-family: 'DM Mono', monospace; font-size: 10px; font-weight: 500; letter-spacing: 0.04em; background: #2a1a32; color: #c4a5d2; padding: 4px 11px; border-radius: 100px;">★ Premium</span>
                     </div>
                 </div>
             </div>
@@ -789,7 +806,11 @@
                 &nbsp;&nbsp;<span class="code-prop">--text-body</span>: <span class="code-val">14px</span>;<br>
                 &nbsp;&nbsp;<span class="code-prop">--text-small</span>: <span class="code-val">13px</span>;<br>
                 &nbsp;&nbsp;<span class="code-prop">--text-caption</span>: <span class="code-val">12px</span>;<br>
-                &nbsp;&nbsp;<span class="code-prop">--text-label</span>: <span class="code-val">10px</span>;<br>
+                &nbsp;&nbsp;<span class="code-prop">--text-label</span>: <span class="code-val">10px</span>;<br><br>
+                &nbsp;&nbsp;<span class="code-comment">/* Accent colors */</span><br>
+                &nbsp;&nbsp;<span class="code-prop">--purple</span>: <span class="code-type">#8e6aa0</span>;<br>
+                &nbsp;&nbsp;<span class="code-prop">--cyan</span>: <span class="code-link">#3aafa0</span>;<br>
+                &nbsp;&nbsp;<span class="code-prop">--rose</span>: <span class="code-const">#d4738c</span>;<br>
                 }
             </div>
         </div>

@@ -676,6 +676,293 @@
             .list-item-title { font-size: 13px; font-weight: 600; }
             .list-item-sub { font-size: 11px; color: var(--text-muted); margin-top: 2px; }
 
+            /* CODE BLOCK */
+            .code-block {
+                background: #1c1828;
+                border-radius: 12px;
+                padding: 20px;
+                font-family: "Monaspace Argon", monospace;
+                font-size: 12px;
+                line-height: 1.8;
+                color: #c4c7df;
+                overflow-x: auto;
+            }
+            .code-block-header {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                padding: 10px 16px;
+                background: #161222;
+                border-radius: 12px 12px 0 0;
+                border-bottom: 1px solid #352c43;
+            }
+            .code-block-header + .code-block {
+                border-radius: 0 0 12px 12px;
+            }
+            .code-block-lang {
+                font-family: "Monaspace Argon", monospace;
+                font-size: 10px;
+                letter-spacing: 0.08em;
+                text-transform: uppercase;
+                color: #9a8e9e;
+            }
+            .code-block-dots {
+                display: flex;
+                gap: 6px;
+            }
+            .code-block-dots span {
+                width: 8px;
+                height: 8px;
+                border-radius: 50%;
+            }
+            .code-ln {
+                color: #4a4258;
+                display: inline-block;
+                width: 24px;
+                text-align: right;
+                margin-right: 16px;
+                user-select: none;
+            }
+            .code-comment { color: #9a8e9e; }
+            .code-prop { color: #8c92be; }
+            .code-val { color: #95d4b3; }
+            .code-str { color: #f9db6d; }
+            .code-key { color: #e66260; }
+            .code-type { color: #b08ec5; }
+            .code-link { color: #6ec5ba; }
+            .code-const { color: #e295ac; }
+
+            /* INLINE CODE */
+            .inline-code {
+                font-family: "Monaspace Argon", monospace;
+                font-size: 12px;
+                background: var(--primary-subtle);
+                color: var(--primary-hover);
+                padding: 2px 7px;
+                border-radius: 6px;
+                border: 1px solid var(--primary-border);
+                letter-spacing: 0.02em;
+            }
+            [data-theme="dark"] .inline-code {
+                background: #313666;
+                color: #c4c7df;
+                border-color: #4a4258;
+            }
+
+            /* LISTS */
+            .list-ul, .list-ol {
+                font-size: 13px;
+                line-height: 1.8;
+                padding-left: 24px;
+                margin-bottom: 12px;
+                color: var(--text);
+            }
+            .list-ul li, .list-ol li {
+                margin-bottom: 4px;
+            }
+            .list-ul { list-style-type: disc; }
+            .list-ol { list-style-type: decimal; }
+            .list-ul ul { list-style-type: circle; margin-top: 4px; padding-left: 20px; }
+            .list-ul ul ul { list-style-type: square; }
+            .list-ol ol { margin-top: 4px; padding-left: 20px; }
+
+            /* HIGHLIGHTS / MARKS */
+            .highlight {
+                padding: 2px 6px;
+                border-radius: 4px;
+                font-size: 13px;
+            }
+            .highlight-yellow { background: var(--warning-tint); color: #96720f; }
+            .highlight-green { background: var(--success-tint); color: #2e8c61; }
+            .highlight-red { background: var(--error-tint); color: #c94442; }
+            .highlight-purple { background: var(--purple-tint); color: #6f4f82; }
+            .highlight-cyan { background: var(--cyan-tint); color: #2d8a7e; }
+            .highlight-rose { background: var(--rose-tint); color: #b85a73; }
+            .highlight-primary { background: var(--primary-subtle); color: var(--primary-hover); }
+            [data-theme="dark"] .highlight-yellow { color: #fceea8; }
+            [data-theme="dark"] .highlight-green { color: #95d4b3; }
+            [data-theme="dark"] .highlight-red { color: #f3a8a7; }
+            [data-theme="dark"] .highlight-purple { color: #c4a5d2; }
+            [data-theme="dark"] .highlight-cyan { color: #8ad4cb; }
+            [data-theme="dark"] .highlight-rose { color: #e8adc0; }
+            [data-theme="dark"] .highlight-primary { color: #c4c7df; }
+
+            /* LINKS */
+            .link {
+                color: var(--primary);
+                text-decoration: underline;
+                text-decoration-color: var(--primary-border);
+                text-underline-offset: 2px;
+                transition: color 0.15s, text-decoration-color 0.15s;
+                font-size: 13px;
+            }
+            .link:hover {
+                color: var(--primary-hover);
+                text-decoration-color: var(--primary-hover);
+            }
+            .link-muted {
+                color: var(--text-muted);
+                text-decoration-color: var(--border);
+            }
+            .link-muted:hover { color: var(--text); }
+            .link-cyan { color: var(--cyan); text-decoration-color: var(--cyan-soft); }
+            .link-cyan:hover { color: var(--cyan); text-decoration-color: var(--cyan); }
+            .link-rose { color: var(--rose); text-decoration-color: var(--rose-soft); }
+            .link-rose:hover { color: var(--rose); text-decoration-color: var(--rose); }
+            .link-purple { color: var(--purple); text-decoration-color: var(--purple-soft); }
+            .link-purple:hover { color: var(--purple); text-decoration-color: var(--purple); }
+            .link-plain {
+                color: var(--primary);
+                text-decoration: none;
+            }
+            .link-plain:hover { text-decoration: underline; }
+
+            /* BLOCKQUOTE */
+            .blockquote {
+                border-left: 3px solid var(--primary);
+                padding: 12px 18px;
+                margin: 0;
+                font-size: 13px;
+                line-height: 1.7;
+                color: var(--text);
+                background: var(--primary-subtle);
+                border-radius: 0 10px 10px 0;
+            }
+            .blockquote-footer {
+                font-size: 11px;
+                color: var(--text-muted);
+                margin-top: 8px;
+            }
+            .blockquote-success {
+                border-color: var(--success);
+                background: var(--success-tint);
+            }
+            .blockquote-warning {
+                border-color: var(--warning);
+                background: var(--warning-tint);
+            }
+            .blockquote-error {
+                border-color: var(--error);
+                background: var(--error-tint);
+            }
+            .blockquote-purple {
+                border-color: var(--purple);
+                background: var(--purple-tint);
+            }
+
+            /* TOGGLE / ACCORDION */
+            .toggle-item {
+                border: 1px solid var(--border);
+                border-radius: 12px;
+                margin-bottom: 8px;
+                background: var(--surface);
+                overflow: hidden;
+            }
+            .toggle-item summary {
+                padding: 14px 18px;
+                font-size: 13px;
+                font-weight: 600;
+                cursor: pointer;
+                list-style: none;
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                user-select: none;
+                transition: background 0.15s;
+            }
+            .toggle-item summary:hover {
+                background: var(--bg);
+            }
+            .toggle-item summary::before {
+                content: "▸";
+                font-size: 12px;
+                color: var(--text-muted);
+                transition: transform 0.2s;
+                flex-shrink: 0;
+            }
+            .toggle-item[open] summary::before {
+                transform: rotate(90deg);
+            }
+            .toggle-item summary::-webkit-details-marker { display: none; }
+            .toggle-content {
+                padding: 0 18px 16px 42px;
+                font-size: 13px;
+                line-height: 1.7;
+                color: var(--text-muted);
+            }
+
+            /* TAB GROUP */
+            .tab-group {
+                border: 1px solid var(--border);
+                border-radius: 16px;
+                overflow: hidden;
+                background: var(--surface);
+            }
+            .tab-group-nav {
+                display: flex;
+                background: var(--bg);
+                border-bottom: 1px solid var(--border);
+            }
+            .tab-group-btn {
+                font-family: "Monaspace Argon", monospace;
+                font-size: 11px;
+                letter-spacing: 0.06em;
+                padding: 10px 18px;
+                border: none;
+                background: transparent;
+                color: var(--text-muted);
+                cursor: pointer;
+                transition: all 0.2s;
+                border-bottom: 2px solid transparent;
+                margin-bottom: -1px;
+            }
+            .tab-group-btn:hover { color: var(--text); }
+            .tab-group-btn.active {
+                color: var(--primary);
+                border-bottom-color: var(--primary);
+                background: var(--surface);
+            }
+            .tab-group-panel {
+                padding: 20px;
+                font-size: 13px;
+                line-height: 1.7;
+                display: none;
+            }
+            .tab-group-panel.active { display: block; }
+
+            /* KBD */
+            .kbd {
+                font-family: "Monaspace Argon", monospace;
+                font-size: 11px;
+                background: var(--bg);
+                border: 1px solid var(--border);
+                border-bottom-width: 2px;
+                border-radius: 6px;
+                padding: 2px 7px;
+                color: var(--text);
+                white-space: nowrap;
+            }
+
+            /* HORIZONTAL RULE */
+            .hr {
+                border: none;
+                height: 1px;
+                background: var(--border);
+                margin: 24px 0;
+            }
+            .hr-dashed {
+                border: none;
+                height: 0;
+                border-top: 1px dashed var(--border);
+                margin: 24px 0;
+            }
+            .hr-thick {
+                border: none;
+                height: 2px;
+                background: var(--primary-border);
+                margin: 24px 0;
+            }
+
             /* DARK SECTION (light mode only) */
             .dark-section {
                 background: #1c1828;
@@ -1216,6 +1503,294 @@
             </div>
         </div>
 
+        <!-- CODE BLOCK -->
+        <div class="section">
+            <div class="section-label">Code Block</div>
+            <div class="demo-label">With language header</div>
+            <div style="margin-bottom: 16px;">
+                <div class="code-block-header">
+                    <div class="code-block-dots">
+                        <span style="background: #e66260;"></span>
+                        <span style="background: #f9db6d;"></span>
+                        <span style="background: #52b788;"></span>
+                    </div>
+                    <div class="code-block-lang">typescript</div>
+                </div>
+                <div class="code-block">
+                    <span class="code-ln">1</span><span class="code-comment">// AquaDrive theme configuration</span><br>
+                    <span class="code-ln">2</span><span class="code-key">import</span> { <span class="code-type">ThemeConfig</span> } <span class="code-key">from</span> <span class="code-str">'@aquadrive/tokens'</span>;<br>
+                    <span class="code-ln">3</span><span class="code-key">import</span> { <span class="code-prop">createTheme</span> } <span class="code-key">from</span> <span class="code-str">'@aquadrive/core'</span>;<br>
+                    <span class="code-ln">4</span><br>
+                    <span class="code-ln">5</span><span class="code-key">const</span> <span class="code-const">BRAND</span> = <span class="code-str">'AquaDrive'</span>;<br>
+                    <span class="code-ln">6</span><br>
+                    <span class="code-ln">7</span><span class="code-key">export const</span> <span class="code-prop">theme</span>: <span class="code-type">ThemeConfig</span> = <span class="code-prop">createTheme</span>({<br>
+                    <span class="code-ln">8</span>&nbsp;&nbsp;<span class="code-prop">name</span>: <span class="code-const">BRAND</span>,<br>
+                    <span class="code-ln">9</span>&nbsp;&nbsp;<span class="code-prop">colors</span>: {<br>
+                    <span class="code-ln">10</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-prop">primary</span>: <span class="code-str">'#8C92BE'</span>,<br>
+                    <span class="code-ln">11</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-prop">purple</span>: <span class="code-str">'#B08EC5'</span>,<br>
+                    <span class="code-ln">12</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-prop">cyan</span>: <span class="code-str">'#6EC5BA'</span>,<br>
+                    <span class="code-ln">13</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-prop">rose</span>: <span class="code-str">'#E295AC'</span>,<br>
+                    <span class="code-ln">14</span>&nbsp;&nbsp;},<br>
+                    <span class="code-ln">15</span>&nbsp;&nbsp;<span class="code-prop">syntax</span>: {<br>
+                    <span class="code-ln">16</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-prop">keyword</span>: <span class="code-str">'#E66260'</span>,  <span class="code-comment">// red</span><br>
+                    <span class="code-ln">17</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-prop">string</span>: <span class="code-str">'#F9DB6D'</span>,   <span class="code-comment">// yellow</span><br>
+                    <span class="code-ln">18</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-prop">type</span>: <span class="code-str">'#B08EC5'</span>,     <span class="code-comment">// purple</span><br>
+                    <span class="code-ln">19</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-prop">link</span>: <span class="code-str">'#6EC5BA'</span>,     <span class="code-comment">// cyan</span><br>
+                    <span class="code-ln">20</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-prop">constant</span>: <span class="code-str">'#E295AC'</span>, <span class="code-comment">// ros&eacute;</span><br>
+                    <span class="code-ln">21</span>&nbsp;&nbsp;}<br>
+                    <span class="code-ln">22</span>});
+                </div>
+            </div>
+            <div class="demo-label">CSS example (no header)</div>
+            <div class="code-block">
+                <span class="code-comment">/* Apply the AquaDrive palette */</span><br>
+                <span class="code-prop">:root</span> {<br>
+                &nbsp;&nbsp;<span class="code-prop">--bg</span>: <span class="code-val">#f4eded</span>;<br>
+                &nbsp;&nbsp;<span class="code-prop">--surface</span>: <span class="code-val">#ffffff</span>;<br>
+                &nbsp;&nbsp;<span class="code-prop">--primary</span>: <span class="code-val">#656ea4</span>;<br>
+                &nbsp;&nbsp;<span class="code-prop">--error</span>: <span class="code-val">#e66260</span>;<br>
+                &nbsp;&nbsp;<span class="code-prop">--success</span>: <span class="code-val">#52b788</span>;<br>
+                }
+            </div>
+        </div>
+
+        <!-- INLINE CODE -->
+        <div class="section">
+            <div class="section-label">Inline Code</div>
+            <div class="demo-box">
+                <p style="font-size: 13px; line-height: 1.8;">
+                    Use the <code class="inline-code">toggleTheme()</code> function to switch modes.
+                    Set <code class="inline-code">data-theme="dark"</code> on the root element.
+                    Import tokens from <code class="inline-code">@aquadrive/tokens</code> and call
+                    <code class="inline-code">createTheme(config)</code> to initialize.
+                </p>
+                <p style="font-size: 13px; line-height: 1.8; margin-top: 12px;">
+                    Run <code class="inline-code">npm install @aquadrive/core</code> to get started, then
+                    configure your <code class="inline-code">aquadrive.config.ts</code> file.
+                </p>
+            </div>
+        </div>
+
+        <!-- LISTS -->
+        <div class="section">
+            <div class="section-label">Lists</div>
+            <div class="component-grid">
+                <div class="demo-box">
+                    <div class="demo-label">Unordered list</div>
+                    <ul class="list-ul">
+                        <li>Hand wash exterior with foam cannon</li>
+                        <li>Wheel and tire cleaning
+                            <ul>
+                                <li>Brake dust removal</li>
+                                <li>Tire shine application</li>
+                            </ul>
+                        </li>
+                        <li>Window cleaning (interior &amp; exterior)</li>
+                        <li>Air dry with microfiber towels</li>
+                    </ul>
+                </div>
+                <div class="demo-box">
+                    <div class="demo-label">Ordered list</div>
+                    <ol class="list-ol">
+                        <li>Select your wash package</li>
+                        <li>Choose your preferred station</li>
+                        <li>Pick a date and time slot</li>
+                        <li>Confirm and pay
+                            <ol>
+                                <li>Enter payment details</li>
+                                <li>Review your order</li>
+                                <li>Submit booking</li>
+                            </ol>
+                        </li>
+                        <li>Receive confirmation email</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+
+        <!-- HIGHLIGHTS -->
+        <div class="section">
+            <div class="section-label">Highlights / Marks</div>
+            <div class="demo-box">
+                <div class="demo-label">Inline highlights</div>
+                <div class="component-row" style="margin-bottom: 16px;">
+                    <span class="highlight highlight-yellow">Yellow highlight</span>
+                    <span class="highlight highlight-green">Green highlight</span>
+                    <span class="highlight highlight-red">Red highlight</span>
+                    <span class="highlight highlight-purple">Purple highlight</span>
+                    <span class="highlight highlight-cyan">Cyan highlight</span>
+                    <span class="highlight highlight-rose">Ros&eacute; highlight</span>
+                    <span class="highlight highlight-primary">Primary highlight</span>
+                </div>
+                <div class="demo-label">In context</div>
+                <p style="font-size: 13px; line-height: 1.8;">
+                    All <span class="highlight highlight-green">Premium Detail</span> packages include a
+                    <span class="highlight highlight-purple">ceramic sealant</span> upgrade this month.
+                    <span class="highlight highlight-yellow">Limited availability</span> — book early.
+                    Customers with <span class="highlight highlight-cyan">loyalty status</span> receive
+                    <span class="highlight highlight-rose">15% off</span> automatically.
+                </p>
+            </div>
+        </div>
+
+        <!-- LINKS -->
+        <div class="section">
+            <div class="section-label">Links</div>
+            <div class="demo-box">
+                <div class="demo-label">Link variants</div>
+                <div class="component-row" style="margin-bottom: 16px;">
+                    <a href="#" class="link" onclick="return false">Default link</a>
+                    <a href="#" class="link link-muted" onclick="return false">Muted link</a>
+                    <a href="#" class="link link-cyan" onclick="return false">Cyan link</a>
+                    <a href="#" class="link link-purple" onclick="return false">Purple link</a>
+                    <a href="#" class="link link-rose" onclick="return false">Ros&eacute; link</a>
+                    <a href="#" class="link link-plain" onclick="return false">Plain link</a>
+                </div>
+                <div class="demo-label">In context</div>
+                <p style="font-size: 13px; line-height: 1.8;">
+                    View our <a href="#" class="link" onclick="return false">full service catalog</a> or
+                    check out the <a href="#" class="link link-cyan" onclick="return false">premium packages</a>.
+                    Questions? Visit the <a href="#" class="link link-purple" onclick="return false">help center</a>
+                    or <a href="#" class="link link-muted" onclick="return false">contact support</a>.
+                </p>
+            </div>
+        </div>
+
+        <!-- BLOCKQUOTES -->
+        <div class="section">
+            <div class="section-label">Block Quotes</div>
+            <div style="display: flex; flex-direction: column; gap: 12px;">
+                <blockquote class="blockquote">
+                    AquaDrive transformed our fleet maintenance. The booking system is seamless and the quality is consistently excellent.
+                    <div class="blockquote-footer">— Sarah Chen, Fleet Manager at LogiDrive</div>
+                </blockquote>
+                <blockquote class="blockquote blockquote-success">
+                    Tip: Book during off-peak hours (weekdays 10 AM – 2 PM) for faster service and shorter wait times.
+                </blockquote>
+                <blockquote class="blockquote blockquote-warning">
+                    Note: Ceramic coating requires 24 hours of curing time. Avoid washing your vehicle during this period.
+                </blockquote>
+                <blockquote class="blockquote blockquote-error">
+                    Important: Cancellations within 2 hours of the appointment will incur a 50% fee.
+                </blockquote>
+                <blockquote class="blockquote blockquote-purple">
+                    Premium members get priority scheduling, free upgrades, and exclusive access to new services.
+                </blockquote>
+            </div>
+        </div>
+
+        <!-- TOGGLES / ACCORDIONS -->
+        <div class="section">
+            <div class="section-label">Toggles / Accordions</div>
+            <div>
+                <details class="toggle-item" open>
+                    <summary>What wash packages do you offer?</summary>
+                    <div class="toggle-content">
+                        We offer four tiers: Basic Exterior ($18), Interior + Exterior ($45), Premium Detail ($89), and Full Ceramic Coat ($249). Each package includes complimentary tire shine and window cleaning.
+                    </div>
+                </details>
+                <details class="toggle-item">
+                    <summary>How long does a typical wash take?</summary>
+                    <div class="toggle-content">
+                        A Basic Exterior wash takes approximately 20 minutes. Interior + Exterior runs about 45 minutes. Premium Detail needs around 90 minutes, and a Full Ceramic Coat requires approximately 3 hours.
+                    </div>
+                </details>
+                <details class="toggle-item">
+                    <summary>Can I reschedule my booking?</summary>
+                    <div class="toggle-content">
+                        Yes! You can reschedule any booking up to 2 hours before the appointment at no extra charge. Simply go to your booking history and tap "Reschedule" on the active booking.
+                    </div>
+                </details>
+                <details class="toggle-item">
+                    <summary>Do you offer a loyalty program?</summary>
+                    <div class="toggle-content">
+                        Absolutely. Every wash earns points toward free services. After 5 washes you unlock Loyalty status with 10% off, and after 10 washes you reach Premium tier with 15% off plus priority booking.
+                    </div>
+                </details>
+            </div>
+        </div>
+
+        <!-- TAB GROUPS -->
+        <div class="section">
+            <div class="section-label">Tab Groups</div>
+            <div class="component-grid">
+                <div class="tab-group" data-tabgroup="install">
+                    <div class="tab-group-nav">
+                        <button class="tab-group-btn active" data-tab="npm">npm</button>
+                        <button class="tab-group-btn" data-tab="yarn">yarn</button>
+                        <button class="tab-group-btn" data-tab="pnpm">pnpm</button>
+                    </div>
+                    <div class="tab-group-panel active" data-panel="npm">
+                        <code class="inline-code">npm install @aquadrive/core @aquadrive/tokens</code>
+                    </div>
+                    <div class="tab-group-panel" data-panel="yarn">
+                        <code class="inline-code">yarn add @aquadrive/core @aquadrive/tokens</code>
+                    </div>
+                    <div class="tab-group-panel" data-panel="pnpm">
+                        <code class="inline-code">pnpm add @aquadrive/core @aquadrive/tokens</code>
+                    </div>
+                </div>
+                <div class="tab-group" data-tabgroup="framework">
+                    <div class="tab-group-nav">
+                        <button class="tab-group-btn active" data-tab="react">React</button>
+                        <button class="tab-group-btn" data-tab="vue">Vue</button>
+                        <button class="tab-group-btn" data-tab="svelte">Svelte</button>
+                    </div>
+                    <div class="tab-group-panel active" data-panel="react">
+                        <div style="line-height: 1.7; color: var(--text-muted);">
+                            Import the <code class="inline-code">ThemeProvider</code> and wrap your app. Use <code class="inline-code">useTheme()</code> hook for reactive theme access.
+                        </div>
+                    </div>
+                    <div class="tab-group-panel" data-panel="vue">
+                        <div style="line-height: 1.7; color: var(--text-muted);">
+                            Register the plugin with <code class="inline-code">app.use(AquaTheme)</code>. Access tokens via <code class="inline-code">inject('theme')</code> in components.
+                        </div>
+                    </div>
+                    <div class="tab-group-panel" data-panel="svelte">
+                        <div style="line-height: 1.7; color: var(--text-muted);">
+                            Use the <code class="inline-code">&lt;Theme&gt;</code> wrapper component. Access tokens with <code class="inline-code">getContext('aquadrive')</code>.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- KEYBOARD SHORTCUTS -->
+        <div class="section">
+            <div class="section-label">Keyboard Shortcuts</div>
+            <div class="demo-box">
+                <div class="demo-label">KBD elements</div>
+                <div class="component-row" style="margin-bottom: 16px;">
+                    <kbd class="kbd">Ctrl</kbd>
+                    <kbd class="kbd">Shift</kbd>
+                    <kbd class="kbd">Alt</kbd>
+                    <kbd class="kbd">&#x2318;</kbd>
+                    <kbd class="kbd">Enter</kbd>
+                    <kbd class="kbd">Esc</kbd>
+                    <kbd class="kbd">Tab</kbd>
+                </div>
+                <div class="demo-label">In context</div>
+                <p style="font-size: 13px; line-height: 2;">
+                    Press <kbd class="kbd">Ctrl</kbd> + <kbd class="kbd">K</kbd> to open the command palette.
+                    Use <kbd class="kbd">&#x2318;</kbd> + <kbd class="kbd">Shift</kbd> + <kbd class="kbd">P</kbd> on macOS.
+                    Toggle dark mode with <kbd class="kbd">Ctrl</kbd> + <kbd class="kbd">D</kbd>.
+                </p>
+            </div>
+        </div>
+
+        <!-- HORIZONTAL RULES -->
+        <div class="section">
+            <div class="section-label">Horizontal Rules</div>
+            <div class="demo-box">
+                <div class="demo-label">Default</div>
+                <hr class="hr">
+                <div class="demo-label">Dashed</div>
+                <hr class="hr-dashed">
+                <div class="demo-label">Thick accent</div>
+                <hr class="hr-thick">
+            </div>
+        </div>
+
         <!-- DARK MODE COMPONENTS -->
         <div class="section">
             <div class="section-label">Dark Mode — Components</div>
@@ -1337,6 +1912,18 @@
                 var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
                 btn.textContent = isDark ? 'Light' : 'Dark';
             }
+            // Tab group interactivity
+            document.querySelectorAll('.tab-group').forEach(function(group) {
+                group.querySelectorAll('.tab-group-btn').forEach(function(btn) {
+                    btn.addEventListener('click', function() {
+                        var tab = btn.getAttribute('data-tab');
+                        group.querySelectorAll('.tab-group-btn').forEach(function(b) { b.classList.remove('active'); });
+                        group.querySelectorAll('.tab-group-panel').forEach(function(p) { p.classList.remove('active'); });
+                        btn.classList.add('active');
+                        group.querySelector('[data-panel="' + tab + '"]').classList.add('active');
+                    });
+                });
+            });
         </script>
     </body>
 </html>

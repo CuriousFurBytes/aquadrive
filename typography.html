@@ -6,7 +6,21 @@
         <title>AquaDrive — Typography</title>
         <script>(function(){var s=localStorage.getItem('aquadrive-theme');var t=s||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');if(t==='dark')document.documentElement.setAttribute('data-theme','dark');})()</script>
         <style>
-            @import url("https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Syne:wght@400;600;700;800&display=swap");
+            @font-face {
+                font-family: "Monaspace Argon";
+                src: url("fonts/MonaspaceArgonVar.woff") format("woff");
+                font-weight: 100 900;
+                font-style: normal;
+                font-display: swap;
+            }
+
+            @font-face {
+                font-family: "Monaspace Krypton";
+                src: url("fonts/MonaspaceKryptonVar.woff") format("woff");
+                font-weight: 100 900;
+                font-style: normal;
+                font-display: swap;
+            }
 
             :root {
                 --bg: #f4eded;
@@ -41,7 +55,7 @@
             body {
                 background: var(--bg);
                 color: var(--text);
-                font-family: "Syne", sans-serif;
+                font-family: "Monaspace Argon", sans-serif;
                 padding: 48px 32px;
                 min-height: 100vh;
             }
@@ -53,7 +67,7 @@
                 flex-wrap: wrap;
             }
             .nav a {
-                font-family: "DM Mono", monospace;
+                font-family: "Monaspace Argon", monospace;
                 font-size: 11px;
                 letter-spacing: 0.08em;
                 text-transform: uppercase;
@@ -73,7 +87,7 @@
             header { margin-bottom: 56px; }
 
             .brand-tag {
-                font-family: "DM Mono", monospace;
+                font-family: "Monaspace Argon", monospace;
                 font-size: 11px;
                 letter-spacing: 0.2em;
                 text-transform: uppercase;
@@ -82,6 +96,7 @@
             }
 
             h1 {
+                font-family: "Monaspace Krypton", sans-serif;
                 font-size: 42px;
                 font-weight: 800;
                 letter-spacing: -0.02em;
@@ -99,7 +114,7 @@
             .section { margin-bottom: 48px; }
 
             .section-label {
-                font-family: "DM Mono", monospace;
+                font-family: "Monaspace Argon", monospace;
                 font-size: 10px;
                 letter-spacing: 0.25em;
                 text-transform: uppercase;
@@ -125,7 +140,7 @@
             }
 
             .demo-label {
-                font-family: "DM Mono", monospace;
+                font-family: "Monaspace Argon", monospace;
                 font-size: 10px;
                 color: var(--text-muted);
                 letter-spacing: 0.1em;
@@ -134,7 +149,7 @@
             }
 
             .spec {
-                font-family: "DM Mono", monospace;
+                font-family: "Monaspace Argon", monospace;
                 font-size: 10px;
                 color: var(--text-muted);
                 letter-spacing: 0.04em;
@@ -156,14 +171,14 @@
                 flex-shrink: 0;
             }
             .type-meta-name {
-                font-family: "DM Mono", monospace;
+                font-family: "Monaspace Argon", monospace;
                 font-size: 11px;
                 font-weight: 500;
                 color: var(--primary);
                 margin-bottom: 4px;
             }
             .type-meta-spec {
-                font-family: "DM Mono", monospace;
+                font-family: "Monaspace Argon", monospace;
                 font-size: 10px;
                 color: var(--text-muted);
                 line-height: 1.6;
@@ -189,14 +204,14 @@
                 text-align: center;
             }
             .specimen-hero.syne {
-                font-family: "Syne", sans-serif;
+                font-family: "Monaspace Krypton", sans-serif;
                 font-size: 64px;
                 font-weight: 800;
                 letter-spacing: -0.03em;
                 color: var(--text);
             }
             .specimen-hero.mono {
-                font-family: "DM Mono", monospace;
+                font-family: "Monaspace Argon", monospace;
                 font-size: 48px;
                 font-weight: 400;
                 color: var(--text);
@@ -229,7 +244,7 @@
                 font-size: 13px;
             }
             .weight-label {
-                font-family: "DM Mono", monospace;
+                font-family: "Monaspace Argon", monospace;
                 font-size: 10px;
                 color: var(--text-muted);
                 width: 60px;
@@ -244,8 +259,8 @@
                 color: var(--text);
                 word-break: break-all;
             }
-            .alphabet.syne-font { font-family: "Syne", sans-serif; }
-            .alphabet.mono-font { font-family: "DM Mono", monospace; }
+            .alphabet.syne-font { font-family: "Monaspace Krypton", sans-serif; }
+            .alphabet.mono-font { font-family: "Monaspace Argon", monospace; }
 
             /* PAIRING */
             .pairing-card {
@@ -256,21 +271,21 @@
                 margin-bottom: 16px;
             }
             .pairing-heading {
-                font-family: "Syne", sans-serif;
+                font-family: "Monaspace Krypton", sans-serif;
                 font-size: 24px;
                 font-weight: 700;
                 margin-bottom: 8px;
                 letter-spacing: -0.01em;
             }
             .pairing-body {
-                font-family: "Syne", sans-serif;
+                font-family: "Monaspace Argon", sans-serif;
                 font-size: 14px;
                 line-height: 1.7;
                 color: var(--text-muted);
                 margin-bottom: 12px;
             }
             .pairing-mono {
-                font-family: "DM Mono", monospace;
+                font-family: "Monaspace Argon", monospace;
                 font-size: 12px;
                 color: var(--primary);
                 background: var(--primary-subtle);
@@ -285,7 +300,7 @@
                 border-collapse: collapse;
             }
             .usage-table th {
-                font-family: "DM Mono", monospace;
+                font-family: "Monaspace Argon", monospace;
                 font-size: 10px;
                 letter-spacing: 0.12em;
                 text-transform: uppercase;
@@ -301,8 +316,8 @@
                 font-size: 13px;
             }
             .usage-table tr:last-child td { border-bottom: none; }
-            .usage-table .font-syne { font-family: "Syne", sans-serif; }
-            .usage-table .font-mono { font-family: "DM Mono", monospace; font-size: 12px; }
+            .usage-table .font-syne { font-family: "Monaspace Krypton", sans-serif; }
+            .usage-table .font-mono { font-family: "Monaspace Argon", monospace; font-size: 12px; }
 
             /* DARK SPECIMEN */
             .dark-specimen {
@@ -322,7 +337,7 @@
                 background: #1c1828;
                 border-radius: 12px;
                 padding: 20px;
-                font-family: "DM Mono", monospace;
+                font-family: "Monaspace Argon", monospace;
                 font-size: 12px;
                 line-height: 1.8;
                 color: #c4c7df;
@@ -338,7 +353,7 @@
 
             /* THEME TOGGLE */
             .theme-toggle {
-                font-family: "DM Mono", monospace;
+                font-family: "Monaspace Argon", monospace;
                 font-size: 11px;
                 letter-spacing: 0.08em;
                 text-transform: uppercase;
@@ -401,7 +416,7 @@
         <header>
             <div class="brand-tag">AquaDrive · Design System</div>
             <h1>Typo<span>graphy</span></h1>
-            <p class="subtitle">Syne for display &amp; headings · DM Mono for UI labels &amp; code</p>
+            <p class="subtitle">Monaspace Krypton for display &amp; headings · Monaspace Argon for body, UI labels &amp; code</p>
         </header>
 
         <!-- FONT SPECIMENS -->
@@ -411,24 +426,24 @@
                 <div class="specimen-card">
                     <div class="specimen-hero syne">Aa</div>
                     <div class="specimen-info">
-                        <div class="specimen-name">Syne</div>
-                        <div class="specimen-desc">Display &amp; body typeface. Geometric with a distinctive personality — used for headings, titles, buttons, and body copy.</div>
+                        <div class="specimen-name">Monaspace Krypton</div>
+                        <div class="specimen-desc">Display typeface with a mechanical, structured texture — used for headings, titles, and display elements.</div>
                         <div class="weight-row">
                             <div class="weight-item">
                                 <span class="weight-label">400</span>
-                                <span style="font-family: Syne; font-weight: 400;">Regular — body text, paragraphs</span>
+                                <span style="font-family: 'Monaspace Krypton'; font-weight: 400;">Regular — body text, paragraphs</span>
                             </div>
                             <div class="weight-item">
                                 <span class="weight-label">600</span>
-                                <span style="font-family: Syne; font-weight: 600;">SemiBold — subheadings, emphasis</span>
+                                <span style="font-family: 'Monaspace Krypton'; font-weight: 600;">SemiBold — subheadings, emphasis</span>
                             </div>
                             <div class="weight-item">
                                 <span class="weight-label">700</span>
-                                <span style="font-family: Syne; font-weight: 700;">Bold — card titles, labels</span>
+                                <span style="font-family: 'Monaspace Krypton'; font-weight: 700;">Bold — card titles, labels</span>
                             </div>
                             <div class="weight-item">
                                 <span class="weight-label">800</span>
-                                <span style="font-family: Syne; font-weight: 800;">ExtraBold — display headings</span>
+                                <span style="font-family: 'Monaspace Krypton'; font-weight: 800;">ExtraBold — display headings</span>
                             </div>
                         </div>
                     </div>
@@ -436,16 +451,16 @@
                 <div class="specimen-card">
                     <div class="specimen-hero mono">Aa</div>
                     <div class="specimen-info">
-                        <div class="specimen-name">DM Mono</div>
-                        <div class="specimen-desc">Monospace typeface for UI labels, badges, hex codes, section headers, and code snippets. Clean and compact.</div>
+                        <div class="specimen-name">Monaspace Argon</div>
+                        <div class="specimen-desc">Versatile typeface for body text, UI labels, badges, hex codes, and code snippets. Clean and readable.</div>
                         <div class="weight-row">
                             <div class="weight-item">
                                 <span class="weight-label">400</span>
-                                <span style="font-family: 'DM Mono'; font-weight: 400;">Regular — labels, hex chips, meta</span>
+                                <span style="font-family: 'Monaspace Argon'; font-weight: 400;">Regular — labels, hex chips, meta</span>
                             </div>
                             <div class="weight-item">
                                 <span class="weight-label">500</span>
-                                <span style="font-family: 'DM Mono'; font-weight: 500;">Medium — badges, token names</span>
+                                <span style="font-family: 'Monaspace Argon'; font-weight: 500;">Medium — badges, token names</span>
                             </div>
                         </div>
                     </div>
@@ -457,13 +472,13 @@
         <div class="section">
             <div class="section-label">Character Sets</div>
             <div class="demo-box">
-                <div class="demo-label">Syne — Full alphabet</div>
+                <div class="demo-label">Monaspace Krypton — Full alphabet</div>
                 <div class="alphabet syne-font" style="margin-bottom: 20px;">
                     ABCDEFGHIJKLMNOPQRSTUVWXYZ<br>
                     abcdefghijklmnopqrstuvwxyz<br>
                     0123456789 !@#$%&amp;*()
                 </div>
-                <div class="demo-label">DM Mono — Full alphabet</div>
+                <div class="demo-label">Monaspace Argon — Full alphabet</div>
                 <div class="alphabet mono-font" style="font-size: 20px;">
                     ABCDEFGHIJKLMNOPQRSTUVWXYZ<br>
                     abcdefghijklmnopqrstuvwxyz<br>
@@ -479,43 +494,43 @@
                 <div class="type-row">
                     <div class="type-meta">
                         <div class="type-meta-name">Display / H1</div>
-                        <div class="type-meta-spec">Syne 800<br>42px / -0.02em</div>
+                        <div class="type-meta-spec">Krypton 800<br>42px / -0.02em</div>
                     </div>
-                    <div class="type-sample" style="font-size: 42px; font-weight: 800; letter-spacing: -0.02em; line-height: 1;">
+                    <div class="type-sample" style="font-family: 'Monaspace Krypton', sans-serif; font-size: 42px; font-weight: 800; letter-spacing: -0.02em; line-height: 1;">
                         AquaDrive
                     </div>
                 </div>
                 <div class="type-row">
                     <div class="type-meta">
                         <div class="type-meta-name">H2</div>
-                        <div class="type-meta-spec">Syne 700<br>28px / -0.01em</div>
+                        <div class="type-meta-spec">Krypton 700<br>28px / -0.01em</div>
                     </div>
-                    <div class="type-sample" style="font-size: 28px; font-weight: 700; letter-spacing: -0.01em; line-height: 1.15;">
+                    <div class="type-sample" style="font-family: 'Monaspace Krypton', sans-serif; font-size: 28px; font-weight: 700; letter-spacing: -0.01em; line-height: 1.15;">
                         Schedule a Wash
                     </div>
                 </div>
                 <div class="type-row">
                     <div class="type-meta">
                         <div class="type-meta-name">H3</div>
-                        <div class="type-meta-spec">Syne 700<br>20px / 0</div>
+                        <div class="type-meta-spec">Krypton 700<br>20px / 0</div>
                     </div>
-                    <div class="type-sample" style="font-size: 20px; font-weight: 700; line-height: 1.2;">
+                    <div class="type-sample" style="font-family: 'Monaspace Krypton', sans-serif; font-size: 20px; font-weight: 700; line-height: 1.2;">
                         Premium Detail Package
                     </div>
                 </div>
                 <div class="type-row">
                     <div class="type-meta">
                         <div class="type-meta-name">H4 / Title</div>
-                        <div class="type-meta-spec">Syne 700<br>15px / 0.03em</div>
+                        <div class="type-meta-spec">Krypton 700<br>15px / 0.03em</div>
                     </div>
-                    <div class="type-sample" style="font-size: 15px; font-weight: 700; letter-spacing: 0.03em;">
+                    <div class="type-sample" style="font-family: 'Monaspace Krypton', sans-serif; font-size: 15px; font-weight: 700; letter-spacing: 0.03em;">
                         Wash History
                     </div>
                 </div>
                 <div class="type-row">
                     <div class="type-meta">
                         <div class="type-meta-name">Body</div>
-                        <div class="type-meta-spec">Syne 400<br>14px / 1.6 lh</div>
+                        <div class="type-meta-spec">Argon 400<br>14px / 1.6 lh</div>
                     </div>
                     <div class="type-sample" style="font-size: 14px; font-weight: 400; line-height: 1.6; color: var(--text-muted);">
                         Book your next car wash in seconds. Choose from our range of packages — from a quick exterior rinse to a full ceramic coating that protects your paint for up to two years.
@@ -524,16 +539,16 @@
                 <div class="type-row">
                     <div class="type-meta">
                         <div class="type-meta-name">Small / Card</div>
-                        <div class="type-meta-spec">Syne 700<br>13px</div>
+                        <div class="type-meta-spec">Krypton 700<br>13px</div>
                     </div>
-                    <div class="type-sample" style="font-size: 13px; font-weight: 700;">
+                    <div class="type-sample" style="font-family: 'Monaspace Krypton', sans-serif; font-size: 13px; font-weight: 700;">
                         Basic Exterior Wash — $18.00
                     </div>
                 </div>
                 <div class="type-row">
                     <div class="type-meta">
                         <div class="type-meta-name">Caption</div>
-                        <div class="type-meta-spec">Syne 400<br>12px / muted</div>
+                        <div class="type-meta-spec">Argon 400<br>12px / muted</div>
                     </div>
                     <div class="type-sample" style="font-size: 12px; font-weight: 400; color: var(--text-muted);">
                         Last washed on March 15, 2026 at 3:45 PM
@@ -542,39 +557,39 @@
                 <div class="type-row">
                     <div class="type-meta">
                         <div class="type-meta-name">Section Label</div>
-                        <div class="type-meta-spec">DM Mono 400<br>10px / 0.25em / UPPER</div>
+                        <div class="type-meta-spec">Argon 400<br>10px / 0.25em / UPPER</div>
                     </div>
-                    <div class="type-sample" style="font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.25em; text-transform: uppercase; color: var(--text-muted);">
+                    <div class="type-sample" style="font-family: 'Monaspace Argon', monospace; font-size: 10px; letter-spacing: 0.25em; text-transform: uppercase; color: var(--text-muted);">
                         Wash Packages
                     </div>
                 </div>
                 <div class="type-row">
                     <div class="type-meta">
                         <div class="type-meta-name">Badge</div>
-                        <div class="type-meta-spec">DM Mono 500<br>10px / 0.04em</div>
+                        <div class="type-meta-spec">Argon 500<br>10px / 0.04em</div>
                     </div>
                     <div class="type-sample" style="display: flex; gap: 8px; flex-wrap: wrap; align-items: center;">
-                        <span style="font-family: 'DM Mono', monospace; font-size: 10px; font-weight: 500; letter-spacing: 0.04em; background: #eaf7ef; color: #2e8c61; padding: 4px 11px; border-radius: 100px;">&#x25CF; Confirmed</span>
-                        <span style="font-family: 'DM Mono', monospace; font-size: 10px; font-weight: 500; letter-spacing: 0.04em; background: #f3edf7; color: #6f4f82; padding: 4px 11px; border-radius: 100px;">★ Premium</span>
-                        <span style="font-family: 'DM Mono', monospace; font-size: 10px; font-weight: 500; letter-spacing: 0.04em; background: #e8f6f4; color: #2d8a7e; padding: 4px 11px; border-radius: 100px;">↗ Promo</span>
-                        <span style="font-family: 'DM Mono', monospace; font-size: 10px; font-weight: 500; letter-spacing: 0.04em; background: #fcf0f3; color: #b85a73; padding: 4px 11px; border-radius: 100px;">♥ Favorite</span>
+                        <span style="font-family: 'Monaspace Argon', monospace; font-size: 10px; font-weight: 500; letter-spacing: 0.04em; background: #eaf7ef; color: #2e8c61; padding: 4px 11px; border-radius: 100px;">&#x25CF; Confirmed</span>
+                        <span style="font-family: 'Monaspace Argon', monospace; font-size: 10px; font-weight: 500; letter-spacing: 0.04em; background: #f3edf7; color: #6f4f82; padding: 4px 11px; border-radius: 100px;">★ Premium</span>
+                        <span style="font-family: 'Monaspace Argon', monospace; font-size: 10px; font-weight: 500; letter-spacing: 0.04em; background: #e8f6f4; color: #2d8a7e; padding: 4px 11px; border-radius: 100px;">↗ Promo</span>
+                        <span style="font-family: 'Monaspace Argon', monospace; font-size: 10px; font-weight: 500; letter-spacing: 0.04em; background: #fcf0f3; color: #b85a73; padding: 4px 11px; border-radius: 100px;">♥ Favorite</span>
                     </div>
                 </div>
                 <div class="type-row">
                     <div class="type-meta">
                         <div class="type-meta-name">Hex Chip</div>
-                        <div class="type-meta-spec">DM Mono 400<br>10px / 0.05em</div>
+                        <div class="type-meta-spec">Argon 400<br>10px / 0.05em</div>
                     </div>
                     <div class="type-sample">
-                        <span style="font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.05em; background: var(--bg); padding: 2px 7px; border-radius: 4px; color: var(--text-muted);">#656EA4</span>
+                        <span style="font-family: 'Monaspace Argon', monospace; font-size: 10px; letter-spacing: 0.05em; background: var(--bg); padding: 2px 7px; border-radius: 4px; color: var(--text-muted);">#656EA4</span>
                     </div>
                 </div>
                 <div class="type-row">
                     <div class="type-meta">
                         <div class="type-meta-name">Price</div>
-                        <div class="type-meta-spec">Syne 800<br>18px / primary</div>
+                        <div class="type-meta-spec">Krypton 800<br>18px / primary</div>
                     </div>
-                    <div class="type-sample" style="font-size: 18px; font-weight: 800; color: var(--primary);">
+                    <div class="type-sample" style="font-family: 'Monaspace Krypton', sans-serif; font-size: 18px; font-weight: 800; color: var(--primary);">
                         $249.00
                     </div>
                 </div>
@@ -588,25 +603,25 @@
                 <div class="type-row">
                     <div class="type-meta">
                         <div class="type-meta-name">Display / H1</div>
-                        <div class="type-meta-spec">Syne 800 · 42px</div>
+                        <div class="type-meta-spec">Krypton 800 · 42px</div>
                     </div>
-                    <div class="type-sample" style="font-size: 42px; font-weight: 800; letter-spacing: -0.02em; line-height: 1;">
+                    <div class="type-sample" style="font-family: 'Monaspace Krypton', sans-serif; font-size: 42px; font-weight: 800; letter-spacing: -0.02em; line-height: 1;">
                         Provider Dashboard
                     </div>
                 </div>
                 <div class="type-row">
                     <div class="type-meta">
                         <div class="type-meta-name">H2</div>
-                        <div class="type-meta-spec">Syne 700 · 28px</div>
+                        <div class="type-meta-spec">Krypton 700 · 28px</div>
                     </div>
-                    <div class="type-sample" style="font-size: 28px; font-weight: 700; letter-spacing: -0.01em; line-height: 1.15;">
+                    <div class="type-sample" style="font-family: 'Monaspace Krypton', sans-serif; font-size: 28px; font-weight: 700; letter-spacing: -0.01em; line-height: 1.15;">
                         Today's Schedule
                     </div>
                 </div>
                 <div class="type-row">
                     <div class="type-meta">
                         <div class="type-meta-name">Body</div>
-                        <div class="type-meta-spec">Syne 400 · 14px</div>
+                        <div class="type-meta-spec">Argon 400 · 14px</div>
                     </div>
                     <div class="type-sample" style="font-size: 14px; line-height: 1.6; color: #9a8e9e;">
                         You have 3 upcoming appointments and $156 in pending payouts. Route optimization suggests starting with the downtown cluster.
@@ -615,22 +630,22 @@
                 <div class="type-row">
                     <div class="type-meta">
                         <div class="type-meta-name">Label</div>
-                        <div class="type-meta-spec">DM Mono · 10px · UPPER</div>
+                        <div class="type-meta-spec">Argon · 10px · UPPER</div>
                     </div>
-                    <div class="type-sample" style="font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.25em; text-transform: uppercase; color: #9a8e9e;">
+                    <div class="type-sample" style="font-family: 'Monaspace Argon', monospace; font-size: 10px; letter-spacing: 0.25em; text-transform: uppercase; color: #9a8e9e;">
                         Earnings This Week
                     </div>
                 </div>
                 <div class="type-row" style="border-bottom: none;">
                     <div class="type-meta">
                         <div class="type-meta-name">Badge (dark)</div>
-                        <div class="type-meta-spec">DM Mono 500 · 10px</div>
+                        <div class="type-meta-spec">Argon 500 · 10px</div>
                     </div>
                     <div class="type-sample" style="display: flex; gap: 8px; flex-wrap: wrap; align-items: center;">
-                        <span style="font-family: 'DM Mono', monospace; font-size: 10px; font-weight: 500; letter-spacing: 0.04em; background: #313666; color: #c4c7df; padding: 4px 11px; border-radius: 100px;">&#x25CF; 3 Incoming</span>
-                        <span style="font-family: 'DM Mono', monospace; font-size: 10px; font-weight: 500; letter-spacing: 0.04em; background: #2a1a32; color: #c4a5d2; padding: 4px 11px; border-radius: 100px;">★ Premium</span>
-                        <span style="font-family: 'DM Mono', monospace; font-size: 10px; font-weight: 500; letter-spacing: 0.04em; background: #0e2a27; color: #8ad4cb; padding: 4px 11px; border-radius: 100px;">↗ Promo</span>
-                        <span style="font-family: 'DM Mono', monospace; font-size: 10px; font-weight: 500; letter-spacing: 0.04em; background: #321a22; color: #e8adc0; padding: 4px 11px; border-radius: 100px;">♥ Favorite</span>
+                        <span style="font-family: 'Monaspace Argon', monospace; font-size: 10px; font-weight: 500; letter-spacing: 0.04em; background: #313666; color: #c4c7df; padding: 4px 11px; border-radius: 100px;">&#x25CF; 3 Incoming</span>
+                        <span style="font-family: 'Monaspace Argon', monospace; font-size: 10px; font-weight: 500; letter-spacing: 0.04em; background: #2a1a32; color: #c4a5d2; padding: 4px 11px; border-radius: 100px;">★ Premium</span>
+                        <span style="font-family: 'Monaspace Argon', monospace; font-size: 10px; font-weight: 500; letter-spacing: 0.04em; background: #0e2a27; color: #8ad4cb; padding: 4px 11px; border-radius: 100px;">↗ Promo</span>
+                        <span style="font-family: 'Monaspace Argon', monospace; font-size: 10px; font-weight: 500; letter-spacing: 0.04em; background: #321a22; color: #e8adc0; padding: 4px 11px; border-radius: 100px;">♥ Favorite</span>
                     </div>
                 </div>
             </div>
@@ -641,7 +656,7 @@
             <div class="section-label">Font Pairing in Context</div>
             <div class="theme-only-light">
                 <div class="pairing-card">
-                    <div style="font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.25em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 12px;">Service Detail</div>
+                    <div style="font-family: 'Monaspace Argon', monospace; font-size: 10px; letter-spacing: 0.25em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 12px;">Service Detail</div>
                     <div class="pairing-heading">Premium Interior + Exterior Detail</div>
                     <div class="pairing-body">
                         Includes hand wash, clay bar treatment, machine polish, carnauba wax, full interior vacuum, leather conditioning, and dashboard treatment. Windows cleaned inside and out. Tires dressed and wheel wells degreased.
@@ -649,14 +664,14 @@
                     <div style="display: flex; gap: 12px; align-items: center; flex-wrap: wrap;">
                         <span class="pairing-mono">~90 min</span>
                         <span class="pairing-mono">$89.00</span>
-                        <span style="font-family: 'DM Mono', monospace; font-size: 10px; font-weight: 500; letter-spacing: 0.04em; background: #eaf7ef; color: #2e8c61; padding: 4px 11px; border-radius: 100px;">&#x25CF; Available</span>
-                        <span style="font-family: 'DM Mono', monospace; font-size: 10px; font-weight: 500; letter-spacing: 0.04em; background: #f3edf7; color: #6f4f82; padding: 4px 11px; border-radius: 100px;">★ Premium</span>
+                        <span style="font-family: 'Monaspace Argon', monospace; font-size: 10px; font-weight: 500; letter-spacing: 0.04em; background: #eaf7ef; color: #2e8c61; padding: 4px 11px; border-radius: 100px;">&#x25CF; Available</span>
+                        <span style="font-family: 'Monaspace Argon', monospace; font-size: 10px; font-weight: 500; letter-spacing: 0.04em; background: #f3edf7; color: #6f4f82; padding: 4px 11px; border-radius: 100px;">★ Premium</span>
                     </div>
                 </div>
             </div>
             <div class="theme-only-dark">
                 <div class="pairing-card" style="background: #1c1828; color: #f4eded; border-color: #352c43;">
-                    <div style="font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.25em; text-transform: uppercase; color: #9a8e9e; margin-bottom: 12px;">Job Summary</div>
+                    <div style="font-family: 'Monaspace Argon', monospace; font-size: 10px; letter-spacing: 0.25em; text-transform: uppercase; color: #9a8e9e; margin-bottom: 12px;">Job Summary</div>
                     <div class="pairing-heading">Ceramic Coating — Tesla Model 3</div>
                     <div class="pairing-body" style="color: #9a8e9e;">
                         Multi-stage paint correction followed by professional-grade SiO2 ceramic coating application. Includes decontamination wash, iron fallout removal, and 48-hour curing period.
@@ -664,8 +679,8 @@
                     <div style="display: flex; gap: 12px; align-items: center; flex-wrap: wrap;">
                         <span class="pairing-mono" style="background: #313666; color: #c4c7df;">~3 hours</span>
                         <span class="pairing-mono" style="background: #313666; color: #c4c7df;">$249.00</span>
-                        <span style="font-family: 'DM Mono', monospace; font-size: 10px; font-weight: 500; letter-spacing: 0.04em; background: #313666; color: #c4c7df; padding: 4px 11px; border-radius: 100px;">&#x25CF; Scheduled</span>
-                        <span style="font-family: 'DM Mono', monospace; font-size: 10px; font-weight: 500; letter-spacing: 0.04em; background: #2a1a32; color: #c4a5d2; padding: 4px 11px; border-radius: 100px;">★ Premium</span>
+                        <span style="font-family: 'Monaspace Argon', monospace; font-size: 10px; font-weight: 500; letter-spacing: 0.04em; background: #313666; color: #c4c7df; padding: 4px 11px; border-radius: 100px;">&#x25CF; Scheduled</span>
+                        <span style="font-family: 'Monaspace Argon', monospace; font-size: 10px; font-weight: 500; letter-spacing: 0.04em; background: #2a1a32; color: #c4a5d2; padding: 4px 11px; border-radius: 100px;">★ Premium</span>
                     </div>
                 </div>
             </div>
@@ -689,7 +704,7 @@
                     <tbody>
                         <tr>
                             <td>Display heading</td>
-                            <td class="font-syne">Syne</td>
+                            <td class="font-syne">Krypton</td>
                             <td>800</td>
                             <td>42px</td>
                             <td>-0.02em</td>
@@ -697,7 +712,7 @@
                         </tr>
                         <tr>
                             <td>Page heading</td>
-                            <td class="font-syne">Syne</td>
+                            <td class="font-syne">Krypton</td>
                             <td>700</td>
                             <td>28px</td>
                             <td>-0.01em</td>
@@ -705,7 +720,7 @@
                         </tr>
                         <tr>
                             <td>Section heading</td>
-                            <td class="font-syne">Syne</td>
+                            <td class="font-syne">Krypton</td>
                             <td>700</td>
                             <td>20px</td>
                             <td>0</td>
@@ -713,7 +728,7 @@
                         </tr>
                         <tr>
                             <td>Card title</td>
-                            <td class="font-syne">Syne</td>
+                            <td class="font-syne">Krypton</td>
                             <td>700</td>
                             <td>13–15px</td>
                             <td>0–0.03em</td>
@@ -721,7 +736,7 @@
                         </tr>
                         <tr>
                             <td>Body text</td>
-                            <td class="font-syne">Syne</td>
+                            <td class="font-mono">Argon</td>
                             <td>400</td>
                             <td>14px</td>
                             <td>0</td>
@@ -729,7 +744,7 @@
                         </tr>
                         <tr>
                             <td>Button label</td>
-                            <td class="font-syne">Syne</td>
+                            <td class="font-mono">Argon</td>
                             <td>600</td>
                             <td>13px</td>
                             <td>0</td>
@@ -737,7 +752,7 @@
                         </tr>
                         <tr>
                             <td>Caption</td>
-                            <td class="font-syne">Syne</td>
+                            <td class="font-mono">Argon</td>
                             <td>400</td>
                             <td>12px</td>
                             <td>0</td>
@@ -745,7 +760,7 @@
                         </tr>
                         <tr>
                             <td>Section label</td>
-                            <td class="font-mono">DM Mono</td>
+                            <td class="font-mono">Argon</td>
                             <td>400</td>
                             <td>10px</td>
                             <td>0.25em</td>
@@ -753,7 +768,7 @@
                         </tr>
                         <tr>
                             <td>Badge</td>
-                            <td class="font-mono">DM Mono</td>
+                            <td class="font-mono">Argon</td>
                             <td>500</td>
                             <td>10px</td>
                             <td>0.04em</td>
@@ -761,7 +776,7 @@
                         </tr>
                         <tr>
                             <td>Hex chip</td>
-                            <td class="font-mono">DM Mono</td>
+                            <td class="font-mono">Argon</td>
                             <td>400</td>
                             <td>10px</td>
                             <td>0.05em</td>
@@ -769,7 +784,7 @@
                         </tr>
                         <tr>
                             <td>Brand tag</td>
-                            <td class="font-mono">DM Mono</td>
+                            <td class="font-mono">Argon</td>
                             <td>400</td>
                             <td>11px</td>
                             <td>0.2em</td>
@@ -777,7 +792,7 @@
                         </tr>
                         <tr>
                             <td>Price</td>
-                            <td class="font-syne">Syne</td>
+                            <td class="font-syne">Krypton</td>
                             <td>800</td>
                             <td>18px</td>
                             <td>0</td>
@@ -792,12 +807,14 @@
         <div class="section">
             <div class="section-label">CSS Import &amp; Variables</div>
             <div class="code-block">
-                <span class="code-comment">/* Google Fonts import */</span><br>
-                <span class="code-prop">@import</span> <span class="code-str">url("https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&amp;family=Syne:wght@400;600;700;800&amp;display=swap")</span>;<br><br>
+                <span class="code-comment">/* Local font imports */</span><br>
+                <span class="code-prop">@font-face</span> { font-family: <span class="code-str">"Monaspace Argon"</span>; src: <span class="code-val">url("fonts/MonaspaceArgonVar.woff")</span>; }<br>
+                <span class="code-prop">@font-face</span> { font-family: <span class="code-str">"Monaspace Krypton"</span>; src: <span class="code-val">url("fonts/MonaspaceKryptonVar.woff")</span>; }<br><br>
                 <span class="code-comment">/* Typography tokens */</span><br>
                 <span class="code-prop">:root</span> {<br>
-                &nbsp;&nbsp;<span class="code-prop">--font-display</span>: <span class="code-val">"Syne", sans-serif</span>;<br>
-                &nbsp;&nbsp;<span class="code-prop">--font-mono</span>: <span class="code-val">"DM Mono", monospace</span>;<br><br>
+                &nbsp;&nbsp;<span class="code-prop">--font-display</span>: <span class="code-val">"Monaspace Krypton", sans-serif</span>;<br>
+                &nbsp;&nbsp;<span class="code-prop">--font-body</span>: <span class="code-val">"Monaspace Argon", sans-serif</span>;<br>
+                &nbsp;&nbsp;<span class="code-prop">--font-mono</span>: <span class="code-val">"Monaspace Argon", monospace</span>;<br><br>
                 &nbsp;&nbsp;<span class="code-comment">/* Sizes */</span><br>
                 &nbsp;&nbsp;<span class="code-prop">--text-display</span>: <span class="code-val">42px</span>;<br>
                 &nbsp;&nbsp;<span class="code-prop">--text-h2</span>: <span class="code-val">28px</span>;<br>

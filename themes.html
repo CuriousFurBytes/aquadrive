@@ -6,7 +6,21 @@
         <title>AquaDrive — Themes</title>
         <script>(function(){var s=localStorage.getItem('aquadrive-theme');var t=s||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');if(t==='dark')document.documentElement.setAttribute('data-theme','dark');})()</script>
         <style>
-            @import url("https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Syne:wght@400;600;700;800&display=swap");
+            @font-face {
+                font-family: "Monaspace Argon";
+                src: url("fonts/MonaspaceArgonVar.woff") format("woff");
+                font-weight: 100 900;
+                font-style: normal;
+                font-display: swap;
+            }
+
+            @font-face {
+                font-family: "Monaspace Krypton";
+                src: url("fonts/MonaspaceKryptonVar.woff") format("woff");
+                font-weight: 100 900;
+                font-style: normal;
+                font-display: swap;
+            }
 
             :root {
                 --bg: #f4eded;
@@ -51,7 +65,7 @@
             body {
                 background: var(--bg);
                 color: var(--text);
-                font-family: "Syne", sans-serif;
+                font-family: "Monaspace Argon", sans-serif;
                 padding: 48px 32px;
                 min-height: 100vh;
             }
@@ -64,7 +78,7 @@
                 flex-wrap: wrap;
             }
             .nav a {
-                font-family: "DM Mono", monospace;
+                font-family: "Monaspace Argon", monospace;
                 font-size: 11px;
                 letter-spacing: 0.08em;
                 text-transform: uppercase;
@@ -83,7 +97,7 @@
 
             /* THEME TOGGLE */
             .theme-toggle {
-                font-family: "DM Mono", monospace;
+                font-family: "Monaspace Argon", monospace;
                 font-size: 11px;
                 letter-spacing: 0.08em;
                 text-transform: uppercase;
@@ -105,7 +119,7 @@
             header { margin-bottom: 56px; }
 
             .brand-tag {
-                font-family: "DM Mono", monospace;
+                font-family: "Monaspace Argon", monospace;
                 font-size: 11px;
                 letter-spacing: 0.2em;
                 text-transform: uppercase;
@@ -114,6 +128,7 @@
             }
 
             h1 {
+                font-family: "Monaspace Krypton", sans-serif;
                 font-size: 42px;
                 font-weight: 800;
                 letter-spacing: -0.02em;
@@ -131,7 +146,7 @@
             .section { margin-bottom: 48px; }
 
             .section-label {
-                font-family: "DM Mono", monospace;
+                font-family: "Monaspace Argon", monospace;
                 font-size: 10px;
                 letter-spacing: 0.25em;
                 text-transform: uppercase;
@@ -157,7 +172,7 @@
             }
 
             .demo-label {
-                font-family: "DM Mono", monospace;
+                font-family: "Monaspace Argon", monospace;
                 font-size: 10px;
                 color: var(--text-muted);
                 letter-spacing: 0.1em;
@@ -192,7 +207,7 @@
                 margin-bottom: 4px;
             }
             .theme-card-subtitle {
-                font-family: "DM Mono", monospace;
+                font-family: "Monaspace Argon", monospace;
                 font-size: 10px;
                 letter-spacing: 0.15em;
                 text-transform: uppercase;
@@ -222,7 +237,7 @@
                 border: 1px solid rgba(0,0,0,0.08);
             }
             .token-name {
-                font-family: "DM Mono", monospace;
+                font-family: "Monaspace Argon", monospace;
                 font-size: 11px;
                 font-weight: 500;
                 flex: 1;
@@ -231,7 +246,7 @@
             .theme-card.dark .token-name { color: #f4eded; }
 
             .token-value {
-                font-family: "DM Mono", monospace;
+                font-family: "Monaspace Argon", monospace;
                 font-size: 10px;
                 letter-spacing: 0.05em;
             }
@@ -244,7 +259,7 @@
                 border-collapse: collapse;
             }
             .token-table th {
-                font-family: "DM Mono", monospace;
+                font-family: "Monaspace Argon", monospace;
                 font-size: 10px;
                 letter-spacing: 0.12em;
                 text-transform: uppercase;
@@ -261,7 +276,7 @@
             }
             .token-table tr:last-child td { border-bottom: none; }
             .token-table .mono {
-                font-family: "DM Mono", monospace;
+                font-family: "Monaspace Argon", monospace;
                 font-size: 11px;
             }
             .token-table .swatch-cell {
@@ -312,6 +327,7 @@
                 border: 1px solid #352c43;
             }
             .preview-title {
+                font-family: "Monaspace Krypton", sans-serif;
                 font-size: 15px;
                 font-weight: 700;
                 margin-bottom: 6px;
@@ -325,7 +341,7 @@
             .preview-panel.dark .preview-body { color: #9a8e9e; }
             .preview-btn {
                 display: inline-block;
-                font-family: "Syne", sans-serif;
+                font-family: "Monaspace Argon", sans-serif;
                 font-size: 13px;
                 font-weight: 600;
                 padding: 8px 20px;
@@ -344,7 +360,7 @@
             }
             .preview-badge {
                 display: inline-block;
-                font-family: "DM Mono", monospace;
+                font-family: "Monaspace Argon", monospace;
                 font-size: 10px;
                 font-weight: 500;
                 letter-spacing: 0.04em;
@@ -362,7 +378,7 @@
             }
             .preview-input {
                 width: 100%;
-                font-family: "Syne", sans-serif;
+                font-family: "Monaspace Argon", sans-serif;
                 font-size: 13px;
                 padding: 10px 14px;
                 border-radius: 10px;
@@ -385,7 +401,7 @@
                 background: #1c1828;
                 border-radius: 12px;
                 padding: 20px;
-                font-family: "DM Mono", monospace;
+                font-family: "Monaspace Argon", monospace;
                 font-size: 12px;
                 line-height: 1.8;
                 color: #c4c7df;
@@ -421,7 +437,7 @@
                 border-radius: 50%;
             }
             .vscode-titlebar-text {
-                font-family: "DM Mono", monospace;
+                font-family: "Monaspace Argon", monospace;
                 font-size: 11px;
                 color: #9a8e9e;
                 margin-left: 8px;
@@ -437,7 +453,7 @@
                 border-right: 1px solid #352c43;
             }
             .vscode-sidebar-item {
-                font-family: "DM Mono", monospace;
+                font-family: "Monaspace Argon", monospace;
                 font-size: 11px;
                 padding: 5px 16px;
                 color: #9a8e9e;
@@ -451,7 +467,7 @@
             }
             .vscode-editor {
                 padding: 16px;
-                font-family: "DM Mono", monospace;
+                font-family: "Monaspace Argon", monospace;
                 font-size: 12px;
                 line-height: 1.8;
                 color: #c4c7df;
@@ -723,7 +739,7 @@
             <div class="section-label">Live Preview</div>
             <div class="preview-grid">
                 <div class="preview-panel light">
-                    <div style="font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.25em; text-transform: uppercase; color: #7a6f7f; margin-bottom: 16px;">Light Theme</div>
+                    <div style="font-family: 'Monaspace Argon', monospace; font-size: 10px; letter-spacing: 0.25em; text-transform: uppercase; color: #7a6f7f; margin-bottom: 16px;">Light Theme</div>
                     <div class="preview-surface">
                         <div class="preview-title">Upcoming Wash</div>
                         <div class="preview-body">Premium Detail Package at Downtown Station. Estimated completion in 45 minutes.</div>
@@ -737,16 +753,16 @@
                         <div class="preview-title">Recent Activity</div>
                         <div class="preview-body">Basic Exterior Wash completed on Mar 15 at 3:45 PM.</div>
                         <div style="display: flex; gap: 8px; flex-wrap: wrap;">
-                            <span style="font-family: 'DM Mono', monospace; font-size: 10px; background: #edeef5; color: #656ea4; padding: 4px 11px; border-radius: 100px;">$18.00</span>
-                            <span style="font-family: 'DM Mono', monospace; font-size: 10px; background: #eaf7ef; color: #2e8c61; padding: 4px 11px; border-radius: 100px;">&#x25CF; Completed</span>
-                            <span style="font-family: 'DM Mono', monospace; font-size: 10px; background: #f3edf7; color: #6f4f82; padding: 4px 11px; border-radius: 100px;">★ Premium</span>
-                            <span style="font-family: 'DM Mono', monospace; font-size: 10px; background: #e8f6f4; color: #2d8a7e; padding: 4px 11px; border-radius: 100px;">↗ Promo</span>
-                            <span style="font-family: 'DM Mono', monospace; font-size: 10px; background: #fcf0f3; color: #b85a73; padding: 4px 11px; border-radius: 100px;">♥ Favorite</span>
+                            <span style="font-family: 'Monaspace Argon', monospace; font-size: 10px; background: #edeef5; color: #656ea4; padding: 4px 11px; border-radius: 100px;">$18.00</span>
+                            <span style="font-family: 'Monaspace Argon', monospace; font-size: 10px; background: #eaf7ef; color: #2e8c61; padding: 4px 11px; border-radius: 100px;">&#x25CF; Completed</span>
+                            <span style="font-family: 'Monaspace Argon', monospace; font-size: 10px; background: #f3edf7; color: #6f4f82; padding: 4px 11px; border-radius: 100px;">★ Premium</span>
+                            <span style="font-family: 'Monaspace Argon', monospace; font-size: 10px; background: #e8f6f4; color: #2d8a7e; padding: 4px 11px; border-radius: 100px;">↗ Promo</span>
+                            <span style="font-family: 'Monaspace Argon', monospace; font-size: 10px; background: #fcf0f3; color: #b85a73; padding: 4px 11px; border-radius: 100px;">♥ Favorite</span>
                         </div>
                     </div>
                 </div>
                 <div class="preview-panel dark">
-                    <div style="font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.25em; text-transform: uppercase; color: #9a8e9e; margin-bottom: 16px;">Dark Theme</div>
+                    <div style="font-family: 'Monaspace Argon', monospace; font-size: 10px; letter-spacing: 0.25em; text-transform: uppercase; color: #9a8e9e; margin-bottom: 16px;">Dark Theme</div>
                     <div class="preview-surface">
                         <div class="preview-title">Upcoming Wash</div>
                         <div class="preview-body">Premium Detail Package at Downtown Station. Estimated completion in 45 minutes.</div>
@@ -760,11 +776,11 @@
                         <div class="preview-title">Recent Activity</div>
                         <div class="preview-body">Basic Exterior Wash completed on Mar 15 at 3:45 PM.</div>
                         <div style="display: flex; gap: 8px; flex-wrap: wrap;">
-                            <span style="font-family: 'DM Mono', monospace; font-size: 10px; background: #313666; color: #c4c7df; padding: 4px 11px; border-radius: 100px;">$18.00</span>
-                            <span style="font-family: 'DM Mono', monospace; font-size: 10px; background: #1a3d2a; color: #95d4b3; padding: 4px 11px; border-radius: 100px;">&#x25CF; Completed</span>
-                            <span style="font-family: 'DM Mono', monospace; font-size: 10px; background: #2a1a32; color: #c4a5d2; padding: 4px 11px; border-radius: 100px;">★ Premium</span>
-                            <span style="font-family: 'DM Mono', monospace; font-size: 10px; background: #0e2a27; color: #8ad4cb; padding: 4px 11px; border-radius: 100px;">↗ Promo</span>
-                            <span style="font-family: 'DM Mono', monospace; font-size: 10px; background: #321a22; color: #e8adc0; padding: 4px 11px; border-radius: 100px;">♥ Favorite</span>
+                            <span style="font-family: 'Monaspace Argon', monospace; font-size: 10px; background: #313666; color: #c4c7df; padding: 4px 11px; border-radius: 100px;">$18.00</span>
+                            <span style="font-family: 'Monaspace Argon', monospace; font-size: 10px; background: #1a3d2a; color: #95d4b3; padding: 4px 11px; border-radius: 100px;">&#x25CF; Completed</span>
+                            <span style="font-family: 'Monaspace Argon', monospace; font-size: 10px; background: #2a1a32; color: #c4a5d2; padding: 4px 11px; border-radius: 100px;">★ Premium</span>
+                            <span style="font-family: 'Monaspace Argon', monospace; font-size: 10px; background: #0e2a27; color: #8ad4cb; padding: 4px 11px; border-radius: 100px;">↗ Promo</span>
+                            <span style="font-family: 'Monaspace Argon', monospace; font-size: 10px; background: #321a22; color: #e8adc0; padding: 4px 11px; border-radius: 100px;">♥ Favorite</span>
                         </div>
                     </div>
                 </div>

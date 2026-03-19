@@ -6,7 +6,21 @@
         <title>AquaDrive — Color System</title>
         <script>(function(){var s=localStorage.getItem('aquadrive-theme');var t=s||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');if(t==='dark')document.documentElement.setAttribute('data-theme','dark');})()</script>
         <style>
-            @import url("https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Syne:wght@400;600;700;800&display=swap");
+            @font-face {
+                font-family: "Monaspace Argon";
+                src: url("fonts/MonaspaceArgonVar.woff") format("woff");
+                font-weight: 100 900;
+                font-style: normal;
+                font-display: swap;
+            }
+
+            @font-face {
+                font-family: "Monaspace Krypton";
+                src: url("fonts/MonaspaceKryptonVar.woff") format("woff");
+                font-weight: 100 900;
+                font-style: normal;
+                font-display: swap;
+            }
 
             :root {
                 --bg: #f4eded;
@@ -51,7 +65,7 @@
             body {
                 background: var(--bg);
                 color: var(--text);
-                font-family: "Syne", sans-serif;
+                font-family: "Monaspace Argon", sans-serif;
                 padding: 48px 32px;
                 min-height: 100vh;
             }
@@ -61,7 +75,7 @@
             }
 
             .brand-tag {
-                font-family: "DM Mono", monospace;
+                font-family: "Monaspace Argon", monospace;
                 font-size: 11px;
                 letter-spacing: 0.2em;
                 text-transform: uppercase;
@@ -70,6 +84,7 @@
             }
 
             h1 {
+                font-family: "Monaspace Krypton", sans-serif;
                 font-size: 42px;
                 font-weight: 800;
                 letter-spacing: -0.02em;
@@ -93,7 +108,7 @@
             }
 
             .section-label {
-                font-family: "DM Mono", monospace;
+                font-family: "Monaspace Argon", monospace;
                 font-size: 10px;
                 letter-spacing: 0.25em;
                 text-transform: uppercase;
@@ -155,7 +170,7 @@
             }
 
             .hex-chip {
-                font-family: "DM Mono", monospace;
+                font-family: "Monaspace Argon", monospace;
                 background: var(--bg);
                 border-radius: 4px;
                 padding: 2px 7px;
@@ -217,7 +232,7 @@
                 display: flex;
                 align-items: center;
                 gap: 8px;
-                font-family: "DM Mono", monospace;
+                font-family: "Monaspace Argon", monospace;
                 font-size: 10px;
                 color: var(--text-muted);
             }
@@ -281,11 +296,11 @@
                 font-size: 12px;
                 font-weight: 600;
                 flex: 1;
-                font-family: "DM Mono", monospace;
+                font-family: "Monaspace Argon", monospace;
             }
 
             .panel-swatch-hex {
-                font-family: "DM Mono", monospace;
+                font-family: "Monaspace Argon", monospace;
                 font-size: 10px;
                 opacity: 0.5;
             }
@@ -311,7 +326,7 @@
 
             .status-badge {
                 font-size: 10px;
-                font-family: "DM Mono", monospace;
+                font-family: "Monaspace Argon", monospace;
                 padding: 4px 11px;
                 border-radius: 100px;
                 font-weight: 500;
@@ -326,7 +341,7 @@
             }
 
             .btn {
-                font-family: "Syne", sans-serif;
+                font-family: "Monaspace Argon", sans-serif;
                 font-size: 13px;
                 font-weight: 600;
                 padding: 10px 20px;
@@ -353,7 +368,7 @@
             }
 
             .mini-label {
-                font-family: "DM Mono", monospace;
+                font-family: "Monaspace Argon", monospace;
                 font-size: 9px;
                 letter-spacing: 0.12em;
                 opacity: 0.6;
@@ -384,7 +399,7 @@
                 flex-wrap: wrap;
             }
             .nav a {
-                font-family: "DM Mono", monospace;
+                font-family: "Monaspace Argon", monospace;
                 font-size: 11px;
                 letter-spacing: 0.08em;
                 text-transform: uppercase;
@@ -403,7 +418,7 @@
 
             /* THEME TOGGLE */
             .theme-toggle {
-                font-family: "DM Mono", monospace;
+                font-family: "Monaspace Argon", monospace;
                 font-size: 11px;
                 letter-spacing: 0.08em;
                 text-transform: uppercase;

@@ -6,7 +6,21 @@
         <title>AquaDrive — Components</title>
         <script>(function(){var s=localStorage.getItem('aquadrive-theme');var t=s||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');if(t==='dark')document.documentElement.setAttribute('data-theme','dark');})()</script>
         <style>
-            @import url("https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Syne:wght@400;600;700;800&display=swap");
+            @font-face {
+                font-family: "Monaspace Argon";
+                src: url("fonts/MonaspaceArgonVar.woff") format("woff");
+                font-weight: 100 900;
+                font-style: normal;
+                font-display: swap;
+            }
+
+            @font-face {
+                font-family: "Monaspace Krypton";
+                src: url("fonts/MonaspaceKryptonVar.woff") format("woff");
+                font-weight: 100 900;
+                font-style: normal;
+                font-display: swap;
+            }
 
             :root {
                 --bg: #f4eded;
@@ -81,7 +95,7 @@
             body {
                 background: var(--bg);
                 color: var(--text);
-                font-family: "Syne", sans-serif;
+                font-family: "Monaspace Argon", sans-serif;
                 padding: 48px 32px;
                 min-height: 100vh;
             }
@@ -94,7 +108,7 @@
                 flex-wrap: wrap;
             }
             .nav a {
-                font-family: "DM Mono", monospace;
+                font-family: "Monaspace Argon", monospace;
                 font-size: 11px;
                 letter-spacing: 0.08em;
                 text-transform: uppercase;
@@ -114,7 +128,7 @@
             header { margin-bottom: 56px; }
 
             .brand-tag {
-                font-family: "DM Mono", monospace;
+                font-family: "Monaspace Argon", monospace;
                 font-size: 11px;
                 letter-spacing: 0.2em;
                 text-transform: uppercase;
@@ -123,6 +137,7 @@
             }
 
             h1 {
+                font-family: "Monaspace Krypton", sans-serif;
                 font-size: 42px;
                 font-weight: 800;
                 letter-spacing: -0.02em;
@@ -140,7 +155,7 @@
             .section { margin-bottom: 48px; }
 
             .section-label {
-                font-family: "DM Mono", monospace;
+                font-family: "Monaspace Argon", monospace;
                 font-size: 10px;
                 letter-spacing: 0.25em;
                 text-transform: uppercase;
@@ -159,7 +174,7 @@
 
             /* BUTTONS */
             .btn {
-                font-family: "Syne", sans-serif;
+                font-family: "Monaspace Argon", sans-serif;
                 font-size: 13px;
                 font-weight: 600;
                 padding: 10px 20px;
@@ -205,7 +220,7 @@
             }
 
             .demo-label {
-                font-family: "DM Mono", monospace;
+                font-family: "Monaspace Argon", monospace;
                 font-size: 10px;
                 color: var(--text-muted);
                 letter-spacing: 0.1em;
@@ -222,7 +237,7 @@
 
             /* INPUT FIELDS */
             .input {
-                font-family: "Syne", sans-serif;
+                font-family: "Monaspace Argon", sans-serif;
                 font-size: 13px;
                 padding: 10px 14px;
                 border-radius: 10px;
@@ -259,7 +274,7 @@
 
             /* SELECT */
             .select {
-                font-family: "Syne", sans-serif;
+                font-family: "Monaspace Argon", sans-serif;
                 font-size: 13px;
                 padding: 10px 14px;
                 border-radius: 10px;
@@ -282,7 +297,7 @@
 
             /* TEXTAREA */
             .textarea {
-                font-family: "Syne", sans-serif;
+                font-family: "Monaspace Argon", sans-serif;
                 font-size: 13px;
                 padding: 10px 14px;
                 border-radius: 10px;
@@ -352,7 +367,7 @@
 
             /* BADGES */
             .badge {
-                font-family: "DM Mono", monospace;
+                font-family: "Monaspace Argon", monospace;
                 font-size: 10px;
                 font-weight: 500;
                 padding: 4px 11px;
@@ -423,7 +438,7 @@
                 font-size: 32px;
             }
             .card-body { padding: 18px; }
-            .card-title { font-size: 15px; font-weight: 700; margin-bottom: 4px; }
+            .card-title { font-family: "Monaspace Krypton", sans-serif; font-size: 15px; font-weight: 700; margin-bottom: 4px; }
             .card-desc { font-size: 12px; color: var(--text-muted); margin-bottom: 14px; line-height: 1.5; }
             .card-footer {
                 display: flex;
@@ -432,7 +447,7 @@
             }
             .card-price { font-size: 18px; font-weight: 800; color: var(--primary); }
             .card-meta {
-                font-family: "DM Mono", monospace;
+                font-family: "Monaspace Argon", monospace;
                 font-size: 10px;
                 color: var(--text-muted);
             }
@@ -490,7 +505,7 @@
                 background: var(--text);
                 color: var(--bg);
                 font-size: 11px;
-                font-family: "DM Mono", monospace;
+                font-family: "Monaspace Argon", monospace;
                 padding: 6px 10px;
                 border-radius: 8px;
                 position: absolute;
@@ -543,7 +558,7 @@
                 font-size: 13px;
             }
             th {
-                font-family: "DM Mono", monospace;
+                font-family: "Monaspace Argon", monospace;
                 font-size: 10px;
                 letter-spacing: 0.12em;
                 text-transform: uppercase;
@@ -570,7 +585,7 @@
                 width: fit-content;
             }
             .tab {
-                font-family: "DM Mono", monospace;
+                font-family: "Monaspace Argon", monospace;
                 font-size: 11px;
                 letter-spacing: 0.06em;
                 padding: 8px 16px;
@@ -591,7 +606,7 @@
 
             /* TAG / CHIP */
             .tag {
-                font-family: "DM Mono", monospace;
+                font-family: "Monaspace Argon", monospace;
                 font-size: 10px;
                 letter-spacing: 0.06em;
                 padding: 5px 12px;
@@ -746,7 +761,7 @@
 
             /* THEME TOGGLE */
             .theme-toggle {
-                font-family: "DM Mono", monospace;
+                font-family: "Monaspace Argon", monospace;
                 font-size: 11px;
                 letter-spacing: 0.08em;
                 text-transform: uppercase;

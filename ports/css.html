@@ -1,0 +1,764 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>AquaDrive — CSS Port</title>
+        <link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml" />
+        <script>(function(){var t=localStorage.getItem('aquadrive-theme');var a=localStorage.getItem('aquadrive-accent')||'blue';if(!t)t=window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light';if(t==='dark'){document.documentElement.setAttribute('data-theme','dark');}else{document.documentElement.removeAttribute('data-theme');}document.documentElement.setAttribute('data-accent',a);})()</script>
+        <link rel="stylesheet" href="../assets/css/style.css" />
+        <style>
+            /* --- Form Controls --- */
+            .port-form {
+                display: flex;
+                flex-direction: column;
+                gap: 32px;
+            }
+
+            .form-group {
+                background: var(--surface);
+                border: 1px solid var(--border);
+                border-radius: 16px;
+                padding: 24px;
+            }
+
+            .form-group-title {
+                font-family: var(--font-display);
+                font-size: var(--text-h4);
+                font-weight: 700;
+                margin-bottom: 16px;
+            }
+
+            .radio-group {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 8px;
+            }
+
+            .radio-option {
+                position: relative;
+            }
+
+            .radio-option input[type="radio"] {
+                position: absolute;
+                opacity: 0;
+                width: 0;
+                height: 0;
+            }
+
+            .radio-option label {
+                display: inline-block;
+                font-family: var(--font-mono);
+                font-size: 11px;
+                letter-spacing: 0.06em;
+                text-transform: uppercase;
+                padding: 8px 16px;
+                border-radius: 100px;
+                border: 1px solid var(--border);
+                color: var(--text-muted);
+                cursor: pointer;
+                transition: all 0.2s;
+                user-select: none;
+            }
+
+            .radio-option label:hover {
+                border-color: var(--accent-400);
+                color: var(--text);
+            }
+
+            .radio-option input[type="radio"]:checked + label {
+                background: var(--accent-500);
+                color: var(--warm-50);
+                border-color: var(--accent-500);
+            }
+
+            /* Toggle switch */
+            .toggle-option {
+                display: flex;
+                align-items: center;
+                gap: 12px;
+            }
+
+            .toggle-switch {
+                position: relative;
+                width: 44px;
+                height: 24px;
+                flex-shrink: 0;
+            }
+
+            .toggle-switch input {
+                opacity: 0;
+                width: 0;
+                height: 0;
+            }
+
+            .toggle-slider {
+                position: absolute;
+                cursor: pointer;
+                top: 0; left: 0; right: 0; bottom: 0;
+                background: var(--border);
+                border-radius: 24px;
+                transition: all 0.2s;
+            }
+
+            .toggle-slider::before {
+                content: "";
+                position: absolute;
+                height: 18px;
+                width: 18px;
+                left: 3px;
+                bottom: 3px;
+                background: var(--surface);
+                border-radius: 50%;
+                transition: all 0.2s;
+            }
+
+            .toggle-switch input:checked + .toggle-slider {
+                background: var(--accent-500);
+            }
+
+            .toggle-switch input:checked + .toggle-slider::before {
+                transform: translateX(20px);
+            }
+
+            .toggle-label {
+                font-family: var(--font-mono);
+                font-size: 11px;
+                letter-spacing: 0.06em;
+                text-transform: uppercase;
+                color: var(--text-muted);
+            }
+
+            /* Download button */
+            .download-btn {
+                font-family: var(--font-display);
+                font-size: var(--text-h4);
+                font-weight: 700;
+                padding: 14px 32px;
+                border-radius: 100px;
+                border: none;
+                background: var(--accent-500);
+                color: var(--warm-50);
+                cursor: pointer;
+                transition: all 0.2s;
+                letter-spacing: 0.02em;
+                align-self: flex-start;
+            }
+
+            .download-btn:hover {
+                background: var(--accent-600);
+                transform: translateY(-1px);
+                box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+            }
+
+            /* Preview panel */
+            .preview-panel {
+                background: var(--warm-950);
+                border-radius: 12px;
+                border: 1px solid var(--border);
+                overflow: hidden;
+            }
+
+            .preview-header {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                padding: 10px 16px;
+                background: var(--warm-900);
+                border-bottom: 1px solid var(--warm-850);
+            }
+
+            .preview-filename {
+                font-family: var(--font-mono);
+                font-size: 11px;
+                color: var(--warm-500);
+            }
+
+            .preview-badge {
+                font-family: var(--font-mono);
+                font-size: 10px;
+                letter-spacing: 0.06em;
+                text-transform: uppercase;
+                color: var(--accent-400);
+                background: var(--accent-800);
+                padding: 2px 8px;
+                border-radius: 100px;
+            }
+
+            .preview-body {
+                padding: 20px;
+                font-family: var(--font-mono);
+                font-size: var(--text-caption);
+                line-height: 1.8;
+                color: var(--blue-200);
+                overflow-x: auto;
+                max-height: 480px;
+                overflow-y: auto;
+                white-space: pre;
+            }
+
+            .preview-body .hl-comment { color: var(--warm-500); }
+            .preview-body .hl-prop { color: var(--blue-400); }
+            .preview-body .hl-val { color: var(--green-soft); }
+            .preview-body .hl-sel { color: var(--rose-400); }
+            .preview-body .hl-str { color: var(--yellow-main); }
+            .preview-body .hl-keyword { color: var(--purple-400); }
+
+            /* Layout: form + preview side by side */
+            .port-layout {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 24px;
+                align-items: start;
+            }
+
+            @media (max-width: 900px) {
+                .port-layout {
+                    grid-template-columns: 1fr;
+                }
+            }
+
+            @media (max-width: 640px) {
+                .download-btn {
+                    width: 100%;
+                    text-align: center;
+                }
+            }
+        </style>
+        <script src="../assets/js/highlight.js" defer></script>
+    </head>
+    <body>
+        <nav class="aqua-navbar">
+            <a href="../index.html" class="aqua-navbar-brand"><svg viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M14 3C14 3 5 10 5 17C5 21.4183 9.02944 25 14 25C18.9706 25 23 21.4183 23 17C23 10 14 3 14 3Z" fill="var(--accent-500)"/><path d="M14 9C14 9 9 13.5 9 17C9 19.7614 11.2386 22 14 22C16.7614 22 19 19.7614 19 17C19 13.5 14 9 14 9Z" fill="var(--bg)" opacity="0.7"/></svg>Aqua<span>Drive</span></a>
+            <button class="aqua-navbar-toggle" onclick="toggleNav()" aria-label="Toggle menu"><span></span></button>
+            <div class="aqua-navbar-collapse">
+            <div class="aqua-navbar-links">
+                <a href="../index.html">Colors</a>
+                <a href="../typography.html">Typography</a>
+                <a href="../elements.html">Elements</a>
+                <a href="../ports.html" class="active">Ports</a>
+            </div>
+            <div class="aqua-navbar-actions">
+                <div class="aqua-navbar-settings">
+                    <button class="aqua-navbar-settings-btn" onclick="toggleSettings(event)">
+                        <svg viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="3" stroke="currentColor" stroke-width="1.5"/><path d="M8 1v2M8 13v2M1 8h2M13 8h2M3.05 3.05l1.41 1.41M11.54 11.54l1.41 1.41M3.05 12.95l1.41-1.41M11.54 4.46l1.41-1.41" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+                        Settings
+                    </button>
+                    <div class="aqua-navbar-dropdown" id="navSettingsDropdown">
+                        <div class="aqua-navbar-dropdown-label">Accent Color</div>
+                        <div class="aqua-navbar-dropdown-row">
+                            <button class="accent-dot" data-color="blue" onclick="setAccent('blue')" aria-label="Blue accent"></button>
+                            <button class="accent-dot" data-color="purple" onclick="setAccent('purple')" aria-label="Purple accent"></button>
+                            <button class="accent-dot" data-color="cyan" onclick="setAccent('cyan')" aria-label="Cyan accent"></button>
+                            <button class="accent-dot" data-color="rose" onclick="setAccent('rose')" aria-label="Rose accent"></button>
+                        </div>
+                        <div class="aqua-navbar-dropdown-divider"></div>
+                        <button class="aqua-navbar-dropdown-item" onclick="toggleTheme()">
+                            <svg viewBox="0 0 16 16" fill="none"><path d="M8 1a7 7 0 1 0 0 14A7 7 0 0 0 8 1Z" stroke="currentColor" stroke-width="1.5"/><path d="M8 3v10a5 5 0 0 0 0-10Z" fill="currentColor"/></svg>
+                            <span class="theme-toggle-label">Toggle Theme</span>
+                        </button>
+                        <button class="aqua-navbar-dropdown-item" onclick="toggleMobile()">
+                            <svg viewBox="0 0 16 16" fill="none"><rect x="4" y="1" width="8" height="14" rx="1.5" stroke="currentColor" stroke-width="1.5"/><line x1="6.5" y1="12.5" x2="9.5" y2="12.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+                            Mobile Preview
+                        </button>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </nav>
+
+        <nav class="breadcrumb">
+            <a href="../index.html">AquaDrive</a>
+            <span class="sep">/</span>
+            <a href="../ports.html">Ports</a>
+            <span class="sep">/</span>
+            <span class="current">CSS</span>
+        </nav>
+
+        <header>
+            <div class="brand-tag">AquaDrive · Design System</div>
+            <h1>CSS<span> Port</span></h1>
+            <p class="subtitle">Download a customized CSS file for your project.</p>
+        </header>
+
+        <section class="section">
+            <div class="section-label">Configuration</div>
+            <div class="port-layout">
+                <div class="port-form">
+                    <!-- Variations -->
+                    <div class="form-group">
+                        <div class="form-group-title">Variations</div>
+                        <div class="radio-group">
+                            <div class="radio-option">
+                                <input type="radio" id="var-light" name="variation" value="light">
+                                <label for="var-light">Light only</label>
+                            </div>
+                            <div class="radio-option">
+                                <input type="radio" id="var-dark" name="variation" value="dark">
+                                <label for="var-dark">Dark only</label>
+                            </div>
+                            <div class="radio-option">
+                                <input type="radio" id="var-both" name="variation" value="both" checked>
+                                <label for="var-both">Light and dark</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Accent Color -->
+                    <div class="form-group">
+                        <div class="form-group-title">Accent Color</div>
+                        <div class="radio-group">
+                            <div class="radio-option">
+                                <input type="radio" id="accent-blue" name="accent" value="blue">
+                                <label for="accent-blue">Blue</label>
+                            </div>
+                            <div class="radio-option">
+                                <input type="radio" id="accent-purple" name="accent" value="purple">
+                                <label for="accent-purple">Purple</label>
+                            </div>
+                            <div class="radio-option">
+                                <input type="radio" id="accent-cyan" name="accent" value="cyan">
+                                <label for="accent-cyan">Cyan</label>
+                            </div>
+                            <div class="radio-option">
+                                <input type="radio" id="accent-rose" name="accent" value="rose">
+                                <label for="accent-rose">Ros&eacute;</label>
+                            </div>
+                            <div class="radio-option">
+                                <input type="radio" id="accent-all" name="accent" value="all" checked>
+                                <label for="accent-all">All</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Minified -->
+                    <div class="form-group">
+                        <div class="form-group-title">Minified</div>
+                        <div class="toggle-option">
+                            <label class="toggle-switch">
+                                <input type="checkbox" id="minified">
+                                <span class="toggle-slider"></span>
+                            </label>
+                            <span class="toggle-label" id="minified-label">No</span>
+                        </div>
+                    </div>
+
+                    <button class="download-btn" onclick="downloadCSS()">Download CSS</button>
+                </div>
+
+                <!-- Live Preview -->
+                <div class="preview-panel">
+                    <div class="preview-header">
+                        <span class="preview-filename">aquadrive.css</span>
+                        <span class="preview-badge">Preview</span>
+                    </div>
+                    <div class="preview-body" id="preview"></div>
+                </div>
+            </div>
+        </section>
+
+        <script>
+            /* ---- Theme / Accent shared JS ---- */
+            function toggleTheme() {
+                var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+                var next = isDark ? 'light' : 'dark';
+                if (next === 'dark') {
+                    document.documentElement.setAttribute('data-theme', 'dark');
+                } else {
+                    document.documentElement.removeAttribute('data-theme');
+                }
+                localStorage.setItem('aquadrive-theme', next);
+                updateToggleLabel();
+            }
+            function toggleSettings(e) {
+                if (e) e.stopPropagation();
+                var dd = document.getElementById('navSettingsDropdown');
+                dd.classList.toggle('open');
+            }
+            document.addEventListener('click', function(e) {
+                var settings = document.querySelector('.aqua-navbar-settings');
+                if (settings && !settings.contains(e.target)) {
+                    document.getElementById('navSettingsDropdown').classList.remove('open');
+                }
+            });
+            function toggleNav() {
+                document.querySelector('.aqua-navbar').classList.toggle('nav-open');
+            }
+            function updateToggleLabel() {
+                var btn = document.querySelector('.theme-toggle');
+                if (!btn) return;
+                var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+                btn.textContent = isDark ? 'Light' : 'Dark';
+            }
+            function setAccent(color) {
+                document.documentElement.setAttribute('data-accent', color);
+                localStorage.setItem('aquadrive-accent', color);
+                updateAccentDots();
+            }
+            function updateAccentDots() {
+                var current = document.documentElement.getAttribute('data-accent') || 'blue';
+                document.querySelectorAll('.accent-dot').forEach(function(dot) {
+                    dot.classList.toggle('active', dot.getAttribute('data-color') === current);
+                });
+            }
+            /* Mobile Preview */
+            function toggleMobile() {
+                var existing = document.querySelector('.mobile-preview-backdrop');
+                if (existing) { existing.classList.toggle('open'); return; }
+                var backdrop = document.createElement('div');
+                backdrop.className = 'mobile-preview-backdrop open';
+                backdrop.onclick = function(e) { if (e.target === backdrop) backdrop.classList.remove('open'); };
+                var device = document.createElement('div');
+                device.className = 'mobile-preview-device';
+                var notch = document.createElement('div');
+                notch.className = 'mobile-preview-notch';
+                var screen = document.createElement('div');
+                screen.className = 'mobile-preview-screen';
+                var iframe = document.createElement('iframe');
+                iframe.src = window.location.href;
+                var close = document.createElement('button');
+                close.className = 'mobile-preview-close';
+                close.innerHTML = '&times;';
+                close.onclick = function() { backdrop.classList.remove('open'); };
+                var label = document.createElement('div');
+                label.className = 'mobile-preview-label';
+                label.textContent = '390 × 844 — iPhone 14 Pro';
+                screen.appendChild(iframe);
+                device.appendChild(notch);
+                device.appendChild(screen);
+                device.appendChild(close);
+                device.appendChild(label);
+                backdrop.appendChild(device);
+                document.body.appendChild(backdrop);
+            }
+
+            updateToggleLabel();
+            updateAccentDots();
+
+            /* ---- Design Tokens ---- */
+            var tokens = {
+                neutrals: {
+                    '--warm-50': '#F4EDED',
+                    '--warm-100': '#E8DEDE',
+                    '--warm-200': '#E0D5D5',
+                    '--warm-500': '#9A8E8E',
+                    '--warm-800': '#3D3240',
+                    '--warm-850': '#352C43',
+                    '--warm-900': '#261F34',
+                    '--warm-950': '#1C1828'
+                },
+                accents: {
+                    blue: {
+                        '--blue-50': '#EDEEF5',
+                        '--blue-200': '#C4C7DF',
+                        '--blue-400': '#8C92BE',
+                        '--blue-500': '#656EA4',
+                        '--blue-600': '#4E5688',
+                        '--blue-800': '#313666'
+                    },
+                    purple: {
+                        '--purple-50': '#F3EDF7',
+                        '--purple-200': '#D4C4DE',
+                        '--purple-400': '#B08EC5',
+                        '--purple-500': '#8E6AA0',
+                        '--purple-600': '#6F4F82',
+                        '--purple-800': '#432E54'
+                    },
+                    cyan: {
+                        '--cyan-50': '#E8F6F4',
+                        '--cyan-200': '#B5E2DC',
+                        '--cyan-400': '#6EC5BA',
+                        '--cyan-500': '#3AAFA0',
+                        '--cyan-600': '#2D8A7E',
+                        '--cyan-800': '#1A524C'
+                    },
+                    rose: {
+                        '--rose-50': '#FCF0F3',
+                        '--rose-200': '#F0C4D0',
+                        '--rose-400': '#E295AC',
+                        '--rose-500': '#D4738C',
+                        '--rose-600': '#B85A73',
+                        '--rose-800': '#6E2F40'
+                    }
+                },
+                status: {
+                    '--red-main': '#E66260',
+                    '--red-soft': '#F3A8A7',
+                    '--red-tint': '#FCEAEA',
+                    '--yellow-main': '#F9DB6D',
+                    '--yellow-soft': '#FCEEA8',
+                    '--yellow-tint': '#FEF9E6',
+                    '--green-main': '#52B788',
+                    '--green-soft': '#95D4B3',
+                    '--green-tint': '#EAF7EF'
+                },
+                fonts: {
+                    '--font-display': '"Monaspace Krypton", monospace',
+                    '--font-body': '"Monaspace Argon", sans-serif',
+                    '--font-mono': '"Monaspace Argon", monospace'
+                },
+                sizes: {
+                    '--text-display': '42px',
+                    '--text-h2': '28px',
+                    '--text-h3': '20px',
+                    '--text-h4': '15px',
+                    '--text-body': '14px',
+                    '--text-small': '13px',
+                    '--text-caption': '12px',
+                    '--text-label': '10px'
+                },
+                lightTheme: {
+                    '--bg': 'var(--warm-50)',
+                    '--surface': '#FFFFFF',
+                    '--surface-elevated': 'var(--warm-100)',
+                    '--border': 'var(--warm-200)',
+                    '--text': 'var(--warm-800)',
+                    '--text-muted': 'var(--warm-500)'
+                },
+                darkTheme: {
+                    '--bg': 'var(--warm-950)',
+                    '--surface': 'var(--warm-900)',
+                    '--surface-elevated': 'var(--warm-850)',
+                    '--border': 'var(--warm-850)',
+                    '--text': 'var(--warm-50)',
+                    '--text-muted': 'var(--warm-500)'
+                }
+            };
+
+            function accentMapping(name) {
+                return {
+                    '--accent-50': 'var(--' + name + '-50)',
+                    '--accent-200': 'var(--' + name + '-200)',
+                    '--accent-400': 'var(--' + name + '-400)',
+                    '--accent-500': 'var(--' + name + '-500)',
+                    '--accent-600': 'var(--' + name + '-600)',
+                    '--accent-800': 'var(--' + name + '-800)'
+                };
+            }
+
+            /* ---- Read form state ---- */
+            function getFormState() {
+                var variation = document.querySelector('input[name="variation"]:checked').value;
+                var accent = document.querySelector('input[name="accent"]:checked').value;
+                var minified = document.getElementById('minified').checked;
+                return { variation: variation, accent: accent, minified: minified };
+            }
+
+            /* ---- CSS Generation ---- */
+            function buildBlock(selector, props, indent, nl) {
+                var s = indent + selector + ' {' + nl;
+                var keys = Object.keys(props);
+                for (var i = 0; i < keys.length; i++) {
+                    s += indent + (indent ? indent : '    ') + keys[i] + ': ' + props[keys[i]] + ';' + nl;
+                }
+                s += indent + '}' + nl;
+                return s;
+            }
+
+            function generateCSS() {
+                var state = getFormState();
+                var min = state.minified;
+                var nl = min ? '' : '\n';
+                var sp = min ? '' : ' ';
+                var ind = min ? '' : '    ';
+
+                var css = '';
+
+                // Comment header
+                if (!min) {
+                    css += '/* ============================================================\n';
+                    css += '   AquaDrive Design System — Generated CSS\n';
+                    css += '   ============================================================ */\n\n';
+                }
+
+                // @font-face
+                css += '@font-face' + sp + '{' + nl;
+                css += ind + 'font-family:' + sp + '"Monaspace Argon";' + nl;
+                css += ind + 'src:' + sp + 'url("fonts/MonaspaceArgonVar.woff") format("woff");' + nl;
+                css += ind + 'font-weight:' + sp + '100 900;' + nl;
+                css += ind + 'font-style:' + sp + 'normal;' + nl;
+                css += ind + 'font-display:' + sp + 'swap;' + nl;
+                css += '}' + nl + nl;
+
+                css += '@font-face' + sp + '{' + nl;
+                css += ind + 'font-family:' + sp + '"Monaspace Krypton";' + nl;
+                css += ind + 'src:' + sp + 'url("fonts/MonaspaceKryptonVar.woff") format("woff");' + nl;
+                css += ind + 'font-weight:' + sp + '100 900;' + nl;
+                css += ind + 'font-style:' + sp + 'normal;' + nl;
+                css += ind + 'font-display:' + sp + 'swap;' + nl;
+                css += '}' + nl + nl;
+
+                // :root
+                var rootVars = {};
+
+                // Fonts + sizes
+                var fk = Object.keys(tokens.fonts);
+                for (var i = 0; i < fk.length; i++) rootVars[fk[i]] = tokens.fonts[fk[i]];
+                var sk = Object.keys(tokens.sizes);
+                for (var i = 0; i < sk.length; i++) rootVars[sk[i]] = tokens.sizes[sk[i]];
+
+                // Neutrals
+                var nk = Object.keys(tokens.neutrals);
+                for (var i = 0; i < nk.length; i++) rootVars[nk[i]] = tokens.neutrals[nk[i]];
+
+                // Status
+                var stk = Object.keys(tokens.status);
+                for (var i = 0; i < stk.length; i++) rootVars[stk[i]] = tokens.status[stk[i]];
+
+                // Accent tokens
+                if (state.accent === 'all') {
+                    var allNames = ['blue', 'purple', 'cyan', 'rose'];
+                    for (var a = 0; a < allNames.length; a++) {
+                        var ak = Object.keys(tokens.accents[allNames[a]]);
+                        for (var j = 0; j < ak.length; j++) rootVars[ak[j]] = tokens.accents[allNames[a]][ak[j]];
+                    }
+                    // Default accent = blue
+                    var am = accentMapping('blue');
+                    var amk = Object.keys(am);
+                    for (var i = 0; i < amk.length; i++) rootVars[amk[i]] = am[amk[i]];
+                } else {
+                    var ak = Object.keys(tokens.accents[state.accent]);
+                    for (var j = 0; j < ak.length; j++) rootVars[ak[j]] = tokens.accents[state.accent][ak[j]];
+                    var am = accentMapping(state.accent);
+                    var amk = Object.keys(am);
+                    for (var i = 0; i < amk.length; i++) rootVars[amk[i]] = am[amk[i]];
+                }
+
+                // Light theme mapping
+                if (state.variation !== 'dark') {
+                    var ltk = Object.keys(tokens.lightTheme);
+                    for (var i = 0; i < ltk.length; i++) rootVars[ltk[i]] = tokens.lightTheme[ltk[i]];
+                } else {
+                    // Dark only: put dark values directly in :root
+                    var dtk = Object.keys(tokens.darkTheme);
+                    for (var i = 0; i < dtk.length; i++) rootVars[dtk[i]] = tokens.darkTheme[dtk[i]];
+                }
+
+                // Build :root block
+                css += ':root' + sp + '{' + nl;
+                var rvk = Object.keys(rootVars);
+                for (var i = 0; i < rvk.length; i++) {
+                    css += ind + rvk[i] + ':' + sp + rootVars[rvk[i]] + ';' + nl;
+                }
+                css += '}' + nl + nl;
+
+                // Dark theme block
+                if (state.variation === 'both') {
+                    css += '[data-theme="dark"]' + sp + '{' + nl;
+                    var dtk = Object.keys(tokens.darkTheme);
+                    for (var i = 0; i < dtk.length; i++) {
+                        css += ind + dtk[i] + ':' + sp + tokens.darkTheme[dtk[i]] + ';' + nl;
+                    }
+                    css += '}' + nl + nl;
+
+                    // Dark accent-50 override
+                    css += '[data-theme="dark"]' + sp + '{' + nl;
+                    css += ind + '--accent-50:' + sp + 'var(--accent-800);' + nl;
+                    css += '}' + nl + nl;
+                }
+
+                // Accent selector blocks (if "All")
+                if (state.accent === 'all') {
+                    var allNames = ['blue', 'purple', 'cyan', 'rose'];
+                    for (var a = 0; a < allNames.length; a++) {
+                        var am = accentMapping(allNames[a]);
+                        css += '[data-accent="' + allNames[a] + '"]' + sp + '{' + nl;
+                        var amk = Object.keys(am);
+                        for (var i = 0; i < amk.length; i++) {
+                            css += ind + amk[i] + ':' + sp + am[amk[i]] + ';' + nl;
+                        }
+                        css += '}' + nl + nl;
+                    }
+                }
+
+                // Reset & body
+                if (!min) css += '/* Reset & Base */' + nl;
+                css += '*,' + sp + '*::before,' + sp + '*::after' + sp + '{' + nl;
+                css += ind + 'margin:' + sp + '0;' + nl;
+                css += ind + 'padding:' + sp + '0;' + nl;
+                css += ind + 'box-sizing:' + sp + 'border-box;' + nl;
+                css += '}' + nl + nl;
+
+                css += 'body' + sp + '{' + nl;
+                css += ind + 'background:' + sp + 'var(--bg);' + nl;
+                css += ind + 'color:' + sp + 'var(--text);' + nl;
+                css += ind + 'font-family:' + sp + 'var(--font-body);' + nl;
+                css += ind + 'font-size:' + sp + 'var(--text-body);' + nl;
+                css += ind + 'line-height:' + sp + '1.6;' + nl;
+                css += ind + 'min-height:' + sp + '100vh;' + nl;
+                css += '}' + nl;
+
+                return css;
+            }
+
+            /* ---- Preview rendering ---- */
+            function highlightCSS(css) {
+                var s = css.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+                // Extract strings first to avoid them being mangled by other regexes
+                var strings = [];
+                s = s.replace(/"(?:[^"\\]|\\.)*"/g, function(m) {
+                    strings.push(m);
+                    return '\x00S' + (strings.length - 1) + '\x00';
+                });
+                // Comments
+                s = s.replace(/(\/\*[\s\S]*?\*\/)/g, '<span class="hl-comment">$1</span>');
+                // Selectors (lines that end with {)
+                s = s.replace(/^([^\s{/@\x00][^{]*?)(\s*\{)/gm, '<span class="hl-sel">$1</span>$2');
+                // @-rules
+                s = s.replace(/^(@[\w-]+)/gm, '<span class="hl-keyword">$1</span>');
+                // Custom properties
+                s = s.replace(/(--[\w-]+)(\s*:\s*)([^;]+)(;)/g,
+                    '<span class="hl-prop">$1</span>$2<span class="hl-val">$3</span>$4');
+                // Standard properties
+                s = s.replace(/([ \t])([\w-]+)(\s*:\s*)([^;]+)(;)/g, function(m, ws, p, c, v, sc) {
+                    if (p.indexOf('--') === 0) return m;
+                    return ws + '<span class="hl-keyword">' + p + '</span>' + c + '<span class="hl-val">' + v + '</span>' + sc;
+                });
+                // Restore strings with highlighting
+                s = s.replace(/\x00S(\d+)\x00/g, function(m, i) {
+                    return '<span class="hl-str">' + strings[parseInt(i)] + '</span>';
+                });
+                return s;
+            }
+
+            function updatePreview() {
+                var css = generateCSS();
+                var preview = document.getElementById('preview');
+                preview.innerHTML = highlightCSS(css);
+            }
+
+            /* ---- Minified toggle label ---- */
+            function updateMinifiedLabel() {
+                var label = document.getElementById('minified-label');
+                label.textContent = document.getElementById('minified').checked ? 'Yes' : 'No';
+            }
+
+            /* ---- Download ---- */
+            function downloadCSS() {
+                var css = generateCSS();
+                var blob = new Blob([css], { type: 'text/css' });
+                var url = URL.createObjectURL(blob);
+                var a = document.createElement('a');
+                a.href = url;
+                a.download = 'aquadrive.css';
+                a.click();
+                URL.revokeObjectURL(url);
+            }
+
+            /* ---- Wire up events ---- */
+            document.querySelectorAll('input[name="variation"]').forEach(function(el) {
+                el.addEventListener('change', updatePreview);
+            });
+            document.querySelectorAll('input[name="accent"]').forEach(function(el) {
+                el.addEventListener('change', updatePreview);
+            });
+            document.getElementById('minified').addEventListener('change', function() {
+                updateMinifiedLabel();
+                updatePreview();
+            });
+
+            // Initial render
+            updatePreview();
+        </script>
+    </body>
+</html>

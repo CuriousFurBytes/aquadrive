@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+  <head></head>
+  <body>
+    <!-- Navbar -->
+    <header class="aquadrive-header">
+      <a href="/" class="aquadrive-brand">
+        <img src="/assets/img/favicon.png" alt="AquaDrive" />
+        <h1>
+          Aqua
+          <span>Drive</span>
+        </h1>
+      </a>
+      <nav class="aquadrive-header-nav">
+        <a href="colors.html">Colors</a>
+        <a href="elements.html">Elements</a>
+        <a href="ports.html">Ports</a>
+      </nav>
+      <div class="aquadrive-header-actions">
+        <button>
+          <svg viewBox="0 0 16 16" fill="none">
+            <circle
+              cx="8"
+              cy="8"
+              r="3"
+              stroke="currentColor"
+              stroke-width="1.5"
+            />
+            <path
+              d="M8 1v2M8 13v2M1 8h2M13 8h2M3.05 3.05l1.41 1.41M11.54 11.54l1.41 1.41M3.05 12.95l1.41-1.41M11.54 4.46l1.41-1.41"
+              stroke="currentColor"
+              stroke-width="1.5"
+              stroke-linecap="round"
+            />
+          </svg>
+          Settings
+        </button>
+        <div class="aquadrive-actions-dropdown">
+          <span class="label">Accent Color</span>
+          <div class="row">
+            <button
+              class="accent-dot"
+              data-color="blue"
+              aria-label="Blue Accent"
+            ></button>
+            <button
+              class="accent-dot"
+              data-color="purple"
+              aria-label="Purple Accent"
+            ></button>
+            <button
+              class="accent-dot"
+              data-color="cyan"
+              aria-label="Cyan Accent"
+            ></button>
+            <button
+              class="accent-dot"
+              data-color="rose"
+              aria-label="Rosé Accent"
+            ></button>
+          </div>
+          <hr />
+          <button class="aqua-navbar-dropdown-item" onclick="toggleTheme()">
+            <svg viewBox="0 0 16 16" fill="none">
+              <path
+                d="M8 1a7 7 0 1 0 0 14A7 7 0 0 0 8 1Z"
+                stroke="currentColor"
+                stroke-width="1.5"
+              />
+              <path d="M8 3v10a5 5 0 0 0 0-10Z" fill="currentColor" />
+            </svg>
+            <span class="theme-toggle-label">Toggle Theme</span>
+          </button>
+        </div>
+      </div>
+    </header>
+  </body>
+</html>

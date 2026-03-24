@@ -1,0 +1,521 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>AquaDrive — Buttons &amp; Actions</title>
+        <link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml" />
+        <script>(function(){var t=localStorage.getItem('aquadrive-theme');var a=localStorage.getItem('aquadrive-accent')||'blue';if(!t)t=window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light';if(t==='dark'){document.documentElement.setAttribute('data-theme','dark');}else{document.documentElement.removeAttribute('data-theme');}document.documentElement.setAttribute('data-accent',a);})()</script>
+        <link rel="stylesheet" href="../assets/css/style.css" />
+        <style>
+            .demo-box {
+                padding: 32px;
+                border: 1px solid var(--border);
+                border-radius: 12px;
+                background: var(--surface);
+                margin-bottom: 16px;
+            }
+
+            /* Buttons */
+            .aqua-btn {
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                gap: 8px;
+                font-family: var(--font-mono);
+                font-size: 13px;
+                font-weight: 600;
+                padding: 10px 20px;
+                border-radius: 8px;
+                border: 1px solid transparent;
+                cursor: pointer;
+                transition: all 0.2s;
+                text-decoration: none;
+                line-height: 1;
+            }
+
+            .aqua-btn-primary {
+                background: var(--accent-500);
+                color: #fff;
+                border-color: var(--accent-500);
+            }
+            .aqua-btn-primary:hover {
+                background: var(--accent-600);
+                border-color: var(--accent-600);
+            }
+
+            .aqua-btn-secondary {
+                background: var(--accent-50);
+                color: var(--accent-500);
+                border-color: var(--accent-50);
+            }
+            .aqua-btn-secondary:hover {
+                background: var(--accent-200);
+                border-color: var(--accent-200);
+            }
+
+            .aqua-btn-outline {
+                background: transparent;
+                color: var(--accent-500);
+                border-color: var(--accent-500);
+            }
+            .aqua-btn-outline:hover {
+                background: var(--accent-50);
+            }
+
+            .aqua-btn-ghost {
+                background: transparent;
+                color: var(--text-muted);
+                border-color: transparent;
+            }
+            .aqua-btn-ghost:hover {
+                color: var(--accent-500);
+                background: var(--accent-50);
+            }
+
+            .aqua-btn-danger {
+                background: var(--red-main);
+                color: #fff;
+                border-color: var(--red-main);
+            }
+            .aqua-btn-danger:hover {
+                opacity: 0.85;
+            }
+
+            /* Sizes */
+            .aqua-btn-sm {
+                font-size: 11px;
+                padding: 6px 14px;
+                border-radius: 6px;
+            }
+            .aqua-btn-lg {
+                font-size: 15px;
+                padding: 14px 28px;
+                border-radius: 10px;
+            }
+
+            .btn-row {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 12px;
+                align-items: center;
+            }
+            .btn-row + .btn-row {
+                margin-top: 20px;
+            }
+
+            /* Keyboard Shortcuts */
+            .aqua-kbd {
+                display: inline-block;
+                font-family: var(--font-mono);
+                font-size: 11px;
+                font-weight: 600;
+                line-height: 1;
+                padding: 5px 8px;
+                background: var(--surface);
+                border: 1px solid var(--border);
+                border-bottom-width: 3px;
+                border-radius: 6px;
+                color: var(--text);
+                white-space: nowrap;
+                vertical-align: baseline;
+            }
+            .kbd-combo {
+                display: inline-flex;
+                align-items: center;
+                gap: 4px;
+            }
+            .kbd-plus {
+                font-family: var(--font-mono);
+                font-size: 11px;
+                color: var(--text-muted);
+            }
+
+            /* Spinners */
+            .aqua-spinner {
+                display: inline-block;
+                width: 24px;
+                height: 24px;
+                border: 3px solid var(--border);
+                border-top-color: var(--accent-500);
+                border-radius: 50%;
+                animation: aqua-spin 0.7s linear infinite;
+            }
+            .aqua-spinner-sm {
+                width: 16px;
+                height: 16px;
+                border-width: 2px;
+            }
+            .aqua-spinner-lg {
+                width: 36px;
+                height: 36px;
+                border-width: 4px;
+            }
+            @keyframes aqua-spin {
+                to { transform: rotate(360deg); }
+            }
+
+            .spinner-row {
+                display: flex;
+                align-items: center;
+                gap: 24px;
+            }
+
+            /* Loading buttons */
+            .aqua-btn-loading {
+                position: relative;
+                color: transparent !important;
+                pointer-events: none;
+            }
+            .aqua-btn-loading::after {
+                content: '';
+                position: absolute;
+                width: 16px;
+                height: 16px;
+                border: 2px solid rgba(255,255,255,0.3);
+                border-top-color: #fff;
+                border-radius: 50%;
+                animation: aqua-spin 0.7s linear infinite;
+            }
+        </style>
+        <script src="../assets/js/highlight.js" defer></script>
+    </head>
+    <body>
+        <nav class="aqua-navbar">
+            <a href="../index.html" class="aqua-navbar-brand"><svg viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M14 3C14 3 5 10 5 17C5 21.4183 9.02944 25 14 25C18.9706 25 23 21.4183 23 17C23 10 14 3 14 3Z" fill="var(--accent-500)"/><path d="M14 9C14 9 9 13.5 9 17C9 19.7614 11.2386 22 14 22C16.7614 22 19 19.7614 19 17C19 13.5 14 9 14 9Z" fill="var(--bg)" opacity="0.7"/></svg>Aqua<span>Drive</span></a>
+            <button class="aqua-navbar-toggle" onclick="toggleNav()" aria-label="Toggle menu"><span></span></button>
+            <div class="aqua-navbar-collapse">
+            <div class="aqua-navbar-links">
+                <a href="../index.html">Colors</a>
+                <a href="../typography.html">Typography</a>
+                <a href="../elements.html" class="active">Elements</a>
+                <a href="../ports.html">Ports</a>
+            </div>
+            <div class="aqua-navbar-actions">
+                <div class="aqua-navbar-settings">
+                    <button class="aqua-navbar-settings-btn" onclick="toggleSettings(event)">
+                        <svg viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="3" stroke="currentColor" stroke-width="1.5"/><path d="M8 1v2M8 13v2M1 8h2M13 8h2M3.05 3.05l1.41 1.41M11.54 11.54l1.41 1.41M3.05 12.95l1.41-1.41M11.54 4.46l1.41-1.41" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+                        Settings
+                    </button>
+                    <div class="aqua-navbar-dropdown" id="navSettingsDropdown">
+                        <div class="aqua-navbar-dropdown-label">Accent Color</div>
+                        <div class="aqua-navbar-dropdown-row">
+                            <button class="accent-dot" data-color="blue" onclick="setAccent('blue')" aria-label="Blue accent"></button>
+                            <button class="accent-dot" data-color="purple" onclick="setAccent('purple')" aria-label="Purple accent"></button>
+                            <button class="accent-dot" data-color="cyan" onclick="setAccent('cyan')" aria-label="Cyan accent"></button>
+                            <button class="accent-dot" data-color="rose" onclick="setAccent('rose')" aria-label="Rose accent"></button>
+                        </div>
+                        <div class="aqua-navbar-dropdown-divider"></div>
+                        <button class="aqua-navbar-dropdown-item" onclick="toggleTheme()">
+                            <svg viewBox="0 0 16 16" fill="none"><path d="M8 1a7 7 0 1 0 0 14A7 7 0 0 0 8 1Z" stroke="currentColor" stroke-width="1.5"/><path d="M8 3v10a5 5 0 0 0 0-10Z" fill="currentColor"/></svg>
+                            <span class="theme-toggle-label">Toggle Theme</span>
+                        </button>
+                        <button class="aqua-navbar-dropdown-item" onclick="toggleMobile()">
+                            <svg viewBox="0 0 16 16" fill="none"><rect x="4" y="1" width="8" height="14" rx="1.5" stroke="currentColor" stroke-width="1.5"/><line x1="6.5" y1="12.5" x2="9.5" y2="12.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+                            Mobile Preview
+                        </button>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </nav>
+
+        <nav class="breadcrumb">
+            <a href="../index.html">AquaDrive</a>
+            <span class="sep">/</span>
+            <a href="../elements.html">Elements</a>
+            <span class="sep">/</span>
+            <span class="current">Buttons &amp; Actions</span>
+        </nav>
+
+        <header>
+            <div class="brand-tag">AquaDrive · Design System</div>
+            <h1>Buttons<span> &amp; Actions</span></h1>
+            <p class="subtitle">Interactive controls and action indicators.</p>
+        </header>
+
+        <!-- 1. Buttons -->
+        <section class="section">
+            <div class="section-label">Buttons</div>
+            <div class="demo-box">
+                <div class="btn-row">
+                    <button class="aqua-btn aqua-btn-primary">Primary</button>
+                    <button class="aqua-btn aqua-btn-secondary">Secondary</button>
+                    <button class="aqua-btn aqua-btn-outline">Outline</button>
+                    <button class="aqua-btn aqua-btn-ghost">Ghost</button>
+                    <button class="aqua-btn aqua-btn-danger">Danger</button>
+                </div>
+                <div class="btn-row">
+                    <button class="aqua-btn aqua-btn-primary aqua-btn-sm">Small</button>
+                    <button class="aqua-btn aqua-btn-primary">Default</button>
+                    <button class="aqua-btn aqua-btn-primary aqua-btn-lg">Large</button>
+                </div>
+                <div class="btn-row">
+                    <button class="aqua-btn aqua-btn-primary" style="border-radius: 999px;">Pill Shape</button>
+                    <button class="aqua-btn aqua-btn-primary" style="border-radius: 4px;">Square</button>
+                    <button class="aqua-btn aqua-btn-primary" style="width: 40px; height: 40px; padding: 0; border-radius: 8px;">&#9998;</button>
+                    <button class="aqua-btn aqua-btn-primary" style="width: 40px; height: 40px; padding: 0; border-radius: 50%;">&#43;</button>
+                </div>
+                <div class="btn-row">
+                    <button class="aqua-btn aqua-btn-primary">&#9998; Edit</button>
+                    <button class="aqua-btn aqua-btn-secondary">&#128190; Save</button>
+                    <button class="aqua-btn aqua-btn-outline">&#128269; Search</button>
+                    <button class="aqua-btn aqua-btn-danger">&#128465; Delete</button>
+                </div>
+                <div class="btn-row">
+                    <button class="aqua-btn aqua-btn-primary aqua-btn-loading">Loading</button>
+                    <button class="aqua-btn aqua-btn-secondary aqua-btn-loading">Loading</button>
+                    <button class="aqua-btn aqua-btn-outline aqua-btn-loading">Loading</button>
+                </div>
+                <div class="btn-row">
+                    <button class="aqua-btn aqua-btn-primary" disabled style="opacity: 0.5; cursor: not-allowed;">Disabled</button>
+                    <button class="aqua-btn aqua-btn-secondary" disabled style="opacity: 0.5; cursor: not-allowed;">Disabled</button>
+                    <button class="aqua-btn aqua-btn-outline" disabled style="opacity: 0.5; cursor: not-allowed;">Disabled</button>
+                </div>
+                <div class="btn-row" style="flex-direction: column;">
+                    <button class="aqua-btn aqua-btn-primary" style="width: 100%;">Full Width Primary</button>
+                    <button class="aqua-btn aqua-btn-outline" style="width: 100%;">Full Width Outline</button>
+                </div>
+            </div>
+            <div class="code-wrapper">
+                <div class="code-tabs">
+                    <button class="code-tab active" onclick="switchTab(this, 'html')">HTML</button>
+                    <button class="code-tab" onclick="switchTab(this, 'css')">CSS</button>
+                </div>
+                <div class="code-panel active" data-lang="html">
+                    <button class="code-copy" onclick="copyCode(this)">Copy</button>
+                    <pre>&lt;button class="aqua-btn aqua-btn-primary"&gt;Primary&lt;/button&gt;
+&lt;button class="aqua-btn aqua-btn-secondary"&gt;Secondary&lt;/button&gt;
+&lt;button class="aqua-btn aqua-btn-outline"&gt;Outline&lt;/button&gt;
+&lt;button class="aqua-btn aqua-btn-ghost"&gt;Ghost&lt;/button&gt;
+&lt;button class="aqua-btn aqua-btn-danger"&gt;Danger&lt;/button&gt;
+
+&lt;!-- Sizes --&gt;
+&lt;button class="aqua-btn aqua-btn-primary aqua-btn-sm"&gt;Small&lt;/button&gt;
+&lt;button class="aqua-btn aqua-btn-primary"&gt;Default&lt;/button&gt;
+&lt;button class="aqua-btn aqua-btn-primary aqua-btn-lg"&gt;Large&lt;/button&gt;
+
+&lt;!-- Shapes --&gt;
+&lt;button class="aqua-btn aqua-btn-primary" style="border-radius: 999px;"&gt;Pill Shape&lt;/button&gt;
+&lt;button class="aqua-btn aqua-btn-primary" style="border-radius: 4px;"&gt;Square&lt;/button&gt;
+&lt;button class="aqua-btn aqua-btn-primary" style="width: 40px; height: 40px; padding: 0; border-radius: 8px;"&gt;&amp;#9998;&lt;/button&gt;
+&lt;button class="aqua-btn aqua-btn-primary" style="width: 40px; height: 40px; padding: 0; border-radius: 50%;"&gt;&amp;#43;&lt;/button&gt;
+
+&lt;!-- With Icons --&gt;
+&lt;button class="aqua-btn aqua-btn-primary"&gt;&amp;#9998; Edit&lt;/button&gt;
+&lt;button class="aqua-btn aqua-btn-secondary"&gt;&amp;#128190; Save&lt;/button&gt;
+&lt;button class="aqua-btn aqua-btn-outline"&gt;&amp;#128269; Search&lt;/button&gt;
+&lt;button class="aqua-btn aqua-btn-danger"&gt;&amp;#128465; Delete&lt;/button&gt;
+
+&lt;!-- Loading --&gt;
+&lt;button class="aqua-btn aqua-btn-primary aqua-btn-loading"&gt;Loading&lt;/button&gt;
+
+&lt;!-- Disabled --&gt;
+&lt;button class="aqua-btn aqua-btn-primary" disabled&gt;Disabled&lt;/button&gt;
+
+&lt;!-- Full Width --&gt;
+&lt;button class="aqua-btn aqua-btn-primary" style="width: 100%;"&gt;Full Width Primary&lt;/button&gt;</pre>
+                </div>
+                <div class="code-panel" data-lang="css">
+                    <button class="code-copy" onclick="copyCode(this)">Copy</button>
+                    <pre>.aqua-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-family: var(--font-mono);
+    font-size: 13px;
+    font-weight: 600;
+    padding: 10px 20px;
+    border-radius: 8px;
+    border: 1px solid transparent;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+.aqua-btn-primary {
+    background: var(--accent-500);
+    color: #fff;
+}
+.aqua-btn-primary:hover {
+    background: var(--accent-600);
+}
+.aqua-btn-secondary {
+    background: var(--accent-50);
+    color: var(--accent-500);
+}
+.aqua-btn-outline {
+    background: transparent;
+    color: var(--accent-500);
+    border-color: var(--accent-500);
+}
+.aqua-btn-ghost {
+    background: transparent;
+    color: var(--text-muted);
+}
+.aqua-btn-ghost:hover {
+    color: var(--accent-500);
+    background: var(--accent-50);
+}
+.aqua-btn-danger {
+    background: var(--red-main);
+    color: #fff;
+}
+.aqua-btn-sm { font-size: 11px; padding: 6px 14px; }
+.aqua-btn-lg { font-size: 15px; padding: 14px 28px; }</pre>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. Keyboard Shortcuts -->
+        <section class="section">
+            <div class="section-label">Keyboard Shortcuts</div>
+            <div class="demo-box">
+                <div class="btn-row">
+                    <span class="kbd-combo">
+                        <kbd class="aqua-kbd">&#8984;</kbd>
+                        <span class="kbd-plus">+</span>
+                        <kbd class="aqua-kbd">S</kbd>
+                    </span>
+                    <span class="kbd-combo">
+                        <kbd class="aqua-kbd">Ctrl</kbd>
+                        <span class="kbd-plus">+</span>
+                        <kbd class="aqua-kbd">Shift</kbd>
+                        <span class="kbd-plus">+</span>
+                        <kbd class="aqua-kbd">P</kbd>
+                    </span>
+                    <kbd class="aqua-kbd">Esc</kbd>
+                    <kbd class="aqua-kbd">Enter</kbd>
+                    <kbd class="aqua-kbd">Tab</kbd>
+                </div>
+            </div>
+            <div class="code-wrapper">
+                <div class="code-tabs">
+                    <button class="code-tab active" onclick="switchTab(this, 'html')">HTML</button>
+                    <button class="code-tab" onclick="switchTab(this, 'css')">CSS</button>
+                </div>
+                <div class="code-panel active" data-lang="html">
+                    <button class="code-copy" onclick="copyCode(this)">Copy</button>
+                    <pre>&lt;span class="kbd-combo"&gt;
+    &lt;kbd class="aqua-kbd"&gt;&amp;#8984;&lt;/kbd&gt;
+    &lt;span class="kbd-plus"&gt;+&lt;/span&gt;
+    &lt;kbd class="aqua-kbd"&gt;S&lt;/kbd&gt;
+&lt;/span&gt;
+
+&lt;kbd class="aqua-kbd"&gt;Esc&lt;/kbd&gt;</pre>
+                </div>
+                <div class="code-panel" data-lang="css">
+                    <button class="code-copy" onclick="copyCode(this)">Copy</button>
+                    <pre>.aqua-kbd {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 600;
+    line-height: 1;
+    padding: 5px 8px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-bottom-width: 3px;
+    border-radius: 6px;
+    color: var(--text);
+}
+.kbd-combo {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+}
+.kbd-plus {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--text-muted);
+}</pre>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. Spinners -->
+        <section class="section">
+            <div class="section-label">Spinners</div>
+            <div class="demo-box">
+                <div class="spinner-row">
+                    <div class="aqua-spinner aqua-spinner-sm"></div>
+                    <div class="aqua-spinner"></div>
+                    <div class="aqua-spinner aqua-spinner-lg"></div>
+                </div>
+            </div>
+            <div class="code-wrapper">
+                <div class="code-tabs">
+                    <button class="code-tab active" onclick="switchTab(this, 'html')">HTML</button>
+                    <button class="code-tab" onclick="switchTab(this, 'css')">CSS</button>
+                </div>
+                <div class="code-panel active" data-lang="html">
+                    <button class="code-copy" onclick="copyCode(this)">Copy</button>
+                    <pre>&lt;div class="aqua-spinner aqua-spinner-sm"&gt;&lt;/div&gt;
+&lt;div class="aqua-spinner"&gt;&lt;/div&gt;
+&lt;div class="aqua-spinner aqua-spinner-lg"&gt;&lt;/div&gt;</pre>
+                </div>
+                <div class="code-panel" data-lang="css">
+                    <button class="code-copy" onclick="copyCode(this)">Copy</button>
+                    <pre>.aqua-spinner {
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    border: 3px solid var(--border);
+    border-top-color: var(--accent-500);
+    border-radius: 50%;
+    animation: aqua-spin 0.7s linear infinite;
+}
+.aqua-spinner-sm { width: 16px; height: 16px; border-width: 2px; }
+.aqua-spinner-lg { width: 36px; height: 36px; border-width: 4px; }
+
+@keyframes aqua-spin {
+    to { transform: rotate(360deg); }
+}</pre>
+                </div>
+            </div>
+        </section>
+
+        <script>
+            function toggleTheme(){var d=document.documentElement.getAttribute('data-theme')==='dark';var n=d?'light':'dark';n==='dark'?document.documentElement.setAttribute('data-theme','dark'):document.documentElement.removeAttribute('data-theme');localStorage.setItem('aquadrive-theme',n);updateToggleLabel();}
+            function toggleSettings(e){if(e)e.stopPropagation();var dd=document.getElementById('navSettingsDropdown');dd.classList.toggle('open');}
+            document.addEventListener('click',function(e){var s=document.querySelector('.aqua-navbar-settings');if(s&&!s.contains(e.target)){document.getElementById('navSettingsDropdown').classList.remove('open');}});
+            function toggleNav(){document.querySelector('.aqua-navbar').classList.toggle('nav-open');}
+            function updateToggleLabel(){var b=document.querySelector('.theme-toggle');if(!b)return;b.textContent=document.documentElement.getAttribute('data-theme')==='dark'?'Light':'Dark';}
+            function setAccent(c){document.documentElement.setAttribute('data-accent',c);localStorage.setItem('aquadrive-accent',c);updateAccentDots();}
+            function updateAccentDots(){var c=document.documentElement.getAttribute('data-accent')||'blue';document.querySelectorAll('.accent-dot').forEach(function(d){d.classList.toggle('active',d.getAttribute('data-color')===c);});}
+            function switchTab(btn,lang){var w=btn.closest('.code-wrapper');w.querySelectorAll('.code-tab').forEach(function(t){t.classList.remove('active');});btn.classList.add('active');w.querySelectorAll('.code-panel').forEach(function(p){p.classList.toggle('active',p.getAttribute('data-lang')===lang);});}
+            function copyCode(btn){var pre=btn.nextElementSibling;navigator.clipboard.writeText(pre.textContent).then(function(){btn.textContent='Copied!';setTimeout(function(){btn.textContent='Copy';},1500);});}
+            /* Mobile Preview */
+            function toggleMobile() {
+                var existing = document.querySelector('.mobile-preview-backdrop');
+                if (existing) { existing.classList.toggle('open'); return; }
+                var backdrop = document.createElement('div');
+                backdrop.className = 'mobile-preview-backdrop open';
+                backdrop.onclick = function(e) { if (e.target === backdrop) backdrop.classList.remove('open'); };
+                var device = document.createElement('div');
+                device.className = 'mobile-preview-device';
+                var notch = document.createElement('div');
+                notch.className = 'mobile-preview-notch';
+                var screen = document.createElement('div');
+                screen.className = 'mobile-preview-screen';
+                var iframe = document.createElement('iframe');
+                iframe.src = window.location.href;
+                var close = document.createElement('button');
+                close.className = 'mobile-preview-close';
+                close.innerHTML = '&times;';
+                close.onclick = function() { backdrop.classList.remove('open'); };
+                var label = document.createElement('div');
+                label.className = 'mobile-preview-label';
+                label.textContent = '390 × 844 — iPhone 14 Pro';
+                screen.appendChild(iframe);
+                device.appendChild(notch);
+                device.appendChild(screen);
+                device.appendChild(close);
+                device.appendChild(label);
+                backdrop.appendChild(device);
+                document.body.appendChild(backdrop);
+            }
+
+            updateToggleLabel();updateAccentDots();
+        </script>
+    </body>
+</html>

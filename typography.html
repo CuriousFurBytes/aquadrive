@@ -4,159 +4,11 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>AquaDrive — Typography</title>
-        <script>(function(){var s=localStorage.getItem('aquadrive-theme');var t=s||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');if(t==='dark')document.documentElement.setAttribute('data-theme','dark');})()</script>
+        <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml" />
+        <script>(function(){var t=localStorage.getItem('aquadrive-theme');var a=localStorage.getItem('aquadrive-accent')||'blue';if(!t)t=window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light';if(t==='dark'){document.documentElement.setAttribute('data-theme','dark');}else{document.documentElement.removeAttribute('data-theme');}document.documentElement.setAttribute('data-accent',a);})()</script>
+        <link rel="stylesheet" href="assets/css/style.css" />
         <style>
-            @font-face {
-                font-family: "Monaspace Argon";
-                src: url("fonts/MonaspaceArgonVar.woff") format("woff");
-                font-weight: 100 900;
-                font-style: normal;
-                font-display: swap;
-            }
-
-            @font-face {
-                font-family: "Monaspace Krypton";
-                src: url("fonts/MonaspaceKryptonVar.woff") format("woff");
-                font-weight: 100 900;
-                font-style: normal;
-                font-display: swap;
-            }
-
-            :root {
-                --bg: #f4eded;
-                --surface: #ffffff;
-                --border: #e0d5d5;
-                --text: #1c1828;
-                --text-muted: #7a6f7f;
-                --primary: #656ea4;
-                --primary-hover: #4e5688;
-                --primary-subtle: #edeef5;
-                --purple: #8e6aa0;
-                --cyan: #3aafa0;
-                --rose: #d4738c;
-            }
-
-            [data-theme="dark"] {
-                --bg: #1c1828;
-                --surface: #261f34;
-                --border: #352c43;
-                --text: #f4eded;
-                --text-muted: #9a8e9e;
-                --primary: #8c92be;
-                --primary-hover: #c4c7df;
-                --primary-subtle: #313666;
-                --purple: #b08ec5;
-                --cyan: #6ec5ba;
-                --rose: #e295ac;
-            }
-
-            * { margin: 0; padding: 0; box-sizing: border-box; }
-
-            body {
-                background: var(--bg);
-                color: var(--text);
-                font-family: "Monaspace Argon", sans-serif;
-                padding: 48px 32px;
-                min-height: 100vh;
-            }
-
-            .nav {
-                display: flex;
-                gap: 6px;
-                margin-bottom: 40px;
-                flex-wrap: wrap;
-            }
-            .nav a {
-                font-family: "Monaspace Argon", monospace;
-                font-size: 11px;
-                letter-spacing: 0.08em;
-                text-transform: uppercase;
-                text-decoration: none;
-                padding: 6px 14px;
-                border-radius: 100px;
-                border: 1px solid var(--border);
-                color: var(--text-muted);
-                transition: all 0.2s;
-            }
-            .nav a:hover, .nav a.active {
-                background: var(--primary);
-                color: var(--bg);
-                border-color: var(--primary);
-            }
-
-            header { margin-bottom: 56px; }
-
-            .brand-tag {
-                font-family: "Monaspace Argon", monospace;
-                font-size: 11px;
-                letter-spacing: 0.2em;
-                text-transform: uppercase;
-                color: var(--text-muted);
-                margin-bottom: 8px;
-            }
-
-            h1 {
-                font-family: "Monaspace Krypton", sans-serif;
-                font-size: 42px;
-                font-weight: 800;
-                letter-spacing: -0.02em;
-                line-height: 1;
-            }
-            h1 span { color: var(--primary); }
-
-            .subtitle {
-                font-size: 14px;
-                color: var(--text-muted);
-                margin-top: 8px;
-                font-weight: 400;
-            }
-
-            .section { margin-bottom: 48px; }
-
-            .section-label {
-                font-family: "Monaspace Argon", monospace;
-                font-size: 10px;
-                letter-spacing: 0.25em;
-                text-transform: uppercase;
-                color: var(--text-muted);
-                margin-bottom: 16px;
-                display: flex;
-                align-items: center;
-                gap: 12px;
-            }
-            .section-label::after {
-                content: "";
-                flex: 1;
-                height: 1px;
-                background: var(--border);
-            }
-
-            .demo-box {
-                background: var(--surface);
-                border: 1px solid var(--border);
-                border-radius: 16px;
-                padding: 28px;
-                margin-bottom: 16px;
-            }
-
-            .demo-label {
-                font-family: "Monaspace Argon", monospace;
-                font-size: 10px;
-                color: var(--text-muted);
-                letter-spacing: 0.1em;
-                text-transform: uppercase;
-                margin-bottom: 10px;
-            }
-
-            .spec {
-                font-family: "Monaspace Argon", monospace;
-                font-size: 10px;
-                color: var(--text-muted);
-                letter-spacing: 0.04em;
-                margin-top: 6px;
-            }
-
-            /* TYPE SCALE */
+            /* Typography-specific styles */
             .type-row {
                 display: flex;
                 align-items: baseline;
@@ -165,339 +17,127 @@
                 border-bottom: 1px solid var(--border);
             }
             .type-row:last-child { border-bottom: none; }
-
             .type-meta {
                 width: 160px;
                 flex-shrink: 0;
             }
             .type-meta-name {
-                font-family: "Monaspace Argon", monospace;
+                font-family: var(--font-mono);
                 font-size: 11px;
                 font-weight: 500;
-                color: var(--primary);
+                color: var(--accent-500);
                 margin-bottom: 4px;
             }
             .type-meta-spec {
-                font-family: "Monaspace Argon", monospace;
+                font-family: var(--font-mono);
                 font-size: 10px;
                 color: var(--text-muted);
                 line-height: 1.6;
             }
-
             .type-sample { flex: 1; }
 
-            /* FONT SPECIMEN */
-            .specimen-grid {
-                display: grid;
-                grid-template-columns: 1fr 1fr;
-                gap: 16px;
+            .typo-demo-list ul,
+            .typo-demo-list ol {
+                padding-left: 1.5em;
+                margin: 0;
             }
-
-            .specimen-card {
-                background: var(--surface);
-                border: 1px solid var(--border);
-                border-radius: 16px;
-                overflow: hidden;
-            }
-            .specimen-hero {
-                padding: 40px 28px;
-                text-align: center;
-            }
-            .specimen-hero.syne {
-                font-family: "Monaspace Krypton", sans-serif;
-                font-size: 64px;
-                font-weight: 800;
-                letter-spacing: -0.03em;
-                color: var(--text);
-            }
-            .specimen-hero.mono {
-                font-family: "Monaspace Argon", monospace;
-                font-size: 48px;
-                font-weight: 400;
-                color: var(--text);
-            }
-            .specimen-info {
-                padding: 20px 28px;
-                border-top: 1px solid var(--border);
-            }
-            .specimen-name {
-                font-size: 15px;
-                font-weight: 700;
-                margin-bottom: 4px;
-            }
-            .specimen-desc {
-                font-size: 12px;
-                color: var(--text-muted);
-                margin-bottom: 12px;
-                line-height: 1.5;
-            }
-
-            .weight-row {
-                display: flex;
-                flex-direction: column;
-                gap: 6px;
-            }
-            .weight-item {
-                display: flex;
-                align-items: center;
-                gap: 12px;
-                font-size: 13px;
-            }
-            .weight-label {
-                font-family: "Monaspace Argon", monospace;
-                font-size: 10px;
-                color: var(--text-muted);
-                width: 60px;
-                flex-shrink: 0;
-            }
-
-            /* ALPHABET */
-            .alphabet {
-                font-size: 24px;
-                letter-spacing: 0.08em;
-                line-height: 1.8;
-                color: var(--text);
-                word-break: break-all;
-            }
-            .alphabet.syne-font { font-family: "Monaspace Krypton", sans-serif; }
-            .alphabet.mono-font { font-family: "Monaspace Argon", monospace; }
-
-            /* PAIRING */
-            .pairing-card {
-                background: var(--surface);
-                border: 1px solid var(--border);
-                border-radius: 16px;
-                padding: 32px;
-                margin-bottom: 16px;
-            }
-            .pairing-heading {
-                font-family: "Monaspace Krypton", sans-serif;
-                font-size: 24px;
-                font-weight: 700;
-                margin-bottom: 8px;
-                letter-spacing: -0.01em;
-            }
-            .pairing-body {
-                font-family: "Monaspace Argon", sans-serif;
+            .typo-demo-list li {
                 font-size: 14px;
                 line-height: 1.7;
-                color: var(--text-muted);
-                margin-bottom: 12px;
+                margin-bottom: 4px;
             }
-            .pairing-mono {
-                font-family: "Monaspace Argon", monospace;
-                font-size: 12px;
-                color: var(--primary);
-                background: var(--primary-subtle);
-                padding: 8px 14px;
-                border-radius: 8px;
-                display: inline-block;
-            }
-
-            /* USAGE TABLE */
-            .usage-table {
+            .typo-demo-list .list-group {
+                list-style: none;
+                padding: 0;
+                padding-left: 0;
+                margin: 0;
                 width: 100%;
-                border-collapse: collapse;
             }
-            .usage-table th {
-                font-family: "Monaspace Argon", monospace;
-                font-size: 10px;
-                letter-spacing: 0.12em;
-                text-transform: uppercase;
-                color: var(--text-muted);
-                text-align: left;
-                padding: 12px 16px;
+            .typo-demo-list .list-group li {
+                padding: 10px 16px;
                 border-bottom: 1px solid var(--border);
-                font-weight: 500;
+                font-size: 14px;
+                margin-bottom: 0;
             }
-            .usage-table td {
-                padding: 12px 16px;
-                border-bottom: 1px solid var(--border);
-                font-size: 13px;
-            }
-            .usage-table tr:last-child td { border-bottom: none; }
-            .usage-table .font-syne { font-family: "Monaspace Krypton", sans-serif; }
-            .usage-table .font-mono { font-family: "Monaspace Argon", monospace; font-size: 12px; }
+            .list-group li:last-child { border-bottom: none; }
 
-            /* DARK SPECIMEN */
-            .dark-specimen {
-                background: #1c1828;
-                border-radius: 20px;
-                padding: 32px;
-                color: #f4eded;
+            .typo-demo-abbr {
+                text-decoration: underline dotted var(--accent-500);
+                text-underline-offset: 3px;
+                cursor: help;
             }
-            .dark-specimen .demo-label { color: #9a8e9e; }
-            .dark-specimen .type-row { border-color: #352c43; }
-            .dark-specimen .type-meta-spec { color: #9a8e9e; }
-            .dark-specimen .type-meta-name { color: #8c92be; }
-            .dark-specimen .spec { color: #9a8e9e; }
-
-            /* CODE BLOCK */
-            .code-block {
-                background: #1c1828;
-                border-radius: 12px;
-                padding: 20px;
-                font-family: "Monaspace Argon", monospace;
-                font-size: 12px;
-                line-height: 1.8;
-                color: #c4c7df;
-                overflow-x: auto;
-            }
-            .code-comment { color: #9a8e9e; }
-            .code-prop { color: #8c92be; }
-            .code-val { color: #95d4b3; }
-            .code-str { color: #f9db6d; }
-            .code-type { color: #b08ec5; }
-            .code-link { color: #6ec5ba; }
-            .code-const { color: #e295ac; }
-
-            /* THEME TOGGLE */
-            .theme-toggle {
-                font-family: "Monaspace Argon", monospace;
-                font-size: 11px;
-                letter-spacing: 0.08em;
-                text-transform: uppercase;
-                padding: 6px 14px;
-                border-radius: 100px;
-                border: 1px solid var(--border);
-                background: var(--surface);
-                color: var(--text-muted);
-                cursor: pointer;
-                transition: all 0.2s;
-                margin-left: auto;
-            }
-            .theme-toggle:hover {
-                background: var(--primary);
-                color: var(--bg);
-                border-color: var(--primary);
-            }
-
-            /* THEME VISIBILITY */
-            .theme-only-light { display: block; }
-            .theme-only-dark { display: none; }
-            [data-theme="dark"] .theme-only-light { display: none; }
-            [data-theme="dark"] .theme-only-dark { display: block; }
-
-            /* Dark mode overrides for pairing cards */
-            [data-theme="dark"] .pairing-card {
-                background: #1c1828;
-                color: #f4eded;
-                border-color: #352c43;
-            }
-            [data-theme="dark"] .pairing-body { color: #9a8e9e; }
-            [data-theme="dark"] .pairing-mono {
-                background: var(--primary-subtle);
-                color: var(--primary);
-            }
-
-            /* Dark mode overrides for usage table */
-            [data-theme="dark"] .usage-table th { color: #9a8e9e; }
-
-            /* Dark mode overrides for code block — already dark, no change needed */
 
             @media (max-width: 640px) {
-                .specimen-grid { grid-template-columns: 1fr; }
                 .type-row { flex-direction: column; gap: 8px; }
                 .type-meta { width: auto; }
-                h1 { font-size: 28px; }
-                body { padding: 24px 16px; }
             }
         </style>
+        <script src="assets/js/highlight.js" defer></script>
     </head>
     <body>
-        <nav class="nav">
-            <a href="index.html">Colors</a>
-            <a href="typography.html" class="active">Typography</a>
-            <a href="components.html">Components</a>
-            <a href="themes.html">Themes</a>
-            <button class="theme-toggle" onclick="toggleTheme()">Dark</button>
+        <nav class="aqua-navbar">
+            <a href="index.html" class="aqua-navbar-brand"><svg viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M14 3C14 3 5 10 5 17C5 21.4183 9.02944 25 14 25C18.9706 25 23 21.4183 23 17C23 10 14 3 14 3Z" fill="var(--accent-500)"/><path d="M14 9C14 9 9 13.5 9 17C9 19.7614 11.2386 22 14 22C16.7614 22 19 19.7614 19 17C19 13.5 14 9 14 9Z" fill="var(--bg)" opacity="0.7"/></svg>Aqua<span>Drive</span></a>
+            <button class="aqua-navbar-toggle" onclick="toggleNav()" aria-label="Toggle menu"><span></span></button>
+            <div class="aqua-navbar-collapse">
+            <div class="aqua-navbar-links">
+                <a href="index.html">Colors</a>
+                <a href="typography.html" class="active">Typography</a>
+                <a href="elements.html">Elements</a>
+                <a href="ports.html">Ports</a>
+            </div>
+            <div class="aqua-navbar-actions">
+                <div class="aqua-navbar-settings">
+                    <button class="aqua-navbar-settings-btn" onclick="toggleSettings(event)">
+                        <svg viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="3" stroke="currentColor" stroke-width="1.5"/><path d="M8 1v2M8 13v2M1 8h2M13 8h2M3.05 3.05l1.41 1.41M11.54 11.54l1.41 1.41M3.05 12.95l1.41-1.41M11.54 4.46l1.41-1.41" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+                        Settings
+                    </button>
+                    <div class="aqua-navbar-dropdown" id="navSettingsDropdown">
+                        <div class="aqua-navbar-dropdown-label">Accent Color</div>
+                        <div class="aqua-navbar-dropdown-row">
+                            <button class="accent-dot" data-color="blue" onclick="setAccent('blue')" aria-label="Blue accent"></button>
+                            <button class="accent-dot" data-color="purple" onclick="setAccent('purple')" aria-label="Purple accent"></button>
+                            <button class="accent-dot" data-color="cyan" onclick="setAccent('cyan')" aria-label="Cyan accent"></button>
+                            <button class="accent-dot" data-color="rose" onclick="setAccent('rose')" aria-label="Rose accent"></button>
+                        </div>
+                        <div class="aqua-navbar-dropdown-divider"></div>
+                        <button class="aqua-navbar-dropdown-item" onclick="toggleTheme()">
+                            <svg viewBox="0 0 16 16" fill="none"><path d="M8 1a7 7 0 1 0 0 14A7 7 0 0 0 8 1Z" stroke="currentColor" stroke-width="1.5"/><path d="M8 3v10a5 5 0 0 0 0-10Z" fill="currentColor"/></svg>
+                            <span class="theme-toggle-label">Toggle Theme</span>
+                        </button>
+                        <button class="aqua-navbar-dropdown-item" onclick="toggleMobile()">
+                            <svg viewBox="0 0 16 16" fill="none"><rect x="4" y="1" width="8" height="14" rx="1.5" stroke="currentColor" stroke-width="1.5"/><line x1="6.5" y1="12.5" x2="9.5" y2="12.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+                            Mobile Preview
+                        </button>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </nav>
+
+        <nav class="breadcrumb">
+            <span>AquaDrive</span>
+            <span class="sep">/</span>
+            <span class="current">Typography</span>
         </nav>
 
         <header>
             <div class="brand-tag">AquaDrive · Design System</div>
             <h1>Typo<span>graphy</span></h1>
-            <p class="subtitle">Monaspace Krypton for display &amp; headings · Monaspace Argon for body, UI labels &amp; code</p>
+            <p class="subtitle">Monaspace Krypton for display &amp; headings · Monaspace Argon for body, UI labels &amp; code.</p>
         </header>
 
-        <!-- FONT SPECIMENS -->
-        <div class="section">
-            <div class="section-label">Font Families</div>
-            <div class="specimen-grid">
-                <div class="specimen-card">
-                    <div class="specimen-hero syne">Aa</div>
-                    <div class="specimen-info">
-                        <div class="specimen-name">Monaspace Krypton</div>
-                        <div class="specimen-desc">Display typeface with a mechanical, structured texture — used for headings, titles, and display elements.</div>
-                        <div class="weight-row">
-                            <div class="weight-item">
-                                <span class="weight-label">400</span>
-                                <span style="font-family: 'Monaspace Krypton'; font-weight: 400;">Regular — body text, paragraphs</span>
-                            </div>
-                            <div class="weight-item">
-                                <span class="weight-label">600</span>
-                                <span style="font-family: 'Monaspace Krypton'; font-weight: 600;">SemiBold — subheadings, emphasis</span>
-                            </div>
-                            <div class="weight-item">
-                                <span class="weight-label">700</span>
-                                <span style="font-family: 'Monaspace Krypton'; font-weight: 700;">Bold — card titles, labels</span>
-                            </div>
-                            <div class="weight-item">
-                                <span class="weight-label">800</span>
-                                <span style="font-family: 'Monaspace Krypton'; font-weight: 800;">ExtraBold — display headings</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="specimen-card">
-                    <div class="specimen-hero mono">Aa</div>
-                    <div class="specimen-info">
-                        <div class="specimen-name">Monaspace Argon</div>
-                        <div class="specimen-desc">Versatile typeface for body text, UI labels, badges, hex codes, and code snippets. Clean and readable.</div>
-                        <div class="weight-row">
-                            <div class="weight-item">
-                                <span class="weight-label">400</span>
-                                <span style="font-family: 'Monaspace Argon'; font-weight: 400;">Regular — labels, hex chips, meta</span>
-                            </div>
-                            <div class="weight-item">
-                                <span class="weight-label">500</span>
-                                <span style="font-family: 'Monaspace Argon'; font-weight: 500;">Medium — badges, token names</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- ALPHABET -->
-        <div class="section">
-            <div class="section-label">Character Sets</div>
+        <!-- HEADINGS -->
+        <section class="section">
+            <div class="section-label">Headings</div>
             <div class="demo-box">
-                <div class="demo-label">Monaspace Krypton — Full alphabet</div>
-                <div class="alphabet syne-font" style="margin-bottom: 20px;">
-                    ABCDEFGHIJKLMNOPQRSTUVWXYZ<br>
-                    abcdefghijklmnopqrstuvwxyz<br>
-                    0123456789 !@#$%&amp;*()
-                </div>
-                <div class="demo-label">Monaspace Argon — Full alphabet</div>
-                <div class="alphabet mono-font" style="font-size: 20px;">
-                    ABCDEFGHIJKLMNOPQRSTUVWXYZ<br>
-                    abcdefghijklmnopqrstuvwxyz<br>
-                    0123456789 !@#$%&amp;*(){}[]
-                </div>
-            </div>
-        </div>
-
-        <!-- TYPE SCALE -->
-        <div class="section theme-only-light">
-            <div class="section-label">Type Scale</div>
-            <div class="demo-box" style="padding: 12px 28px;">
+                <div class="demo-label">Preview</div>
                 <div class="type-row">
                     <div class="type-meta">
-                        <div class="type-meta-name">Display / H1</div>
+                        <div class="type-meta-name">H1</div>
                         <div class="type-meta-spec">Krypton 800<br>42px / -0.02em</div>
                     </div>
-                    <div class="type-sample" style="font-family: 'Monaspace Krypton', sans-serif; font-size: 42px; font-weight: 800; letter-spacing: -0.02em; line-height: 1;">
-                        AquaDrive
+                    <div class="type-sample">
+                        <h1 style="margin: 0;">Heading One</h1>
                     </div>
                 </div>
                 <div class="type-row">
@@ -505,8 +145,8 @@
                         <div class="type-meta-name">H2</div>
                         <div class="type-meta-spec">Krypton 700<br>28px / -0.01em</div>
                     </div>
-                    <div class="type-sample" style="font-family: 'Monaspace Krypton', sans-serif; font-size: 28px; font-weight: 700; letter-spacing: -0.01em; line-height: 1.15;">
-                        Schedule a Wash
+                    <div class="type-sample">
+                        <h2 style="font-family: var(--font-display); font-size: 28px; font-weight: 700; letter-spacing: -0.01em; line-height: 1.15; margin: 0;">Heading Two</h2>
                     </div>
                 </div>
                 <div class="type-row">
@@ -514,331 +154,726 @@
                         <div class="type-meta-name">H3</div>
                         <div class="type-meta-spec">Krypton 700<br>20px / 0</div>
                     </div>
-                    <div class="type-sample" style="font-family: 'Monaspace Krypton', sans-serif; font-size: 20px; font-weight: 700; line-height: 1.2;">
-                        Premium Detail Package
+                    <div class="type-sample">
+                        <h3 style="font-family: var(--font-display); font-size: 20px; font-weight: 700; line-height: 1.2; margin: 0;">Heading Three</h3>
                     </div>
                 </div>
                 <div class="type-row">
                     <div class="type-meta">
-                        <div class="type-meta-name">H4 / Title</div>
+                        <div class="type-meta-name">H4</div>
                         <div class="type-meta-spec">Krypton 700<br>15px / 0.03em</div>
                     </div>
-                    <div class="type-sample" style="font-family: 'Monaspace Krypton', sans-serif; font-size: 15px; font-weight: 700; letter-spacing: 0.03em;">
-                        Wash History
-                    </div>
-                </div>
-                <div class="type-row">
-                    <div class="type-meta">
-                        <div class="type-meta-name">Body</div>
-                        <div class="type-meta-spec">Argon 400<br>14px / 1.6 lh</div>
-                    </div>
-                    <div class="type-sample" style="font-size: 14px; font-weight: 400; line-height: 1.6; color: var(--text-muted);">
-                        Book your next car wash in seconds. Choose from our range of packages — from a quick exterior rinse to a full ceramic coating that protects your paint for up to two years.
-                    </div>
-                </div>
-                <div class="type-row">
-                    <div class="type-meta">
-                        <div class="type-meta-name">Small / Card</div>
-                        <div class="type-meta-spec">Krypton 700<br>13px</div>
-                    </div>
-                    <div class="type-sample" style="font-family: 'Monaspace Krypton', sans-serif; font-size: 13px; font-weight: 700;">
-                        Basic Exterior Wash — $18.00
-                    </div>
-                </div>
-                <div class="type-row">
-                    <div class="type-meta">
-                        <div class="type-meta-name">Caption</div>
-                        <div class="type-meta-spec">Argon 400<br>12px / muted</div>
-                    </div>
-                    <div class="type-sample" style="font-size: 12px; font-weight: 400; color: var(--text-muted);">
-                        Last washed on March 15, 2026 at 3:45 PM
-                    </div>
-                </div>
-                <div class="type-row">
-                    <div class="type-meta">
-                        <div class="type-meta-name">Section Label</div>
-                        <div class="type-meta-spec">Argon 400<br>10px / 0.25em / UPPER</div>
-                    </div>
-                    <div class="type-sample" style="font-family: 'Monaspace Argon', monospace; font-size: 10px; letter-spacing: 0.25em; text-transform: uppercase; color: var(--text-muted);">
-                        Wash Packages
-                    </div>
-                </div>
-                <div class="type-row">
-                    <div class="type-meta">
-                        <div class="type-meta-name">Badge</div>
-                        <div class="type-meta-spec">Argon 500<br>10px / 0.04em</div>
-                    </div>
-                    <div class="type-sample" style="display: flex; gap: 8px; flex-wrap: wrap; align-items: center;">
-                        <span style="font-family: 'Monaspace Argon', monospace; font-size: 10px; font-weight: 500; letter-spacing: 0.04em; background: #eaf7ef; color: #2e8c61; padding: 4px 11px; border-radius: 100px;">&#x25CF; Confirmed</span>
-                        <span style="font-family: 'Monaspace Argon', monospace; font-size: 10px; font-weight: 500; letter-spacing: 0.04em; background: #f3edf7; color: #6f4f82; padding: 4px 11px; border-radius: 100px;">★ Premium</span>
-                        <span style="font-family: 'Monaspace Argon', monospace; font-size: 10px; font-weight: 500; letter-spacing: 0.04em; background: #e8f6f4; color: #2d8a7e; padding: 4px 11px; border-radius: 100px;">↗ Promo</span>
-                        <span style="font-family: 'Monaspace Argon', monospace; font-size: 10px; font-weight: 500; letter-spacing: 0.04em; background: #fcf0f3; color: #b85a73; padding: 4px 11px; border-radius: 100px;">♥ Favorite</span>
-                    </div>
-                </div>
-                <div class="type-row">
-                    <div class="type-meta">
-                        <div class="type-meta-name">Hex Chip</div>
-                        <div class="type-meta-spec">Argon 400<br>10px / 0.05em</div>
-                    </div>
                     <div class="type-sample">
-                        <span style="font-family: 'Monaspace Argon', monospace; font-size: 10px; letter-spacing: 0.05em; background: var(--bg); padding: 2px 7px; border-radius: 4px; color: var(--text-muted);">#656EA4</span>
-                    </div>
-                </div>
-                <div class="type-row">
-                    <div class="type-meta">
-                        <div class="type-meta-name">Price</div>
-                        <div class="type-meta-spec">Krypton 800<br>18px / primary</div>
-                    </div>
-                    <div class="type-sample" style="font-family: 'Monaspace Krypton', sans-serif; font-size: 18px; font-weight: 800; color: var(--primary);">
-                        $249.00
+                        <h4 style="font-family: var(--font-display); font-size: 15px; font-weight: 700; letter-spacing: 0.03em; margin: 0;">Heading Four</h4>
                     </div>
                 </div>
             </div>
-        </div>
+            <div class="code-wrapper">
+                <div class="code-tabs">
+                    <button class="code-tab active" onclick="switchTab(this, 'html')">HTML</button>
+                    <button class="code-tab" onclick="switchTab(this, 'css')">CSS</button>
+                </div>
+                <div class="code-panel active" data-lang="html">
+                    <button class="code-copy" onclick="copyCode(this)">Copy</button>
+                    <pre>&lt;h1&gt;Heading One&lt;/h1&gt;
+&lt;h2&gt;Heading Two&lt;/h2&gt;
+&lt;h3&gt;Heading Three&lt;/h3&gt;
+&lt;h4&gt;Heading Four&lt;/h4&gt;</pre>
+                </div>
+                <div class="code-panel" data-lang="css">
+                    <button class="code-copy" onclick="copyCode(this)">Copy</button>
+                    <pre>h1 {
+    font-family: var(--font-display);
+    font-size: 42px;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    line-height: 1;
+}
+h2 {
+    font-family: var(--font-display);
+    font-size: 28px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    line-height: 1.15;
+}
+h3 {
+    font-family: var(--font-display);
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 1.2;
+}
+h4 {
+    font-family: var(--font-display);
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+}</pre>
+                </div>
+            </div>
+        </section>
 
-        <!-- DARK TYPE SCALE -->
-        <div class="section theme-only-dark">
-            <div class="section-label">Type Scale</div>
-            <div class="dark-specimen">
-                <div class="type-row">
-                    <div class="type-meta">
-                        <div class="type-meta-name">Display / H1</div>
-                        <div class="type-meta-spec">Krypton 800 · 42px</div>
-                    </div>
-                    <div class="type-sample" style="font-family: 'Monaspace Krypton', sans-serif; font-size: 42px; font-weight: 800; letter-spacing: -0.02em; line-height: 1;">
-                        Provider Dashboard
-                    </div>
+        <!-- SUBTITLES -->
+        <section class="section">
+            <div class="section-label">Subtitles</div>
+            <div class="demo-box">
+                <div class="demo-label">Preview</div>
+                <h3 style="font-family: var(--font-display); font-size: 20px; font-weight: 700; margin: 0 0 4px 0;">Schedule a Wash</h3>
+                <p class="subtitle" style="margin-top: 0;">Pick a time that works for you — we handle the rest.</p>
+            </div>
+            <div class="code-wrapper">
+                <div class="code-tabs">
+                    <button class="code-tab active" onclick="switchTab(this, 'html')">HTML</button>
+                    <button class="code-tab" onclick="switchTab(this, 'css')">CSS</button>
                 </div>
-                <div class="type-row">
-                    <div class="type-meta">
-                        <div class="type-meta-name">H2</div>
-                        <div class="type-meta-spec">Krypton 700 · 28px</div>
-                    </div>
-                    <div class="type-sample" style="font-family: 'Monaspace Krypton', sans-serif; font-size: 28px; font-weight: 700; letter-spacing: -0.01em; line-height: 1.15;">
-                        Today's Schedule
-                    </div>
+                <div class="code-panel active" data-lang="html">
+                    <button class="code-copy" onclick="copyCode(this)">Copy</button>
+                    <pre>&lt;h3&gt;Schedule a Wash&lt;/h3&gt;
+&lt;p class="subtitle"&gt;Pick a time that works for you — we handle the rest.&lt;/p&gt;</pre>
                 </div>
-                <div class="type-row">
-                    <div class="type-meta">
-                        <div class="type-meta-name">Body</div>
-                        <div class="type-meta-spec">Argon 400 · 14px</div>
-                    </div>
-                    <div class="type-sample" style="font-size: 14px; line-height: 1.6; color: #9a8e9e;">
-                        You have 3 upcoming appointments and $156 in pending payouts. Route optimization suggests starting with the downtown cluster.
-                    </div>
-                </div>
-                <div class="type-row">
-                    <div class="type-meta">
-                        <div class="type-meta-name">Label</div>
-                        <div class="type-meta-spec">Argon · 10px · UPPER</div>
-                    </div>
-                    <div class="type-sample" style="font-family: 'Monaspace Argon', monospace; font-size: 10px; letter-spacing: 0.25em; text-transform: uppercase; color: #9a8e9e;">
-                        Earnings This Week
-                    </div>
-                </div>
-                <div class="type-row" style="border-bottom: none;">
-                    <div class="type-meta">
-                        <div class="type-meta-name">Badge (dark)</div>
-                        <div class="type-meta-spec">Argon 500 · 10px</div>
-                    </div>
-                    <div class="type-sample" style="display: flex; gap: 8px; flex-wrap: wrap; align-items: center;">
-                        <span style="font-family: 'Monaspace Argon', monospace; font-size: 10px; font-weight: 500; letter-spacing: 0.04em; background: #313666; color: #c4c7df; padding: 4px 11px; border-radius: 100px;">&#x25CF; 3 Incoming</span>
-                        <span style="font-family: 'Monaspace Argon', monospace; font-size: 10px; font-weight: 500; letter-spacing: 0.04em; background: #2a1a32; color: #c4a5d2; padding: 4px 11px; border-radius: 100px;">★ Premium</span>
-                        <span style="font-family: 'Monaspace Argon', monospace; font-size: 10px; font-weight: 500; letter-spacing: 0.04em; background: #0e2a27; color: #8ad4cb; padding: 4px 11px; border-radius: 100px;">↗ Promo</span>
-                        <span style="font-family: 'Monaspace Argon', monospace; font-size: 10px; font-weight: 500; letter-spacing: 0.04em; background: #321a22; color: #e8adc0; padding: 4px 11px; border-radius: 100px;">♥ Favorite</span>
-                    </div>
+                <div class="code-panel" data-lang="css">
+                    <button class="code-copy" onclick="copyCode(this)">Copy</button>
+                    <pre>.subtitle {
+    font-family: var(--font-body);
+    font-size: 14px;
+    color: var(--text-muted);
+    margin-top: 8px;
+    font-weight: 400;
+}</pre>
                 </div>
             </div>
-        </div>
+        </section>
 
-        <!-- FONT PAIRING -->
-        <div class="section">
-            <div class="section-label">Font Pairing in Context</div>
-            <div class="theme-only-light">
-                <div class="pairing-card">
-                    <div style="font-family: 'Monaspace Argon', monospace; font-size: 10px; letter-spacing: 0.25em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 12px;">Service Detail</div>
-                    <div class="pairing-heading">Premium Interior + Exterior Detail</div>
-                    <div class="pairing-body">
-                        Includes hand wash, clay bar treatment, machine polish, carnauba wax, full interior vacuum, leather conditioning, and dashboard treatment. Windows cleaned inside and out. Tires dressed and wheel wells degreased.
-                    </div>
-                    <div style="display: flex; gap: 12px; align-items: center; flex-wrap: wrap;">
-                        <span class="pairing-mono">~90 min</span>
-                        <span class="pairing-mono">$89.00</span>
-                        <span style="font-family: 'Monaspace Argon', monospace; font-size: 10px; font-weight: 500; letter-spacing: 0.04em; background: #eaf7ef; color: #2e8c61; padding: 4px 11px; border-radius: 100px;">&#x25CF; Available</span>
-                        <span style="font-family: 'Monaspace Argon', monospace; font-size: 10px; font-weight: 500; letter-spacing: 0.04em; background: #f3edf7; color: #6f4f82; padding: 4px 11px; border-radius: 100px;">★ Premium</span>
+        <!-- LISTS -->
+        <section class="section">
+            <div class="section-label">Lists</div>
+            <div class="demo-box typo-demo-list">
+                <div class="demo-label">Unordered List</div>
+                <ul style="margin-bottom: 20px;">
+                    <li>Exterior hand wash</li>
+                    <li>Interior vacuum &amp; wipe-down</li>
+                    <li>Tire dressing &amp; rim cleaning</li>
+                </ul>
+                <div class="demo-label">Ordered List</div>
+                <ol style="margin-bottom: 20px; padding-left: 1.5em;">
+                    <li>Select your vehicle</li>
+                    <li>Choose a wash package</li>
+                    <li>Pick a date &amp; time</li>
+                    <li>Confirm your booking</li>
+                </ol>
+                <div class="demo-label">List Group</div>
+                <ul class="list-group" style="border: 1px solid var(--border); border-radius: 8px; overflow: hidden;">
+                    <li>Basic Exterior Wash — $18.00</li>
+                    <li>Interior + Exterior Detail — $89.00</li>
+                    <li>Ceramic Coating Package — $249.00</li>
+                </ul>
+            </div>
+            <div class="code-wrapper">
+                <div class="code-tabs">
+                    <button class="code-tab active" onclick="switchTab(this, 'html')">HTML</button>
+                    <button class="code-tab" onclick="switchTab(this, 'css')">CSS</button>
+                </div>
+                <div class="code-panel active" data-lang="html">
+                    <button class="code-copy" onclick="copyCode(this)">Copy</button>
+                    <pre>&lt;!-- Unordered --&gt;
+&lt;ul&gt;
+    &lt;li&gt;Exterior hand wash&lt;/li&gt;
+    &lt;li&gt;Interior vacuum &amp;amp; wipe-down&lt;/li&gt;
+    &lt;li&gt;Tire dressing &amp;amp; rim cleaning&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;!-- Ordered --&gt;
+&lt;ol&gt;
+    &lt;li&gt;Select your vehicle&lt;/li&gt;
+    &lt;li&gt;Choose a wash package&lt;/li&gt;
+    &lt;li&gt;Pick a date &amp;amp; time&lt;/li&gt;
+    &lt;li&gt;Confirm your booking&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;!-- List Group --&gt;
+&lt;ul class="list-group"&gt;
+    &lt;li&gt;Basic Exterior Wash — $18.00&lt;/li&gt;
+    &lt;li&gt;Interior + Exterior Detail — $89.00&lt;/li&gt;
+    &lt;li&gt;Ceramic Coating Package — $249.00&lt;/li&gt;
+&lt;/ul&gt;</pre>
+                </div>
+                <div class="code-panel" data-lang="css">
+                    <button class="code-copy" onclick="copyCode(this)">Copy</button>
+                    <pre>ul, ol {
+    padding-left: 1.5em;
+}
+li {
+    font-size: 14px;
+    line-height: 1.7;
+    margin-bottom: 4px;
+}
+.list-group {
+    list-style: none;
+    padding: 0;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+}
+.list-group li {
+    padding: 10px 16px;
+    border-bottom: 1px solid var(--border);
+}
+.list-group li:last-child {
+    border-bottom: none;
+}</pre>
+                </div>
+            </div>
+        </section>
+
+        <!-- PARAGRAPHS -->
+        <section class="section">
+            <div class="section-label">Paragraphs</div>
+            <div class="demo-box">
+                <div class="demo-label">Preview</div>
+                <p style="font-size: 14px; line-height: 1.7; margin: 0 0 12px 0;">Book your next car wash in seconds. Choose from our range of packages — from a quick exterior rinse to a full ceramic coating that protects your paint for up to two years.</p>
+                <p style="font-size: 14px; line-height: 1.7; color: var(--text-muted); margin: 0;">Our mobile detailers come to your location, fully equipped with eco-friendly products and purified water systems. No need to leave your home or office.</p>
+            </div>
+            <div class="code-wrapper">
+                <div class="code-tabs">
+                    <button class="code-tab active" onclick="switchTab(this, 'html')">HTML</button>
+                    <button class="code-tab" onclick="switchTab(this, 'css')">CSS</button>
+                </div>
+                <div class="code-panel active" data-lang="html">
+                    <button class="code-copy" onclick="copyCode(this)">Copy</button>
+                    <pre>&lt;p&gt;Book your next car wash in seconds. Choose from our range
+of packages — from a quick exterior rinse to a full ceramic
+coating that protects your paint for up to two years.&lt;/p&gt;
+
+&lt;p class="text-muted"&gt;Our mobile detailers come to your location,
+fully equipped with eco-friendly products and purified water systems.&lt;/p&gt;</pre>
+                </div>
+                <div class="code-panel" data-lang="css">
+                    <button class="code-copy" onclick="copyCode(this)">Copy</button>
+                    <pre>p {
+    font-family: var(--font-body);
+    font-size: 14px;
+    line-height: 1.7;
+    color: var(--text);
+}
+.text-muted {
+    color: var(--text-muted);
+}</pre>
+                </div>
+            </div>
+        </section>
+
+        <!-- HIGHLIGHTS -->
+        <section class="section">
+            <div class="section-label">Highlights</div>
+            <div class="demo-box">
+                <div class="demo-label">Preview</div>
+                <p style="font-size: 14px; line-height: 2.2; margin: 0;">
+                    <mark style="background: var(--accent-50); color: var(--text); padding: 2px 6px; border-radius: 4px;">Accent (default)</mark>
+                    <mark style="background: var(--blue-50); color: var(--blue-500); padding: 2px 6px; border-radius: 4px;">Blue highlight</mark>
+                    <mark style="background: var(--purple-50); color: var(--purple-500); padding: 2px 6px; border-radius: 4px;">Purple highlight</mark>
+                    <mark style="background: var(--cyan-50); color: var(--cyan-500); padding: 2px 6px; border-radius: 4px;">Cyan highlight</mark>
+                    <mark style="background: var(--rose-50); color: var(--rose-500); padding: 2px 6px; border-radius: 4px;">Rose highlight</mark>
+                    <mark style="background: var(--red-tint); color: var(--red-main); padding: 2px 6px; border-radius: 4px;">Red highlight</mark>
+                    <mark style="background: var(--yellow-tint); color: var(--yellow-main); padding: 2px 6px; border-radius: 4px;">Yellow highlight</mark>
+                    <mark style="background: var(--green-tint); color: var(--green-main); padding: 2px 6px; border-radius: 4px;">Green highlight</mark>
+                </p>
+            </div>
+            <div class="code-wrapper">
+                <div class="code-tabs">
+                    <button class="code-tab active" onclick="switchTab(this, 'html')">HTML</button>
+                    <button class="code-tab" onclick="switchTab(this, 'css')">CSS</button>
+                </div>
+                <div class="code-panel active" data-lang="html">
+                    <button class="code-copy" onclick="copyCode(this)">Copy</button>
+                    <pre>&lt;mark&gt;Accent (default)&lt;/mark&gt;
+&lt;mark class="mark-blue"&gt;Blue highlight&lt;/mark&gt;
+&lt;mark class="mark-purple"&gt;Purple highlight&lt;/mark&gt;
+&lt;mark class="mark-cyan"&gt;Cyan highlight&lt;/mark&gt;
+&lt;mark class="mark-rose"&gt;Rose highlight&lt;/mark&gt;
+&lt;mark class="mark-red"&gt;Red highlight&lt;/mark&gt;
+&lt;mark class="mark-yellow"&gt;Yellow highlight&lt;/mark&gt;
+&lt;mark class="mark-green"&gt;Green highlight&lt;/mark&gt;</pre>
+                </div>
+                <div class="code-panel" data-lang="css">
+                    <button class="code-copy" onclick="copyCode(this)">Copy</button>
+                    <pre>mark {
+    background: var(--accent-50);
+    color: var(--text);
+    padding: 2px 6px;
+    border-radius: 4px;
+}
+mark.mark-blue {
+    background: var(--blue-50);
+    color: var(--blue-500);
+}
+mark.mark-purple {
+    background: var(--purple-50);
+    color: var(--purple-500);
+}
+mark.mark-cyan {
+    background: var(--cyan-50);
+    color: var(--cyan-500);
+}
+mark.mark-rose {
+    background: var(--rose-50);
+    color: var(--rose-500);
+}
+mark.mark-red {
+    background: var(--red-tint);
+    color: var(--red-main);
+}
+mark.mark-yellow {
+    background: var(--yellow-tint);
+    color: var(--yellow-main);
+}
+mark.mark-green {
+    background: var(--green-tint);
+    color: var(--green-main);
+}</pre>
+                </div>
+            </div>
+        </section>
+
+        <!-- TEXT STYLES: BOLD, ITALIC, STRIKETHROUGH -->
+        <section class="section">
+            <div class="section-label">Text Styles</div>
+            <div class="demo-box">
+                <div class="demo-label">Bold</div>
+                <p style="font-size: 14px; line-height: 1.7; margin: 0 0 16px 0;">All packages include a <strong>complimentary interior vacuum</strong> and <strong>tire dressing</strong> at no extra charge.</p>
+                <div class="demo-label">Italic</div>
+                <p style="font-size: 14px; line-height: 1.7; margin: 0 0 16px 0;">Our detailers use <em>only premium, pH-balanced products</em> to ensure your vehicle's finish is never compromised.</p>
+                <div class="demo-label">Strikethrough</div>
+                <p style="font-size: 14px; line-height: 1.7; margin: 0 0 4px 0;"><del style="color: var(--text-muted);">$120.00</del> <strong style="color: var(--accent-500);">$89.00</strong> — Save 25% on your first detail</p>
+                <p style="font-size: 14px; line-height: 1.7; margin: 0;">This feature has been <s style="color: var(--text-muted);">deprecated</s> replaced with a newer version.</p>
+            </div>
+            <div class="code-wrapper">
+                <div class="code-tabs">
+                    <button class="code-tab active" onclick="switchTab(this, 'html')">HTML</button>
+                    <button class="code-tab" onclick="switchTab(this, 'css')">CSS</button>
+                </div>
+                <div class="code-panel active" data-lang="html">
+                    <button class="code-copy" onclick="copyCode(this)">Copy</button>
+                    <pre>&lt;!-- Bold --&gt;
+&lt;p&gt;All packages include a &lt;strong&gt;complimentary interior
+vacuum&lt;/strong&gt; and &lt;strong&gt;tire dressing&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;!-- Italic --&gt;
+&lt;p&gt;Our detailers use &lt;em&gt;only premium, pH-balanced
+products&lt;/em&gt; to ensure your finish is protected.&lt;/p&gt;
+
+&lt;!-- Strikethrough --&gt;
+&lt;p&gt;&lt;del&gt;$120.00&lt;/del&gt; &lt;strong&gt;$89.00&lt;/strong&gt; — Save 25%&lt;/p&gt;
+&lt;p&gt;This feature has been &lt;s&gt;deprecated&lt;/s&gt; replaced.&lt;/p&gt;</pre>
+                </div>
+                <div class="code-panel" data-lang="css">
+                    <button class="code-copy" onclick="copyCode(this)">Copy</button>
+                    <pre>strong {
+    font-weight: 700;
+}
+
+em {
+    font-style: italic;
+}
+
+del, s {
+    color: var(--text-muted);
+    text-decoration: line-through;
+}</pre>
+                </div>
+            </div>
+        </section>
+
+        <!-- LINKS -->
+        <section class="section">
+            <div class="section-label">Links</div>
+            <div class="demo-box">
+                <div class="demo-label">Preview</div>
+                <p style="font-size: 14px; line-height: 1.7; margin: 0;">View our <a href="#" style="color: var(--accent-500); text-decoration: none; border-bottom: 0.2ch solid var(--accent-500); padding-bottom: 0.5rem;" onmouseover="this.style.borderBottomWidth='0.3ch'" onmouseout="this.style.borderBottomWidth='0.2ch'">pricing page</a> or <a href="#" style="color: var(--accent-500); text-decoration: none; border-bottom: 0.2ch solid var(--accent-500); padding-bottom: 0.5rem;" onmouseover="this.style.borderBottomWidth='0.3ch'" onmouseout="this.style.borderBottomWidth='0.2ch'">book a wash</a> to get started today.</p>
+            </div>
+            <div class="code-wrapper">
+                <div class="code-tabs">
+                    <button class="code-tab active" onclick="switchTab(this, 'html')">HTML</button>
+                    <button class="code-tab" onclick="switchTab(this, 'css')">CSS</button>
+                </div>
+                <div class="code-panel active" data-lang="html">
+                    <button class="code-copy" onclick="copyCode(this)">Copy</button>
+                    <pre>&lt;p&gt;View our &lt;a href="/pricing"&gt;pricing page&lt;/a&gt; or
+&lt;a href="/book"&gt;book a wash&lt;/a&gt; to get started today.&lt;/p&gt;</pre>
+                </div>
+                <div class="code-panel" data-lang="css">
+                    <button class="code-copy" onclick="copyCode(this)">Copy</button>
+                    <pre>a {
+    color: var(--accent-500);
+    text-decoration: none;
+    border-bottom: 0.2ch solid var(--accent-500);
+    padding-bottom: 0.5rem;
+}
+a:hover {
+    border-bottom-width: 0.3ch;
+}</pre>
+                </div>
+            </div>
+        </section>
+
+        <!-- ABBREVIATION -->
+        <section class="section">
+            <div class="section-label">Abbreviation</div>
+            <div class="demo-box">
+                <div class="demo-label">Preview</div>
+                <p style="font-size: 14px; line-height: 1.7; margin: 0;">Our coating uses <abbr class="typo-demo-abbr" title="Silicon Dioxide">SiO2</abbr> technology for maximum durability. Certified by the <abbr class="typo-demo-abbr" title="International Detailing Association">IDA</abbr> for professional application.</p>
+            </div>
+            <div class="code-wrapper">
+                <div class="code-tabs">
+                    <button class="code-tab active" onclick="switchTab(this, 'html')">HTML</button>
+                    <button class="code-tab" onclick="switchTab(this, 'css')">CSS</button>
+                </div>
+                <div class="code-panel active" data-lang="html">
+                    <button class="code-copy" onclick="copyCode(this)">Copy</button>
+                    <pre>&lt;p&gt;Our coating uses &lt;abbr title="Silicon Dioxide"&gt;SiO2&lt;/abbr&gt;
+technology for maximum durability. Certified by the
+&lt;abbr title="International Detailing Association"&gt;IDA&lt;/abbr&gt;
+for professional application.&lt;/p&gt;</pre>
+                </div>
+                <div class="code-panel" data-lang="css">
+                    <button class="code-copy" onclick="copyCode(this)">Copy</button>
+                    <pre>abbr[title] {
+    text-decoration: underline dotted var(--accent-500);
+    text-underline-offset: 3px;
+    cursor: help;
+}</pre>
+                </div>
+            </div>
+        </section>
+
+        <!-- BLOCKQUOTES -->
+        <section class="section">
+            <div class="section-label">Blockquotes</div>
+            <div class="demo-box">
+                <div class="demo-label">Preview</div>
+                <blockquote style="border-left: 3px solid var(--accent-500); padding: 12px 20px; margin: 0; background: var(--accent-50); border-radius: 0 8px 8px 0;">
+                    <p style="font-size: 14px; line-height: 1.7; margin: 0 0 6px 0;">The ceramic coating on my Model 3 still beads water like day one — even after six months of daily driving.</p>
+                    <footer style="font-size: 12px; color: var(--text-muted);">— Sarah K., Premium Member</footer>
+                </blockquote>
+            </div>
+            <div class="code-wrapper">
+                <div class="code-tabs">
+                    <button class="code-tab active" onclick="switchTab(this, 'html')">HTML</button>
+                    <button class="code-tab" onclick="switchTab(this, 'css')">CSS</button>
+                </div>
+                <div class="code-panel active" data-lang="html">
+                    <button class="code-copy" onclick="copyCode(this)">Copy</button>
+                    <pre>&lt;blockquote&gt;
+    &lt;p&gt;The ceramic coating on my Model 3 still beads water
+    like day one — even after six months of daily driving.&lt;/p&gt;
+    &lt;footer&gt;— Sarah K., Premium Member&lt;/footer&gt;
+&lt;/blockquote&gt;</pre>
+                </div>
+                <div class="code-panel" data-lang="css">
+                    <button class="code-copy" onclick="copyCode(this)">Copy</button>
+                    <pre>blockquote {
+    border-left: 3px solid var(--accent-500);
+    padding: 12px 20px;
+    margin: 0;
+    background: var(--accent-50);
+    border-radius: 0 8px 8px 0;
+}
+blockquote footer {
+    font-size: 12px;
+    color: var(--text-muted);
+}</pre>
+                </div>
+            </div>
+        </section>
+
+        <!-- INLINE CODE -->
+        <section class="section">
+            <div class="section-label">Inline Code</div>
+            <div class="demo-box">
+                <div class="demo-label">Preview</div>
+                <p style="font-size: 14px; line-height: 1.7; margin: 0;">Use the <code style="font-family: var(--font-mono); font-size: 13px; background: var(--accent-50); color: var(--accent-500); padding: 2px 8px; border-radius: 4px;">fetchBookings()</code> method to retrieve scheduled washes. Pass an optional <code style="font-family: var(--font-mono); font-size: 13px; background: var(--accent-50); color: var(--accent-500); padding: 2px 8px; border-radius: 4px;">status</code> parameter to filter results.</p>
+            </div>
+            <div class="code-wrapper">
+                <div class="code-tabs">
+                    <button class="code-tab active" onclick="switchTab(this, 'html')">HTML</button>
+                    <button class="code-tab" onclick="switchTab(this, 'css')">CSS</button>
+                </div>
+                <div class="code-panel active" data-lang="html">
+                    <button class="code-copy" onclick="copyCode(this)">Copy</button>
+                    <pre>&lt;p&gt;Use the &lt;code&gt;fetchBookings()&lt;/code&gt; method to retrieve
+scheduled washes. Pass an optional &lt;code&gt;status&lt;/code&gt;
+parameter to filter results.&lt;/p&gt;</pre>
+                </div>
+                <div class="code-panel" data-lang="css">
+                    <button class="code-copy" onclick="copyCode(this)">Copy</button>
+                    <pre>code {
+    font-family: var(--font-mono);
+    font-size: 13px;
+    background: var(--accent-50);
+    color: var(--accent-500);
+    padding: 2px 8px;
+    border-radius: 4px;
+}</pre>
+                </div>
+            </div>
+        </section>
+
+        <!-- CODE BLOCKS -->
+        <section class="section">
+            <div class="section-label">Code Blocks</div>
+
+            <!-- Simple code block -->
+            <div class="demo-box">
+                <div class="demo-label">Simple Code Block</div>
+                <div class="code-wrapper" style="margin-bottom: 0;">
+                    <div class="code-panel active" data-lang="html" style="display: block;">
+                        <button class="code-copy" onclick="copyCode(this)">Copy</button>
+                        <pre><span class="hl-keyword">const</span> <span class="hl-const">booking</span> = <span class="hl-keyword">await</span> <span class="hl-prop">aquadrive</span>.<span class="hl-prop">createBooking</span>({
+    <span class="hl-prop">service</span>: <span class="hl-str">'premium-detail'</span>,
+    <span class="hl-prop">vehicle</span>: <span class="hl-str">'Tesla Model 3'</span>,
+    <span class="hl-prop">date</span>: <span class="hl-str">'2026-03-25'</span>,
+    <span class="hl-prop">location</span>: <span class="hl-str">'123 Main St'</span>
+});
+<span class="hl-comment">// Returns: { id: 'bk_92xf', status: 'confirmed' }</span></pre>
                     </div>
                 </div>
             </div>
-            <div class="theme-only-dark">
-                <div class="pairing-card" style="background: #1c1828; color: #f4eded; border-color: #352c43;">
-                    <div style="font-family: 'Monaspace Argon', monospace; font-size: 10px; letter-spacing: 0.25em; text-transform: uppercase; color: #9a8e9e; margin-bottom: 12px;">Job Summary</div>
-                    <div class="pairing-heading">Ceramic Coating — Tesla Model 3</div>
-                    <div class="pairing-body" style="color: #9a8e9e;">
-                        Multi-stage paint correction followed by professional-grade SiO2 ceramic coating application. Includes decontamination wash, iron fallout removal, and 48-hour curing period.
-                    </div>
-                    <div style="display: flex; gap: 12px; align-items: center; flex-wrap: wrap;">
-                        <span class="pairing-mono" style="background: #313666; color: #c4c7df;">~3 hours</span>
-                        <span class="pairing-mono" style="background: #313666; color: #c4c7df;">$249.00</span>
-                        <span style="font-family: 'Monaspace Argon', monospace; font-size: 10px; font-weight: 500; letter-spacing: 0.04em; background: #313666; color: #c4c7df; padding: 4px 11px; border-radius: 100px;">&#x25CF; Scheduled</span>
-                        <span style="font-family: 'Monaspace Argon', monospace; font-size: 10px; font-weight: 500; letter-spacing: 0.04em; background: #2a1a32; color: #c4a5d2; padding: 4px 11px; border-radius: 100px;">★ Premium</span>
+
+            <!-- Code block with filename -->
+            <div class="demo-box" style="margin-top: 16px;">
+                <div class="demo-label">Code Block with Filename</div>
+                <div class="code-wrapper" style="margin-bottom: 0;">
+                    <div class="code-filename">api/bookings.js</div>
+                    <div class="code-panel active" data-lang="html" style="display: block;">
+                        <button class="code-copy" onclick="copyCode(this)">Copy</button>
+                        <pre><span class="hl-keyword">export</span> <span class="hl-keyword">async</span> <span class="hl-keyword">function</span> <span class="hl-prop">getBookings</span>(<span class="hl-const">userId</span>) {
+    <span class="hl-keyword">const</span> <span class="hl-const">res</span> = <span class="hl-keyword">await</span> <span class="hl-prop">fetch</span>(<span class="hl-str">`/api/users/${<span class="hl-const">userId</span>}/bookings`</span>);
+    <span class="hl-keyword">return</span> <span class="hl-const">res</span>.<span class="hl-prop">json</span>();
+}</pre>
                     </div>
                 </div>
             </div>
-        </div>
 
-        <!-- USAGE GUIDE -->
-        <div class="section">
-            <div class="section-label">Usage Guidelines</div>
-            <div class="demo-box" style="padding: 0; overflow: hidden;">
-                <table class="usage-table">
-                    <thead>
-                        <tr>
-                            <th>Element</th>
-                            <th>Font</th>
-                            <th>Weight</th>
-                            <th>Size</th>
-                            <th>Tracking</th>
-                            <th>Transform</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Display heading</td>
-                            <td class="font-syne">Krypton</td>
-                            <td>800</td>
-                            <td>42px</td>
-                            <td>-0.02em</td>
-                            <td>None</td>
-                        </tr>
-                        <tr>
-                            <td>Page heading</td>
-                            <td class="font-syne">Krypton</td>
-                            <td>700</td>
-                            <td>28px</td>
-                            <td>-0.01em</td>
-                            <td>None</td>
-                        </tr>
-                        <tr>
-                            <td>Section heading</td>
-                            <td class="font-syne">Krypton</td>
-                            <td>700</td>
-                            <td>20px</td>
-                            <td>0</td>
-                            <td>None</td>
-                        </tr>
-                        <tr>
-                            <td>Card title</td>
-                            <td class="font-syne">Krypton</td>
-                            <td>700</td>
-                            <td>13–15px</td>
-                            <td>0–0.03em</td>
-                            <td>None</td>
-                        </tr>
-                        <tr>
-                            <td>Body text</td>
-                            <td class="font-mono">Argon</td>
-                            <td>400</td>
-                            <td>14px</td>
-                            <td>0</td>
-                            <td>None</td>
-                        </tr>
-                        <tr>
-                            <td>Button label</td>
-                            <td class="font-mono">Argon</td>
-                            <td>600</td>
-                            <td>13px</td>
-                            <td>0</td>
-                            <td>None</td>
-                        </tr>
-                        <tr>
-                            <td>Caption</td>
-                            <td class="font-mono">Argon</td>
-                            <td>400</td>
-                            <td>12px</td>
-                            <td>0</td>
-                            <td>None</td>
-                        </tr>
-                        <tr>
-                            <td>Section label</td>
-                            <td class="font-mono">Argon</td>
-                            <td>400</td>
-                            <td>10px</td>
-                            <td>0.25em</td>
-                            <td>UPPERCASE</td>
-                        </tr>
-                        <tr>
-                            <td>Badge</td>
-                            <td class="font-mono">Argon</td>
-                            <td>500</td>
-                            <td>10px</td>
-                            <td>0.04em</td>
-                            <td>None</td>
-                        </tr>
-                        <tr>
-                            <td>Hex chip</td>
-                            <td class="font-mono">Argon</td>
-                            <td>400</td>
-                            <td>10px</td>
-                            <td>0.05em</td>
-                            <td>None</td>
-                        </tr>
-                        <tr>
-                            <td>Brand tag</td>
-                            <td class="font-mono">Argon</td>
-                            <td>400</td>
-                            <td>11px</td>
-                            <td>0.2em</td>
-                            <td>UPPERCASE</td>
-                        </tr>
-                        <tr>
-                            <td>Price</td>
-                            <td class="font-syne">Krypton</td>
-                            <td>800</td>
-                            <td>18px</td>
-                            <td>0</td>
-                            <td>None</td>
-                        </tr>
-                    </tbody>
-                </table>
+            <!-- Code block with line numbers -->
+            <div class="demo-box" style="margin-top: 16px;">
+                <div class="demo-label">Code Block with Line Numbers</div>
+                <div class="code-wrapper" style="margin-bottom: 0;">
+                    <div class="code-filename">styles/booking.css</div>
+                    <div class="code-panel active" data-lang="html" style="display: block;">
+                        <button class="code-copy" onclick="copyCode(this)">Copy</button>
+                        <pre class="code-line-numbers"><span class="line"><span class="hl-prop">.booking-card</span> {</span><span class="line">    <span class="hl-prop">background</span>: <span class="hl-val">var(--surface)</span>;</span><span class="line">    <span class="hl-prop">border</span>: <span class="hl-num">1px</span> <span class="hl-val">solid</span> <span class="hl-val">var(--border)</span>;</span><span class="line">    <span class="hl-prop">border-radius</span>: <span class="hl-num">16px</span>;</span><span class="line">    <span class="hl-prop">padding</span>: <span class="hl-num">24px</span>;</span><span class="line">    <span class="hl-prop">transition</span>: <span class="hl-val">box-shadow 0.2s</span>;</span><span class="line">}</span><span class="line"><span class="hl-prop">.booking-card</span>:<span class="hl-keyword">hover</span> { <span class="hl-prop">box-shadow</span>: <span class="hl-val">0 4px 12px rgba(0,0,0,.08)</span>; }</span></pre>
+                    </div>
+                </div>
             </div>
-        </div>
 
-        <!-- CSS SNIPPET -->
-        <div class="section">
-            <div class="section-label">CSS Import &amp; Variables</div>
-            <div class="code-block">
-                <span class="code-comment">/* Local font imports */</span><br>
-                <span class="code-prop">@font-face</span> { font-family: <span class="code-str">"Monaspace Argon"</span>; src: <span class="code-val">url("fonts/MonaspaceArgonVar.woff")</span>; }<br>
-                <span class="code-prop">@font-face</span> { font-family: <span class="code-str">"Monaspace Krypton"</span>; src: <span class="code-val">url("fonts/MonaspaceKryptonVar.woff")</span>; }<br><br>
-                <span class="code-comment">/* Typography tokens */</span><br>
-                <span class="code-prop">:root</span> {<br>
-                &nbsp;&nbsp;<span class="code-prop">--font-display</span>: <span class="code-val">"Monaspace Krypton", sans-serif</span>;<br>
-                &nbsp;&nbsp;<span class="code-prop">--font-body</span>: <span class="code-val">"Monaspace Argon", sans-serif</span>;<br>
-                &nbsp;&nbsp;<span class="code-prop">--font-mono</span>: <span class="code-val">"Monaspace Argon", monospace</span>;<br><br>
-                &nbsp;&nbsp;<span class="code-comment">/* Sizes */</span><br>
-                &nbsp;&nbsp;<span class="code-prop">--text-display</span>: <span class="code-val">42px</span>;<br>
-                &nbsp;&nbsp;<span class="code-prop">--text-h2</span>: <span class="code-val">28px</span>;<br>
-                &nbsp;&nbsp;<span class="code-prop">--text-h3</span>: <span class="code-val">20px</span>;<br>
-                &nbsp;&nbsp;<span class="code-prop">--text-h4</span>: <span class="code-val">15px</span>;<br>
-                &nbsp;&nbsp;<span class="code-prop">--text-body</span>: <span class="code-val">14px</span>;<br>
-                &nbsp;&nbsp;<span class="code-prop">--text-small</span>: <span class="code-val">13px</span>;<br>
-                &nbsp;&nbsp;<span class="code-prop">--text-caption</span>: <span class="code-val">12px</span>;<br>
-                &nbsp;&nbsp;<span class="code-prop">--text-label</span>: <span class="code-val">10px</span>;<br><br>
-                &nbsp;&nbsp;<span class="code-comment">/* Accent colors */</span><br>
-                &nbsp;&nbsp;<span class="code-prop">--purple</span>: <span class="code-type">#8e6aa0</span>;<br>
-                &nbsp;&nbsp;<span class="code-prop">--cyan</span>: <span class="code-link">#3aafa0</span>;<br>
-                &nbsp;&nbsp;<span class="code-prop">--rose</span>: <span class="code-const">#d4738c</span>;<br>
-                }
+            <!-- Diff code block -->
+            <div class="demo-box" style="margin-top: 16px;">
+                <div class="demo-label">Code Block with Diff</div>
+                <div class="code-wrapper" style="margin-bottom: 0;">
+                    <div class="code-filename">config/pricing.js</div>
+                    <div class="code-panel active" data-lang="html" style="display: block;">
+                        <button class="code-copy" onclick="copyCode(this)">Copy</button>
+                        <pre class="code-line-numbers"><span class="line"><span class="hl-keyword">const</span> <span class="hl-const">packages</span> = {</span><span class="line">    <span class="hl-prop">basic</span>: <span class="hl-num">18</span>,</span><span class="line diff-remove">    <span class="hl-prop">premium</span>: <span class="hl-num">79</span>,</span><span class="line diff-add">    <span class="hl-prop">premium</span>: <span class="hl-num">89</span>,</span><span class="line">    <span class="hl-prop">ceramic</span>: <span class="hl-num">249</span>,</span><span class="line">};</span></pre>
+                    </div>
+                </div>
             </div>
-        </div>
+
+            <!-- Tabbed code block (multi-language) -->
+            <div class="demo-box" style="margin-top: 16px;">
+                <div class="demo-label">Tabbed Code Block</div>
+                <div class="code-wrapper" style="margin-bottom: 0;">
+                    <div class="code-tabs">
+                        <button class="code-tab active" onclick="switchTab(this, 'js')">JavaScript</button>
+                        <button class="code-tab" onclick="switchTab(this, 'py')">Python</button>
+                        <button class="code-tab" onclick="switchTab(this, 'curl')">cURL</button>
+                    </div>
+                    <div class="code-panel active" data-lang="js">
+                        <button class="code-copy" onclick="copyCode(this)">Copy</button>
+                        <pre><span class="hl-keyword">const</span> <span class="hl-const">res</span> = <span class="hl-keyword">await</span> <span class="hl-prop">fetch</span>(<span class="hl-str">'/api/bookings'</span>, {
+    <span class="hl-prop">method</span>: <span class="hl-str">'POST'</span>,
+    <span class="hl-prop">headers</span>: { <span class="hl-str">'Content-Type'</span>: <span class="hl-str">'application/json'</span> },
+    <span class="hl-prop">body</span>: <span class="hl-prop">JSON</span>.<span class="hl-prop">stringify</span>({
+        <span class="hl-prop">service</span>: <span class="hl-str">'premium-detail'</span>,
+        <span class="hl-prop">vehicle</span>: <span class="hl-str">'Tesla Model 3'</span>,
+        <span class="hl-prop">date</span>: <span class="hl-str">'2026-03-25'</span>
+    })
+});
+<span class="hl-keyword">const</span> <span class="hl-const">booking</span> = <span class="hl-keyword">await</span> <span class="hl-const">res</span>.<span class="hl-prop">json</span>();</pre>
+                    </div>
+                    <div class="code-panel" data-lang="py">
+                        <button class="code-copy" onclick="copyCode(this)">Copy</button>
+                        <pre><span class="hl-keyword">import</span> <span class="hl-const">requests</span>
+
+<span class="hl-const">res</span> = <span class="hl-const">requests</span>.<span class="hl-prop">post</span>(<span class="hl-str">'/api/bookings'</span>, <span class="hl-prop">json</span>={
+    <span class="hl-str">'service'</span>: <span class="hl-str">'premium-detail'</span>,
+    <span class="hl-str">'vehicle'</span>: <span class="hl-str">'Tesla Model 3'</span>,
+    <span class="hl-str">'date'</span>: <span class="hl-str">'2026-03-25'</span>
+})
+<span class="hl-const">booking</span> = <span class="hl-const">res</span>.<span class="hl-prop">json</span>()</pre>
+                    </div>
+                    <div class="code-panel" data-lang="curl">
+                        <button class="code-copy" onclick="copyCode(this)">Copy</button>
+                        <pre><span class="hl-const">curl</span> <span class="hl-prop">-X</span> <span class="hl-keyword">POST</span> <span class="hl-str">/api/bookings</span> \
+    <span class="hl-prop">-H</span> <span class="hl-str">"Content-Type: application/json"</span> \
+    <span class="hl-prop">-d</span> <span class="hl-str">'{
+        "service": "premium-detail",
+        "vehicle": "Tesla Model 3",
+        "date": "2026-03-25"
+    }'</span></pre>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tabbed code block with filename -->
+            <div class="demo-box" style="margin-top: 16px;">
+                <div class="demo-label">Tabbed Code Block with Filename</div>
+                <div class="code-wrapper" style="margin-bottom: 0;">
+                    <div class="code-tabs">
+                        <button class="code-tab active" onclick="switchTab(this, 'html')">HTML</button>
+                        <button class="code-tab" onclick="switchTab(this, 'css')">CSS</button>
+                        <button class="code-tab" onclick="switchTab(this, 'js')">JS</button>
+                    </div>
+                    <div class="code-panel active" data-lang="html">
+                        <button class="code-copy" onclick="copyCode(this)">Copy</button>
+                        <pre class="code-line-numbers"><span class="line"><span class="hl-comment">&lt;!-- components/booking-card.html --&gt;</span></span><span class="line"><span class="hl-tag">&lt;div</span> <span class="hl-attr">class</span>=<span class="hl-str">"booking-card"</span><span class="hl-tag">&gt;</span></span><span class="line">    <span class="hl-tag">&lt;h3</span> <span class="hl-attr">class</span>=<span class="hl-str">"booking-title"</span><span class="hl-tag">&gt;</span>Premium Detail<span class="hl-tag">&lt;/h3&gt;</span></span><span class="line">    <span class="hl-tag">&lt;p</span> <span class="hl-attr">class</span>=<span class="hl-str">"booking-date"</span><span class="hl-tag">&gt;</span>March 25, 2026<span class="hl-tag">&lt;/p&gt;</span></span><span class="line">    <span class="hl-tag">&lt;span</span> <span class="hl-attr">class</span>=<span class="hl-str">"booking-status"</span><span class="hl-tag">&gt;</span>Confirmed<span class="hl-tag">&lt;/span&gt;</span></span><span class="line">    <span class="hl-tag">&lt;button</span> <span class="hl-attr">class</span>=<span class="hl-str">"btn btn-primary"</span><span class="hl-tag">&gt;</span>View Details<span class="hl-tag">&lt;/button&gt;</span></span><span class="line"><span class="hl-tag">&lt;/div&gt;</span></span></pre>
+                    </div>
+                    <div class="code-panel" data-lang="css">
+                        <button class="code-copy" onclick="copyCode(this)">Copy</button>
+                        <pre class="code-line-numbers"><span class="line"><span class="hl-comment">/* styles/booking-card.css */</span></span><span class="line"><span class="hl-prop">.booking-card</span> {</span><span class="line">    <span class="hl-keyword">background</span>: <span class="hl-val">var(--surface)</span>;</span><span class="line">    <span class="hl-keyword">border</span>: <span class="hl-val">1px solid var(--border)</span>;</span><span class="line">    <span class="hl-keyword">border-radius</span>: <span class="hl-val">16px</span>;</span><span class="line">    <span class="hl-keyword">padding</span>: <span class="hl-val">24px</span>;</span><span class="line">}</span><span class="line"><span class="hl-prop">.booking-status</span> {</span><span class="line">    <span class="hl-keyword">font-size</span>: <span class="hl-val">var(--text-label)</span>;</span><span class="line">    <span class="hl-keyword">padding</span>: <span class="hl-val">4px 10px</span>;</span><span class="line">    <span class="hl-keyword">border-radius</span>: <span class="hl-val">999px</span>;</span><span class="line">    <span class="hl-keyword">background</span>: <span class="hl-val">var(--green-tint)</span>;</span><span class="line">    <span class="hl-keyword">color</span>: <span class="hl-val">var(--green-main)</span>;</span><span class="line">}</span></pre>
+                    </div>
+                    <div class="code-panel" data-lang="js">
+                        <button class="code-copy" onclick="copyCode(this)">Copy</button>
+                        <pre class="code-line-numbers"><span class="line"><span class="hl-comment">// scripts/booking-card.js</span></span><span class="line"><span class="hl-keyword">async</span> <span class="hl-keyword">function</span> <span class="hl-prop">loadBooking</span>(<span class="hl-const">id</span>) {</span><span class="line">    <span class="hl-keyword">const</span> <span class="hl-const">res</span> = <span class="hl-keyword">await</span> <span class="hl-prop">fetch</span>(<span class="hl-str">`/api/bookings/${id}`</span>);</span><span class="line">    <span class="hl-keyword">const</span> <span class="hl-const">data</span> = <span class="hl-keyword">await</span> <span class="hl-const">res</span>.<span class="hl-prop">json</span>();</span><span class="line"></span><span class="line">    <span class="hl-const">document</span>.<span class="hl-prop">querySelector</span>(<span class="hl-str">'.booking-title'</span>)</span><span class="line">        .<span class="hl-prop">textContent</span> = <span class="hl-const">data</span>.<span class="hl-prop">service</span>;</span><span class="line">    <span class="hl-const">document</span>.<span class="hl-prop">querySelector</span>(<span class="hl-str">'.booking-date'</span>)</span><span class="line">        .<span class="hl-prop">textContent</span> = <span class="hl-const">data</span>.<span class="hl-prop">date</span>;</span><span class="line">}</span></pre>
+                    </div>
+                </div>
+            </div>
+
+            <div class="code-wrapper" style="margin-top: 16px;">
+                <div class="code-tabs">
+                    <button class="code-tab active" onclick="switchTab(this, 'html')">HTML</button>
+                    <button class="code-tab" onclick="switchTab(this, 'css')">CSS</button>
+                </div>
+                <div class="code-panel active" data-lang="html">
+                    <button class="code-copy" onclick="copyCode(this)">Copy</button>
+                    <pre>&lt;!-- Simple code block --&gt;
+&lt;div class="code-wrapper"&gt;
+    &lt;pre&gt;...code here...&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;!-- With filename --&gt;
+&lt;div class="code-wrapper"&gt;
+    &lt;div class="code-filename"&gt;api/bookings.js&lt;/div&gt;
+    &lt;pre&gt;...code here...&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;!-- With line numbers --&gt;
+&lt;div class="code-wrapper"&gt;
+    &lt;pre class="code-line-numbers"&gt;&lt;span class="line"&gt;first line&lt;/span&gt;&lt;span class="line"&gt;second line&lt;/span&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;!-- Tabbed (multi-language) --&gt;
+&lt;div class="code-wrapper"&gt;
+    &lt;div class="code-tabs"&gt;
+        &lt;button class="code-tab active" onclick="switchTab(this, 'js')"&gt;JavaScript&lt;/button&gt;
+        &lt;button class="code-tab" onclick="switchTab(this, 'py')"&gt;Python&lt;/button&gt;
+    &lt;/div&gt;
+    &lt;div class="code-panel active" data-lang="js"&gt;
+        &lt;button class="code-copy" onclick="copyCode(this)"&gt;Copy&lt;/button&gt;
+        &lt;pre&gt;...JS code...&lt;/pre&gt;
+    &lt;/div&gt;
+    &lt;div class="code-panel" data-lang="py"&gt;
+        &lt;button class="code-copy" onclick="copyCode(this)"&gt;Copy&lt;/button&gt;
+        &lt;pre&gt;...Python code...&lt;/pre&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- Tabbed with filename (comment in first line) --&gt;
+&lt;div class="code-wrapper"&gt;
+    &lt;div class="code-tabs"&gt;
+        &lt;button class="code-tab active" onclick="switchTab(this, 'html')"&gt;HTML&lt;/button&gt;
+        &lt;button class="code-tab" onclick="switchTab(this, 'css')"&gt;CSS&lt;/button&gt;
+        &lt;button class="code-tab" onclick="switchTab(this, 'js')"&gt;JS&lt;/button&gt;
+    &lt;/div&gt;
+    &lt;div class="code-panel active" data-lang="html"&gt;
+        &lt;pre class="code-line-numbers"&gt;&lt;span class="line"&gt;&lt;!-- components/card.html --&gt;&lt;/span&gt;&lt;span class="line"&gt;...&lt;/span&gt;&lt;/pre&gt;
+    &lt;/div&gt;
+    &lt;div class="code-panel" data-lang="css"&gt;
+        &lt;pre class="code-line-numbers"&gt;&lt;span class="line"&gt;/* styles/card.css */&lt;/span&gt;&lt;span class="line"&gt;...&lt;/span&gt;&lt;/pre&gt;
+    &lt;/div&gt;
+    &lt;div class="code-panel" data-lang="js"&gt;
+        &lt;pre class="code-line-numbers"&gt;&lt;span class="line"&gt;// scripts/card.js&lt;/span&gt;&lt;span class="line"&gt;...&lt;/span&gt;&lt;/pre&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- Diff lines --&gt;
+&lt;span class="diff-remove"&gt;    removed line&lt;/span&gt;
+&lt;span class="diff-add"&gt;    added line&lt;/span&gt;
+
+&lt;!-- Syntax highlighting classes --&gt;
+&lt;span class="hl-keyword"&gt;const&lt;/span&gt;
+&lt;span class="hl-prop"&gt;propertyName&lt;/span&gt;
+&lt;span class="hl-str"&gt;'string value'&lt;/span&gt;
+&lt;span class="hl-num"&gt;42&lt;/span&gt;
+&lt;span class="hl-val"&gt;css-value&lt;/span&gt;
+&lt;span class="hl-comment"&gt;// comment&lt;/span&gt;
+&lt;span class="hl-const"&gt;CONSTANT&lt;/span&gt;
+&lt;span class="hl-type"&gt;TypeName&lt;/span&gt;</pre>
+                </div>
+                <div class="code-panel" data-lang="css">
+                    <button class="code-copy" onclick="copyCode(this)">Copy</button>
+                    <pre>.code-wrapper {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+}
+.code-filename {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    padding: 8px 16px;
+    border-bottom: 1px solid var(--border);
+    color: var(--text-muted);
+}
+pre {
+    font-family: var(--font-mono);
+    font-size: 13px;
+    line-height: 1.7;
+    padding: 16px 20px;
+    overflow-x: auto;
+}
+.code-line-numbers {
+    counter-reset: line;
+}
+.code-line-numbers .line {
+    display: block;
+}
+.code-line-numbers .line::before {
+    counter-increment: line;
+    content: counter(line);
+    display: inline-block;
+    min-width: 2em;
+    text-align: right;
+    padding-right: 12px;
+    margin-right: 12px;
+    border-right: 1px solid var(--warm-850);
+    color: var(--warm-500);
+    user-select: none;
+}
+.diff-add {
+    background: rgba(82, 183, 136, 0.15);
+    display: block;
+    margin: 0 -20px;
+    padding: 0 20px;
+}
+.diff-remove {
+    background: rgba(230, 98, 96, 0.15);
+    display: block;
+    margin: 0 -20px;
+    padding: 0 20px;
+}</pre>
+                </div>
+            </div>
+        </section>
+
         <script>
-            (function() {
-                var saved = localStorage.getItem('aquadrive-theme');
-                var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-                var theme = saved || (prefersDark ? 'dark' : 'light');
-                if (theme === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
-                updateToggleLabel();
-            })();
             function toggleTheme() {
                 var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
                 var next = isDark ? 'light' : 'dark';
@@ -850,12 +885,83 @@
                 localStorage.setItem('aquadrive-theme', next);
                 updateToggleLabel();
             }
+            function toggleSettings(e) {
+                if (e) e.stopPropagation();
+                var dd = document.getElementById('navSettingsDropdown');
+                dd.classList.toggle('open');
+            }
+            document.addEventListener('click', function(e) {
+                var settings = document.querySelector('.aqua-navbar-settings');
+                if (settings && !settings.contains(e.target)) {
+                    document.getElementById('navSettingsDropdown').classList.remove('open');
+                }
+            });
+            function toggleNav() {
+                document.querySelector('.aqua-navbar').classList.toggle('nav-open');
+            }
             function updateToggleLabel() {
                 var btn = document.querySelector('.theme-toggle');
                 if (!btn) return;
                 var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
                 btn.textContent = isDark ? 'Light' : 'Dark';
             }
+            function setAccent(color) {
+                document.documentElement.setAttribute('data-accent', color);
+                localStorage.setItem('aquadrive-accent', color);
+                updateAccentDots();
+            }
+            function updateAccentDots() {
+                var current = document.documentElement.getAttribute('data-accent') || 'blue';
+                document.querySelectorAll('.accent-dot').forEach(function(dot) {
+                    dot.classList.toggle('active', dot.getAttribute('data-color') === current);
+                });
+            }
+            function switchTab(btn, lang) {
+                var wrapper = btn.closest('.code-wrapper');
+                wrapper.querySelectorAll('.code-tab').forEach(t => t.classList.remove('active'));
+                wrapper.querySelectorAll('.code-panel').forEach(p => p.classList.remove('active'));
+                btn.classList.add('active');
+                wrapper.querySelector('[data-lang="' + lang + '"]').classList.add('active');
+            }
+            function copyCode(btn) {
+                var code = btn.nextElementSibling.textContent;
+                navigator.clipboard.writeText(code);
+                btn.textContent = 'Copied!';
+                setTimeout(function() { btn.textContent = 'Copy'; }, 1500);
+            }
+            /* Mobile Preview */
+            function toggleMobile() {
+                var existing = document.querySelector('.mobile-preview-backdrop');
+                if (existing) { existing.classList.toggle('open'); return; }
+                var backdrop = document.createElement('div');
+                backdrop.className = 'mobile-preview-backdrop open';
+                backdrop.onclick = function(e) { if (e.target === backdrop) backdrop.classList.remove('open'); };
+                var device = document.createElement('div');
+                device.className = 'mobile-preview-device';
+                var notch = document.createElement('div');
+                notch.className = 'mobile-preview-notch';
+                var screen = document.createElement('div');
+                screen.className = 'mobile-preview-screen';
+                var iframe = document.createElement('iframe');
+                iframe.src = window.location.href;
+                var close = document.createElement('button');
+                close.className = 'mobile-preview-close';
+                close.innerHTML = '&times;';
+                close.onclick = function() { backdrop.classList.remove('open'); };
+                var label = document.createElement('div');
+                label.className = 'mobile-preview-label';
+                label.textContent = '390 × 844 — iPhone 14 Pro';
+                screen.appendChild(iframe);
+                device.appendChild(notch);
+                device.appendChild(screen);
+                device.appendChild(close);
+                device.appendChild(label);
+                backdrop.appendChild(device);
+                document.body.appendChild(backdrop);
+            }
+
+            updateToggleLabel();
+            updateAccentDots();
         </script>
     </body>
 </html>

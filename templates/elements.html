@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+    <Head title="Elements"
+          description="Every UI element in the AquaDrive system." />
+    <body>
+        <ThemeRadios />
+        <NavBar active="elements" />
+        <main>
+            <Breadcrumbs items="Home|index.html;;Elements" />
+            <h1>Elements</h1>
+            <p class="subtitle">Every component in the system, composed from the same tokens.</p>
+            <section class="section">
+                <div class="section-title">
+                    <h2>Tags</h2>
+                    <small>One per accent plus status colors</small>
+                </div>
+                <div class="row">
+                    <Tag text="Blue" color="blue" />
+                    <Tag text="Purple" color="purple" />
+                    <Tag text="Cyan" color="cyan" />
+                    <Tag text="Rosé" color="rose" />
+                    <Tag text="Success" color="success" />
+                    <Tag text="Warning" color="warning" />
+                    <Tag text="Danger" color="danger" />
+                    <Tag text="Icon before" color="blue" iconBefore="★" />
+                    <Tag text="Icon after" color="purple" iconAfter="→" />
+                    <Tag text="Removable" color="cyan" removable="true" />
+                </div>
+            </section>
+            <section class="section">
+                <div class="section-title">
+                    <h2>Chips</h2>
+                    <small>Bigger, default text color</small>
+                </div>
+                <div class="row">
+                    <Chip text="Blue" color="blue" />
+                    <Chip text="Purple" color="purple" />
+                    <Chip text="Cyan" color="cyan" />
+                    <Chip text="Rosé" color="rose" />
+                    <Chip text="Outline" outline="true" />
+                    <Chip text="Ada Lovelace" color="blue" avatar="AL" />
+                    <Chip text="Close" color="rose" iconAfter="×" />
+                </div>
+            </section>
+            <section class="section">
+                <div class="section-title">
+                    <h2>Tooltips</h2>
+                    <small>Show on hover or focus</small>
+                </div>
+                <div class="row">
+                    <Tooltip trigger="Hover me" tip="This is a helpful hint." />
+                    <Tooltip trigger="Focus me" tip="Tooltips also appear on keyboard focus." />
+                </div>
+            </section>
+            <section class="section">
+                <div class="section-title">
+                    <h2>Inputs</h2>
+                    <small>With labels, icons and validation</small>
+                </div>
+                <div class="grid cols-2">
+                    <FormGroup label="Name" for="name" help="First and last name" placeholder="Ada Lovelace" />
+                    <FormGroup label="Search" for="search" placeholder="Find a wash" iconLeft="⌕" />
+                    <FormGroup label="Password" for="pw" type="password" placeholder="••••••••" iconRight="👁" />
+                    <FormGroup label="Email (valid)" for="em1" type="email" value="ada@aquadrive.io" state="valid" help="Looks good." />
+                    <FormGroup label="Email (invalid)" for="em2" type="email" value="ada@aquadrive" state="invalid" help="That email is taken." />
+                    <FormGroup label="Notes (inset label)" for="notes" insetLabel="NOTES" placeholder="Extra details" />
+                    <FormGroup label="Vehicle type" for="vtype" type="select" placeholder="Choose one" options="sedan|Sedan;;suv|SUV;;truck|Truck;;van|Van" />
+                    <FormGroup label="Message" for="msg" type="textarea" placeholder="Tell us more..." rows="3" />
+                </div>
+                <div class="row" style="margin-top: 1rem;">
+                    <Checkbox id="cb1" label="I agree to the terms" checked="true" />
+                    <Checkbox id="cb2" label="Subscribe to updates" />
+                    <Checkbox id="cb3" label="Disabled" disabled="true" />
+                    <Toggle id="tg1" label="Dark lane lighting" checked="true" />
+                    <Toggle id="tg2" label="Email receipts" />
+                </div>
+            </section>
+            <section class="section">
+                <div class="section-title">
+                    <h2>Buttons</h2>
+                    <small>All variants, shapes and states</small>
+                </div>
+                <div class="row">
+                    <Button text="Primary" />
+                    <Button text="Secondary" variant="secondary" />
+                    <Button text="Outlined" variant="outlined" />
+                    <Button text="Ghost" variant="ghost" />
+                    <Button text="Danger" variant="danger" />
+                    <Button text="Success" variant="success" />
+                    <Button text="Warning" variant="warning" />
+                    <Button text="Disabled" disabled="true" />
+                </div>
+                <div class="row" style="margin-top: 0.75rem;">
+                    <Button text="Loading" loading="true" />
+                    <Button text="Save" iconBefore="💾" />
+                    <Button text="Next" iconAfter="→" variant="outlined" />
+                    <Button iconBefore="+" shape="circle" ariaLabel="Add" />
+                    <Button iconBefore="⚙"
+                            shape="square"
+                            variant="secondary"
+                            ariaLabel="Settings" />
+                </div>
+            </section>
+            <section class="section">
+                <div class="section-title">
+                    <h2>Keyboard shortcuts</h2>
+                    <small>Press a key</small>
+                </div>
+                <div class="row">
+                    <Kbd keys="Ctrl K" />
+                    <Kbd keys="⌘ Shift P" />
+                    <Kbd keys="Esc" />
+                </div>
+            </section>
+            <section class="section">
+                <div class="section-title">
+                    <h2>Spinners</h2>
+                </div>
+                <div class="row">
+                    <Spinner />
+                    <Spinner size="lg" />
+                </div>
+            </section>
+            <section class="section">
+                <div class="section-title">
+                    <h2>Tables</h2>
+                    <small>Hover highlights the row</small>
+                </div>
+                <Table columns="Bay;;Type;;Last wash;;Status"
+                       rows="A1|Self-service|12:04|Idle;;A2|Automatic|12:07|Running;;A3|Detail|11:32|Blocked;;A4|Automatic|—|Offline" />
+            </section>
+            <section class="section">
+                <div class="section-title">
+                    <h2>Lists</h2>
+                </div>
+                <div class="grid cols-2">
+                    <div>
+                        <h3>Plain list</h3>
+                        <List items="Daily report;;Weekly report;;Monthly report" />
+                    </div>
+                    <div>
+                        <h3>Cards list</h3>
+                        <ul class="list-card">
+                            <ListItem icon="W" title="Wash · Bay A1" subtitle="Customer · Ada Lovelace" action="View" />
+                            <ListItem icon="W" title="Wash · Bay A2" subtitle="Customer · Grace Hopper" action="View" />
+                            <ListItem icon="D" title="Detail · Bay C1" subtitle="Customer · Alan Turing" action="View" />
+                        </ul>
+                    </div>
+                </div>
+            </section>
+            <section class="section">
+                <div class="section-title">
+                    <h2>Timeline</h2>
+                </div>
+                <Timeline events="2026-04-01|Kickoff|System planning session.;;2026-04-09|Alpha|Internal preview deployed.;;2026-04-17|Beta|Opened to first pilot bay." />
+            </section>
+            <section class="section">
+                <div class="section-title">
+                    <h2>Pagination</h2>
+                </div>
+                <Pagination total="7" current="3" />
+            </section>
+            <section class="section">
+                <div class="section-title">
+                    <h2>Alerts</h2>
+                </div>
+                <div class="stack">
+                    <Alert variant="info" title="Heads up" message="Tunnel B is scheduled for maintenance at 18:00." icon="ℹ" />
+                    <Alert variant="success" title="Saved" message="Your settings were updated successfully." icon="✓" />
+                    <Alert variant="warning" title="Low water pressure" message="Bay A2 is reporting 30% below nominal." icon="!" />
+                    <Alert variant="danger" title="Payment failed" message="We couldn't charge the card on file." icon="×" />
+                </div>
+            </section>
+            <section class="section">
+                <div class="section-title">
+                    <h2>Notifications</h2>
+                </div>
+                <div class="stack">
+                    <Notification icon="A" title="Ada commented" body="Left a note on your last wash report." />
+                    <Notification icon="!" title="Service due" body="Bay A2 is due for a filter change." />
+                </div>
+            </section>
+            <section class="section">
+                <div class="section-title">
+                    <h2>Toasts</h2>
+                </div>
+                <div class="stack">
+                    <Toast message="Settings saved." variant="success" icon="✓" />
+                    <Toast message="Connection lost." variant="danger" icon="×" />
+                    <Toast message="Running low on wax." variant="warning" icon="!" />
+                </div>
+            </section>
+            <section class="section">
+                <div class="section-title">
+                    <h2>Progress</h2>
+                </div>
+                <div class="stack">
+                    <Progress value="30" />
+                    <Progress value="65" striped="true" />
+                    <Progress value="95" />
+                </div>
+            </section>
+            <section class="section">
+                <div class="section-title">
+                    <h2>Skeletons</h2>
+                </div>
+                <div class="stack" style="max-width: 28rem;">
+                    <Skeleton width="60%" height="1.25rem" />
+                    <Skeleton width="100%" height="0.9rem" />
+                    <Skeleton width="80%" height="0.9rem" />
+                    <div class="row">
+                        <Skeleton shape="circle" width="2.5rem" height="2.5rem" /><Skeleton width="9rem" height="1rem" />
+                    </div>
+                </div>
+            </section>
+            <section class="section">
+                <div class="section-title">
+                    <h2>Badges</h2>
+                </div>
+                <div class="row">
+                    <Badge text="12" />
+                    <Badge text="New" variant="success" />
+                    <Badge text="!" variant="warning" />
+                    <Badge text="Err" variant="danger" />
+                    <Badge text="Beta" variant="outline" />
+                </div>
+            </section>
+            <section class="section">
+                <div class="section-title">
+                    <h2>Modals</h2>
+                </div>
+                <Modal id="m1" open="true" title="Confirm wash start" body="This will start the automatic tunnel. Continue?" confirmText="Start" cancelText="Cancel" />
+            </section>
+            <section class="section">
+                <div class="section-title">
+                    <h2>Dropdown</h2>
+                </div>
+                <Dropdown label="Options" items="Edit|#;;Duplicate|#;;Archive|#" />
+            </section>
+            <section class="section">
+                <div class="section-title">
+                    <h2>Avatars</h2>
+                </div>
+                <div class="row">
+                    <Avatar initials="AL" alt="Ada Lovelace" />
+                    <Avatar initials="GH" alt="Grace Hopper" size="lg" />
+                    <Avatar initials="AT" alt="Alan Turing" size="sm" />
+                    <span class="avatar-group">
+                        <Avatar initials="AL" />
+                        <Avatar initials="GH" />
+                        <Avatar initials="AT" />
+                    </span>
+                </div>
+            </section>
+            <section class="section">
+                <div class="section-title">
+                    <h2>Cards</h2>
+                </div>
+                <div class="grid cols-2">
+                    <Card title="Default" subtitle="Standard card" body="A card is a self-contained block of content that uses surface color and a subtle border." />
+                    <Card title="Elevated" subtitle="Has a shadow" body="Elevated cards use surface-elevated and sit above the page." variant="elevated" />
+                    <Card title="Horizontal" subtitle="Image beside content" body="Horizontal cards align their image and body on the same row." layout="horizontal" />
+                    <Card title="Stacked" subtitle="Column layout" body="Stacked cards stack every piece vertically with consistent spacing." layout="stacked" />
+                    <Card title="With footer" subtitle="Has an action" body="Cards can have a footer with actions for quick navigation." footer="View report" />
+                </div>
+            </section>
+            <section class="section">
+                <div class="section-title">
+                    <h2>Horizontal rules</h2>
+                </div>
+                <Hr />
+                <Hr title="Centered" align="center" />
+                <Hr title="Left title" align="left" />
+                <Hr title="Right title" align="right" />
+                <Hr accent="true" />
+            </section>
+            <section class="section">
+                <div class="section-title">
+                    <h2>Accordions</h2>
+                </div>
+                <Accordion title="What is AquaDrive?" body="A car wash platform built around a shared design system." open="true" />
+                <Accordion title="Which themes are supported?" body="Light and dark, with four accent colors." />
+                <Accordion title="Can I extend it?" body="Yes — every color is a CSS variable." />
+            </section>
+            <SiteFooter />
+        </main>
+    </body>
+</html>

@@ -1,0 +1,17 @@
+<article class="card {% if variant %}{{ variant }}{% endif %} {% if layout == 'horizontal' %}card-horizontal{% elif layout == 'stacked' %}card-stacked{% endif %}">
+    {% if image %}
+        <img src="{{ image }}"
+             alt="{{ imageAlt or '' }}"
+             style="border-radius: var(--radius-md)">
+    {% endif %}
+    <div>
+        {% if title %}<h3 class="card-title">{{ title }}</h3>{% endif %}
+        {% if subtitle %}<p class="card-subtitle">{{ subtitle }}</p>{% endif %}
+        {% if body %}<p>{{ body }}</p>{% endif %}
+        {% if footer %}
+            <div class="card-footer">
+                <Button text="{{ footer }}" variant="outlined" />
+            </div>
+        {% endif %}
+    </div>
+</article>

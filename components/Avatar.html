@@ -1,0 +1,8 @@
+<span class="avatar {% if size %}{{ size }}{% endif %}"
+      aria-label="{{ alt or initials }}">
+    {% if src %}
+        <img src="{{ src }}" alt="{{ alt or '' }}">
+    {% else %}
+        {{ initials }}
+    {% endif %}
+</span>

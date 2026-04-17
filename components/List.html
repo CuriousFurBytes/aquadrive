@@ -1,0 +1,4 @@
+{# items: "Item one;;Item two;;Item three" #}
+<ul class="plain-list">
+    {% for item in (items or '').split(';;') if item %}<li>{{ item }}</li>{% endfor %}
+</ul>

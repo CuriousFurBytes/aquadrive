@@ -1,0 +1,40 @@
+{# Hidden radios drive the theme and accent via :has(#id:checked) in CSS.
+   tabindex=-1 keeps them out of the tab order so aria-hidden is honest;
+   the visible <label> elements in ThemeSwitcher carry focus instead. #}
+<input type="radio"
+       name="theme"
+       id="theme-light"
+       class="switcher-input"
+       aria-hidden="true"
+       tabindex="-1">
+<input type="radio"
+       name="theme"
+       id="theme-dark"
+       class="switcher-input"
+       aria-hidden="true"
+       tabindex="-1">
+<input type="radio"
+       name="accent"
+       id="accent-blue"
+       class="switcher-input"
+       aria-hidden="true"
+       tabindex="-1"
+       checked>
+<input type="radio"
+       name="accent"
+       id="accent-purple"
+       class="switcher-input"
+       aria-hidden="true"
+       tabindex="-1">
+<input type="radio"
+       name="accent"
+       id="accent-cyan"
+       class="switcher-input"
+       aria-hidden="true"
+       tabindex="-1">
+<input type="radio"
+       name="accent"
+       id="accent-rose"
+       class="switcher-input"
+       aria-hidden="true"
+       tabindex="-1">

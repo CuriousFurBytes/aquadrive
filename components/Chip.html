@@ -1,0 +1,6 @@
+<span class="chip {% if color %}chip-{{ color }}{% endif %} {% if outline %}chip-outline{% endif %}">
+    {% if avatar %}<span class="chip-avatar">{{ avatar }}</span>{% endif %}
+    {% if iconBefore %}<span aria-hidden="true">{{ iconBefore }}</span>{% endif %}
+    <span>{{ text }}</span>
+    {% if iconAfter %}<span aria-hidden="true">{{ iconAfter }}</span>{% endif %}
+</span>

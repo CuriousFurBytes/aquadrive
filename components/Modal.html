@@ -1,0 +1,10 @@
+<dialog class="modal" {% if open %}open{% endif %} id="{{ id }}">
+    <div class="modal-inner">
+        {% if title %}<h3 class="modal-title">{{ title }}</h3>{% endif %}
+        {% if body %}<p>{{ body }}</p>{% endif %}
+        <div class="modal-footer">
+            <Button text="{{ cancelText or 'Cancel' }}" variant="secondary" />
+            <Button text="{{ confirmText or 'Confirm' }}" variant="" />
+        </div>
+    </div>
+</dialog>

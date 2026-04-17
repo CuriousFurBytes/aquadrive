@@ -1,0 +1,7 @@
+{
+    "profile": "jinja",
+    "ignore_case": true,
+    "indent": 4,
+    "max_line_length": 120,
+    "max_attribute_length": 70
+}

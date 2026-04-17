@@ -1,0 +1,13 @@
+<nav class="pagination" aria-label="Pagination">
+    {% set total = (total or 5)|int %}
+    {% set current_page = (current or 1)|int %}
+    <a class="{% if current_page <= 1 %}disabled{% endif %}" href="#">‹</a>
+    {% for i in range(1, total + 1) %}
+        {% if i == current_page %}
+            <span class="active" aria-current="page">{{ i }}</span>
+        {% else %}
+            <a href="#">{{ i }}</a>
+        {% endif %}
+    {% endfor %}
+    <a class="{% if current_page >= total %}disabled{% endif %}" href="#">›</a>
+</nav>

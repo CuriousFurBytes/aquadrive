@@ -1,0 +1,168 @@
+/* AquaDrive theme tokens
+ *
+ * Two color schemes (light/dark) and four accent colors (blue, purple, cyan,
+ * rosé). Selection happens through hidden radio inputs on the page so the
+ * switcher works without JavaScript.
+ */
+
+:root {
+    color-scheme: light dark;
+
+    /* Base neutrals shared across schemes */
+    --rose-50: #faf5f5;
+    --rose-100: #f4eded;
+    --rose-200: #e8dede;
+    --rose-300: #e0d5d5;
+    --rose-400: #c9b9bb;
+    --rose-500: #9a8e8e;
+    --rose-600: #7a6f7f;
+    --rose-700: #3b3247;
+    --rose-800: #261f34;
+    --rose-900: #1c1828;
+
+    /* Status colors */
+    --success: #52b788;
+    --success-fg: #0f3a22;
+    --success-subtle: #d8eee2;
+    --warning: #f9db6d;
+    --warning-fg: #4a3f0a;
+    --warning-subtle: #fbf1c6;
+    --danger: #e66260;
+    --danger-fg: #4a0f0e;
+    --danger-subtle: #f7d3d2;
+    --info: #656ea4;
+    --info-fg: #1c2149;
+    --info-subtle: #dee0ed;
+
+    /* Accent palettes (one per accent). Each has subtle/base/strong/fg tones. */
+    --blue-subtle: #dee0ed;
+    --blue-soft: #b8bdd6;
+    --blue-base: #656ea4;
+    --blue-strong: #4e5688;
+    --blue-contrast: #1c2149;
+    --blue-fg: #f4eded;
+
+    --purple-subtle: #ecddf1;
+    --purple-soft: #c7a7d1;
+    --purple-base: #8e6aa0;
+    --purple-strong: #6f4f80;
+    --purple-contrast: #2a1633;
+    --purple-fg: #f4eded;
+
+    --cyan-subtle: #d7ecef;
+    --cyan-soft: #9cc9ce;
+    --cyan-base: #5ba5b0;
+    --cyan-strong: #427f88;
+    --cyan-contrast: #0f2c30;
+    --cyan-fg: #0f2c30;
+
+    --rose-accent-subtle: #f3dde3;
+    --rose-accent-soft: #dfabbb;
+    --rose-accent-base: #c47b8f;
+    --rose-accent-strong: #9a5971;
+    --rose-accent-contrast: #3d1a27;
+    --rose-accent-fg: #f4eded;
+
+    /* Radii and motion */
+    --radius-sm: 0.25rem;
+    --radius-md: 0.5rem;
+    --radius-lg: 0.75rem;
+    --radius-pill: 999px;
+    --shadow-sm: 0 1px 2px rgba(28, 24, 40, 0.08);
+    --shadow-md: 0 4px 12px rgba(28, 24, 40, 0.12);
+    --shadow-lg: 0 10px 30px rgba(28, 24, 40, 0.18);
+    --transition-fast: 120ms ease;
+    --transition-slow: 260ms ease;
+
+    /* Default to light surface + blue accent.
+     * --text-muted and --text-soft are darkened past the raw rose tokens to
+     * keep WCAG AA contrast (>= 4.5:1) against the white/rose-100 surfaces. */
+    --bg: var(--rose-100);
+    --surface: #ffffff;
+    --surface-elevated: #ffffff;
+    --border: var(--rose-300);
+    --border-strong: var(--rose-400);
+    --text: var(--rose-900);
+    --text-muted: #5e5266;
+    --text-soft: #6f6377;
+
+    --accent-subtle: var(--blue-subtle);
+    --accent-soft: var(--blue-soft);
+    --accent: var(--blue-base);
+    --accent-strong: var(--blue-strong);
+    --accent-contrast: var(--blue-contrast);
+    --accent-fg: var(--blue-fg);
+}
+
+/* Default scheme follows the OS setting */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --bg: var(--rose-900);
+        --surface: var(--rose-800);
+        --surface-elevated: var(--rose-700);
+        --border: var(--rose-700);
+        --border-strong: var(--rose-600);
+        --text: var(--rose-100);
+        --text-muted: var(--rose-400);
+        --text-soft: var(--rose-500);
+    }
+}
+
+/* Explicit overrides via hidden radio switcher */
+html:has(#theme-light:checked) {
+    --bg: var(--rose-100);
+    --surface: #ffffff;
+    --surface-elevated: #ffffff;
+    --border: var(--rose-300);
+    --border-strong: var(--rose-400);
+    --text: var(--rose-900);
+    --text-muted: #5e5266;
+    --text-soft: #6f6377;
+}
+
+html:has(#theme-dark:checked) {
+    --bg: var(--rose-900);
+    --surface: var(--rose-800);
+    --surface-elevated: var(--rose-700);
+    --border: var(--rose-700);
+    --border-strong: var(--rose-600);
+    --text: var(--rose-100);
+    --text-muted: var(--rose-400);
+    --text-soft: var(--rose-500);
+}
+
+html:has(#accent-blue:checked) {
+    --accent-subtle: var(--blue-subtle);
+    --accent-soft: var(--blue-soft);
+    --accent: var(--blue-base);
+    --accent-strong: var(--blue-strong);
+    --accent-contrast: var(--blue-contrast);
+    --accent-fg: var(--blue-fg);
+}
+
+html:has(#accent-purple:checked) {
+    --accent-subtle: var(--purple-subtle);
+    --accent-soft: var(--purple-soft);
+    --accent: var(--purple-base);
+    --accent-strong: var(--purple-strong);
+    --accent-contrast: var(--purple-contrast);
+    --accent-fg: var(--purple-fg);
+}
+
+html:has(#accent-cyan:checked) {
+    --accent-subtle: var(--cyan-subtle);
+    --accent-soft: var(--cyan-soft);
+    --accent: var(--cyan-base);
+    --accent-strong: var(--cyan-strong);
+    --accent-contrast: var(--cyan-contrast);
+    --accent-fg: var(--cyan-fg);
+}
+
+html:has(#accent-rose:checked) {
+    --accent-subtle: var(--rose-accent-subtle);
+    --accent-soft: var(--rose-accent-soft);
+    --accent: var(--rose-accent-base);
+    --accent-strong: var(--rose-accent-strong);
+    --accent-contrast: var(--rose-accent-contrast);
+    --accent-fg: var(--rose-accent-fg);
+}

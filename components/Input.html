@@ -1,0 +1,10 @@
+<div class="input-field {% if state %}{{ state }}{% endif %} {% if insetLabel %}with-inset-label{% endif %}">
+    {% if insetLabel %}<label class="label" for="{{ id }}">{{ insetLabel }}</label>{% endif %}
+    {% if iconLeft %}<span class="icon" aria-hidden="true">{{ iconLeft }}</span>{% endif %}
+    <input id="{{ id }}"
+           type="{{ type or 'text' }}"
+           placeholder="{{ placeholder or '' }}"
+           value="{{ value or '' }}"
+           {% if disabled %}disabled{% endif %}>
+    {% if iconRight %}<span class="icon" aria-hidden="true">{{ iconRight }}</span>{% endif %}
+</div>

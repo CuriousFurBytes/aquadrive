@@ -1,0 +1,8 @@
+<div class="alert {% if variant %}alert-{{ variant }}{% endif %}"
+     role="alert">
+    {% if icon %}<span aria-hidden="true">{{ icon }}</span>{% endif %}
+    <div>
+        {% if title %}<p class="alert-title">{{ title }}</p>{% endif %}
+        {% if message %}<p class="alert-body">{{ message }}</p>{% endif %}
+    </div>
+</div>

@@ -1,0 +1,73 @@
+name: Build
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  build:
+    name: Build, format, performance
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v5
+        with:
+          enable-cache: true
+
+      - name: Install Python 3.14
+        run: uv python install 3.14
+
+      - name: Install Node.js 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Install py-ssg
+        run: uv tool install --python 3.14 --from git+https://github.com/freeoss-space/py-ssg.git py-ssg
+
+      # Hard gate: CSS formatting must pass before the build runs.
+      - name: Format — Prettier (CSS)
+        run: |
+          npm install --no-save --no-audit --no-fund prettier@3.3.3
+          npx prettier --check "**/*.css" --ignore-path .prettierignore
+
+      # Hard gate: HTML/Jinja formatting via djlint. Uses .djlintrc which sets
+      # profile=jinja and ignore_case=true so PascalCase component tags survive.
+      - name: Format — djlint (HTML, Jinja)
+        run: |
+          uv tool install --python 3.14 djlint
+          djlint components/ templates/ --check
+
+      - name: Build site
+        run: |
+          export PATH="$HOME/.local/bin:$PATH"
+          py-ssg build
+
+      # Hard gate: Lighthouse budgets must be met. CI fails on regression.
+      - name: Serve output
+        run: |
+          python3 -m http.server 8080 --directory output &
+          sleep 2
+
+      - name: Performance — Lighthouse CI
+        run: |
+          npm install --no-save --no-audit --no-fund @lhci/cli@0.14.0
+          npx lhci autorun --config=.lighthouserc.json
+        env:
+          LHCI_GITHUB_APP_TOKEN: ""
+
+      - name: Upload output artifact
+        if: success()
+        uses: actions/upload-artifact@v4
+        with:
+          name: site
+          path: output
+          if-no-files-found: error

@@ -1,0 +1,23 @@
+<nav class="navbar" aria-label="Primary">
+    <a class="navbar-logo" href="index.html">
+        <span class="navbar-logo-dot"></span>
+        <span>AquaDrive</span>
+    </a>
+    <input type="checkbox"
+           id="nav-menu"
+           class="navbar-menu-toggle switcher-input"
+           aria-hidden="true"
+           tabindex="-1">
+    <label class="navbar-menu-button" for="nav-menu" aria-label="Open menu">☰</label>
+    <div class="navbar-links">
+        <a href="index.html" class="{% if active == 'home' %}active{% endif %}">Colors</a>
+        <a href="typography.html"
+           class="{% if active == 'typography' %}active{% endif %}">Typography</a>
+        <a href="elements.html"
+           class="{% if active == 'elements' %}active{% endif %}">Elements</a>
+        <a href="ports.html" class="{% if active == 'ports' %}active{% endif %}">Ports</a>
+    </div>
+    <div class="navbar-right">
+        <ThemeSwitcher />
+    </div>
+</nav>

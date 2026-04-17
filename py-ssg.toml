@@ -1,0 +1,21 @@
+[py-ssg]
+name = "AquaDrive Design System"
+url = "https://aquadrive.design"
+description = "Color system and component library for AquaDrive."
+cache = true
+
+[py-ssg.server]
+port = 8000
+
+[py-ssg.syntax]
+enabled = true
+theme_light = "friendly"
+theme_dark = "monokai"
+
+[py-ssg.toc]
+enabled = false
+max_depth = 3
+
+[[py-ssg.authors]]
+name = "AquaDrive"
+email = "design@aquadrive.local"

@@ -1,0 +1,8 @@
+<button type="{{ type or 'button' }}"
+        class="btn {% if variant %}btn-{{ variant }}{% endif %} {% if shape %}btn-{{ shape }}{% endif %} {% if loading %}loading{% endif %} {% if disabled %}disabled{% endif %}"
+        {% if ariaLabel %}aria-label="{{ ariaLabel }}"{% elif not text %}aria-label="{{ iconBefore or iconAfter or 'Button' }}"{% endif %}
+        {% if disabled %}disabled{% endif %}>
+    {% if iconBefore %}<span aria-hidden="true">{{ iconBefore }}</span>{% endif %}
+    {% if text %}<span>{{ text }}</span>{% endif %}
+    {% if iconAfter %}<span aria-hidden="true">{{ iconAfter }}</span>{% endif %}
+</button>

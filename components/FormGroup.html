@@ -1,0 +1,15 @@
+{# FormGroup wraps a labeled input of a single type. #}
+<div class="form-group {% if state %}{{ state }}{% endif %}">
+    {% if label %}<label class="label" for="{{ for }}">{{ label }}</label>{% endif %}
+    {% if type == 'select' %}
+        <Select id="{{ for }}"
+                placeholder="{{ placeholder }}"
+                options="{{ options }}"
+                state="{{ state }}" />
+    {% elif type == 'textarea' %}
+        <Textarea id="{{ for }}" placeholder="{{ placeholder }}" state="{{ state }}" rows="{{ rows or 3 }}" />
+{% else %}
+<Input id="{{ for }}" type="{{ type or 'text' }}" placeholder="{{ placeholder }}" value="{{ value }}" state="{{ state }}" iconLeft="{{ iconLeft }}" iconRight="{{ iconRight }}" insetLabel="{{ insetLabel }}" />
+{% endif %}
+{% if help %}<span class="help">{{ help }}</span>{% endif %}
+</div>

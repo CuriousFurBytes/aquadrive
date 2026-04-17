@@ -1,0 +1,6 @@
+output/
+.github/
+node_modules/
+static/fonts/
+# HTML/Jinja is handled by djlint, not prettier.
+**/*.html

@@ -1,0 +1,1168 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Elements — AquaDrive Design System</title>
+    <meta name="description"
+          content="Every UI element in the AquaDrive system.">
+    <link rel="stylesheet" href="styles/theme.css">
+    <link rel="stylesheet" href="styles/base.css">
+    <link rel="stylesheet" href="styles/components.css">
+    <link rel="stylesheet" href="syntax.css">
+</head>
+    <body>
+        
+<input type="radio"
+       name="theme"
+       id="theme-light"
+       class="switcher-input"
+       aria-hidden="true"
+       tabindex="-1">
+<input type="radio"
+       name="theme"
+       id="theme-dark"
+       class="switcher-input"
+       aria-hidden="true"
+       tabindex="-1">
+<input type="radio"
+       name="accent"
+       id="accent-blue"
+       class="switcher-input"
+       aria-hidden="true"
+       tabindex="-1"
+       checked>
+<input type="radio"
+       name="accent"
+       id="accent-purple"
+       class="switcher-input"
+       aria-hidden="true"
+       tabindex="-1">
+<input type="radio"
+       name="accent"
+       id="accent-cyan"
+       class="switcher-input"
+       aria-hidden="true"
+       tabindex="-1">
+<input type="radio"
+       name="accent"
+       id="accent-rose"
+       class="switcher-input"
+       aria-hidden="true"
+       tabindex="-1">
+        <nav class="navbar" aria-label="Primary">
+    <a class="navbar-logo" href="index.html">
+        <span class="navbar-logo-dot"></span>
+        <span>AquaDrive</span>
+    </a>
+    <input type="checkbox"
+           id="nav-menu"
+           class="navbar-menu-toggle switcher-input"
+           aria-hidden="true"
+           tabindex="-1">
+    <label class="navbar-menu-button" for="nav-menu" aria-label="Open menu">☰</label>
+    <div class="navbar-links">
+        <a href="index.html" class="">Colors</a>
+        <a href="typography.html"
+           class="">Typography</a>
+        <a href="elements.html"
+           class="active">Elements</a>
+        <a href="ports.html" class="">Ports</a>
+    </div>
+    <div class="navbar-right">
+        <details class="switcher">
+    <summary aria-label="Open theme settings">
+        <svg width="16"
+             height="16"
+             viewBox="0 0 24 24"
+             fill="none"
+             stroke="currentColor"
+             stroke-width="2"
+             stroke-linecap="round"
+             stroke-linejoin="round"
+             aria-hidden="true">
+            <circle cx="12" cy="12" r="3"></circle>
+            <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09a1.65 1.65 0 0 0-1-1.51 1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09a1.65 1.65 0 0 0 1.51-1 1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33 1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82 1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z">
+            </path>
+        </svg>
+        <span>Theme</span>
+    </summary>
+    <div class="switcher-panel" role="menu">
+        <div class="switcher-group">
+            <p class="switcher-group-title">Color scheme</p>
+            <div class="switcher-options">
+                <label class="switcher-option" data-value="light" for="theme-light">Light</label>
+                <label class="switcher-option" data-value="dark" for="theme-dark">Dark</label>
+            </div>
+        </div>
+        <div class="switcher-group">
+            <p class="switcher-group-title">Accent</p>
+            <div class="switcher-options">
+                <label class="switcher-option" data-value="blue" for="accent-blue">
+                    <span class="swatch swatch-blue"></span>Blue
+                </label>
+                <label class="switcher-option" data-value="purple" for="accent-purple">
+                    <span class="swatch swatch-purple"></span>Purple
+                </label>
+                <label class="switcher-option" data-value="cyan" for="accent-cyan">
+                    <span class="swatch swatch-cyan"></span>Cyan
+                </label>
+                <label class="switcher-option" data-value="rose" for="accent-rose">
+                    <span class="swatch swatch-rose"></span>Rosé
+                </label>
+            </div>
+        </div>
+    </div>
+</details>
+    </div>
+</nav>
+        <main>
+            
+<nav class="breadcrumbs" aria-label="Breadcrumbs">
+    
+    
+        
+        
+            
+                <a href="index.html">Home</a>
+            
+            <span class="separator">/</span>
+        
+    
+        
+        
+            <span class="current">Elements</span>
+        
+    
+</nav>
+            <h1>Elements</h1>
+            <p class="subtitle">Every component in the system, composed from the same tokens.</p>
+            <section class="section">
+                <div class="section-title">
+                    <h2>Tags</h2>
+                    <small>One per accent plus status colors</small>
+                </div>
+                <div class="row">
+                    <span class="tag tag-cyan">
+    
+    <span>Removable</span>
+    
+    <button type="button" class="tag-close" aria-label="Remove">×</button>
+</span>
+                    <span class="tag tag-cyan">
+    
+    <span>Removable</span>
+    
+    <button type="button" class="tag-close" aria-label="Remove">×</button>
+</span>
+                    <span class="tag tag-cyan">
+    
+    <span>Removable</span>
+    
+    <button type="button" class="tag-close" aria-label="Remove">×</button>
+</span>
+                    <span class="tag tag-cyan">
+    
+    <span>Removable</span>
+    
+    <button type="button" class="tag-close" aria-label="Remove">×</button>
+</span>
+                    <span class="tag tag-cyan">
+    
+    <span>Removable</span>
+    
+    <button type="button" class="tag-close" aria-label="Remove">×</button>
+</span>
+                    <span class="tag tag-cyan">
+    
+    <span>Removable</span>
+    
+    <button type="button" class="tag-close" aria-label="Remove">×</button>
+</span>
+                    <span class="tag tag-cyan">
+    
+    <span>Removable</span>
+    
+    <button type="button" class="tag-close" aria-label="Remove">×</button>
+</span>
+                    <span class="tag tag-cyan">
+    
+    <span>Removable</span>
+    
+    <button type="button" class="tag-close" aria-label="Remove">×</button>
+</span>
+                    <span class="tag tag-cyan">
+    
+    <span>Removable</span>
+    
+    <button type="button" class="tag-close" aria-label="Remove">×</button>
+</span>
+                    <span class="tag tag-cyan">
+    
+    <span>Removable</span>
+    
+    <button type="button" class="tag-close" aria-label="Remove">×</button>
+</span>
+                </div>
+            </section>
+            <section class="section">
+                <div class="section-title">
+                    <h2>Chips</h2>
+                    <small>Bigger, default text color</small>
+                </div>
+                <div class="row">
+                    <span class="chip chip-rose ">
+    
+    
+    <span>Close</span>
+    <span aria-hidden="true">×</span>
+</span>
+                    <span class="chip chip-rose ">
+    
+    
+    <span>Close</span>
+    <span aria-hidden="true">×</span>
+</span>
+                    <span class="chip chip-rose ">
+    
+    
+    <span>Close</span>
+    <span aria-hidden="true">×</span>
+</span>
+                    <span class="chip chip-rose ">
+    
+    
+    <span>Close</span>
+    <span aria-hidden="true">×</span>
+</span>
+                    <span class="chip chip-rose ">
+    
+    
+    <span>Close</span>
+    <span aria-hidden="true">×</span>
+</span>
+                    <span class="chip chip-rose ">
+    
+    
+    <span>Close</span>
+    <span aria-hidden="true">×</span>
+</span>
+                    <span class="chip chip-rose ">
+    
+    
+    <span>Close</span>
+    <span aria-hidden="true">×</span>
+</span>
+                </div>
+            </section>
+            <section class="section">
+                <div class="section-title">
+                    <h2>Tooltips</h2>
+                    <small>Show on hover or focus</small>
+                </div>
+                <div class="row">
+                    <span class="tooltip" tabindex="0">
+    <span>Focus me</span>
+    <span data-tip role="tooltip">Tooltips also appear on keyboard focus.</span>
+</span>
+                    <span class="tooltip" tabindex="0">
+    <span>Focus me</span>
+    <span data-tip role="tooltip">Tooltips also appear on keyboard focus.</span>
+</span>
+                </div>
+            </section>
+            <section class="section">
+                <div class="section-title">
+                    <h2>Inputs</h2>
+                    <small>With labels, icons and validation</small>
+                </div>
+                <div class="grid cols-2">
+                    
+<div class="form-group ">
+    <label class="label" for="msg">Message</label>
+    
+        <div class="input-field  ">
+    
+    <textarea id="msg"
+              placeholder="Tell us more..."
+              rows="3"
+              ></textarea>
+</div>
+
+
+</div>
+                    
+<div class="form-group ">
+    <label class="label" for="msg">Message</label>
+    
+        <div class="input-field  ">
+    
+    <textarea id="msg"
+              placeholder="Tell us more..."
+              rows="3"
+              ></textarea>
+</div>
+
+
+</div>
+                    
+<div class="form-group ">
+    <label class="label" for="msg">Message</label>
+    
+        <div class="input-field  ">
+    
+    <textarea id="msg"
+              placeholder="Tell us more..."
+              rows="3"
+              ></textarea>
+</div>
+
+
+</div>
+                    
+<div class="form-group ">
+    <label class="label" for="msg">Message</label>
+    
+        <div class="input-field  ">
+    
+    <textarea id="msg"
+              placeholder="Tell us more..."
+              rows="3"
+              ></textarea>
+</div>
+
+
+</div>
+                    
+<div class="form-group ">
+    <label class="label" for="msg">Message</label>
+    
+        <div class="input-field  ">
+    
+    <textarea id="msg"
+              placeholder="Tell us more..."
+              rows="3"
+              ></textarea>
+</div>
+
+
+</div>
+                    
+<div class="form-group ">
+    <label class="label" for="msg">Message</label>
+    
+        <div class="input-field  ">
+    
+    <textarea id="msg"
+              placeholder="Tell us more..."
+              rows="3"
+              ></textarea>
+</div>
+
+
+</div>
+                    
+<div class="form-group ">
+    <label class="label" for="msg">Message</label>
+    
+        <div class="input-field  ">
+    
+    <textarea id="msg"
+              placeholder="Tell us more..."
+              rows="3"
+              ></textarea>
+</div>
+
+
+</div>
+                    
+<div class="form-group ">
+    <label class="label" for="msg">Message</label>
+    
+        <div class="input-field  ">
+    
+    <textarea id="msg"
+              placeholder="Tell us more..."
+              rows="3"
+              ></textarea>
+</div>
+
+
+</div>
+                </div>
+                <div class="row" style="margin-top: 1rem;">
+                    <label class="checkbox">
+    <input type="checkbox"
+           id="cb3"
+           
+           disabled>
+    <span>Disabled</span>
+</label>
+                    <label class="checkbox">
+    <input type="checkbox"
+           id="cb3"
+           
+           disabled>
+    <span>Disabled</span>
+</label>
+                    <label class="checkbox">
+    <input type="checkbox"
+           id="cb3"
+           
+           disabled>
+    <span>Disabled</span>
+</label>
+                    <label class="toggle">
+    <input type="checkbox"
+           id="tg2"
+           
+           >
+    <span>Email receipts</span>
+</label>
+                    <label class="toggle">
+    <input type="checkbox"
+           id="tg2"
+           
+           >
+    <span>Email receipts</span>
+</label>
+                </div>
+            </section>
+            <section class="section">
+                <div class="section-title">
+                    <h2>Buttons</h2>
+                    <small>All variants, shapes and states</small>
+                </div>
+                <div class="row">
+                    <button type="button"
+        class="btn btn-secondary btn-square  "
+        aria-label="Settings"
+        >
+    <span aria-hidden="true">⚙</span>
+    
+    
+</button>
+                    <button type="button"
+        class="btn btn-secondary btn-square  "
+        aria-label="Settings"
+        >
+    <span aria-hidden="true">⚙</span>
+    
+    
+</button>
+                    <button type="button"
+        class="btn btn-secondary btn-square  "
+        aria-label="Settings"
+        >
+    <span aria-hidden="true">⚙</span>
+    
+    
+</button>
+                    <button type="button"
+        class="btn btn-secondary btn-square  "
+        aria-label="Settings"
+        >
+    <span aria-hidden="true">⚙</span>
+    
+    
+</button>
+                    <button type="button"
+        class="btn btn-secondary btn-square  "
+        aria-label="Settings"
+        >
+    <span aria-hidden="true">⚙</span>
+    
+    
+</button>
+                    <button type="button"
+        class="btn btn-secondary btn-square  "
+        aria-label="Settings"
+        >
+    <span aria-hidden="true">⚙</span>
+    
+    
+</button>
+                    <button type="button"
+        class="btn btn-secondary btn-square  "
+        aria-label="Settings"
+        >
+    <span aria-hidden="true">⚙</span>
+    
+    
+</button>
+                    <button type="button"
+        class="btn btn-secondary btn-square  "
+        aria-label="Settings"
+        >
+    <span aria-hidden="true">⚙</span>
+    
+    
+</button>
+                </div>
+                <div class="row" style="margin-top: 0.75rem;">
+                    <button type="button"
+        class="btn btn-secondary btn-square  "
+        aria-label="Settings"
+        >
+    <span aria-hidden="true">⚙</span>
+    
+    
+</button>
+                    <button type="button"
+        class="btn btn-secondary btn-square  "
+        aria-label="Settings"
+        >
+    <span aria-hidden="true">⚙</span>
+    
+    
+</button>
+                    <button type="button"
+        class="btn btn-secondary btn-square  "
+        aria-label="Settings"
+        >
+    <span aria-hidden="true">⚙</span>
+    
+    
+</button>
+                    <button type="button"
+        class="btn btn-secondary btn-square  "
+        aria-label="Settings"
+        >
+    <span aria-hidden="true">⚙</span>
+    
+    
+</button>
+                    <button type="button"
+        class="btn btn-secondary btn-square  "
+        aria-label="Settings"
+        >
+    <span aria-hidden="true">⚙</span>
+    
+    
+</button>
+                </div>
+            </section>
+            <section class="section">
+                <div class="section-title">
+                    <h2>Keyboard shortcuts</h2>
+                    <small>Press a key</small>
+                </div>
+                <div class="row">
+                    
+<span>
+    
+        <kbd class="kbd">Esc</kbd>
+        
+    
+</span>
+                    
+<span>
+    
+        <kbd class="kbd">Esc</kbd>
+        
+    
+</span>
+                    
+<span>
+    
+        <kbd class="kbd">Esc</kbd>
+        
+    
+</span>
+                </div>
+            </section>
+            <section class="section">
+                <div class="section-title">
+                    <h2>Spinners</h2>
+                </div>
+                <div class="row">
+                    <span class="spinner lg"
+      role="status"
+      aria-label="Loading"></span>
+                    <span class="spinner lg"
+      role="status"
+      aria-label="Loading"></span>
+                </div>
+            </section>
+            <section class="section">
+                <div class="section-title">
+                    <h2>Tables</h2>
+                    <small>Hover highlights the row</small>
+                </div>
+                
+<div class="table-wrap">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Bay</th><th>Type</th><th>Last wash</th><th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            
+                <tr>
+                    <td>A1</td><td>Self-service</td><td>12:04</td><td>Idle</td>
+                </tr>
+            
+                <tr>
+                    <td>A2</td><td>Automatic</td><td>12:07</td><td>Running</td>
+                </tr>
+            
+                <tr>
+                    <td>A3</td><td>Detail</td><td>11:32</td><td>Blocked</td>
+                </tr>
+            
+                <tr>
+                    <td>A4</td><td>Automatic</td><td>—</td><td>Offline</td>
+                </tr>
+            
+        </tbody>
+    </table>
+</div>
+            </section>
+            <section class="section">
+                <div class="section-title">
+                    <h2>Lists</h2>
+                </div>
+                <div class="grid cols-2">
+                    <div>
+                        <h3>Plain list</h3>
+                        
+<ul class="plain-list">
+    <li>Daily report</li><li>Weekly report</li><li>Monthly report</li>
+</ul>
+                    </div>
+                    <div>
+                        <h3>Cards list</h3>
+                        <ul class="list-card">
+                            <li class="list-item">
+    <span class="list-item-icon">D</span>
+    <div class="list-item-body">
+        <p class="list-item-title">Detail · Bay C1</p>
+        <p class="list-item-subtitle">Customer · Alan Turing</p>
+    </div>
+    <button type="button"
+        class="btn btn-outlined   "
+        
+        >
+    
+    <span>View report</span>
+    
+</button>
+</li>
+                            <li class="list-item">
+    <span class="list-item-icon">D</span>
+    <div class="list-item-body">
+        <p class="list-item-title">Detail · Bay C1</p>
+        <p class="list-item-subtitle">Customer · Alan Turing</p>
+    </div>
+    <button type="button"
+        class="btn btn-outlined   "
+        
+        >
+    
+    <span>View report</span>
+    
+</button>
+</li>
+                            <li class="list-item">
+    <span class="list-item-icon">D</span>
+    <div class="list-item-body">
+        <p class="list-item-title">Detail · Bay C1</p>
+        <p class="list-item-subtitle">Customer · Alan Turing</p>
+    </div>
+    <button type="button"
+        class="btn btn-outlined   "
+        
+        >
+    
+    <span>View report</span>
+    
+</button>
+</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+            <section class="section">
+                <div class="section-title">
+                    <h2>Timeline</h2>
+                </div>
+                
+<ol class="timeline">
+    
+        
+        <li>
+            <p class="time">2026-04-01</p>
+            <p>
+                <strong>Kickoff</strong>
+            </p>
+            <p>System planning session.</p>
+        </li>
+    
+        
+        <li>
+            <p class="time">2026-04-09</p>
+            <p>
+                <strong>Alpha</strong>
+            </p>
+            <p>Internal preview deployed.</p>
+        </li>
+    
+        
+        <li>
+            <p class="time">2026-04-17</p>
+            <p>
+                <strong>Beta</strong>
+            </p>
+            <p>Opened to first pilot bay.</p>
+        </li>
+    
+</ol>
+            </section>
+            <section class="section">
+                <div class="section-title">
+                    <h2>Pagination</h2>
+                </div>
+                <nav class="pagination" aria-label="Pagination">
+    
+    
+    <a class="" href="#">‹</a>
+    
+        
+            <a href="#">1</a>
+        
+    
+        
+            <a href="#">2</a>
+        
+    
+        
+            <span class="active" aria-current="page">3</span>
+        
+    
+        
+            <a href="#">4</a>
+        
+    
+        
+            <a href="#">5</a>
+        
+    
+        
+            <a href="#">6</a>
+        
+    
+        
+            <a href="#">7</a>
+        
+    
+    <a class="" href="#">›</a>
+</nav>
+            </section>
+            <section class="section">
+                <div class="section-title">
+                    <h2>Alerts</h2>
+                </div>
+                <div class="stack">
+                    <div class="alert alert-danger"
+     role="alert">
+    <span aria-hidden="true">×</span>
+    <div>
+        <p class="alert-title">Payment failed</p>
+        <p class="alert-body">We couldn't charge the card on file.</p>
+    </div>
+</div>
+                    <div class="alert alert-danger"
+     role="alert">
+    <span aria-hidden="true">×</span>
+    <div>
+        <p class="alert-title">Payment failed</p>
+        <p class="alert-body">We couldn't charge the card on file.</p>
+    </div>
+</div>
+                    <div class="alert alert-danger"
+     role="alert">
+    <span aria-hidden="true">×</span>
+    <div>
+        <p class="alert-title">Payment failed</p>
+        <p class="alert-body">We couldn't charge the card on file.</p>
+    </div>
+</div>
+                    <div class="alert alert-danger"
+     role="alert">
+    <span aria-hidden="true">×</span>
+    <div>
+        <p class="alert-title">Payment failed</p>
+        <p class="alert-body">We couldn't charge the card on file.</p>
+    </div>
+</div>
+                </div>
+            </section>
+            <section class="section">
+                <div class="section-title">
+                    <h2>Notifications</h2>
+                </div>
+                <div class="stack">
+                    <div class="notification" role="status">
+    <span class="notification-icon">!</span>
+    <div>
+        <p class="notification-title">Service due</p>
+        <p class="notification-body">Bay A2 is due for a filter change.</p>
+    </div>
+</div>
+                    <div class="notification" role="status">
+    <span class="notification-icon">!</span>
+    <div>
+        <p class="notification-title">Service due</p>
+        <p class="notification-body">Bay A2 is due for a filter change.</p>
+    </div>
+</div>
+                </div>
+            </section>
+            <section class="section">
+                <div class="section-title">
+                    <h2>Toasts</h2>
+                </div>
+                <div class="stack">
+                    <div class="toast toast-warning"
+     role="status">
+    <span aria-hidden="true">!</span>
+    <span>Running low on wax.</span>
+</div>
+                    <div class="toast toast-warning"
+     role="status">
+    <span aria-hidden="true">!</span>
+    <span>Running low on wax.</span>
+</div>
+                    <div class="toast toast-warning"
+     role="status">
+    <span aria-hidden="true">!</span>
+    <span>Running low on wax.</span>
+</div>
+                </div>
+            </section>
+            <section class="section">
+                <div class="section-title">
+                    <h2>Progress</h2>
+                </div>
+                <div class="stack">
+                    <div class="progress "
+     role="progressbar"
+     aria-label="Progress"
+     aria-valuenow="95"
+     aria-valuemin="0"
+     aria-valuemax="100">
+    <div class="bar" style="width: 95%;"></div>
+</div>
+                    <div class="progress "
+     role="progressbar"
+     aria-label="Progress"
+     aria-valuenow="95"
+     aria-valuemin="0"
+     aria-valuemax="100">
+    <div class="bar" style="width: 95%;"></div>
+</div>
+                    <div class="progress "
+     role="progressbar"
+     aria-label="Progress"
+     aria-valuenow="95"
+     aria-valuemin="0"
+     aria-valuemax="100">
+    <div class="bar" style="width: 95%;"></div>
+</div>
+                </div>
+            </section>
+            <section class="section">
+                <div class="section-title">
+                    <h2>Skeletons</h2>
+                </div>
+                <div class="stack" style="max-width: 28rem;">
+                    <span class="skeleton "
+      style="width: 9rem;
+             height: 1rem"
+      aria-hidden="true"></span>
+                    <span class="skeleton "
+      style="width: 9rem;
+             height: 1rem"
+      aria-hidden="true"></span>
+                    <span class="skeleton "
+      style="width: 9rem;
+             height: 1rem"
+      aria-hidden="true"></span>
+                    <div class="row">
+                        <span class="skeleton "
+      style="width: 9rem;
+             height: 1rem"
+      aria-hidden="true"></span><span class="skeleton "
+      style="width: 9rem;
+             height: 1rem"
+      aria-hidden="true"></span>
+                    </div>
+                </div>
+            </section>
+            <section class="section">
+                <div class="section-title">
+                    <h2>Badges</h2>
+                </div>
+                <div class="row">
+                    <span class="badge badge-outline">Beta</span>
+                    <span class="badge badge-outline">Beta</span>
+                    <span class="badge badge-outline">Beta</span>
+                    <span class="badge badge-outline">Beta</span>
+                    <span class="badge badge-outline">Beta</span>
+                </div>
+            </section>
+            <section class="section">
+                <div class="section-title">
+                    <h2>Modals</h2>
+                </div>
+                <dialog class="modal" open id="m1">
+    <div class="modal-inner">
+        <h3 class="modal-title">Confirm wash start</h3>
+        <p>This will start the automatic tunnel. Continue?</p>
+        <div class="modal-footer">
+            <button type="button"
+        class="btn btn-outlined   "
+        
+        >
+    
+    <span>View report</span>
+    
+</button>
+            <button type="button"
+        class="btn btn-outlined   "
+        
+        >
+    
+    <span>View report</span>
+    
+</button>
+        </div>
+    </div>
+</dialog>
+            </section>
+            <section class="section">
+                <div class="section-title">
+                    <h2>Dropdown</h2>
+                </div>
+                
+<details class="dropdown">
+    <summary>
+        <button type="button"
+        class="btn btn-outlined   "
+        
+        >
+    
+    <span>View report</span>
+    
+</button>
+    </summary>
+    <div class="dropdown-menu" role="menu">
+        
+            
+            <a href="#">Edit</a>
+        
+            
+            <a href="#">Duplicate</a>
+        
+            
+            <a href="#">Archive</a>
+        
+    </div>
+</details>
+            </section>
+            <section class="section">
+                <div class="section-title">
+                    <h2>Avatars</h2>
+                </div>
+                <div class="row">
+                    <span class="avatar "
+      aria-label="AT">
+    
+        AT
+    
+</span>
+                    <span class="avatar "
+      aria-label="AT">
+    
+        AT
+    
+</span>
+                    <span class="avatar "
+      aria-label="AT">
+    
+        AT
+    
+</span>
+                    <span class="avatar-group">
+                        <span class="avatar "
+      aria-label="AT">
+    
+        AT
+    
+</span>
+                        <span class="avatar "
+      aria-label="AT">
+    
+        AT
+    
+</span>
+                        <span class="avatar "
+      aria-label="AT">
+    
+        AT
+    
+</span>
+                    </span>
+                </div>
+            </section>
+            <section class="section">
+                <div class="section-title">
+                    <h2>Cards</h2>
+                </div>
+                <div class="grid cols-2">
+                    <article class="card  ">
+    
+    <div>
+        <h3 class="card-title">With footer</h3>
+        <p class="card-subtitle">Has an action</p>
+        <p>Cards can have a footer with actions for quick navigation.</p>
+        
+            <div class="card-footer">
+                <button type="button"
+        class="btn btn-outlined   "
+        
+        >
+    
+    <span>View report</span>
+    
+</button>
+            </div>
+        
+    </div>
+</article>
+                    <article class="card  ">
+    
+    <div>
+        <h3 class="card-title">With footer</h3>
+        <p class="card-subtitle">Has an action</p>
+        <p>Cards can have a footer with actions for quick navigation.</p>
+        
+            <div class="card-footer">
+                <button type="button"
+        class="btn btn-outlined   "
+        
+        >
+    
+    <span>View report</span>
+    
+</button>
+            </div>
+        
+    </div>
+</article>
+                    <article class="card  ">
+    
+    <div>
+        <h3 class="card-title">With footer</h3>
+        <p class="card-subtitle">Has an action</p>
+        <p>Cards can have a footer with actions for quick navigation.</p>
+        
+            <div class="card-footer">
+                <button type="button"
+        class="btn btn-outlined   "
+        
+        >
+    
+    <span>View report</span>
+    
+</button>
+            </div>
+        
+    </div>
+</article>
+                    <article class="card  ">
+    
+    <div>
+        <h3 class="card-title">With footer</h3>
+        <p class="card-subtitle">Has an action</p>
+        <p>Cards can have a footer with actions for quick navigation.</p>
+        
+            <div class="card-footer">
+                <button type="button"
+        class="btn btn-outlined   "
+        
+        >
+    
+    <span>View report</span>
+    
+</button>
+            </div>
+        
+    </div>
+</article>
+                    <article class="card  ">
+    
+    <div>
+        <h3 class="card-title">With footer</h3>
+        <p class="card-subtitle">Has an action</p>
+        <p>Cards can have a footer with actions for quick navigation.</p>
+        
+            <div class="card-footer">
+                <button type="button"
+        class="btn btn-outlined   "
+        
+        >
+    
+    <span>View report</span>
+    
+</button>
+            </div>
+        
+    </div>
+</article>
+                </div>
+            </section>
+            <section class="section">
+                <div class="section-title">
+                    <h2>Horizontal rules</h2>
+                </div>
+                
+    <hr class="hr-accent">
+
+                
+    <hr class="hr-accent">
+
+                
+    <hr class="hr-accent">
+
+                
+    <hr class="hr-accent">
+
+                
+    <hr class="hr-accent">
+
+            </section>
+            <section class="section">
+                <div class="section-title">
+                    <h2>Accordions</h2>
+                </div>
+                <details class="accordion" >
+    <summary>Can I extend it?</summary>
+    <div class="accordion-body">Yes — every color is a CSS variable.</div>
+</details>
+                <details class="accordion" >
+    <summary>Can I extend it?</summary>
+    <div class="accordion-body">Yes — every color is a CSS variable.</div>
+</details>
+                <details class="accordion" >
+    <summary>Can I extend it?</summary>
+    <div class="accordion-body">Yes — every color is a CSS variable.</div>
+</details>
+            </section>
+            <footer class="site-footer">
+    AquaDrive Design System · Built with <a href="https://github.com/freeoss-space/py-ssg">py-ssg</a>
+</footer>
+        </main>
+    </body>
+</html>

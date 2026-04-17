@@ -6,9 +6,10 @@
     <input type="checkbox"
            id="nav-menu"
            class="navbar-menu-toggle switcher-input"
-           aria-hidden="true">
+           aria-hidden="true"
+           tabindex="-1">
     <label class="navbar-menu-button" for="nav-menu" aria-label="Open menu">☰</label>
-    <div class="navbar-links" role="menu">
+    <div class="navbar-links">
         <a href="index.html" class="{% if active == 'home' %}active{% endif %}">Colors</a>
         <a href="typography.html"
            class="{% if active == 'typography' %}active{% endif %}">Typography</a>

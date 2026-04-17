@@ -94,8 +94,11 @@
                     <Button text="Loading" loading="true" />
                     <Button text="Save" iconBefore="💾" />
                     <Button text="Next" iconAfter="→" variant="outlined" />
-                    <Button iconBefore="+" shape="circle" />
-                    <Button iconBefore="⚙" shape="square" variant="secondary" />
+                    <Button iconBefore="+" shape="circle" ariaLabel="Add" />
+                    <Button iconBefore="⚙"
+                            shape="square"
+                            variant="secondary"
+                            ariaLabel="Settings" />
                 </div>
             </section>
             <section class="section">
@@ -132,11 +135,11 @@
                 </div>
                 <div class="grid cols-2">
                     <div>
-                        <h4>Plain list</h4>
+                        <h3>Plain list</h3>
                         <List items="Daily report;;Weekly report;;Monthly report" />
                     </div>
                     <div>
-                        <h4>Cards list</h4>
+                        <h3>Cards list</h3>
                         <ul class="list-card">
                             <ListItem icon="W" title="Wash · Bay A1" subtitle="Customer · Ada Lovelace" action="View" />
                             <ListItem icon="W" title="Wash · Bay A2" subtitle="Customer · Grace Hopper" action="View" />

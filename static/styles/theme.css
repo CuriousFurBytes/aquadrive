@@ -74,15 +74,17 @@
     --transition-fast: 120ms ease;
     --transition-slow: 260ms ease;
 
-    /* Default to light surface + blue accent */
+    /* Default to light surface + blue accent.
+     * --text-muted and --text-soft are darkened past the raw rose tokens to
+     * keep WCAG AA contrast (>= 4.5:1) against the white/rose-100 surfaces. */
     --bg: var(--rose-100);
     --surface: #ffffff;
     --surface-elevated: #ffffff;
     --border: var(--rose-300);
     --border-strong: var(--rose-400);
     --text: var(--rose-900);
-    --text-muted: var(--rose-600);
-    --text-soft: var(--rose-500);
+    --text-muted: #5e5266;
+    --text-soft: #6f6377;
 
     --accent-subtle: var(--blue-subtle);
     --accent-soft: var(--blue-soft);
@@ -114,8 +116,8 @@ html:has(#theme-light:checked) {
     --border: var(--rose-300);
     --border-strong: var(--rose-400);
     --text: var(--rose-900);
-    --text-muted: var(--rose-600);
-    --text-soft: var(--rose-500);
+    --text-muted: #5e5266;
+    --text-soft: #6f6377;
 }
 
 html:has(#theme-dark:checked) {

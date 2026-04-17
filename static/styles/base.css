@@ -2,7 +2,7 @@
 
 @font-face {
     font-family: "Monaspace Argon";
-    src: url("../fonts/MonaspaceArgonVar.woff") format("woff-variations");
+    src: url("../fonts/MonaspaceArgonVar.woff2") format("woff2-variations");
     font-weight: 100 900;
     font-style: normal;
     font-display: swap;
@@ -10,7 +10,7 @@
 
 @font-face {
     font-family: "Monaspace Krypton";
-    src: url("../fonts/MonaspaceKryptonVar.woff") format("woff-variations");
+    src: url("../fonts/MonaspaceKryptonVar.woff2") format("woff2-variations");
     font-weight: 100 900;
     font-style: normal;
     font-display: swap;
@@ -88,6 +88,37 @@ h5 {
     font-size: 1rem;
 }
 h6 {
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--text-muted);
+}
+
+/* Heading demo classes — visual-only samples used on the typography page.
+ * They do not emit real heading tags so they don't break document outline. */
+.heading-demo {
+    font-family: "Monaspace Argon", ui-sans-serif, system-ui, sans-serif;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    line-height: 1.2;
+    margin: 2rem 0 0.75rem;
+}
+.h1-demo {
+    font-size: 2.25rem;
+}
+.h2-demo {
+    font-size: 1.75rem;
+}
+.h3-demo {
+    font-size: 1.375rem;
+}
+.h4-demo {
+    font-size: 1.125rem;
+}
+.h5-demo {
+    font-size: 1rem;
+}
+.h6-demo {
     font-size: 0.875rem;
     text-transform: uppercase;
     letter-spacing: 0.08em;

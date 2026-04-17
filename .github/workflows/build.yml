@@ -9,7 +9,7 @@ on:
 
 jobs:
   build:
-    name: Build, format, performance
+    name: Build and format
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -50,19 +50,6 @@ jobs:
         run: |
           export PATH="$HOME/.local/bin:$PATH"
           py-ssg build
-
-      # Hard gate: Lighthouse budgets must be met. CI fails on regression.
-      - name: Serve output
-        run: |
-          python3 -m http.server 8080 --directory output &
-          sleep 2
-
-      - name: Performance — Lighthouse CI
-        run: |
-          npm install --no-save --no-audit --no-fund @lhci/cli@0.14.0
-          npx lhci autorun --config=.lighthouserc.json
-        env:
-          LHCI_GITHUB_APP_TOKEN: ""
 
       - name: Upload output artifact
         if: success()

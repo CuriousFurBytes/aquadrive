@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Ports — AquaDrive Design System</title>
+    <meta name="description"
+          content="CSS variable ports for reuse outside the design system.">
+    <link rel="stylesheet" href="styles/theme.css">
+    <link rel="stylesheet" href="styles/base.css">
+    <link rel="stylesheet" href="styles/components.css">
+    <link rel="stylesheet" href="syntax.css">
+</head>
+    <body>
+        
+<input type="radio"
+       name="theme"
+       id="theme-light"
+       class="switcher-input"
+       aria-hidden="true"
+       tabindex="-1">
+<input type="radio"
+       name="theme"
+       id="theme-dark"
+       class="switcher-input"
+       aria-hidden="true"
+       tabindex="-1">
+<input type="radio"
+       name="accent"
+       id="accent-blue"
+       class="switcher-input"
+       aria-hidden="true"
+       tabindex="-1"
+       checked>
+<input type="radio"
+       name="accent"
+       id="accent-purple"
+       class="switcher-input"
+       aria-hidden="true"
+       tabindex="-1">
+<input type="radio"
+       name="accent"
+       id="accent-cyan"
+       class="switcher-input"
+       aria-hidden="true"
+       tabindex="-1">
+<input type="radio"
+       name="accent"
+       id="accent-rose"
+       class="switcher-input"
+       aria-hidden="true"
+       tabindex="-1">
+        <nav class="navbar" aria-label="Primary">
+    <a class="navbar-logo" href="index.html">
+        <span class="navbar-logo-dot"></span>
+        <span>AquaDrive</span>
+    </a>
+    <input type="checkbox"
+           id="nav-menu"
+           class="navbar-menu-toggle switcher-input"
+           aria-hidden="true"
+           tabindex="-1">
+    <label class="navbar-menu-button" for="nav-menu" aria-label="Open menu">☰</label>
+    <div class="navbar-links">
+        <a href="index.html" class="">Colors</a>
+        <a href="typography.html"
+           class="">Typography</a>
+        <a href="elements.html"
+           class="">Elements</a>
+        <a href="ports.html" class="active">Ports</a>
+    </div>
+    <div class="navbar-right">
+        <details class="switcher">
+    <summary aria-label="Open theme settings">
+        <svg width="16"
+             height="16"
+             viewBox="0 0 24 24"
+             fill="none"
+             stroke="currentColor"
+             stroke-width="2"
+             stroke-linecap="round"
+             stroke-linejoin="round"
+             aria-hidden="true">
+            <circle cx="12" cy="12" r="3"></circle>
+            <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09a1.65 1.65 0 0 0-1-1.51 1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09a1.65 1.65 0 0 0 1.51-1 1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33 1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82 1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z">
+            </path>
+        </svg>
+        <span>Theme</span>
+    </summary>
+    <div class="switcher-panel" role="menu">
+        <div class="switcher-group">
+            <p class="switcher-group-title">Color scheme</p>
+            <div class="switcher-options">
+                <label class="switcher-option" data-value="light" for="theme-light">Light</label>
+                <label class="switcher-option" data-value="dark" for="theme-dark">Dark</label>
+            </div>
+        </div>
+        <div class="switcher-group">
+            <p class="switcher-group-title">Accent</p>
+            <div class="switcher-options">
+                <label class="switcher-option" data-value="blue" for="accent-blue">
+                    <span class="swatch swatch-blue"></span>Blue
+                </label>
+                <label class="switcher-option" data-value="purple" for="accent-purple">
+                    <span class="swatch swatch-purple"></span>Purple
+                </label>
+                <label class="switcher-option" data-value="cyan" for="accent-cyan">
+                    <span class="swatch swatch-cyan"></span>Cyan
+                </label>
+                <label class="switcher-option" data-value="rose" for="accent-rose">
+                    <span class="swatch swatch-rose"></span>Rosé
+                </label>
+            </div>
+        </div>
+    </div>
+</details>
+    </div>
+</nav>
+        <main>
+            
+<nav class="breadcrumbs" aria-label="Breadcrumbs">
+    
+    
+        
+        
+            
+                <a href="index.html">Home</a>
+            
+            <span class="separator">/</span>
+        
+    
+        
+        
+            <span class="current">Ports</span>
+        
+    
+</nav>
+            <h1>Ports</h1>
+            <p class="subtitle">
+                CSS variables exported for external tools. Each card lists the variable name and current value from the theme.
+            </p>
+            <section class="section">
+                <div class="grid cols-2">
+                    <div class="port-card">
+                        <h2 class="port-card-title">Base</h2>
+                        <p class="card-subtitle">Neutrals and surfaces.</p>
+                        <ul class="port-vars">
+                            <li class="port-var-name">--bg</li>
+                            <li class="port-var-value">
+                                <span class="port-swatch" style="background: var(--bg);"></span><span>bg</span>
+                            </li>
+                            <li class="port-var-name">--surface</li>
+                            <li class="port-var-value">
+                                <span class="port-swatch" style="background: var(--surface);"></span><span>surface</span>
+                            </li>
+                            <li class="port-var-name">--surface-elevated</li>
+                            <li class="port-var-value">
+                                <span class="port-swatch" style="background: var(--surface-elevated);"></span><span>surface-elevated</span>
+                            </li>
+                            <li class="port-var-name">--border</li>
+                            <li class="port-var-value">
+                                <span class="port-swatch" style="background: var(--border);"></span><span>border</span>
+                            </li>
+                            <li class="port-var-name">--text</li>
+                            <li class="port-var-value">
+                                <span class="port-swatch" style="background: var(--text);"></span><span>text</span>
+                            </li>
+                            <li class="port-var-name">--text-muted</li>
+                            <li class="port-var-value">
+                                <span class="port-swatch" style="background: var(--text-muted);"></span><span>text-muted</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="port-card">
+                        <h2 class="port-card-title">Accent</h2>
+                        <p class="card-subtitle">Follows the active accent selection.</p>
+                        <ul class="port-vars">
+                            <li class="port-var-name">--accent</li>
+                            <li class="port-var-value">
+                                <span class="port-swatch" style="background: var(--accent);"></span><span>accent</span>
+                            </li>
+                            <li class="port-var-name">--accent-strong</li>
+                            <li class="port-var-value">
+                                <span class="port-swatch" style="background: var(--accent-strong);"></span><span>accent-strong</span>
+                            </li>
+                            <li class="port-var-name">--accent-subtle</li>
+                            <li class="port-var-value">
+                                <span class="port-swatch" style="background: var(--accent-subtle);"></span><span>accent-subtle</span>
+                            </li>
+                            <li class="port-var-name">--accent-contrast</li>
+                            <li class="port-var-value">
+                                <span class="port-swatch" style="background: var(--accent-contrast);"></span><span>accent-contrast</span>
+                            </li>
+                            <li class="port-var-name">--accent-fg</li>
+                            <li class="port-var-value">
+                                <span class="port-swatch" style="background: var(--accent-fg);"></span><span>accent-fg</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="port-card">
+                        <h2 class="port-card-title">Status</h2>
+                        <p class="card-subtitle">Semantic feedback colors.</p>
+                        <ul class="port-vars">
+                            <li class="port-var-name">--success</li>
+                            <li class="port-var-value">
+                                <span class="port-swatch" style="background: var(--success);"></span><span>success</span>
+                            </li>
+                            <li class="port-var-name">--warning</li>
+                            <li class="port-var-value">
+                                <span class="port-swatch" style="background: var(--warning);"></span><span>warning</span>
+                            </li>
+                            <li class="port-var-name">--danger</li>
+                            <li class="port-var-value">
+                                <span class="port-swatch" style="background: var(--danger);"></span><span>danger</span>
+                            </li>
+                            <li class="port-var-name">--info</li>
+                            <li class="port-var-value">
+                                <span class="port-swatch" style="background: var(--info);"></span><span>info</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="port-card">
+                        <h2 class="port-card-title">Blue accent</h2>
+                        <ul class="port-vars">
+                            <li class="port-var-name">--blue-base</li>
+                            <li class="port-var-value">
+                                <span class="port-swatch" style="background: var(--blue-base);"></span><span>blue-base</span>
+                            </li>
+                            <li class="port-var-name">--blue-strong</li>
+                            <li class="port-var-value">
+                                <span class="port-swatch" style="background: var(--blue-strong);"></span><span>blue-strong</span>
+                            </li>
+                            <li class="port-var-name">--blue-soft</li>
+                            <li class="port-var-value">
+                                <span class="port-swatch" style="background: var(--blue-soft);"></span><span>blue-soft</span>
+                            </li>
+                            <li class="port-var-name">--blue-subtle</li>
+                            <li class="port-var-value">
+                                <span class="port-swatch" style="background: var(--blue-subtle);"></span><span>blue-subtle</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="port-card">
+                        <h2 class="port-card-title">Purple accent</h2>
+                        <ul class="port-vars">
+                            <li class="port-var-name">--purple-base</li>
+                            <li class="port-var-value">
+                                <span class="port-swatch" style="background: var(--purple-base);"></span><span>purple-base</span>
+                            </li>
+                            <li class="port-var-name">--purple-strong</li>
+                            <li class="port-var-value">
+                                <span class="port-swatch" style="background: var(--purple-strong);"></span><span>purple-strong</span>
+                            </li>
+                            <li class="port-var-name">--purple-soft</li>
+                            <li class="port-var-value">
+                                <span class="port-swatch" style="background: var(--purple-soft);"></span><span>purple-soft</span>
+                            </li>
+                            <li class="port-var-name">--purple-subtle</li>
+                            <li class="port-var-value">
+                                <span class="port-swatch" style="background: var(--purple-subtle);"></span><span>purple-subtle</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="port-card">
+                        <h2 class="port-card-title">Cyan accent</h2>
+                        <ul class="port-vars">
+                            <li class="port-var-name">--cyan-base</li>
+                            <li class="port-var-value">
+                                <span class="port-swatch" style="background: var(--cyan-base);"></span><span>cyan-base</span>
+                            </li>
+                            <li class="port-var-name">--cyan-strong</li>
+                            <li class="port-var-value">
+                                <span class="port-swatch" style="background: var(--cyan-strong);"></span><span>cyan-strong</span>
+                            </li>
+                            <li class="port-var-name">--cyan-soft</li>
+                            <li class="port-var-value">
+                                <span class="port-swatch" style="background: var(--cyan-soft);"></span><span>cyan-soft</span>
+                            </li>
+                            <li class="port-var-name">--cyan-subtle</li>
+                            <li class="port-var-value">
+                                <span class="port-swatch" style="background: var(--cyan-subtle);"></span><span>cyan-subtle</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="port-card">
+                        <h2 class="port-card-title">Rosé accent</h2>
+                        <ul class="port-vars">
+                            <li class="port-var-name">--rose-accent-base</li>
+                            <li class="port-var-value">
+                                <span class="port-swatch" style="background: var(--rose-accent-base);"></span><span>rose-base</span>
+                            </li>
+                            <li class="port-var-name">--rose-accent-strong</li>
+                            <li class="port-var-value">
+                                <span class="port-swatch" style="background: var(--rose-accent-strong);"></span><span>rose-strong</span>
+                            </li>
+                            <li class="port-var-name">--rose-accent-soft</li>
+                            <li class="port-var-value">
+                                <span class="port-swatch" style="background: var(--rose-accent-soft);"></span><span>rose-soft</span>
+                            </li>
+                            <li class="port-var-name">--rose-accent-subtle</li>
+                            <li class="port-var-value">
+                                <span class="port-swatch" style="background: var(--rose-accent-subtle);"></span><span>rose-subtle</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="port-card">
+                        <h2 class="port-card-title">Rose neutrals</h2>
+                        <p class="card-subtitle">Shared warm neutrals that drive --bg, --surface, and --text.</p>
+                        <ul class="port-vars">
+                            <li class="port-var-name">--rose-100</li>
+                            <li class="port-var-value">
+                                <span class="port-swatch" style="background: var(--rose-100);"></span><span>rose-100</span>
+                            </li>
+                            <li class="port-var-name">--rose-300</li>
+                            <li class="port-var-value">
+                                <span class="port-swatch" style="background: var(--rose-300);"></span><span>rose-300</span>
+                            </li>
+                            <li class="port-var-name">--rose-600</li>
+                            <li class="port-var-value">
+                                <span class="port-swatch" style="background: var(--rose-600);"></span><span>rose-600</span>
+                            </li>
+                            <li class="port-var-name">--rose-800</li>
+                            <li class="port-var-value">
+                                <span class="port-swatch" style="background: var(--rose-800);"></span><span>rose-800</span>
+                            </li>
+                            <li class="port-var-name">--rose-900</li>
+                            <li class="port-var-value">
+                                <span class="port-swatch" style="background: var(--rose-900);"></span><span>rose-900</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+            <footer class="site-footer">
+    AquaDrive Design System · Built with <a href="https://github.com/freeoss-space/py-ssg">py-ssg</a>
+</footer>
+        </main>
+    </body>
+</html>

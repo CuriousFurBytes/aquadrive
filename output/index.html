@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Colors — AquaDrive Design System</title>
+    <meta name="description"
+          content="Color tokens and scheme preview.">
+    <link rel="stylesheet" href="styles/theme.css">
+    <link rel="stylesheet" href="styles/base.css">
+    <link rel="stylesheet" href="styles/components.css">
+    <link rel="stylesheet" href="syntax.css">
+</head>
+    <body>
+        
+<input type="radio"
+       name="theme"
+       id="theme-light"
+       class="switcher-input"
+       aria-hidden="true"
+       tabindex="-1">
+<input type="radio"
+       name="theme"
+       id="theme-dark"
+       class="switcher-input"
+       aria-hidden="true"
+       tabindex="-1">
+<input type="radio"
+       name="accent"
+       id="accent-blue"
+       class="switcher-input"
+       aria-hidden="true"
+       tabindex="-1"
+       checked>
+<input type="radio"
+       name="accent"
+       id="accent-purple"
+       class="switcher-input"
+       aria-hidden="true"
+       tabindex="-1">
+<input type="radio"
+       name="accent"
+       id="accent-cyan"
+       class="switcher-input"
+       aria-hidden="true"
+       tabindex="-1">
+<input type="radio"
+       name="accent"
+       id="accent-rose"
+       class="switcher-input"
+       aria-hidden="true"
+       tabindex="-1">
+        <nav class="navbar" aria-label="Primary">
+    <a class="navbar-logo" href="index.html">
+        <span class="navbar-logo-dot"></span>
+        <span>AquaDrive</span>
+    </a>
+    <input type="checkbox"
+           id="nav-menu"
+           class="navbar-menu-toggle switcher-input"
+           aria-hidden="true"
+           tabindex="-1">
+    <label class="navbar-menu-button" for="nav-menu" aria-label="Open menu">☰</label>
+    <div class="navbar-links">
+        <a href="index.html" class="active">Colors</a>
+        <a href="typography.html"
+           class="">Typography</a>
+        <a href="elements.html"
+           class="">Elements</a>
+        <a href="ports.html" class="">Ports</a>
+    </div>
+    <div class="navbar-right">
+        <details class="switcher">
+    <summary aria-label="Open theme settings">
+        <svg width="16"
+             height="16"
+             viewBox="0 0 24 24"
+             fill="none"
+             stroke="currentColor"
+             stroke-width="2"
+             stroke-linecap="round"
+             stroke-linejoin="round"
+             aria-hidden="true">
+            <circle cx="12" cy="12" r="3"></circle>
+            <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09a1.65 1.65 0 0 0-1-1.51 1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09a1.65 1.65 0 0 0 1.51-1 1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33 1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82 1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z">
+            </path>
+        </svg>
+        <span>Theme</span>
+    </summary>
+    <div class="switcher-panel" role="menu">
+        <div class="switcher-group">
+            <p class="switcher-group-title">Color scheme</p>
+            <div class="switcher-options">
+                <label class="switcher-option" data-value="light" for="theme-light">Light</label>
+                <label class="switcher-option" data-value="dark" for="theme-dark">Dark</label>
+            </div>
+        </div>
+        <div class="switcher-group">
+            <p class="switcher-group-title">Accent</p>
+            <div class="switcher-options">
+                <label class="switcher-option" data-value="blue" for="accent-blue">
+                    <span class="swatch swatch-blue"></span>Blue
+                </label>
+                <label class="switcher-option" data-value="purple" for="accent-purple">
+                    <span class="swatch swatch-purple"></span>Purple
+                </label>
+                <label class="switcher-option" data-value="cyan" for="accent-cyan">
+                    <span class="swatch swatch-cyan"></span>Cyan
+                </label>
+                <label class="switcher-option" data-value="rose" for="accent-rose">
+                    <span class="swatch swatch-rose"></span>Rosé
+                </label>
+            </div>
+        </div>
+    </div>
+</details>
+    </div>
+</nav>
+        <main>
+            
+<nav class="breadcrumbs" aria-label="Breadcrumbs">
+    
+    
+        
+        
+            
+                <a href="index.html">Home</a>
+            
+            <span class="separator">/</span>
+        
+    
+        
+        
+            <span class="current">Colors</span>
+        
+    
+</nav>
+            <h1>Colors</h1>
+            <p class="subtitle">A rose-tinted neutral palette with four accent options and semantic status tokens.</p>
+            <section class="section">
+                <div class="section-title">
+                    <h2>Base neutrals</h2>
+                    <small>Surfaces, borders, and text</small>
+                </div>
+                <div class="grid cols-2">
+                    <div class="color-card">
+                        <div class="swatch-lg" style="background: var(--bg);"></div>
+                        <p class="token">--bg</p>
+                        <p class="value">light #F4EDED · dark #1C1828</p>
+                        <p class="usage">Page background. Provides the calm foundation the UI sits on.</p>
+                    </div>
+                    <div class="color-card">
+                        <div class="swatch-lg"
+                             style="background: var(--surface);
+                                    border-color: var(--border)"></div>
+                        <p class="token">--surface</p>
+                        <p class="value">light #FFFFFF · dark #261F34</p>
+                        <p class="usage">Cards, navbars and other containers that need a clear edge.</p>
+                    </div>
+                    <div class="color-card">
+                        <div class="swatch-lg" style="background: var(--surface-elevated);"></div>
+                        <p class="token">--surface-elevated</p>
+                        <p class="value">light #FFFFFF · dark #3B3247</p>
+                        <p class="usage">Elevated surfaces — modals, popovers, hovered rows in tables.</p>
+                    </div>
+                    <div class="color-card">
+                        <div class="swatch-lg" style="background: var(--border);"></div>
+                        <p class="token">--border</p>
+                        <p class="value">light #E0D5D5 · dark #3B3247</p>
+                        <p class="usage">Hairline dividers between panels, inputs, list rows.</p>
+                    </div>
+                    <div class="color-card">
+                        <div class="swatch-lg" style="background: var(--text);"></div>
+                        <p class="token">--text</p>
+                        <p class="value">light #1C1828 · dark #F4EDED</p>
+                        <p class="usage">Default text color. Contrasted against --bg on both schemes.</p>
+                    </div>
+                    <div class="color-card">
+                        <div class="swatch-lg" style="background: var(--text-muted);"></div>
+                        <p class="token">--text-muted</p>
+                        <p class="value">light #7A6F7F · dark #C9B9BB</p>
+                        <p class="usage">Secondary copy, labels, timestamps, helper text.</p>
+                    </div>
+                </div>
+            </section>
+            <section class="section">
+                <div class="section-title">
+                    <h2>Accents</h2>
+                    <small>Use the gear icon in the navbar to switch</small>
+                </div>
+                <div class="grid cols-2">
+                    <div class="color-card">
+                        <div class="swatch-lg" style="background: var(--blue-base);"></div>
+                        <p class="token">Blue — default</p>
+                        <p class="value">#656EA4 · subtle #DEE0ED · strong #4E5688</p>
+                        <p class="usage">Calm, trustworthy — the AquaDrive signature accent.</p>
+                    </div>
+                    <div class="color-card">
+                        <div class="swatch-lg" style="background: var(--purple-base);"></div>
+                        <p class="token">Purple</p>
+                        <p class="value">#8E6AA0 · subtle #ECDDF1 · strong #6F4F80</p>
+                        <p class="usage">Adds warmth and character for marketing pages.</p>
+                    </div>
+                    <div class="color-card">
+                        <div class="swatch-lg" style="background: var(--cyan-base);"></div>
+                        <p class="token">Cyan</p>
+                        <p class="value">#5BA5B0 · subtle #D7ECEF · strong #427F88</p>
+                        <p class="usage">Fresh, water-adjacent; great for info-heavy dashboards.</p>
+                    </div>
+                    <div class="color-card">
+                        <div class="swatch-lg" style="background: var(--rose-accent-base);"></div>
+                        <p class="token">Rosé</p>
+                        <p class="value">#C47B8F · subtle #F3DDE3 · strong #9A5971</p>
+                        <p class="usage">Soft and playful; pairs well with the rose neutrals.</p>
+                    </div>
+                </div>
+            </section>
+            <section class="section">
+                <div class="section-title">
+                    <h2>Status</h2>
+                    <small>Semantic feedback colors</small>
+                </div>
+                <div class="grid cols-2">
+                    <div class="color-card">
+                        <div class="swatch-lg" style="background: var(--success);"></div>
+                        <p class="token">--success</p>
+                        <p class="value">#52B788</p>
+                        <p class="usage">Confirmations, successful saves, completed jobs.</p>
+                    </div>
+                    <div class="color-card">
+                        <div class="swatch-lg" style="background: var(--warning);"></div>
+                        <p class="token">--warning</p>
+                        <p class="value">#F9DB6D</p>
+                        <p class="usage">Needs attention but not blocking — expiring carts, drafts.</p>
+                    </div>
+                    <div class="color-card">
+                        <div class="swatch-lg" style="background: var(--danger);"></div>
+                        <p class="token">--danger</p>
+                        <p class="value">#E66260</p>
+                        <p class="usage">Destructive or error states. Pair with clear recovery text.</p>
+                    </div>
+                    <div class="color-card">
+                        <div class="swatch-lg" style="background: var(--info);"></div>
+                        <p class="token">--info</p>
+                        <p class="value">#656EA4</p>
+                        <p class="usage">Neutral informational messages. Aliased to the blue accent.</p>
+                    </div>
+                </div>
+            </section>
+            <section class="section">
+                <div class="section-title">
+                    <h2>Scheme preview</h2>
+                    <small>Same tokens, two contexts</small>
+                </div>
+                <div class="scheme-preview">
+                    <div class="preview light">
+                        <h3 style="margin-top:0">Light mode</h3>
+                        <p>
+                            Background uses a warm rose neutral (#F4EDED) with white surfaces. Text sits firmly at #1C1828 for strong contrast.
+                        </p>
+                        <p>
+                            <strong>Use for:</strong> public-facing web, marketing, docs, customer flows.
+                        </p>
+                    </div>
+                    <div class="preview dark">
+                        <h3 style="margin-top:0">Dark mode</h3>
+                        <p>
+                            Deep plum background (#1C1828) with elevated panels in #261F34. Accent colors keep their identity without clashing.
+                        </p>
+                        <p>
+                            <strong>Use for:</strong> operator dashboards, late-night work, shop-floor tablets.
+                        </p>
+                    </div>
+                </div>
+            </section>
+            <section class="section">
+                <div class="section-title">
+                    <h2>General theming</h2>
+                    <small>Using AquaDrive colors outside the web</small>
+                </div>
+                <div class="grid cols-2">
+                    <article class="card  ">
+    
+    <div>
+        <h3 class="card-title">Figma / Sketch</h3>
+        <p class="card-subtitle">style library</p>
+        <p>Import theme.css tokens through a design-tokens plugin. Each CSS variable maps 1:1 to a style name.</p>
+        
+    </div>
+</article>
+                    <article class="card  ">
+    
+    <div>
+        <h3 class="card-title">Figma / Sketch</h3>
+        <p class="card-subtitle">style library</p>
+        <p>Import theme.css tokens through a design-tokens plugin. Each CSS variable maps 1:1 to a style name.</p>
+        
+    </div>
+</article>
+                    <article class="card  ">
+    
+    <div>
+        <h3 class="card-title">Figma / Sketch</h3>
+        <p class="card-subtitle">style library</p>
+        <p>Import theme.css tokens through a design-tokens plugin. Each CSS variable maps 1:1 to a style name.</p>
+        
+    </div>
+</article>
+                    <article class="card  ">
+    
+    <div>
+        <h3 class="card-title">Figma / Sketch</h3>
+        <p class="card-subtitle">style library</p>
+        <p>Import theme.css tokens through a design-tokens plugin. Each CSS variable maps 1:1 to a style name.</p>
+        
+    </div>
+</article>
+                </div>
+            </section>
+            <footer class="site-footer">
+    AquaDrive Design System · Built with <a href="https://github.com/freeoss-space/py-ssg">py-ssg</a>
+</footer>
+        </main>
+    </body>
+</html>

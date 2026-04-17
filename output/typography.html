@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Typography — AquaDrive Design System</title>
+    <meta name="description"
+          content="Type scale, inline styles, lists, code blocks and blockquotes.">
+    <link rel="stylesheet" href="styles/theme.css">
+    <link rel="stylesheet" href="styles/base.css">
+    <link rel="stylesheet" href="styles/components.css">
+    <link rel="stylesheet" href="syntax.css">
+</head>
+    <body>
+        
+<input type="radio"
+       name="theme"
+       id="theme-light"
+       class="switcher-input"
+       aria-hidden="true"
+       tabindex="-1">
+<input type="radio"
+       name="theme"
+       id="theme-dark"
+       class="switcher-input"
+       aria-hidden="true"
+       tabindex="-1">
+<input type="radio"
+       name="accent"
+       id="accent-blue"
+       class="switcher-input"
+       aria-hidden="true"
+       tabindex="-1"
+       checked>
+<input type="radio"
+       name="accent"
+       id="accent-purple"
+       class="switcher-input"
+       aria-hidden="true"
+       tabindex="-1">
+<input type="radio"
+       name="accent"
+       id="accent-cyan"
+       class="switcher-input"
+       aria-hidden="true"
+       tabindex="-1">
+<input type="radio"
+       name="accent"
+       id="accent-rose"
+       class="switcher-input"
+       aria-hidden="true"
+       tabindex="-1">
+        <nav class="navbar" aria-label="Primary">
+    <a class="navbar-logo" href="index.html">
+        <span class="navbar-logo-dot"></span>
+        <span>AquaDrive</span>
+    </a>
+    <input type="checkbox"
+           id="nav-menu"
+           class="navbar-menu-toggle switcher-input"
+           aria-hidden="true"
+           tabindex="-1">
+    <label class="navbar-menu-button" for="nav-menu" aria-label="Open menu">☰</label>
+    <div class="navbar-links">
+        <a href="index.html" class="">Colors</a>
+        <a href="typography.html"
+           class="active">Typography</a>
+        <a href="elements.html"
+           class="">Elements</a>
+        <a href="ports.html" class="">Ports</a>
+    </div>
+    <div class="navbar-right">
+        <details class="switcher">
+    <summary aria-label="Open theme settings">
+        <svg width="16"
+             height="16"
+             viewBox="0 0 24 24"
+             fill="none"
+             stroke="currentColor"
+             stroke-width="2"
+             stroke-linecap="round"
+             stroke-linejoin="round"
+             aria-hidden="true">
+            <circle cx="12" cy="12" r="3"></circle>
+            <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09a1.65 1.65 0 0 0-1-1.51 1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09a1.65 1.65 0 0 0 1.51-1 1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33 1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82 1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z">
+            </path>
+        </svg>
+        <span>Theme</span>
+    </summary>
+    <div class="switcher-panel" role="menu">
+        <div class="switcher-group">
+            <p class="switcher-group-title">Color scheme</p>
+            <div class="switcher-options">
+                <label class="switcher-option" data-value="light" for="theme-light">Light</label>
+                <label class="switcher-option" data-value="dark" for="theme-dark">Dark</label>
+            </div>
+        </div>
+        <div class="switcher-group">
+            <p class="switcher-group-title">Accent</p>
+            <div class="switcher-options">
+                <label class="switcher-option" data-value="blue" for="accent-blue">
+                    <span class="swatch swatch-blue"></span>Blue
+                </label>
+                <label class="switcher-option" data-value="purple" for="accent-purple">
+                    <span class="swatch swatch-purple"></span>Purple
+                </label>
+                <label class="switcher-option" data-value="cyan" for="accent-cyan">
+                    <span class="swatch swatch-cyan"></span>Cyan
+                </label>
+                <label class="switcher-option" data-value="rose" for="accent-rose">
+                    <span class="swatch swatch-rose"></span>Rosé
+                </label>
+            </div>
+        </div>
+    </div>
+</details>
+    </div>
+</nav>
+        <main>
+            
+<nav class="breadcrumbs" aria-label="Breadcrumbs">
+    
+    
+        
+        
+            
+                <a href="index.html">Home</a>
+            
+            <span class="separator">/</span>
+        
+    
+        
+        
+            <span class="current">Typography</span>
+        
+    
+</nav>
+            <h1>Typography</h1>
+            <p class="subtitle">Monaspace Argon for UI and Monaspace Krypton for code. All sizes scale from a 16px root.</p>
+            <section class="section">
+                <h2>Headings</h2>
+                
+<div class="heading-demo h6-demo">Heading 6 — 0.875rem uppercase</div>
+                
+<div class="heading-demo h6-demo">Heading 6 — 0.875rem uppercase</div>
+                
+<div class="heading-demo h6-demo">Heading 6 — 0.875rem uppercase</div>
+                
+<div class="heading-demo h6-demo">Heading 6 — 0.875rem uppercase</div>
+                
+<div class="heading-demo h6-demo">Heading 6 — 0.875rem uppercase</div>
+                
+<div class="heading-demo h6-demo">Heading 6 — 0.875rem uppercase</div>
+            </section>
+            <section class="section">
+                <h2>Normal text &amp; subtitle</h2>
+                <p class="subtitle">Subtitles sit directly beneath headings to give them context.</p>
+                <p>
+                    Body copy uses Monaspace Argon at 16px with a 1.55 line height. Paragraphs are separated by a full line of space so dense prose stays readable without forcing justified text.
+                </p>
+                <p>
+                    Links inherit their color and are underlined using the active accent: <a href="#">an in-line example</a>. Hovered links thicken the underline and set the text to bold.
+                </p>
+            </section>
+            <section class="section">
+                <h2>Inline styles</h2>
+                <p>
+                    <strong>Bold text</strong> for emphasis, <strong style="color: var(--accent);">accent-bold</strong> for product terms, <em>italic text</em> for titles, <s>strikethrough</s> to show removal and <u>underlined text</u> for callouts.
+                </p>
+                <p>
+                    Use <code class="inline">inline code</code> for identifiers. Abbreviate with <abbr title="Cascading Style Sheets">CSS</abbr> or <abbr title="Cascading Style Sheets">CSS</abbr>.
+                </p>
+                <p>
+                    Highlight important matches with <mark>marked text</mark>.
+                </p>
+            </section>
+            <section class="section">
+                <h2>Lists</h2>
+                <div class="grid cols-2">
+                    <div>
+                        <h3>Unordered</h3>
+                        <ul>
+                            <li>Wash cycle</li>
+                            <li>Rinse cycle</li>
+                            <li>Wax application</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3>Ordered</h3>
+                        <ol>
+                            <li>Approach the entrance</li>
+                            <li>Align the wheels</li>
+                            <li>Pay at the kiosk</li>
+                        </ol>
+                    </div>
+                    <div>
+                        <h3>Grouped</h3>
+                        <dl>
+                            <dt>Bay A</dt>
+                            <dd>
+                                Self-service
+                            </dd>
+                            <dt>Bay B</dt>
+                            <dd>
+                                Automatic tunnel
+                            </dd>
+                            <dt>Bay C</dt>
+                            <dd>
+                                Detailing
+                            </dd>
+                        </dl>
+                    </div>
+                </div>
+            </section>
+            <section class="section">
+                <h2>Code block</h2>
+                
+<div class="code-block ">
+    
+        <div class="code-tabs">
+            
+                <span class="active">index.html</span>
+            
+                <span class="">typography.html</span>
+            
+                <span class="">ports.html</span>
+            
+        </div>
+    
+    
+        <div class="code-header">
+            <span>templates/index.html</span>
+            <span>html</span>
+        </div>
+    
+    
+    
+        <pre><code><!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Colors — AquaDrive Design System</title>
+    <meta name="description"
+          content="AquaDrive design system.">
+    <link rel="stylesheet" href="styles/theme.css">
+    <link rel="stylesheet" href="styles/base.css">
+    <link rel="stylesheet" href="styles/components.css">
+    <link rel="stylesheet" href="syntax.css">
+</head>
+</html>
+</code></pre>
+    
+</div>
+                <h3>With line numbers</h3>
+                
+<div class="code-block ">
+    
+        <div class="code-tabs">
+            
+                <span class="active">index.html</span>
+            
+                <span class="">typography.html</span>
+            
+                <span class="">ports.html</span>
+            
+        </div>
+    
+    
+        <div class="code-header">
+            <span>templates/index.html</span>
+            <span>html</span>
+        </div>
+    
+    
+    
+        <pre><code><!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Colors — AquaDrive Design System</title>
+    <meta name="description"
+          content="AquaDrive design system.">
+    <link rel="stylesheet" href="styles/theme.css">
+    <link rel="stylesheet" href="styles/base.css">
+    <link rel="stylesheet" href="styles/components.css">
+    <link rel="stylesheet" href="syntax.css">
+</head>
+</html>
+</code></pre>
+    
+</div>
+                <h3>With diff preview</h3>
+                
+<div class="code-block ">
+    
+        <div class="code-tabs">
+            
+                <span class="active">index.html</span>
+            
+                <span class="">typography.html</span>
+            
+                <span class="">ports.html</span>
+            
+        </div>
+    
+    
+        <div class="code-header">
+            <span>templates/index.html</span>
+            <span>html</span>
+        </div>
+    
+    
+    
+        <pre><code><!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Colors — AquaDrive Design System</title>
+    <meta name="description"
+          content="AquaDrive design system.">
+    <link rel="stylesheet" href="styles/theme.css">
+    <link rel="stylesheet" href="styles/base.css">
+    <link rel="stylesheet" href="styles/components.css">
+    <link rel="stylesheet" href="syntax.css">
+</head>
+</html>
+</code></pre>
+    
+</div>
+                <h3>With tabs</h3>
+                
+<div class="code-block ">
+    
+        <div class="code-tabs">
+            
+                <span class="active">index.html</span>
+            
+                <span class="">typography.html</span>
+            
+                <span class="">ports.html</span>
+            
+        </div>
+    
+    
+        <div class="code-header">
+            <span>templates/index.html</span>
+            <span>html</span>
+        </div>
+    
+    
+    
+        <pre><code><!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Colors — AquaDrive Design System</title>
+    <meta name="description"
+          content="AquaDrive design system.">
+    <link rel="stylesheet" href="styles/theme.css">
+    <link rel="stylesheet" href="styles/base.css">
+    <link rel="stylesheet" href="styles/components.css">
+    <link rel="stylesheet" href="syntax.css">
+</head>
+</html>
+</code></pre>
+    
+</div>
+            </section>
+            <section class="section">
+                <h2>Blockquote</h2>
+                <blockquote>
+    <p>Good design is as little design as possible.</p>
+    
+        <footer>
+            — Dieter Rams
+        </footer>
+    
+</blockquote>
+            </section>
+            <section class="section">
+                <h2>Links</h2>
+                <p>
+                    <a href="https://example.com"
+   rel="noopener" target="_blank">external link</a>
+                    &nbsp;and&nbsp;
+                    <a href="https://example.com"
+   rel="noopener" target="_blank">external link</a>
+                    . Both use the accent-colored underline and bold on hover.
+                </p>
+            </section>
+            <footer class="site-footer">
+    AquaDrive Design System · Built with <a href="https://github.com/freeoss-space/py-ssg">py-ssg</a>
+</footer>
+        </main>
+    </body>
+</html>

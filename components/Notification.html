@@ -1,0 +1,7 @@
+<div class="notification" role="status">
+    {% if icon %}<span class="notification-icon">{{ icon }}</span>{% endif %}
+    <div>
+        {% if title %}<p class="notification-title">{{ title }}</p>{% endif %}
+        {% if body %}<p class="notification-body">{{ body }}</p>{% endif %}
+    </div>
+</div>

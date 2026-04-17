@@ -1,0 +1,7 @@
+{# keys: space separated list, e.g. "Ctrl K" or "⌘ Shift P" #}
+<span>
+    {% for key in (keys or '').split(' ') if key %}
+        <kbd class="kbd">{{ key }}</kbd>
+        {% if not loop.last %}<span aria-hidden="true">+</span>{% endif %}
+    {% endfor %}
+</span>

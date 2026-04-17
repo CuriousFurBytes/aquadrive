@@ -1,0 +1,12 @@
+{# options: "value|label;;value|label" #}
+<div class="input-field {% if state %}{{ state }}{% endif %}">
+    {% if iconLeft %}<span class="icon" aria-hidden="true">{{ iconLeft }}</span>{% endif %}
+    <select id="{{ id }}" {% if disabled %}disabled{% endif %}>
+        {% if placeholder %}<option value="" disabled selected>{{ placeholder }}</option>{% endif %}
+        {% for raw in (options or '').split(';;') if raw %}
+            {% set bits = raw.split('|') %}
+            <option value="{{ bits[0] }}">{{ bits[1] if bits|length > 1 else bits[0] }}</option>
+        {% endfor %}
+    </select>
+    <span class="icon" aria-hidden="true">▾</span>
+</div>

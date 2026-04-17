@@ -1,0 +1,17 @@
+{# items: "Home|index.html;;Components|elements.html;;Buttons" — pages separated by ;; and label|href pairs. The last is the current page. #}
+<nav class="breadcrumbs" aria-label="Breadcrumbs">
+    {% set parts = items.split(';;') %}
+    {% for part in parts %}
+        {% set bits = part.split('|') %}
+        {% if loop.last %}
+            <span class="current">{{ bits[0] }}</span>
+        {% else %}
+            {% if bits|length > 1 %}
+                <a href="{{ bits[1] }}">{{ bits[0] }}</a>
+            {% else %}
+                <span>{{ bits[0] }}</span>
+            {% endif %}
+            <span class="separator">/</span>
+        {% endif %}
+    {% endfor %}
+</nav>

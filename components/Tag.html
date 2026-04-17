@@ -1,0 +1,6 @@
+<span class="tag {% if color %}tag-{{ color }}{% endif %}">
+    {% if iconBefore %}<span class="tag-icon-left" aria-hidden="true">{{ iconBefore }}</span>{% endif %}
+    <span>{{ text }}</span>
+    {% if iconAfter %}<span class="tag-icon-right" aria-hidden="true">{{ iconAfter }}</span>{% endif %}
+    {% if removable %}<button type="button" class="tag-close" aria-label="Remove">×</button>{% endif %}
+</span>

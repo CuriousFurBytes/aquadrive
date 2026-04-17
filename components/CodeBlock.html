@@ -1,0 +1,45 @@
+{#
+    code:      raw source (newlines separated by \n in attribute)
+    filename:  optional file name shown in header
+    lang:      language tag shown in header
+    lineno:    'true' to render line numbers
+    diff:      'true' to highlight lines starting with + or -
+    tabs:      'file1.py;;file2.py' to render tab bar (first is active)
+#}
+<div class="code-block {% if lineno == 'true' %}with-lineno{% endif %}">
+    {% if tabs %}
+        <div class="code-tabs">
+            {% for tab in tabs.split(';;') if tab %}
+                <span class="{% if loop.first %}active{% endif %}">{{ tab }}</span>
+            {% endfor %}
+        </div>
+    {% endif %}
+    {% if filename or lang %}
+        <div class="code-header">
+            <span>{{ filename or '' }}</span>
+            <span>{{ lang or '' }}</span>
+        </div>
+    {% endif %}
+    {% set lines = (code or '').split('\n') %}
+    {% if lineno == 'true' %}
+        <div class="code-body">
+            <div class="lineno">
+                {% for line in lines %}{{ loop.index }}{% endfor %}
+            </div>
+            <div class="source">
+                {% for line in lines %}
+                    {% if diff == 'true' and line.startswith('+') %}
+                        <span class="diff-add">{{ line }}</span>
+                    {% elif diff == 'true' and line.startswith('-') %}
+                        <span class="diff-remove">{{ line }}</span>
+                    {% else %}
+                        {{ line }}
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+    {% else %}
+        <pre><code>{% for line in lines %}{% if diff == 'true' and line.startswith('+') %}<span class="diff-add">{{ line }}</span>{% elif diff == 'true' and line.startswith('-') %}<span class="diff-remove">{{ line }}</span>{% else %}{{ line }}{% endif %}
+{% endfor %}</code></pre>
+    {% endif %}
+</div>

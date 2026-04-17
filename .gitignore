@@ -1,0 +1,6 @@
+output/
+node_modules/
+__pycache__/
+.pyssg_cache.json
+.lighthouseci/
+*.pyc

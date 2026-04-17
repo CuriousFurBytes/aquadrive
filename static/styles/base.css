@@ -1,0 +1,239 @@
+/* Base styles — resets, typography, layout. */
+
+@font-face {
+    font-family: "Monaspace Argon";
+    src: url("../fonts/MonaspaceArgonVar.woff") format("woff-variations");
+    font-weight: 100 900;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Monaspace Krypton";
+    src: url("../fonts/MonaspaceKryptonVar.woff") format("woff-variations");
+    font-weight: 100 900;
+    font-style: normal;
+    font-display: swap;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html {
+    font-family: "Monaspace Argon", ui-sans-serif, system-ui, sans-serif;
+    font-size: 16px;
+    line-height: 1.55;
+    color: var(--text);
+    background: var(--bg);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    background: var(--bg);
+    color: var(--text);
+}
+
+main {
+    max-width: 72rem;
+    margin: 0 auto;
+    padding: 2rem 1.25rem 6rem;
+}
+
+img,
+svg {
+    max-width: 100%;
+    display: block;
+}
+
+hr {
+    border: 0;
+    height: 1px;
+    background: var(--border);
+    margin: 1.5rem 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: "Monaspace Argon", ui-sans-serif, system-ui, sans-serif;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    line-height: 1.2;
+    margin: 2rem 0 0.75rem;
+}
+
+h1 {
+    font-size: 2.25rem;
+}
+h2 {
+    font-size: 1.75rem;
+}
+h3 {
+    font-size: 1.375rem;
+}
+h4 {
+    font-size: 1.125rem;
+}
+h5 {
+    font-size: 1rem;
+}
+h6 {
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--text-muted);
+}
+
+p {
+    margin: 0 0 1rem;
+}
+
+.subtitle {
+    color: var(--text-muted);
+    font-size: 1.125rem;
+    margin-top: -0.5rem;
+    margin-bottom: 1.5rem;
+}
+
+code,
+kbd,
+pre,
+samp {
+    font-family: "Monaspace Krypton", ui-monospace, monospace;
+}
+
+code.inline {
+    background: var(--accent-subtle);
+    color: var(--accent-contrast);
+    padding: 0.1em 0.35em;
+    border-radius: var(--radius-sm);
+    font-size: 0.92em;
+}
+
+mark {
+    background: var(--accent-subtle);
+    color: var(--accent-contrast);
+    padding: 0.05em 0.2em;
+    border-radius: var(--radius-sm);
+}
+
+abbr[title] {
+    text-decoration: underline dotted;
+    text-underline-offset: 0.2em;
+    cursor: help;
+}
+
+a,
+a:visited {
+    color: inherit;
+    text-decoration: none;
+    border-bottom: solid 0.2ch var(--accent);
+    margin: 0.5rem;
+    transition: border-width var(--transition-fast);
+}
+
+a:hover {
+    border-bottom: solid 0.3ch var(--accent);
+    font-weight: bold;
+}
+
+ul,
+ol {
+    padding-left: 1.5rem;
+    margin: 0 0 1rem;
+}
+
+ul li::marker {
+    color: var(--accent);
+}
+
+ol li::marker {
+    color: var(--accent);
+    font-weight: 700;
+}
+
+dl {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 0.5rem 1rem;
+}
+
+dt {
+    font-weight: 700;
+    color: var(--text-muted);
+}
+
+blockquote {
+    border-left: 4px solid var(--accent);
+    padding: 0.25rem 1rem;
+    margin: 1rem 0;
+    color: var(--text-muted);
+    background: var(--accent-subtle);
+    border-radius: 0 var(--radius-md) var(--radius-md) 0;
+}
+
+:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+}
+
+/* Hidden switcher radios — keep accessible but off-canvas */
+.switcher-input {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.grid {
+    display: grid;
+    gap: 1rem;
+}
+
+.grid.cols-2 {
+    grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
+}
+
+.grid.cols-3 {
+    grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+}
+
+.stack {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+.section {
+    margin: 3rem 0;
+}
+
+.section-title {
+    display: flex;
+    align-items: baseline;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+}
+
+.section-title small {
+    color: var(--text-muted);
+    font-weight: 400;
+}

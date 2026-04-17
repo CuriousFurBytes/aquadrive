@@ -1,0 +1,13 @@
+{# events: "2026-04-01|Kickoff|Meeting notes;;2026-04-12|Beta|Initial users" #}
+<ol class="timeline">
+    {% for event in (events or '').split(';;') if event %}
+        {% set bits = event.split('|') %}
+        <li>
+            <p class="time">{{ bits[0] }}</p>
+            <p>
+                <strong>{{ bits[1] if bits|length > 1 else '' }}</strong>
+            </p>
+            {% if bits|length > 2 %}<p>{{ bits[2] }}</p>{% endif %}
+        </li>
+    {% endfor %}
+</ol>

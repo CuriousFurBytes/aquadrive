@@ -1,0 +1,7 @@
+<div class="input-field {% if state %}{{ state }}{% endif %} {% if insetLabel %}with-inset-label{% endif %}">
+    {% if insetLabel %}<label class="label" for="{{ id }}">{{ insetLabel }}</label>{% endif %}
+    <textarea id="{{ id }}"
+              placeholder="{{ placeholder or '' }}"
+              rows="{{ rows or 4 }}"
+              {% if disabled %}disabled{% endif %}>{{ value or '' }}</textarea>
+</div>

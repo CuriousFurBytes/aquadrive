@@ -1,0 +1,14 @@
+{% set lvl = (level or 2)|int %}
+{% if lvl == 1 %}
+    <h1>{{ text }}</h1>
+{% elif lvl == 2 %}
+    <h2>{{ text }}</h2>
+{% elif lvl == 3 %}
+    <h3>{{ text }}</h3>
+{% elif lvl == 4 %}
+    <h4>{{ text }}</h4>
+{% elif lvl == 5 %}
+    <h5>{{ text }}</h5>
+{% else %}
+    <h6>{{ text }}</h6>
+{% endif %}

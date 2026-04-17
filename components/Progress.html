@@ -1,0 +1,7 @@
+<div class="progress {% if striped %}striped{% endif %}"
+     role="progressbar"
+     aria-valuenow="{{ value or 0 }}"
+     aria-valuemin="0"
+     aria-valuemax="100">
+    <div class="bar" style="width: {{ value or 0 }}%;"></div>
+</div>

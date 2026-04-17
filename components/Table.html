@@ -1,0 +1,21 @@
+{#
+    columns: "Name;;Role;;Status"
+    rows:    "Ada|Engineer|Active;;Grace|Manager|Away"
+    Columns and rows are separated with ;; (rows) or | (cells).
+#}
+<div class="table-wrap">
+    <table class="table">
+        <thead>
+            <tr>
+                {% for col in (columns or '').split(';;') if col %}<th>{{ col }}</th>{% endfor %}
+            </tr>
+        </thead>
+        <tbody>
+            {% for row in (rows or '').split(';;') if row %}
+                <tr>
+                    {% for cell in row.split('|') %}<td>{{ cell }}</td>{% endfor %}
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,8 @@
+<li class="list-item">
+    {% if icon %}<span class="list-item-icon">{{ icon }}</span>{% endif %}
+    <div class="list-item-body">
+        {% if title %}<p class="list-item-title">{{ title }}</p>{% endif %}
+        {% if subtitle %}<p class="list-item-subtitle">{{ subtitle }}</p>{% endif %}
+    </div>
+    {% if action %}<Button text="{{ action }}" variant="ghost" />{% endif %}
+</li>

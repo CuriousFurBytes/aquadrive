@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+    <Head title="Typography"
+          description="Type scale, inline styles, lists, code blocks and blockquotes." />
+    <body>
+        <ThemeRadios />
+        <NavBar active="typography" />
+        <main>
+            <Breadcrumbs items="Home|index.html;;Typography" />
+            <h1>Typography</h1>
+            <p class="subtitle">Monaspace Argon for UI and Monaspace Krypton for code. All sizes scale from a 16px root.</p>
+            <section class="section">
+                <h2>Headings</h2>
+                <Heading level="1" text="Heading 1 — 2.25rem" />
+                <Heading level="2" text="Heading 2 — 1.75rem" />
+                <Heading level="3" text="Heading 3 — 1.375rem" />
+                <Heading level="4" text="Heading 4 — 1.125rem" />
+                <Heading level="5" text="Heading 5 — 1rem" />
+                <Heading level="6" text="Heading 6 — 0.875rem uppercase" />
+            </section>
+            <section class="section">
+                <h2>Normal text &amp; subtitle</h2>
+                <p class="subtitle">Subtitles sit directly beneath headings to give them context.</p>
+                <p>
+                    Body copy uses Monaspace Argon at 16px with a 1.55 line height. Paragraphs are separated by a full line of space so dense prose stays readable without forcing justified text.
+                </p>
+                <p>
+                    Links inherit their color and are underlined using the active accent: <a href="#">an in-line example</a>. Hovered links thicken the underline and set the text to bold.
+                </p>
+            </section>
+            <section class="section">
+                <h2>Inline styles</h2>
+                <p>
+                    <strong>Bold text</strong> for emphasis, <strong style="color: var(--accent);">accent-bold</strong> for product terms, <em>italic text</em> for titles, <s>strikethrough</s> to show removal and <u>underlined text</u> for callouts.
+                </p>
+                <p>
+                    Use <code class="inline">inline code</code> for identifiers. Abbreviate with <Abbr text="API" title="Application Programming Interface" /> or <Abbr text="CSS" title="Cascading Style Sheets" />.
+                </p>
+                <p>
+                    Highlight important matches with <mark>marked text</mark>.
+                </p>
+            </section>
+            <section class="section">
+                <h2>Lists</h2>
+                <div class="grid cols-2">
+                    <div>
+                        <h4>Unordered</h4>
+                        <ul>
+                            <li>Wash cycle</li>
+                            <li>Rinse cycle</li>
+                            <li>Wax application</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4>Ordered</h4>
+                        <ol>
+                            <li>Approach the entrance</li>
+                            <li>Align the wheels</li>
+                            <li>Pay at the kiosk</li>
+                        </ol>
+                    </div>
+                    <div>
+                        <h4>Grouped</h4>
+                        <dl>
+                            <dt>Bay A</dt>
+                            <dd>
+                                Self-service
+                            </dd>
+                            <dt>Bay B</dt>
+                            <dd>
+                                Automatic tunnel
+                            </dd>
+                            <dt>Bay C</dt>
+                            <dd>
+                                Detailing
+                            </dd>
+                        </dl>
+                    </div>
+                </div>
+            </section>
+            <section class="section">
+                <h2>Code block</h2>
+                <CodeBlock filename="theme.css" lang="css" code=":root {&#10;    --bg: #F4EDED;&#10;    --surface: #FFFFFF;&#10;    --accent: #656EA4;&#10;}" />
+                <h4>With line numbers</h4>
+                <CodeBlock lineno="true" filename="greeter.py" lang="python" code="def greet(name):&#10;    message = f'Hello, {name}!'&#10;    print(message)&#10;    return message" />
+                <h4>With diff preview</h4>
+                <CodeBlock lineno="true" diff="true" filename="config.toml" lang="toml" code=" [py-ssg]&#10;-name = &quot;Old Name&quot;&#10;+name = &quot;AquaDrive&quot;&#10; cache = true" />
+                <h4>With tabs</h4>
+                <CodeBlock tabs="index.html;;typography.html;;ports.html" filename="templates/index.html" lang="html" code="&lt;!DOCTYPE html&gt;&#10;&lt;html lang=&quot;en&quot;&gt;&#10;  &lt;Head title=&quot;Colors&quot; /&gt;&#10;&lt;/html&gt;" />
+            </section>
+            <section class="section">
+                <h2>Blockquote</h2>
+                <Blockquote text="Good design is as little design as possible."
+                            author="Dieter Rams" />
+            </section>
+            <section class="section">
+                <h2>Links</h2>
+                <p>
+                    <Link href="#" text="Internal link" />
+                    &nbsp;and&nbsp;
+                    <Link href="https://example.com" text="external link" external="true" />
+                    . Both use the accent-colored underline and bold on hover.
+                </p>
+            </section>
+            <SiteFooter />
+        </main>
+    </body>
+</html>

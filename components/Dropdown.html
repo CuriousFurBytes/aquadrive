@@ -1,0 +1,12 @@
+{# items: "Item one|#;;Item two|#;;Item three|#" #}
+<details class="dropdown">
+    <summary>
+        <Button text="{{ label or 'Menu' }}" variant="secondary" iconAfter="▾" />
+    </summary>
+    <div class="dropdown-menu" role="menu">
+        {% for raw in (items or '').split(';;') if raw %}
+            {% set bits = raw.split('|') %}
+            <a href="{{ bits[1] if bits|length > 1 else '#' }}">{{ bits[0] }}</a>
+        {% endfor %}
+    </div>
+</details>

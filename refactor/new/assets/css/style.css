@@ -858,7 +858,6 @@ h4 {
     font-size: var(--text-caption);
     line-height: 1.8;
     color: var(--blue-200);
-    overflow-x: auto;
     position: relative;
 }
 
@@ -869,6 +868,7 @@ h4 {
 .code-panel pre {
     margin: 0;
     white-space: pre;
+    overflow-x: auto;
 }
 
 .code-copy {

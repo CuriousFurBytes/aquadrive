@@ -126,53 +126,33 @@
 </div>
 <script>function switchDemoTab(btn,id){btn.closest('.demo-tabs').querySelectorAll('.demo-tab').forEach(b=>b.classList.remove('active'));btn.classList.add('active');document.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('active'));document.getElementById(id).classList.add('active');}</script></div>
   <div class="code-wrapper">
-  <div class="code-tabs"><button class="code-tab active" data-lang="html">HTML</button><button class="code-tab" data-lang="css">CSS</button><button class="code-tab" data-lang="js">JS</button></div>
+  <div class="code-tabs"><button class="code-tab active" data-lang="html">HTML</button><button class="code-tab" data-lang="js">JS</button></div>
   <div class="code-panel active" data-lang="html">
       <button class="code-copy">Copy</button>
-      <pre data-lang="html">&lt;div class=&quot;demo-tabs&quot; role=&quot;tablist&quot;&gt;
-  &lt;button class=&quot;demo-tab active&quot;&gt;Overview&lt;/button&gt;
-  &lt;button class=&quot;demo-tab&quot;&gt;Details&lt;/button&gt;
-  &lt;button class=&quot;demo-tab&quot;&gt;Settings&lt;/button&gt;
-&lt;/div&gt;
-&lt;div class=&quot;tab-panel active&quot;&gt;Overview content...&lt;/div&gt;
-&lt;div class=&quot;tab-panel&quot;&gt;Details content...&lt;/div&gt;</pre>
-    </div>
-<div class="code-panel" data-lang="css">
-      <button class="code-copy">Copy</button>
-      <pre data-lang="css">.demo-tabs { display: flex; border-bottom: 1px solid var(--border); gap: 4px; }
-.demo-tab {
-    font-family: var(--font-mono);
-    font-size: 12px;
-    font-weight: 600;
-    padding: 8px 14px;
-    border: none;
-    background: none;
-    color: var(--text-muted);
-    cursor: pointer;
-    border-bottom: 2px solid transparent;
-    margin-bottom: -1px;
-    transition: color 0.15s, border-color 0.15s;
-}
-.demo-tab.active { color: var(--accent-500); border-bottom-color: var(--accent-500); }
-.tab-panel { display: none; }
-.tab-panel.active { display: block; }</pre>
+      <ol class="code-lines" data-lang="html"><li>&lt;div class=&quot;demo-tabs&quot; role=&quot;tablist&quot;&gt;</li>
+<li>  &lt;button class=&quot;demo-tab active&quot;&gt;Overview&lt;/button&gt;</li>
+<li>  &lt;button class=&quot;demo-tab&quot;&gt;Details&lt;/button&gt;</li>
+<li>  &lt;button class=&quot;demo-tab&quot;&gt;Settings&lt;/button&gt;</li>
+<li>&lt;/div&gt;</li>
+<li>&lt;div class=&quot;tab-panel active&quot;&gt;Overview content...&lt;/div&gt;</li>
+<li>&lt;div class=&quot;tab-panel&quot;&gt;Details content...&lt;/div&gt;</li></ol>
     </div>
 <div class="code-panel" data-lang="js">
       <button class="code-copy">Copy</button>
-      <pre data-lang="js">function switchTab(btn, panelId) {
-  // Deactivate all tabs
-  btn.closest('[role=&quot;tablist&quot;]')
-    .querySelectorAll('.demo-tab')
-    .forEach(t =&gt; t.classList.remove('active'));
-
-  // Activate clicked tab
-  btn.classList.add('active');
-
-  // Switch panels
-  document.querySelectorAll('.tab-panel')
-    .forEach(p =&gt; p.classList.remove('active'));
-  document.getElementById(panelId).classList.add('active');
-}</pre>
+      <ol class="code-lines" data-lang="js"><li>function switchTab(btn, panelId) {</li>
+<li>  // Deactivate all tabs</li>
+<li>  btn.closest('[role=&quot;tablist&quot;]')</li>
+<li>    .querySelectorAll('.demo-tab')</li>
+<li>    .forEach(t =&gt; t.classList.remove('active'));</li>
+<li> </li>
+<li>  // Activate clicked tab</li>
+<li>  btn.classList.add('active');</li>
+<li> </li>
+<li>  // Switch panels</li>
+<li>  document.querySelectorAll('.tab-panel')</li>
+<li>    .forEach(p =&gt; p.classList.remove('active'));</li>
+<li>  document.getElementById(panelId).classList.add('active');</li>
+<li>}</li></ol>
     </div>
 </div>
 </section>
@@ -190,39 +170,18 @@
 </div>
 <script>function switchGroup(btn,id){btn.closest('.tab-group-header').querySelectorAll('.tab-group-btn').forEach(b=>b.classList.remove('active'));btn.classList.add('active');btn.closest('.tab-group').querySelectorAll('.tab-group-panel').forEach(p=>p.classList.remove('active'));document.getElementById(id).classList.add('active');}</script></div>
   <div class="code-wrapper">
-  <div class="code-tabs"><button class="code-tab active" data-lang="html">HTML</button><button class="code-tab" data-lang="css">CSS</button></div>
+  
   <div class="code-panel active" data-lang="html">
       <button class="code-copy">Copy</button>
-      <pre data-lang="html">&lt;div class=&quot;tab-group&quot;&gt;
-  &lt;div class=&quot;tab-group-header&quot;&gt;
-    &lt;button class=&quot;tab-group-btn active&quot;&gt;General&lt;/button&gt;
-    &lt;button class=&quot;tab-group-btn&quot;&gt;Security&lt;/button&gt;
-    &lt;button class=&quot;tab-group-btn&quot;&gt;Billing&lt;/button&gt;
-  &lt;/div&gt;
-  &lt;div class=&quot;tab-group-panel active&quot;&gt;General settings...&lt;/div&gt;
-  &lt;div class=&quot;tab-group-panel&quot;&gt;Security settings...&lt;/div&gt;
-&lt;/div&gt;</pre>
-    </div>
-<div class="code-panel" data-lang="css">
-      <button class="code-copy">Copy</button>
-      <pre data-lang="css">.tab-group { border: 1px solid var(--border); border-radius: 12px; overflow: hidden; }
-.tab-group-header { display: flex; gap: 2px; padding: 6px 6px 0; background: var(--surface); border-bottom: 1px solid var(--border); }
-.tab-group-btn {
-    font-family: var(--font-mono);
-    font-size: 11px;
-    font-weight: 600;
-    padding: 7px 14px;
-    border-radius: 8px 8px 0 0;
-    border: 1px solid transparent;
-    border-bottom: none;
-    background: none;
-    color: var(--text-muted);
-    cursor: pointer;
-    transition: all 0.15s;
-}
-.tab-group-btn.active { background: var(--bg); color: var(--text); border-color: var(--border); border-bottom-color: var(--bg); }
-.tab-group-panel { display: none; padding: 20px; background: var(--bg); }
-.tab-group-panel.active { display: block; }</pre>
+      <ol class="code-lines" data-lang="html"><li>&lt;div class=&quot;tab-group&quot;&gt;</li>
+<li>  &lt;div class=&quot;tab-group-header&quot;&gt;</li>
+<li>    &lt;button class=&quot;tab-group-btn active&quot;&gt;General&lt;/button&gt;</li>
+<li>    &lt;button class=&quot;tab-group-btn&quot;&gt;Security&lt;/button&gt;</li>
+<li>    &lt;button class=&quot;tab-group-btn&quot;&gt;Billing&lt;/button&gt;</li>
+<li>  &lt;/div&gt;</li>
+<li>  &lt;div class=&quot;tab-group-panel active&quot;&gt;General settings...&lt;/div&gt;</li>
+<li>  &lt;div class=&quot;tab-group-panel&quot;&gt;Security settings...&lt;/div&gt;</li>
+<li>&lt;/div&gt;</li></ol>
     </div>
 </div>
 </section>
@@ -244,47 +203,20 @@
 </div>
 <script>function switchVertical(btn,id){btn.closest('.tab-group-v-sidebar').querySelectorAll('.tab-group-v-btn').forEach(b=>b.classList.remove('active'));btn.classList.add('active');btn.closest('.tab-group-v').querySelectorAll('.tab-group-v-panel').forEach(p=>p.classList.remove('active'));document.getElementById(id).classList.add('active');}</script></div>
   <div class="code-wrapper">
-  <div class="code-tabs"><button class="code-tab active" data-lang="html">HTML</button><button class="code-tab" data-lang="css">CSS</button></div>
+  
   <div class="code-panel active" data-lang="html">
       <button class="code-copy">Copy</button>
-      <pre data-lang="html">&lt;div class=&quot;tab-group-v&quot;&gt;
-  &lt;div class=&quot;tab-group-v-sidebar&quot;&gt;
-    &lt;button class=&quot;tab-group-v-btn active&quot;&gt;Profile&lt;/button&gt;
-    &lt;button class=&quot;tab-group-v-btn&quot;&gt;Password&lt;/button&gt;
-    &lt;button class=&quot;tab-group-v-btn&quot;&gt;Notifications&lt;/button&gt;
-  &lt;/div&gt;
-  &lt;div class=&quot;tab-group-v-content&quot;&gt;
-    &lt;div class=&quot;tab-group-v-panel active&quot;&gt;Profile settings...&lt;/div&gt;
-    &lt;div class=&quot;tab-group-v-panel&quot;&gt;Password settings...&lt;/div&gt;
-  &lt;/div&gt;
-&lt;/div&gt;</pre>
-    </div>
-<div class="code-panel" data-lang="css">
-      <button class="code-copy">Copy</button>
-      <pre data-lang="css">.tab-group-v { display: flex; border: 1px solid var(--border); border-radius: 12px; overflow: hidden; }
-.tab-group-v-sidebar { min-width: 160px; background: var(--surface); border-right: 1px solid var(--border); padding: 8px; }
-.tab-group-v-btn {
-    width: 100%;
-    font-family: var(--font-mono);
-    font-size: 11px;
-    font-weight: 600;
-    padding: 8px 12px;
-    border-radius: 8px;
-    border: none;
-    background: none;
-    color: var(--text-muted);
-    cursor: pointer;
-    text-align: left;
-    border-left: 3px solid transparent;
-    transition: all 0.15s;
-}
-.tab-group-v-btn.active {
-    color: var(--accent-500);
-    background: var(--accent-50);
-    border-left-color: var(--accent-500);
-}
-.tab-group-v-panel { display: none; padding: 20px; }
-.tab-group-v-panel.active { display: block; }</pre>
+      <ol class="code-lines" data-lang="html"><li>&lt;div class=&quot;tab-group-v&quot;&gt;</li>
+<li>  &lt;div class=&quot;tab-group-v-sidebar&quot;&gt;</li>
+<li>    &lt;button class=&quot;tab-group-v-btn active&quot;&gt;Profile&lt;/button&gt;</li>
+<li>    &lt;button class=&quot;tab-group-v-btn&quot;&gt;Password&lt;/button&gt;</li>
+<li>    &lt;button class=&quot;tab-group-v-btn&quot;&gt;Notifications&lt;/button&gt;</li>
+<li>  &lt;/div&gt;</li>
+<li>  &lt;div class=&quot;tab-group-v-content&quot;&gt;</li>
+<li>    &lt;div class=&quot;tab-group-v-panel active&quot;&gt;Profile settings...&lt;/div&gt;</li>
+<li>    &lt;div class=&quot;tab-group-v-panel&quot;&gt;Password settings...&lt;/div&gt;</li>
+<li>  &lt;/div&gt;</li>
+<li>&lt;/div&gt;</li></ol>
     </div>
 </div>
 </section>
@@ -296,7 +228,8 @@ function toggleNav(){document.querySelector('.aqua-navbar').classList.toggle('na
 function setAccent(c){document.documentElement.setAttribute('data-accent',c);localStorage.setItem('aquadrive-accent',c);updateAccentDots();}
 function updateAccentDots(){var c=document.documentElement.getAttribute('data-accent')||'blue';document.querySelectorAll('.accent-dot').forEach(function(d){d.classList.toggle('active',d.getAttribute('data-color')===c);});}
 function switchTab(btn,lang){var w=btn.closest('.code-wrapper');w.querySelectorAll('.code-tab').forEach(function(t){t.classList.remove('active');});btn.classList.add('active');w.querySelectorAll('.code-panel').forEach(function(p){p.classList.toggle('active',p.getAttribute('data-lang')===lang);});}
-function copyCode(btn){var pre=btn.nextElementSibling;navigator.clipboard.writeText(pre.textContent).then(function(){btn.textContent='Copied!';setTimeout(function(){btn.textContent='Copy';},1500);});}
+function copyCode(btn){var panel=btn.closest('.code-panel');var ol=panel&&panel.querySelector('ol.code-lines');var code=ol?Array.from(ol.querySelectorAll('li')).map(function(l){return l.textContent;}).join('
+'):(btn.nextElementSibling?btn.nextElementSibling.textContent:'');navigator.clipboard.writeText(code).then(function(){btn.textContent='Copied!';setTimeout(function(){btn.textContent='Copy';},1500);});}
 function toggleMobile(){var existing=document.querySelector('.mobile-preview-backdrop');if(existing){existing.classList.toggle('open');return;}var backdrop=document.createElement('div');backdrop.className='mobile-preview-backdrop open';backdrop.onclick=function(e){if(e.target===backdrop)backdrop.classList.remove('open');};var device=document.createElement('div');device.className='mobile-preview-device';var notch=document.createElement('div');notch.className='mobile-preview-notch';var screen=document.createElement('div');screen.className='mobile-preview-screen';var iframe=document.createElement('iframe');iframe.src=window.location.href;var close=document.createElement('button');close.className='mobile-preview-close';close.innerHTML='&times;';close.onclick=function(){backdrop.classList.remove('open');};var label=document.createElement('div');label.className='mobile-preview-label';label.textContent='390 × 844 — iPhone 14 Pro';screen.appendChild(iframe);device.appendChild(notch);device.appendChild(screen);device.appendChild(close);device.appendChild(label);backdrop.appendChild(device);document.body.appendChild(backdrop);}
 document.querySelectorAll('.code-tab').forEach(function(btn){btn.addEventListener('click',function(){switchTab(btn,btn.getAttribute('data-lang'));});});
 document.querySelectorAll('.code-copy').forEach(function(btn){btn.addEventListener('click',function(){copyCode(btn);});});

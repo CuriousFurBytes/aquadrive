@@ -108,41 +108,21 @@
   </div>
 </div></div>
   <div class="code-wrapper">
-  <div class="code-tabs"><button class="code-tab active" data-lang="html">HTML</button><button class="code-tab" data-lang="css">CSS</button></div>
+  
   <div class="code-panel active" data-lang="html">
       <button class="code-copy">Copy</button>
-      <pre data-lang="html">&lt;button class=&quot;chip active&quot;&gt;All&lt;/button&gt;
-&lt;button class=&quot;chip&quot;&gt;Design&lt;/button&gt;
-&lt;button class=&quot;chip&quot;&gt;Development&lt;/button&gt;
-
-&lt;!-- Outlined variant --&gt;
-&lt;button class=&quot;chip chip-outlined active&quot;&gt;Selected&lt;/button&gt;
-
-&lt;!-- With avatar --&gt;
-&lt;button class=&quot;chip&quot;&gt;
-  &lt;span class=&quot;chip-avatar&quot;&gt;JC&lt;/span&gt;
-  Jane Cooper
-&lt;/button&gt;</pre>
-    </div>
-<div class="code-panel" data-lang="css">
-      <button class="code-copy">Copy</button>
-      <pre data-lang="css">.chip {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    font-size: 13px;
-    font-weight: 500;
-    padding: 6px 14px;
-    border-radius: 999px;
-    background: var(--accent-50);
-    color: var(--text);
-    cursor: pointer;
-    transition: background 0.15s;
-    border: none;
-}
-.chip:hover { background: var(--accent-200); }
-.chip.active { background: var(--accent-500); color: #fff; }
-.chip-outlined { background: transparent; border: 1px solid var(--accent-400); }</pre>
+      <ol class="code-lines" data-lang="html"><li>&lt;button class=&quot;chip active&quot;&gt;All&lt;/button&gt;</li>
+<li>&lt;button class=&quot;chip&quot;&gt;Design&lt;/button&gt;</li>
+<li>&lt;button class=&quot;chip&quot;&gt;Development&lt;/button&gt;</li>
+<li> </li>
+<li>&lt;!-- Outlined variant --&gt;</li>
+<li>&lt;button class=&quot;chip chip-outlined active&quot;&gt;Selected&lt;/button&gt;</li>
+<li> </li>
+<li>&lt;!-- With avatar --&gt;</li>
+<li>&lt;button class=&quot;chip&quot;&gt;</li>
+<li>  &lt;span class=&quot;chip-avatar&quot;&gt;JC&lt;/span&gt;</li>
+<li>  Jane Cooper</li>
+<li>&lt;/button&gt;</li></ol>
     </div>
 </div>
 </section>
@@ -154,7 +134,8 @@ function toggleNav(){document.querySelector('.aqua-navbar').classList.toggle('na
 function setAccent(c){document.documentElement.setAttribute('data-accent',c);localStorage.setItem('aquadrive-accent',c);updateAccentDots();}
 function updateAccentDots(){var c=document.documentElement.getAttribute('data-accent')||'blue';document.querySelectorAll('.accent-dot').forEach(function(d){d.classList.toggle('active',d.getAttribute('data-color')===c);});}
 function switchTab(btn,lang){var w=btn.closest('.code-wrapper');w.querySelectorAll('.code-tab').forEach(function(t){t.classList.remove('active');});btn.classList.add('active');w.querySelectorAll('.code-panel').forEach(function(p){p.classList.toggle('active',p.getAttribute('data-lang')===lang);});}
-function copyCode(btn){var pre=btn.nextElementSibling;navigator.clipboard.writeText(pre.textContent).then(function(){btn.textContent='Copied!';setTimeout(function(){btn.textContent='Copy';},1500);});}
+function copyCode(btn){var panel=btn.closest('.code-panel');var ol=panel&&panel.querySelector('ol.code-lines');var code=ol?Array.from(ol.querySelectorAll('li')).map(function(l){return l.textContent;}).join('
+'):(btn.nextElementSibling?btn.nextElementSibling.textContent:'');navigator.clipboard.writeText(code).then(function(){btn.textContent='Copied!';setTimeout(function(){btn.textContent='Copy';},1500);});}
 function toggleMobile(){var existing=document.querySelector('.mobile-preview-backdrop');if(existing){existing.classList.toggle('open');return;}var backdrop=document.createElement('div');backdrop.className='mobile-preview-backdrop open';backdrop.onclick=function(e){if(e.target===backdrop)backdrop.classList.remove('open');};var device=document.createElement('div');device.className='mobile-preview-device';var notch=document.createElement('div');notch.className='mobile-preview-notch';var screen=document.createElement('div');screen.className='mobile-preview-screen';var iframe=document.createElement('iframe');iframe.src=window.location.href;var close=document.createElement('button');close.className='mobile-preview-close';close.innerHTML='&times;';close.onclick=function(){backdrop.classList.remove('open');};var label=document.createElement('div');label.className='mobile-preview-label';label.textContent='390 × 844 — iPhone 14 Pro';screen.appendChild(iframe);device.appendChild(notch);device.appendChild(screen);device.appendChild(close);device.appendChild(label);backdrop.appendChild(device);document.body.appendChild(backdrop);}
 document.querySelectorAll('.code-tab').forEach(function(btn){btn.addEventListener('click',function(){switchTab(btn,btn.getAttribute('data-lang'));});});
 document.querySelectorAll('.code-copy').forEach(function(btn){btn.addEventListener('click',function(){copyCode(btn);});});

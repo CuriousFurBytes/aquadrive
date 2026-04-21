@@ -1,0 +1,64 @@
+---
+title: Badges
+description: Status and category indicators for data and labels.
+group: Feedback & Status
+slug: badges
+---
+
+export const componentCSS = `
+.badge {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: var(--text-caption);
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    padding: 3px 10px;
+    border-radius: 100px;
+}
+.badge--success { background: var(--green-tint); color: var(--green-main); }
+.badge--warning { background: var(--yellow-tint); color: var(--yellow-main); }
+.badge--error   { background: var(--red-tint); color: var(--red-main); }
+.badge--info    { background: var(--accent-50); color: var(--accent-500); }
+.badge--accent  { background: var(--accent-500); color: #fff; }
+.badge--neutral { background: var(--surface-elevated); color: var(--text-muted); }
+.badge-row { display: flex; flex-wrap: wrap; gap: 8px; }
+`;
+
+export const sections = [
+  {
+    label: 'Badges',
+    demo: `<div class="badge-row">
+  <span class="badge badge--success">Paid</span>
+  <span class="badge badge--warning">Pending</span>
+  <span class="badge badge--error">Overdue</span>
+  <span class="badge badge--info">Processing</span>
+  <span class="badge badge--accent">New</span>
+  <span class="badge badge--neutral">Draft</span>
+</div>`,
+    tabs: [
+      {
+        label: 'HTML', lang: 'html', code: `<span class="badge badge--success">Paid</span>
+<span class="badge badge--warning">Pending</span>
+<span class="badge badge--error">Overdue</span>
+<span class="badge badge--info">Processing</span>
+<span class="badge badge--accent">New</span>`,
+      },
+      {
+        label: 'CSS', lang: 'css', code: `.badge {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: var(--text-caption);
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    padding: 3px 10px;
+    border-radius: 100px;
+}
+.badge--success { background: var(--green-tint); color: var(--green-main); }
+.badge--warning { background: var(--yellow-tint); color: var(--yellow-main); }
+.badge--error   { background: var(--red-tint); color: var(--red-main); }
+.badge--info    { background: var(--accent-50); color: var(--accent-500); }
+.badge--accent  { background: var(--accent-500); color: #fff; }`,
+      },
+    ],
+  },
+];

@@ -1,0 +1,100 @@
+---
+title: Tags
+description: Compact labels for categorization and filtering.
+group: Labels & Taxonomy
+slug: tags
+---
+
+export const componentCSS = `
+.tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: 999px;
+    background: var(--accent-50);
+    color: var(--accent-500);
+    line-height: 1.4;
+}
+.tag-blue  { background: rgba(101,110,164,0.12); color: var(--blue-500); }
+.tag-purple { background: rgba(142,106,160,0.12); color: var(--purple-500); }
+.tag-cyan  { background: rgba(58,175,160,0.12); color: var(--cyan-500); }
+.tag-rose  { background: rgba(212,115,140,0.12); color: var(--rose-500); }
+.tag .tag-remove {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: transparent;
+    border: none;
+    color: inherit;
+    font-size: 12px;
+    cursor: pointer;
+    padding: 0;
+    line-height: 1;
+    opacity: 0.6;
+    transition: opacity 0.15s;
+}
+.tag .tag-remove:hover { opacity: 1; }
+.demo-row { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+`;
+
+export const sections = [
+  {
+    label: 'Tags',
+    demo: `<div class="demo-row">
+  <span class="tag">Default</span>
+  <span class="tag tag-blue">Blue</span>
+  <span class="tag tag-purple">Purple</span>
+  <span class="tag tag-cyan">Cyan</span>
+  <span class="tag tag-rose">Rose</span>
+</div>
+<div class="demo-row" style="margin-top:12px">
+  <span class="tag tag-blue">Design <button class="tag-remove">&#10005;</button></span>
+  <span class="tag tag-cyan">API <button class="tag-remove">&#10005;</button></span>
+  <span class="tag tag-purple">Frontend <button class="tag-remove">&#10005;</button></span>
+</div>`,
+    tabs: [
+      {
+        label: 'HTML', lang: 'html', code: `<span class="tag">Default</span>
+<span class="tag tag-blue">Blue</span>
+<span class="tag tag-purple">Purple</span>
+<span class="tag tag-cyan">Cyan</span>
+<span class="tag tag-rose">Rose</span>
+
+<!-- With remove button -->
+<span class="tag tag-blue">
+  Design
+  <button class="tag-remove">&#10005;</button>
+</span>`,
+      },
+      {
+        label: 'CSS', lang: 'css', code: `.tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: 999px;
+    background: var(--accent-50);
+    color: var(--accent-500);
+}
+.tag-blue { background: rgba(101,110,164,0.12); color: var(--blue-500); }
+.tag-purple { background: rgba(142,106,160,0.12); color: var(--purple-500); }
+.tag-cyan { background: rgba(58,175,160,0.12); color: var(--cyan-500); }
+.tag-rose { background: rgba(212,115,140,0.12); color: var(--rose-500); }`,
+      },
+    ],
+  },
+];

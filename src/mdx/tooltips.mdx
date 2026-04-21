@@ -1,0 +1,114 @@
+---
+title: Tooltips
+description: Contextual hints shown on hover.
+group: Labels & Taxonomy
+slug: tooltips
+---
+
+export const componentCSS = `
+.tooltip-trigger {
+    position: relative;
+    display: inline-block;
+    cursor: help;
+    border-bottom: 1px dashed var(--text-muted);
+}
+.tooltip-trigger::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    font-family: var(--font-body);
+    font-size: 12px;
+    font-weight: 400;
+    white-space: nowrap;
+    background: var(--warm-950);
+    color: #fafaf9;
+    padding: 6px 12px;
+    border-radius: 6px;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.15s;
+    z-index: 100;
+}
+.tooltip-trigger::before {
+    content: '';
+    position: absolute;
+    border: 5px solid transparent;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.15s;
+    z-index: 100;
+}
+.tooltip-trigger:hover::after,
+.tooltip-trigger:hover::before { opacity: 1; }
+
+/* Top (default) */
+.tooltip-trigger::after { bottom: calc(100% + 8px); left: 50%; transform: translateX(-50%); }
+.tooltip-trigger::before { bottom: calc(100% + -2px); left: 50%; transform: translateX(-50%); border-top-color: var(--warm-950); }
+
+.tooltip-bottom::after { top: calc(100% + 8px); bottom: auto; left: 50%; transform: translateX(-50%); }
+.tooltip-bottom::before { top: calc(100% + -2px); bottom: auto; left: 50%; transform: translateX(-50%); border-top-color: transparent; border-bottom-color: var(--warm-950); }
+
+.tooltip-left::after { right: calc(100% + 8px); left: auto; top: 50%; bottom: auto; transform: translateY(-50%); }
+.tooltip-left::before { right: calc(100% + -2px); left: auto; top: 50%; bottom: auto; transform: translateY(-50%); border-top-color: transparent; border-left-color: var(--warm-950); }
+
+.tooltip-right::after { left: calc(100% + 8px); top: 50%; bottom: auto; transform: translateY(-50%); }
+.tooltip-right::before { left: calc(100% + -2px); top: 50%; bottom: auto; transform: translateY(-50%); border-top-color: transparent; border-right-color: var(--warm-950); }
+.demo-row-spaced { display: flex; flex-wrap: wrap; align-items: center; gap: 32px; padding: 24px 0; }
+`;
+
+export const sections = [
+  {
+    label: 'Tooltips',
+    demo: `<div class="demo-row-spaced">
+  <span class="tooltip-trigger" data-tooltip="Default tooltip (top)">Hover me (top)</span>
+  <span class="tooltip-trigger tooltip-bottom" data-tooltip="Tooltip below">Hover me (bottom)</span>
+  <span class="tooltip-trigger tooltip-left" data-tooltip="Tooltip left">Hover me (left)</span>
+  <span class="tooltip-trigger tooltip-right" data-tooltip="Tooltip right">Hover me (right)</span>
+</div>`,
+    tabs: [
+      {
+        label: 'HTML', lang: 'html', code: `<span class="tooltip-trigger" data-tooltip="Default tooltip">
+  Hover me (top)
+</span>
+
+<span class="tooltip-trigger tooltip-bottom" data-tooltip="Tooltip below">
+  Hover me (bottom)
+</span>
+
+<span class="tooltip-trigger tooltip-left" data-tooltip="Tooltip left">
+  Hover me (left)
+</span>
+
+<span class="tooltip-trigger tooltip-right" data-tooltip="Tooltip right">
+  Hover me (right)
+</span>`,
+      },
+      {
+        label: 'CSS', lang: 'css', code: `.tooltip-trigger {
+    position: relative;
+    display: inline-block;
+    cursor: help;
+    border-bottom: 1px dashed var(--text-muted);
+}
+.tooltip-trigger::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    font-size: 12px;
+    white-space: nowrap;
+    background: var(--warm-950);
+    color: #fafaf9;
+    padding: 6px 12px;
+    border-radius: 6px;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.15s;
+    /* Top position */
+    bottom: calc(100% + 8px);
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 100;
+}
+.tooltip-trigger:hover::after { opacity: 1; }`,
+      },
+    ],
+  },
+];

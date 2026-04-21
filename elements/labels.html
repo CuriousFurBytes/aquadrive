@@ -1,0 +1,682 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>AquaDrive — Labels &amp; Taxonomy</title>
+        <link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml" />
+        <script>(function(){var t=localStorage.getItem('aquadrive-theme');var a=localStorage.getItem('aquadrive-accent')||'blue';if(!t)t=window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light';if(t==='dark'){document.documentElement.setAttribute('data-theme','dark');}else{document.documentElement.removeAttribute('data-theme');}document.documentElement.setAttribute('data-accent',a);})()</script>
+        <link rel="stylesheet" href="../assets/css/style.css" />
+        <style>
+            /* Tags */
+            .tag {
+                display: inline-flex;
+                align-items: center;
+                gap: 6px;
+                font-family: var(--font-mono);
+                font-size: 10px;
+                font-weight: 500;
+                letter-spacing: 0.04em;
+                text-transform: uppercase;
+                padding: 4px 10px;
+                border-radius: 999px;
+                background: var(--accent-50);
+                color: var(--accent-500);
+                line-height: 1.4;
+            }
+            .tag-blue { background: rgba(59,130,246,0.1); color: #3b82f6; }
+            .tag-purple { background: rgba(139,92,246,0.1); color: #8b5cf6; }
+            .tag-cyan { background: rgba(6,182,212,0.1); color: #06b6d4; }
+            .tag-rose { background: rgba(244,63,94,0.1); color: #f43f5e; }
+            .tag .tag-remove {
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                width: 14px;
+                height: 14px;
+                border-radius: 50%;
+                background: transparent;
+                border: none;
+                color: inherit;
+                font-size: 12px;
+                cursor: pointer;
+                padding: 0;
+                line-height: 1;
+                opacity: 0.6;
+                transition: opacity 0.15s;
+            }
+            .tag .tag-remove:hover { opacity: 1; }
+
+            /* Chips */
+            .chip {
+                display: inline-flex;
+                align-items: center;
+                gap: 8px;
+                font-family: var(--font-body);
+                font-size: 13px;
+                font-weight: 500;
+                padding: 6px 14px;
+                border-radius: 999px;
+                background: var(--accent-50);
+                color: var(--text);
+                cursor: pointer;
+                transition: background 0.15s, box-shadow 0.15s;
+                border: none;
+                line-height: 1.4;
+            }
+            .chip:hover { background: var(--accent-200); }
+            .chip-outlined {
+                background: transparent;
+                border: 1px solid var(--accent-400);
+                color: var(--text);
+            }
+            .chip-outlined:hover { background: var(--accent-50); }
+            .chip-avatar {
+                width: 22px;
+                height: 22px;
+                border-radius: 50%;
+                background: var(--accent-400);
+                color: var(--bg);
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 10px;
+                font-weight: 700;
+                flex-shrink: 0;
+            }
+
+            /* Tooltips */
+            .tooltip-trigger {
+                position: relative;
+                display: inline-block;
+                cursor: help;
+                border-bottom: 1px dashed var(--text-muted);
+            }
+            .tooltip-trigger::after {
+                content: attr(data-tooltip);
+                position: absolute;
+                font-family: var(--font-body);
+                font-size: 12px;
+                font-weight: 400;
+                white-space: nowrap;
+                background: var(--warm-950);
+                color: var(--warm-50, #fafaf9);
+                padding: 6px 12px;
+                border-radius: 6px;
+                pointer-events: none;
+                opacity: 0;
+                transition: opacity 0.15s;
+                z-index: 100;
+            }
+            .tooltip-trigger::before {
+                content: '';
+                position: absolute;
+                border: 5px solid transparent;
+                pointer-events: none;
+                opacity: 0;
+                transition: opacity 0.15s;
+                z-index: 100;
+            }
+            .tooltip-trigger:hover::after,
+            .tooltip-trigger:hover::before { opacity: 1; }
+
+            /* Top (default) */
+            .tooltip-top::after,
+            .tooltip-trigger:not(.tooltip-bottom):not(.tooltip-left):not(.tooltip-right)::after {
+                bottom: calc(100% + 8px);
+                left: 50%;
+                transform: translateX(-50%);
+            }
+            .tooltip-top::before,
+            .tooltip-trigger:not(.tooltip-bottom):not(.tooltip-left):not(.tooltip-right)::before {
+                bottom: calc(100% + -2px);
+                left: 50%;
+                transform: translateX(-50%);
+                border-top-color: var(--warm-950);
+            }
+
+            /* Bottom */
+            .tooltip-bottom::after {
+                top: calc(100% + 8px);
+                left: 50%;
+                transform: translateX(-50%);
+            }
+            .tooltip-bottom::before {
+                top: calc(100% + -2px);
+                left: 50%;
+                transform: translateX(-50%);
+                border-bottom-color: var(--warm-950);
+            }
+
+            /* Left */
+            .tooltip-left::after {
+                right: calc(100% + 8px);
+                top: 50%;
+                transform: translateY(-50%);
+            }
+            .tooltip-left::before {
+                right: calc(100% + -2px);
+                top: 50%;
+                transform: translateY(-50%);
+                border-left-color: var(--warm-950);
+            }
+
+            /* Right */
+            .tooltip-right::after {
+                left: calc(100% + 8px);
+                top: 50%;
+                transform: translateY(-50%);
+            }
+            .tooltip-right::before {
+                left: calc(100% + -2px);
+                top: 50%;
+                transform: translateY(-50%);
+                border-right-color: var(--warm-950);
+            }
+
+            /* Breadcrumbs */
+            .breadcrumb-demo {
+                display: flex;
+                align-items: center;
+                gap: 8px;
+                font-family: var(--font-mono);
+                font-size: 11px;
+                font-weight: 500;
+            }
+            .breadcrumb-demo a {
+                color: var(--text-muted);
+                text-decoration: none;
+                transition: color 0.15s;
+            }
+            .breadcrumb-demo a:hover { color: var(--accent-500); }
+            .breadcrumb-demo .sep { color: var(--text-muted); opacity: 0.4; }
+            .breadcrumb-demo .current { color: var(--text); }
+
+            /* Utility */
+            .demo-row {
+                display: flex;
+                flex-wrap: wrap;
+                align-items: center;
+                gap: 10px;
+            }
+            .demo-row-spaced {
+                display: flex;
+                flex-wrap: wrap;
+                align-items: center;
+                gap: 24px;
+                padding: 20px 0;
+            }
+        </style>
+        <script src="../assets/js/highlight.js" defer></script>
+    </head>
+    <body>
+        <nav class="aqua-navbar">
+            <a href="../index.html" class="aqua-navbar-brand"><svg viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M14 3C14 3 5 10 5 17C5 21.4183 9.02944 25 14 25C18.9706 25 23 21.4183 23 17C23 10 14 3 14 3Z" fill="var(--accent-500)"/><path d="M14 9C14 9 9 13.5 9 17C9 19.7614 11.2386 22 14 22C16.7614 22 19 19.7614 19 17C19 13.5 14 9 14 9Z" fill="var(--bg)" opacity="0.7"/></svg>Aqua<span>Drive</span></a>
+            <button class="aqua-navbar-toggle" onclick="toggleNav()" aria-label="Toggle menu"><span></span></button>
+            <div class="aqua-navbar-collapse">
+            <div class="aqua-navbar-links">
+                <a href="../index.html">Colors</a>
+                <a href="../typography.html">Typography</a>
+                <a href="../elements.html" class="active">Elements</a>
+                <a href="../ports.html">Ports</a>
+            </div>
+            <div class="aqua-navbar-actions">
+                <div class="aqua-navbar-settings">
+                    <button class="aqua-navbar-settings-btn" onclick="toggleSettings(event)">
+                        <svg viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="3" stroke="currentColor" stroke-width="1.5"/><path d="M8 1v2M8 13v2M1 8h2M13 8h2M3.05 3.05l1.41 1.41M11.54 11.54l1.41 1.41M3.05 12.95l1.41-1.41M11.54 4.46l1.41-1.41" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+                        Settings
+                    </button>
+                    <div class="aqua-navbar-dropdown" id="navSettingsDropdown">
+                        <div class="aqua-navbar-dropdown-label">Accent Color</div>
+                        <div class="aqua-navbar-dropdown-row">
+                            <button class="accent-dot" data-color="blue" onclick="setAccent('blue')" aria-label="Blue accent"></button>
+                            <button class="accent-dot" data-color="purple" onclick="setAccent('purple')" aria-label="Purple accent"></button>
+                            <button class="accent-dot" data-color="cyan" onclick="setAccent('cyan')" aria-label="Cyan accent"></button>
+                            <button class="accent-dot" data-color="rose" onclick="setAccent('rose')" aria-label="Rose accent"></button>
+                        </div>
+                        <div class="aqua-navbar-dropdown-divider"></div>
+                        <button class="aqua-navbar-dropdown-item" onclick="toggleTheme()">
+                            <svg viewBox="0 0 16 16" fill="none"><path d="M8 1a7 7 0 1 0 0 14A7 7 0 0 0 8 1Z" stroke="currentColor" stroke-width="1.5"/><path d="M8 3v10a5 5 0 0 0 0-10Z" fill="currentColor"/></svg>
+                            <span class="theme-toggle-label">Toggle Theme</span>
+                        </button>
+                        <button class="aqua-navbar-dropdown-item" onclick="toggleMobile()">
+                            <svg viewBox="0 0 16 16" fill="none"><rect x="4" y="1" width="8" height="14" rx="1.5" stroke="currentColor" stroke-width="1.5"/><line x1="6.5" y1="12.5" x2="9.5" y2="12.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+                            Mobile Preview
+                        </button>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </nav>
+
+        <nav class="breadcrumb">
+            <a href="../index.html">AquaDrive</a>
+            <span class="sep">/</span>
+            <a href="../elements.html">Elements</a>
+            <span class="sep">/</span>
+            <span class="current">Labels &amp; Taxonomy</span>
+        </nav>
+
+        <header>
+            <div class="brand-tag">AquaDrive · Design System</div>
+            <h1>Labels<span> &amp; Taxonomy</span></h1>
+            <p class="subtitle">Classification and contextual information elements.</p>
+        </header>
+
+        <!-- TAGS -->
+        <section class="section">
+            <div class="section-label">Tags</div>
+            <div class="demo-box">
+                <div class="demo-label">Default Tags</div>
+                <div class="demo-row">
+                    <span class="tag">Sedan</span>
+                    <span class="tag">SUV</span>
+                    <span class="tag">Premium</span>
+                </div>
+            </div>
+            <div class="demo-box" style="margin-top: 16px;">
+                <div class="demo-label">Removable Tags</div>
+                <div class="demo-row">
+                    <span class="tag">Exterior <button class="tag-remove" aria-label="Remove">&times;</button></span>
+                    <span class="tag">Interior <button class="tag-remove" aria-label="Remove">&times;</button></span>
+                    <span class="tag">Ceramic <button class="tag-remove" aria-label="Remove">&times;</button></span>
+                </div>
+            </div>
+            <div class="demo-box" style="margin-top: 16px;">
+                <div class="demo-label">Color Variants</div>
+                <div class="demo-row">
+                    <span class="tag tag-blue">Blue</span>
+                    <span class="tag tag-purple">Purple</span>
+                    <span class="tag tag-cyan">Cyan</span>
+                    <span class="tag tag-rose">Rose</span>
+                </div>
+            </div>
+            <div class="code-wrapper">
+                <div class="code-tabs">
+                    <button class="code-tab active" onclick="switchTab(this, 'html')">HTML</button>
+                    <button class="code-tab" onclick="switchTab(this, 'css')">CSS</button>
+                </div>
+                <div class="code-panel active" data-lang="html">
+                    <button class="code-copy" onclick="copyCode(this)">Copy</button>
+                    <pre>&lt;!-- Default tag --&gt;
+&lt;span class="tag"&gt;Sedan&lt;/span&gt;
+
+&lt;!-- Removable tag --&gt;
+&lt;span class="tag"&gt;Exterior &lt;button class="tag-remove"&gt;&amp;times;&lt;/button&gt;&lt;/span&gt;
+
+&lt;!-- Color variants --&gt;
+&lt;span class="tag tag-blue"&gt;Blue&lt;/span&gt;
+&lt;span class="tag tag-purple"&gt;Purple&lt;/span&gt;
+&lt;span class="tag tag-cyan"&gt;Cyan&lt;/span&gt;
+&lt;span class="tag tag-rose"&gt;Rose&lt;/span&gt;</pre>
+                </div>
+                <div class="code-panel" data-lang="css">
+                    <button class="code-copy" onclick="copyCode(this)">Copy</button>
+                    <pre>.tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: 999px;
+    background: var(--accent-50);
+    color: var(--accent-500);
+}
+.tag-blue { background: rgba(59,130,246,0.1); color: #3b82f6; }
+.tag-purple { background: rgba(139,92,246,0.1); color: #8b5cf6; }
+.tag-cyan { background: rgba(6,182,212,0.1); color: #06b6d4; }
+.tag-rose { background: rgba(244,63,94,0.1); color: #f43f5e; }
+.tag .tag-remove {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: transparent;
+    border: none;
+    color: inherit;
+    font-size: 12px;
+    cursor: pointer;
+    opacity: 0.6;
+}
+.tag .tag-remove:hover { opacity: 1; }</pre>
+                </div>
+            </div>
+        </section>
+
+        <!-- CHIPS -->
+        <section class="section">
+            <div class="section-label">Chips</div>
+            <div class="demo-box">
+                <div class="demo-label">Filled Chips</div>
+                <div class="demo-row">
+                    <button class="chip">Basic Wash</button>
+                    <button class="chip"><span class="chip-avatar">JD</span> John Doe</button>
+                </div>
+            </div>
+            <div class="demo-box" style="margin-top: 16px;">
+                <div class="demo-label">Outlined Chips</div>
+                <div class="demo-row">
+                    <button class="chip chip-outlined">Exterior</button>
+                    <button class="chip chip-outlined"><span class="chip-avatar">SK</span> Sarah K.</button>
+                </div>
+            </div>
+            <div class="code-wrapper">
+                <div class="code-tabs">
+                    <button class="code-tab active" onclick="switchTab(this, 'html')">HTML</button>
+                    <button class="code-tab" onclick="switchTab(this, 'css')">CSS</button>
+                </div>
+                <div class="code-panel active" data-lang="html">
+                    <button class="code-copy" onclick="copyCode(this)">Copy</button>
+                    <pre>&lt;!-- Filled chip --&gt;
+&lt;button class="chip"&gt;Basic Wash&lt;/button&gt;
+
+&lt;!-- With avatar --&gt;
+&lt;button class="chip"&gt;
+    &lt;span class="chip-avatar"&gt;JD&lt;/span&gt; John Doe
+&lt;/button&gt;
+
+&lt;!-- Outlined variant --&gt;
+&lt;button class="chip chip-outlined"&gt;Exterior&lt;/button&gt;</pre>
+                </div>
+                <div class="code-panel" data-lang="css">
+                    <button class="code-copy" onclick="copyCode(this)">Copy</button>
+                    <pre>.chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--font-body);
+    font-size: 13px;
+    font-weight: 500;
+    padding: 6px 14px;
+    border-radius: 999px;
+    background: var(--accent-50);
+    color: var(--text);
+    cursor: pointer;
+    border: none;
+    transition: background 0.15s;
+}
+.chip:hover { background: var(--accent-200); }
+.chip-outlined {
+    background: transparent;
+    border: 1px solid var(--accent-400);
+    color: var(--text);
+}
+.chip-outlined:hover { background: var(--accent-50); }
+.chip-avatar {
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: var(--accent-400);
+    color: var(--bg);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+    font-weight: 700;
+}
+</pre>
+                </div>
+            </div>
+        </section>
+
+        <!-- TOOLTIPS -->
+        <section class="section">
+            <div class="section-label">Tooltips</div>
+            <div class="demo-box">
+                <div class="demo-label">Position Variants</div>
+                <div class="demo-row-spaced">
+                    <span class="tooltip-trigger tooltip-top" data-tooltip="Tooltip on top">Hover me (top)</span>
+                    <span class="tooltip-trigger tooltip-bottom" data-tooltip="Tooltip on bottom">Hover me (bottom)</span>
+                    <span class="tooltip-trigger tooltip-left" data-tooltip="Tooltip on left">Hover me (left)</span>
+                    <span class="tooltip-trigger tooltip-right" data-tooltip="Tooltip on right">Hover me (right)</span>
+                </div>
+            </div>
+            <div class="demo-box" style="margin-top: 16px;">
+                <div class="demo-label">In Context</div>
+                <p style="font-size: 14px; line-height: 1.7; margin: 0;">Our <span class="tooltip-trigger" data-tooltip="Silicon Dioxide ceramic layer">SiO2 coating</span> provides long-lasting protection for your vehicle's <span class="tooltip-trigger" data-tooltip="Factory-applied paint finish">OEM finish</span>.</p>
+            </div>
+            <div class="code-wrapper">
+                <div class="code-tabs">
+                    <button class="code-tab active" onclick="switchTab(this, 'html')">HTML</button>
+                    <button class="code-tab" onclick="switchTab(this, 'css')">CSS</button>
+                </div>
+                <div class="code-panel active" data-lang="html">
+                    <button class="code-copy" onclick="copyCode(this)">Copy</button>
+                    <pre>&lt;!-- Default (top) --&gt;
+&lt;span class="tooltip-trigger" data-tooltip="Tooltip text"&gt;
+    Hover me
+&lt;/span&gt;
+
+&lt;!-- Position variants --&gt;
+&lt;span class="tooltip-trigger tooltip-bottom" data-tooltip="Bottom"&gt;...&lt;/span&gt;
+&lt;span class="tooltip-trigger tooltip-left" data-tooltip="Left"&gt;...&lt;/span&gt;
+&lt;span class="tooltip-trigger tooltip-right" data-tooltip="Right"&gt;...&lt;/span&gt;</pre>
+                </div>
+                <div class="code-panel" data-lang="css">
+                    <button class="code-copy" onclick="copyCode(this)">Copy</button>
+                    <pre>.tooltip-trigger {
+    position: relative;
+    display: inline-block;
+    cursor: help;
+    border-bottom: 1px dashed var(--text-muted);
+}
+.tooltip-trigger::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    font-family: var(--font-body);
+    font-size: 12px;
+    white-space: nowrap;
+    background: var(--warm-950);
+    color: #fafaf9;
+    padding: 6px 12px;
+    border-radius: 6px;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.15s;
+    z-index: 100;
+}
+.tooltip-trigger::before {
+    content: '';
+    position: absolute;
+    border: 5px solid transparent;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.15s;
+}
+.tooltip-trigger:hover::after,
+.tooltip-trigger:hover::before { opacity: 1; }
+
+/* Top (default) */
+.tooltip-trigger::after {
+    bottom: calc(100% + 8px);
+    left: 50%;
+    transform: translateX(-50%);
+}
+.tooltip-trigger::before {
+    bottom: calc(100% - 2px);
+    left: 50%;
+    transform: translateX(-50%);
+    border-top-color: var(--warm-950);
+}
+
+/* Bottom */
+.tooltip-bottom::after {
+    top: calc(100% + 8px);
+    bottom: auto;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.tooltip-bottom::before {
+    top: calc(100% - 2px);
+    bottom: auto;
+    left: 50%;
+    transform: translateX(-50%);
+    border-top-color: transparent;
+    border-bottom-color: var(--warm-950);
+}</pre>
+                </div>
+            </div>
+        </section>
+
+        <!-- BREADCRUMBS -->
+        <section class="section">
+            <div class="section-label">Breadcrumbs</div>
+            <div class="demo-box">
+                <div class="demo-label">Preview</div>
+                <nav class="breadcrumb-demo">
+                    <a href="#">AquaDrive</a>
+                    <span class="sep">/</span>
+                    <a href="#">Services</a>
+                    <span class="sep">/</span>
+                    <span class="current">Ceramic Coating</span>
+                </nav>
+            </div>
+            <div class="demo-box" style="margin-top: 16px;">
+                <div class="demo-label">Longer Path</div>
+                <nav class="breadcrumb-demo">
+                    <a href="#">Home</a>
+                    <span class="sep">/</span>
+                    <a href="#">Dashboard</a>
+                    <span class="sep">/</span>
+                    <a href="#">Bookings</a>
+                    <span class="sep">/</span>
+                    <span class="current">BK-92XF</span>
+                </nav>
+            </div>
+            <div class="code-wrapper">
+                <div class="code-tabs">
+                    <button class="code-tab active" onclick="switchTab(this, 'html')">HTML</button>
+                    <button class="code-tab" onclick="switchTab(this, 'css')">CSS</button>
+                </div>
+                <div class="code-panel active" data-lang="html">
+                    <button class="code-copy" onclick="copyCode(this)">Copy</button>
+                    <pre>&lt;nav class="breadcrumb-demo"&gt;
+    &lt;a href="#"&gt;AquaDrive&lt;/a&gt;
+    &lt;span class="sep"&gt;/&lt;/span&gt;
+    &lt;a href="#"&gt;Services&lt;/a&gt;
+    &lt;span class="sep"&gt;/&lt;/span&gt;
+    &lt;span class="current"&gt;Ceramic Coating&lt;/span&gt;
+&lt;/nav&gt;</pre>
+                </div>
+                <div class="code-panel" data-lang="css">
+                    <button class="code-copy" onclick="copyCode(this)">Copy</button>
+                    <pre>.breadcrumb-demo {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 500;
+}
+.breadcrumb-demo a {
+    color: var(--text-muted);
+    text-decoration: none;
+    transition: color 0.15s;
+}
+.breadcrumb-demo a:hover { color: var(--accent-500); }
+.breadcrumb-demo .sep {
+    color: var(--text-muted);
+    opacity: 0.4;
+}
+.breadcrumb-demo .current {
+    color: var(--text);
+}</pre>
+                </div>
+            </div>
+        </section>
+
+        <script>
+            function toggleTheme() {
+                var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+                var next = isDark ? 'light' : 'dark';
+                if (next === 'dark') {
+                    document.documentElement.setAttribute('data-theme', 'dark');
+                } else {
+                    document.documentElement.removeAttribute('data-theme');
+                }
+                localStorage.setItem('aquadrive-theme', next);
+                updateToggleLabel();
+            }
+            function toggleSettings(e) {
+                if (e) e.stopPropagation();
+                var dd = document.getElementById('navSettingsDropdown');
+                dd.classList.toggle('open');
+            }
+            document.addEventListener('click', function(e) {
+                var settings = document.querySelector('.aqua-navbar-settings');
+                if (settings && !settings.contains(e.target)) {
+                    document.getElementById('navSettingsDropdown').classList.remove('open');
+                }
+            });
+            function toggleNav() {
+                document.querySelector('.aqua-navbar').classList.toggle('nav-open');
+            }
+            function updateToggleLabel() {
+                var btn = document.querySelector('.theme-toggle');
+                if (!btn) return;
+                var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+                btn.textContent = isDark ? 'Light' : 'Dark';
+            }
+            function setAccent(color) {
+                document.documentElement.setAttribute('data-accent', color);
+                localStorage.setItem('aquadrive-accent', color);
+                updateAccentDots();
+            }
+            function updateAccentDots() {
+                var current = document.documentElement.getAttribute('data-accent') || 'blue';
+                document.querySelectorAll('.accent-dot').forEach(function(dot) {
+                    dot.classList.toggle('active', dot.getAttribute('data-color') === current);
+                });
+            }
+            function switchTab(btn, lang) {
+                var wrapper = btn.closest('.code-wrapper');
+                wrapper.querySelectorAll('.code-tab').forEach(t => t.classList.remove('active'));
+                wrapper.querySelectorAll('.code-panel').forEach(p => p.classList.remove('active'));
+                btn.classList.add('active');
+                wrapper.querySelector('[data-lang="' + lang + '"]').classList.add('active');
+            }
+            function copyCode(btn) {
+                var code = btn.nextElementSibling.textContent;
+                navigator.clipboard.writeText(code);
+                btn.textContent = 'Copied!';
+                setTimeout(function() { btn.textContent = 'Copy'; }, 1500);
+            }
+            /* Mobile Preview */
+            function toggleMobile() {
+                var existing = document.querySelector('.mobile-preview-backdrop');
+                if (existing) { existing.classList.toggle('open'); return; }
+                var backdrop = document.createElement('div');
+                backdrop.className = 'mobile-preview-backdrop open';
+                backdrop.onclick = function(e) { if (e.target === backdrop) backdrop.classList.remove('open'); };
+                var device = document.createElement('div');
+                device.className = 'mobile-preview-device';
+                var notch = document.createElement('div');
+                notch.className = 'mobile-preview-notch';
+                var screen = document.createElement('div');
+                screen.className = 'mobile-preview-screen';
+                var iframe = document.createElement('iframe');
+                iframe.src = window.location.href;
+                var close = document.createElement('button');
+                close.className = 'mobile-preview-close';
+                close.innerHTML = '&times;';
+                close.onclick = function() { backdrop.classList.remove('open'); };
+                var label = document.createElement('div');
+                label.className = 'mobile-preview-label';
+                label.textContent = '390 × 844 — iPhone 14 Pro';
+                screen.appendChild(iframe);
+                device.appendChild(notch);
+                device.appendChild(screen);
+                device.appendChild(close);
+                device.appendChild(label);
+                backdrop.appendChild(device);
+                document.body.appendChild(backdrop);
+            }
+
+            updateToggleLabel();
+            updateAccentDots();
+        </script>
+    </body>
+</html>

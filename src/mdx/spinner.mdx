@@ -1,0 +1,57 @@
+---
+title: Spinners
+description: Animated loading indicators.
+group: Buttons & Actions
+slug: spinner
+---
+
+export const componentCSS = `
+.aqua-spinner {
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    border: 3px solid var(--border);
+    border-top-color: var(--accent-500);
+    border-radius: 50%;
+    animation: aqua-spin 0.7s linear infinite;
+}
+.aqua-spinner-sm { width: 16px; height: 16px; border-width: 2px; }
+.aqua-spinner-lg { width: 36px; height: 36px; border-width: 4px; }
+@keyframes aqua-spin { to { transform: rotate(360deg); } }
+.spinner-row { display: flex; align-items: center; gap: 24px; }
+`;
+
+export const sections = [
+  {
+    label: 'Spinners',
+    demo: `<div class="spinner-row">
+  <div class="aqua-spinner aqua-spinner-sm"></div>
+  <div class="aqua-spinner"></div>
+  <div class="aqua-spinner aqua-spinner-lg"></div>
+</div>`,
+    tabs: [
+      {
+        label: 'HTML', lang: 'html', code: `<div class="aqua-spinner aqua-spinner-sm"></div>
+<div class="aqua-spinner"></div>
+<div class="aqua-spinner aqua-spinner-lg"></div>`,
+      },
+      {
+        label: 'CSS', lang: 'css', code: `.aqua-spinner {
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    border: 3px solid var(--border);
+    border-top-color: var(--accent-500);
+    border-radius: 50%;
+    animation: aqua-spin 0.7s linear infinite;
+}
+.aqua-spinner-sm { width: 16px; height: 16px; border-width: 2px; }
+.aqua-spinner-lg { width: 36px; height: 36px; border-width: 4px; }
+
+@keyframes aqua-spin {
+    to { transform: rotate(360deg); }
+}`,
+      },
+    ],
+  },
+];

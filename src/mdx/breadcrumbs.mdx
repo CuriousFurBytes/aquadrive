@@ -1,0 +1,70 @@
+---
+title: Breadcrumbs
+description: Navigational trail showing the current location in a hierarchy.
+group: Labels & Taxonomy
+slug: breadcrumbs
+---
+
+export const componentCSS = `
+.breadcrumb-demo {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 500;
+}
+.breadcrumb-demo a { color: var(--text-muted); text-decoration: none; transition: color 0.15s; }
+.breadcrumb-demo a:hover { color: var(--accent-500); }
+.breadcrumb-demo .sep { color: var(--text-muted); opacity: 0.4; }
+.breadcrumb-demo .current { color: var(--text); }
+`;
+
+export const sections = [
+  {
+    label: 'Breadcrumbs',
+    demo: `<div style="display:flex;flex-direction:column;gap:16px">
+  <nav class="breadcrumb-demo">
+    <a href="#">AquaDrive</a>
+    <span class="sep">/</span>
+    <a href="#">Elements</a>
+    <span class="sep">/</span>
+    <span class="current">Breadcrumbs</span>
+  </nav>
+  <nav class="breadcrumb-demo">
+    <a href="#">Dashboard</a>
+    <span class="sep">/</span>
+    <a href="#">Projects</a>
+    <span class="sep">/</span>
+    <a href="#">AquaDrive</a>
+    <span class="sep">/</span>
+    <span class="current">Settings</span>
+  </nav>
+</div>`,
+    tabs: [
+      {
+        label: 'HTML', lang: 'html', code: `<nav class="breadcrumb-demo">
+  <a href="#">AquaDrive</a>
+  <span class="sep">/</span>
+  <a href="#">Elements</a>
+  <span class="sep">/</span>
+  <span class="current">Breadcrumbs</span>
+</nav>`,
+      },
+      {
+        label: 'CSS', lang: 'css', code: `.breadcrumb-demo {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 500;
+}
+.breadcrumb-demo a { color: var(--text-muted); text-decoration: none; transition: color 0.15s; }
+.breadcrumb-demo a:hover { color: var(--accent-500); }
+.breadcrumb-demo .sep { color: var(--text-muted); opacity: 0.4; }
+.breadcrumb-demo .current { color: var(--text); }`,
+      },
+    ],
+  },
+];

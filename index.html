@@ -3,423 +3,14 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>AquaDrive — Color System</title>
-        <script>(function(){var s=localStorage.getItem('aquadrive-theme');var t=s||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');if(t==='dark')document.documentElement.setAttribute('data-theme','dark');})()</script>
+        <title>AquaDrive — Design System</title>
+        <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml" />
+        <script>(function(){var t=localStorage.getItem('aquadrive-theme');var a=localStorage.getItem('aquadrive-accent')||'blue';if(!t)t=window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light';if(t==='dark'){document.documentElement.setAttribute('data-theme','dark');}else{document.documentElement.removeAttribute('data-theme');}document.documentElement.setAttribute('data-accent',a);})()</script>
+        <link rel="stylesheet" href="assets/css/style.css" />
         <style>
-            @font-face {
-                font-family: "Monaspace Argon";
-                src: url("fonts/MonaspaceArgonVar.woff") format("woff");
-                font-weight: 100 900;
-                font-style: normal;
-                font-display: swap;
-            }
-
-            @font-face {
-                font-family: "Monaspace Krypton";
-                src: url("fonts/MonaspaceKryptonVar.woff") format("woff");
-                font-weight: 100 900;
-                font-style: normal;
-                font-display: swap;
-            }
-
-            :root {
-                --bg: #f4eded;
-                --surface: #ffffff;
-                --border: #e0d5d5;
-                --text: #1c1828;
-                --text-muted: #7a6f7f;
-                --primary: #656ea4;
-                --primary-subtle: #edeef5;
-                --error-tint: #fceaea;
-                --warning-tint: #fef9e6;
-                --success-tint: #eaf7ef;
-                --info-tint: #edeef5;
-                --purple-tint: #f3edf7;
-                --cyan-tint: #e8f6f4;
-                --rose-tint: #fcf0f3;
-            }
-
-            [data-theme="dark"] {
-                --bg: #1c1828;
-                --surface: #261f34;
-                --border: #352c43;
-                --text: #f4eded;
-                --text-muted: #9a8e9e;
-                --primary: #8c92be;
-                --primary-subtle: #313666;
-                --error-tint: #2e1a1a;
-                --warning-tint: #2a2110;
-                --success-tint: #0e2419;
-                --info-tint: #313666;
-                --purple-tint: #2a1a32;
-                --cyan-tint: #0e2a27;
-                --rose-tint: #321a22;
-            }
-
-            * {
-                margin: 0;
-                padding: 0;
-                box-sizing: border-box;
-            }
-
-            body {
-                background: var(--bg);
-                color: var(--text);
-                font-family: "Monaspace Argon", sans-serif;
-                padding: 48px 32px;
-                min-height: 100vh;
-            }
-
-            header {
-                margin-bottom: 56px;
-            }
-
-            .brand-tag {
-                font-family: "Monaspace Argon", monospace;
-                font-size: 11px;
-                letter-spacing: 0.2em;
-                text-transform: uppercase;
-                color: var(--text-muted);
-                margin-bottom: 8px;
-            }
-
-            h1 {
-                font-family: "Monaspace Krypton", sans-serif;
-                font-size: 42px;
-                font-weight: 800;
-                letter-spacing: -0.02em;
-                color: var(--text);
-                line-height: 1;
-            }
-
-            h1 span {
-                color: var(--primary);
-            }
-
-            .subtitle {
-                font-size: 14px;
-                color: var(--text-muted);
-                margin-top: 8px;
-                font-weight: 400;
-            }
-
-            .section {
-                margin-bottom: 48px;
-            }
-
-            .section-label {
-                font-family: "Monaspace Argon", monospace;
+            .format-btn {
+                font-family: var(--font-mono);
                 font-size: 10px;
-                letter-spacing: 0.25em;
-                text-transform: uppercase;
-                color: var(--text-muted);
-                margin-bottom: 16px;
-                display: flex;
-                align-items: center;
-                gap: 12px;
-            }
-
-            .section-label::after {
-                content: "";
-                flex: 1;
-                height: 1px;
-                background: var(--border);
-            }
-
-            .palette-grid {
-                display: grid;
-                grid-template-columns: repeat(auto-fill, minmax(155px, 1fr));
-                gap: 12px;
-            }
-
-            .swatch-card {
-                border-radius: 16px;
-                overflow: hidden;
-                border: 1px solid var(--border);
-                background: var(--surface);
-                transition:
-                    transform 0.2s,
-                    box-shadow 0.2s;
-            }
-
-            .swatch-card:hover {
-                transform: translateY(-3px);
-                box-shadow: 0 12px 32px rgba(101, 110, 164, 0.15);
-            }
-
-            .swatch-color {
-                height: 96px;
-            }
-
-            .swatch-info {
-                padding: 12px 14px 14px;
-            }
-
-            .swatch-name {
-                font-size: 13px;
-                font-weight: 700;
-                color: var(--text);
-                margin-bottom: 2px;
-            }
-
-            .swatch-role {
-                font-size: 11px;
-                color: var(--text-muted);
-                margin-bottom: 8px;
-                font-weight: 400;
-            }
-
-            .hex-chip {
-                font-family: "Monaspace Argon", monospace;
-                background: var(--bg);
-                border-radius: 4px;
-                padding: 2px 7px;
-                font-size: 10px;
-                letter-spacing: 0.05em;
-                color: var(--text-muted);
-                display: inline-block;
-            }
-
-            .semantic-row {
-                display: grid;
-                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-                gap: 12px;
-            }
-
-            .semantic-card {
-                border-radius: 16px;
-                overflow: hidden;
-                border: 1px solid var(--border);
-                background: var(--surface);
-            }
-
-            .semantic-banner {
-                height: 64px;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                gap: 6px;
-            }
-
-            .sem-dot {
-                width: 18px;
-                height: 18px;
-                border-radius: 50%;
-            }
-            .sem-dot.soft {
-                opacity: 0.5;
-                width: 12px;
-                height: 12px;
-            }
-            .sem-dot.tint {
-                opacity: 0.25;
-                width: 8px;
-                height: 8px;
-            }
-
-            .semantic-info {
-                padding: 12px 14px 16px;
-            }
-
-            .tier-row {
-                display: flex;
-                flex-direction: column;
-                gap: 5px;
-                margin-top: 8px;
-            }
-
-            .tier {
-                display: flex;
-                align-items: center;
-                gap: 8px;
-                font-family: "Monaspace Argon", monospace;
-                font-size: 10px;
-                color: var(--text-muted);
-            }
-
-            .tier-swatch {
-                width: 18px;
-                height: 18px;
-                border-radius: 5px;
-                flex-shrink: 0;
-                border: 1px solid rgba(0, 0, 0, 0.06);
-            }
-
-            .theme-panels {
-                display: grid;
-                grid-template-columns: 1fr 1fr;
-                gap: 16px;
-            }
-
-            .theme-panel {
-                border-radius: 20px;
-                padding: 28px;
-                border: 1px solid var(--border);
-            }
-
-            .theme-panel.light-panel {
-                background: #fdfbfb;
-            }
-            .theme-panel.dark-panel {
-                background: #1c1828;
-            }
-
-            .panel-title {
-                font-size: 13px;
-                font-weight: 700;
-                margin-bottom: 16px;
-                letter-spacing: 0.03em;
-            }
-
-            .panel-swatches {
-                display: flex;
-                flex-direction: column;
-                gap: 5px;
-            }
-
-            .panel-swatch {
-                display: flex;
-                align-items: center;
-                gap: 12px;
-                padding: 7px 10px;
-                border-radius: 10px;
-            }
-
-            .panel-dot {
-                width: 28px;
-                height: 28px;
-                border-radius: 7px;
-                flex-shrink: 0;
-            }
-
-            .panel-swatch-name {
-                font-size: 12px;
-                font-weight: 600;
-                flex: 1;
-                font-family: "Monaspace Argon", monospace;
-            }
-
-            .panel-swatch-hex {
-                font-family: "Monaspace Argon", monospace;
-                font-size: 10px;
-                opacity: 0.5;
-            }
-
-            .preview-box {
-                border-radius: 20px;
-                padding: 28px;
-                border: 1px solid var(--border);
-                margin-bottom: 12px;
-            }
-
-            .preview-header {
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                margin-bottom: 20px;
-            }
-
-            .preview-title {
-                font-size: 18px;
-                font-weight: 700;
-            }
-
-            .status-badge {
-                font-size: 10px;
-                font-family: "Monaspace Argon", monospace;
-                padding: 4px 11px;
-                border-radius: 100px;
-                font-weight: 500;
-                letter-spacing: 0.04em;
-            }
-
-            .btn-row {
-                display: flex;
-                gap: 10px;
-                flex-wrap: wrap;
-                margin-bottom: 20px;
-            }
-
-            .btn {
-                font-family: "Monaspace Argon", sans-serif;
-                font-size: 13px;
-                font-weight: 600;
-                padding: 10px 20px;
-                border-radius: 10px;
-                border: none;
-                cursor: pointer;
-                transition: opacity 0.15s;
-            }
-            .btn:hover {
-                opacity: 0.85;
-            }
-
-            .card-row {
-                display: grid;
-                grid-template-columns: repeat(3, 1fr);
-                gap: 10px;
-            }
-
-            .mini-card {
-                border-radius: 12px;
-                padding: 14px;
-                font-size: 13px;
-                font-weight: 700;
-            }
-
-            .mini-label {
-                font-family: "Monaspace Argon", monospace;
-                font-size: 9px;
-                letter-spacing: 0.12em;
-                opacity: 0.6;
-                margin-bottom: 5px;
-                font-weight: 400;
-                text-transform: uppercase;
-            }
-
-            @media (max-width: 640px) {
-                .semantic-row {
-                    grid-template-columns: repeat(2, 1fr);
-                }
-                .card-row {
-                    grid-template-columns: 1fr 1fr;
-                }
-                .theme-panels {
-                    grid-template-columns: 1fr;
-                }
-                h1 {
-                    font-size: 28px;
-                }
-            }
-            /* NAV */
-            .nav {
-                display: flex;
-                gap: 6px;
-                margin-bottom: 40px;
-                flex-wrap: wrap;
-            }
-            .nav a {
-                font-family: "Monaspace Argon", monospace;
-                font-size: 11px;
-                letter-spacing: 0.08em;
-                text-transform: uppercase;
-                text-decoration: none;
-                padding: 6px 14px;
-                border-radius: 100px;
-                border: 1px solid var(--border);
-                color: var(--text-muted);
-                transition: all 0.2s;
-            }
-            .nav a:hover, .nav a.active {
-                background: var(--primary);
-                color: var(--bg);
-                border-color: var(--primary);
-            }
-
-            /* THEME TOGGLE */
-            .theme-toggle {
-                font-family: "Monaspace Argon", monospace;
-                font-size: 11px;
                 letter-spacing: 0.08em;
                 text-transform: uppercase;
                 padding: 6px 14px;
@@ -429,1200 +20,342 @@
                 color: var(--text-muted);
                 cursor: pointer;
                 transition: all 0.2s;
-                margin-left: auto;
             }
-            .theme-toggle:hover {
-                background: var(--primary);
-                color: var(--bg);
-                border-color: var(--primary);
+            .format-btn:hover {
+                border-color: var(--accent-400);
+                color: var(--text);
             }
-
-            /* THEME VISIBILITY */
-            .theme-only-light { display: block; }
-            .theme-only-dark { display: none; }
-            [data-theme="dark"] .theme-only-light { display: none; }
-            [data-theme="dark"] .theme-only-dark { display: block; }
-
-            /* DARK OVERRIDES for inline-styled semantic banners */
-            [data-theme="dark"] .semantic-banner[data-status="error"] { background: var(--error-tint) !important; }
-            [data-theme="dark"] .semantic-banner[data-status="warning"] { background: var(--warning-tint) !important; }
-            [data-theme="dark"] .semantic-banner[data-status="success"] { background: var(--success-tint) !important; }
-            [data-theme="dark"] .semantic-banner[data-status="info"] { background: var(--info-tint) !important; }
-            [data-theme="dark"] .semantic-banner[data-status="purple"] { background: var(--purple-tint) !important; }
-            [data-theme="dark"] .semantic-banner[data-status="cyan"] { background: var(--cyan-tint) !important; }
-            [data-theme="dark"] .semantic-banner[data-status="rose"] { background: var(--rose-tint) !important; }
-
-            /* Dark overrides for UI Preview inline styles */
-            [data-theme="dark"] .preview-box { background: #261f34 !important; border-color: #352c43 !important; }
-            [data-theme="dark"] .preview-title { color: #f4eded !important; }
-            [data-theme="dark"] .status-badge { background: #313666 !important; color: #c4c7df !important; }
-            [data-theme="dark"] .btn { background: #8c92be !important; color: #1c1828 !important; }
-            [data-theme="dark"] .btn.btn-secondary { background: #313666 !important; color: #c4c7df !important; }
-            [data-theme="dark"] .btn.btn-ghost { background: #1c1828 !important; color: #9a8e9e !important; border: 1px solid #352c43 !important; }
-            [data-theme="dark"] .mini-card.card-error { background: #2e1a1a !important; color: #f3a8a7 !important; }
-            [data-theme="dark"] .mini-card.card-warning { background: #2a2110 !important; color: #fceea8 !important; }
-            [data-theme="dark"] .mini-card.card-success { background: #0e2419 !important; color: #95d4b3 !important; }
-            [data-theme="dark"] .mini-card.card-purple { background: #2a1a32 !important; color: #c4a5d2 !important; }
-            [data-theme="dark"] .mini-card.card-cyan { background: #0e2a27 !important; color: #8ad4cb !important; }
-            [data-theme="dark"] .mini-card.card-rose { background: #321a22 !important; color: #e8adc0 !important; }
-            [data-theme="dark"] .mini-card .mini-label { color: inherit !important; }
-
-            /* Theme panels: show only one at a time */
-            .theme-panels { grid-template-columns: 1fr; }
+            .format-btn.active {
+                background: var(--accent-500);
+                color: var(--warm-50);
+                border-color: var(--accent-500);
+            }
         </style>
+        <script src="assets/js/highlight.js" defer></script>
     </head>
     <body>
-        <nav class="nav">
-            <a href="index.html" class="active">Colors</a>
-            <a href="typography.html">Typography</a>
-            <a href="components.html">Components</a>
-            <a href="themes.html">Themes</a>
-            <button class="theme-toggle" onclick="toggleTheme()">Dark</button>
+        <nav class="aqua-navbar">
+            <a href="index.html" class="aqua-navbar-brand"><svg viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M14 3C14 3 5 10 5 17C5 21.4183 9.02944 25 14 25C18.9706 25 23 21.4183 23 17C23 10 14 3 14 3Z" fill="var(--accent-500)"/><path d="M14 9C14 9 9 13.5 9 17C9 19.7614 11.2386 22 14 22C16.7614 22 19 19.7614 19 17C19 13.5 14 9 14 9Z" fill="var(--bg)" opacity="0.7"/></svg>Aqua<span>Drive</span></a>
+            <button class="aqua-navbar-toggle" onclick="toggleNav()" aria-label="Toggle menu"><span></span></button>
+            <div class="aqua-navbar-collapse">
+            <div class="aqua-navbar-links">
+                <a href="index.html" class="active">Colors</a>
+                <a href="typography.html">Typography</a>
+                <a href="elements.html">Elements</a>
+                <a href="ports.html">Ports</a>
+            </div>
+            <div class="aqua-navbar-actions">
+                <div class="aqua-navbar-settings">
+                    <button class="aqua-navbar-settings-btn" onclick="toggleSettings(event)">
+                        <svg viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="3" stroke="currentColor" stroke-width="1.5"/><path d="M8 1v2M8 13v2M1 8h2M13 8h2M3.05 3.05l1.41 1.41M11.54 11.54l1.41 1.41M3.05 12.95l1.41-1.41M11.54 4.46l1.41-1.41" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+                        Settings
+                    </button>
+                    <div class="aqua-navbar-dropdown" id="navSettingsDropdown">
+                        <div class="aqua-navbar-dropdown-label">Accent Color</div>
+                        <div class="aqua-navbar-dropdown-row">
+                            <button class="accent-dot" data-color="blue" onclick="setAccent('blue')" aria-label="Blue accent"></button>
+                            <button class="accent-dot" data-color="purple" onclick="setAccent('purple')" aria-label="Purple accent"></button>
+                            <button class="accent-dot" data-color="cyan" onclick="setAccent('cyan')" aria-label="Cyan accent"></button>
+                            <button class="accent-dot" data-color="rose" onclick="setAccent('rose')" aria-label="Rose accent"></button>
+                        </div>
+                        <div class="aqua-navbar-dropdown-divider"></div>
+                        <button class="aqua-navbar-dropdown-item" onclick="toggleTheme()">
+                            <svg viewBox="0 0 16 16" fill="none"><path d="M8 1a7 7 0 1 0 0 14A7 7 0 0 0 8 1Z" stroke="currentColor" stroke-width="1.5"/><path d="M8 3v10a5 5 0 0 0 0-10Z" fill="currentColor"/></svg>
+                            <span class="theme-toggle-label">Toggle Theme</span>
+                        </button>
+                        <button class="aqua-navbar-dropdown-item" onclick="toggleMobile()">
+                            <svg viewBox="0 0 16 16" fill="none"><rect x="4" y="1" width="8" height="14" rx="1.5" stroke="currentColor" stroke-width="1.5"/><line x1="6.5" y1="12.5" x2="9.5" y2="12.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+                            Mobile Preview
+                        </button>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </nav>
+
+        <nav class="breadcrumb">
+            <span>AquaDrive</span>
+            <span class="sep">/</span>
+            <span class="current">Colors</span>
         </nav>
 
         <header>
-            <div class="brand-tag">AquaDrive · Car Wash App</div>
-            <h1>Color <span>System</span></h1>
-            <p class="subtitle">Custom palette · Light &amp; Dark themes</p>
+            <div class="brand-tag">AquaDrive · Design System</div>
+            <h1>Color<span> System</span></h1>
+            <p class="subtitle">A warm neutral palette with four interchangeable accent colors — built for light and dark modes.</p>
         </header>
 
-        <!-- PRIMARY BLUE SCALE -->
-        <div class="section">
-            <div class="section-label">Primary — Blue Scale (base #656EA4)</div>
-            <div class="palette-grid">
-                <div class="swatch-card">
-                    <div class="swatch-color" style="background: #edeef5"></div>
-                    <div class="swatch-info">
-                        <div class="swatch-name">Blue 50</div>
-                        <div class="swatch-role">Tinted backgrounds</div>
-                        <span class="hex-chip">#EDEEF5</span>
-                    </div>
-                </div>
-                <div class="swatch-card">
-                    <div class="swatch-color" style="background: #c4c7df"></div>
-                    <div class="swatch-info">
-                        <div class="swatch-name">Blue 200</div>
-                        <div class="swatch-role">Subtle borders</div>
-                        <span class="hex-chip">#C4C7DF</span>
-                    </div>
-                </div>
-                <div class="swatch-card">
-                    <div class="swatch-color" style="background: #8c92be"></div>
-                    <div class="swatch-info">
-                        <div class="swatch-name">Blue 400</div>
-                        <div class="swatch-role">Hover states</div>
-                        <span class="hex-chip">#8C92BE</span>
-                    </div>
-                </div>
-                <div class="swatch-card">
-                    <div class="swatch-color" style="background: #656ea4"></div>
-                    <div class="swatch-info">
-                        <div class="swatch-name">Blue 500 ★</div>
-                        <div class="swatch-role">Primary brand · CTAs</div>
-                        <span class="hex-chip">#656EA4</span>
-                    </div>
-                </div>
-                <div class="swatch-card">
-                    <div class="swatch-color" style="background: #4e5688"></div>
-                    <div class="swatch-info">
-                        <div class="swatch-name">Blue 600</div>
-                        <div class="swatch-role">Active / pressed</div>
-                        <span class="hex-chip">#4E5688</span>
-                    </div>
-                </div>
-                <div class="swatch-card">
-                    <div class="swatch-color" style="background: #313666"></div>
-                    <div class="swatch-info">
-                        <div class="swatch-name">Blue 800</div>
-                        <div class="swatch-role">Dark mode tint surface</div>
-                        <span class="hex-chip">#313666</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- PURPLE SCALE -->
-        <div class="section">
-            <div class="section-label">Accent — Purple Scale (base #8E6AA0)</div>
-            <div class="palette-grid">
-                <div class="swatch-card">
-                    <div class="swatch-color" style="background: #f3edf7"></div>
-                    <div class="swatch-info">
-                        <div class="swatch-name">Purple 50</div>
-                        <div class="swatch-role">Tinted backgrounds</div>
-                        <span class="hex-chip">#F3EDF7</span>
-                    </div>
-                </div>
-                <div class="swatch-card">
-                    <div class="swatch-color" style="background: #d4c4de"></div>
-                    <div class="swatch-info">
-                        <div class="swatch-name">Purple 200</div>
-                        <div class="swatch-role">Subtle borders</div>
-                        <span class="hex-chip">#D4C4DE</span>
-                    </div>
-                </div>
-                <div class="swatch-card">
-                    <div class="swatch-color" style="background: #b08ec5"></div>
-                    <div class="swatch-info">
-                        <div class="swatch-name">Purple 400</div>
-                        <div class="swatch-role">Hover states</div>
-                        <span class="hex-chip">#B08EC5</span>
-                    </div>
-                </div>
-                <div class="swatch-card">
-                    <div class="swatch-color" style="background: #8e6aa0"></div>
-                    <div class="swatch-info">
-                        <div class="swatch-name">Purple 500 ★</div>
-                        <div class="swatch-role">Secondary accent · Tags</div>
-                        <span class="hex-chip">#8E6AA0</span>
-                    </div>
-                </div>
-                <div class="swatch-card">
-                    <div class="swatch-color" style="background: #6f4f82"></div>
-                    <div class="swatch-info">
-                        <div class="swatch-name">Purple 600</div>
-                        <div class="swatch-role">Active / pressed</div>
-                        <span class="hex-chip">#6F4F82</span>
-                    </div>
-                </div>
-                <div class="swatch-card">
-                    <div class="swatch-color" style="background: #432e54"></div>
-                    <div class="swatch-info">
-                        <div class="swatch-name">Purple 800</div>
-                        <div class="swatch-role">Dark mode tint surface</div>
-                        <span class="hex-chip">#432E54</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- CYAN SCALE -->
-        <div class="section">
-            <div class="section-label">Accent — Cyan Scale (base #3AAFA0)</div>
-            <div class="palette-grid">
-                <div class="swatch-card">
-                    <div class="swatch-color" style="background: #e8f6f4"></div>
-                    <div class="swatch-info">
-                        <div class="swatch-name">Cyan 50</div>
-                        <div class="swatch-role">Tinted backgrounds</div>
-                        <span class="hex-chip">#E8F6F4</span>
-                    </div>
-                </div>
-                <div class="swatch-card">
-                    <div class="swatch-color" style="background: #b5e2dc"></div>
-                    <div class="swatch-info">
-                        <div class="swatch-name">Cyan 200</div>
-                        <div class="swatch-role">Subtle borders</div>
-                        <span class="hex-chip">#B5E2DC</span>
-                    </div>
-                </div>
-                <div class="swatch-card">
-                    <div class="swatch-color" style="background: #6ec5ba"></div>
-                    <div class="swatch-info">
-                        <div class="swatch-name">Cyan 400</div>
-                        <div class="swatch-role">Hover states</div>
-                        <span class="hex-chip">#6EC5BA</span>
-                    </div>
-                </div>
-                <div class="swatch-card">
-                    <div class="swatch-color" style="background: #3aafa0"></div>
-                    <div class="swatch-info">
-                        <div class="swatch-name">Cyan 500 ★</div>
-                        <div class="swatch-role">Highlight accent · Links</div>
-                        <span class="hex-chip">#3AAFA0</span>
-                    </div>
-                </div>
-                <div class="swatch-card">
-                    <div class="swatch-color" style="background: #2d8a7e"></div>
-                    <div class="swatch-info">
-                        <div class="swatch-name">Cyan 600</div>
-                        <div class="swatch-role">Active / pressed</div>
-                        <span class="hex-chip">#2D8A7E</span>
-                    </div>
-                </div>
-                <div class="swatch-card">
-                    <div class="swatch-color" style="background: #1a524c"></div>
-                    <div class="swatch-info">
-                        <div class="swatch-name">Cyan 800</div>
-                        <div class="swatch-role">Dark mode tint surface</div>
-                        <span class="hex-chip">#1A524C</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- ROSÉ SCALE -->
-        <div class="section">
-            <div class="section-label">Accent — Rosé Scale (base #D4738C)</div>
-            <div class="palette-grid">
-                <div class="swatch-card">
-                    <div class="swatch-color" style="background: #fcf0f3"></div>
-                    <div class="swatch-info">
-                        <div class="swatch-name">Rosé 50</div>
-                        <div class="swatch-role">Tinted backgrounds</div>
-                        <span class="hex-chip">#FCF0F3</span>
-                    </div>
-                </div>
-                <div class="swatch-card">
-                    <div class="swatch-color" style="background: #f0c4d0"></div>
-                    <div class="swatch-info">
-                        <div class="swatch-name">Rosé 200</div>
-                        <div class="swatch-role">Subtle borders</div>
-                        <span class="hex-chip">#F0C4D0</span>
-                    </div>
-                </div>
-                <div class="swatch-card">
-                    <div class="swatch-color" style="background: #e295ac"></div>
-                    <div class="swatch-info">
-                        <div class="swatch-name">Rosé 400</div>
-                        <div class="swatch-role">Hover states</div>
-                        <span class="hex-chip">#E295AC</span>
-                    </div>
-                </div>
-                <div class="swatch-card">
-                    <div class="swatch-color" style="background: #d4738c"></div>
-                    <div class="swatch-info">
-                        <div class="swatch-name">Rosé 500 ★</div>
-                        <div class="swatch-role">Warm accent · Promotions</div>
-                        <span class="hex-chip">#D4738C</span>
-                    </div>
-                </div>
-                <div class="swatch-card">
-                    <div class="swatch-color" style="background: #b85a73"></div>
-                    <div class="swatch-info">
-                        <div class="swatch-name">Rosé 600</div>
-                        <div class="swatch-role">Active / pressed</div>
-                        <span class="hex-chip">#B85A73</span>
-                    </div>
-                </div>
-                <div class="swatch-card">
-                    <div class="swatch-color" style="background: #6e2f40"></div>
-                    <div class="swatch-info">
-                        <div class="swatch-name">Rosé 800</div>
-                        <div class="swatch-role">Dark mode tint surface</div>
-                        <span class="hex-chip">#6E2F40</span>
-                    </div>
-                </div>
-            </div>
+        <!-- FORMAT PICKER -->
+        <div style="display: flex; gap: 6px; margin-bottom: 32px; flex-wrap: wrap;">
+            <button class="format-btn active" onclick="setFormat('hex')">HEX</button>
+            <button class="format-btn" onclick="setFormat('rgb')">RGB</button>
+            <button class="format-btn" onclick="setFormat('hsl')">HSL</button>
+            <button class="format-btn" onclick="setFormat('oklch')">OKLCH</button>
         </div>
 
         <!-- NEUTRALS -->
-        <div class="section">
-            <div class="section-label">Neutrals — Warm Rose-tinted Grays</div>
-            <div class="palette-grid">
-                <div class="swatch-card">
-                    <div
-                        class="swatch-color"
-                        style="
-                            background: #f4eded;
-                            border-bottom: 1px solid #e0d5d5;
-                        "
-                    ></div>
+        <section class="section">
+            <div class="section-label">Neutrals</div>
+            <div class="swatch-grid">
+                <div class="swatch">
+                    <div class="swatch-color" style="background: #F4EDED;"></div>
                     <div class="swatch-info">
-                        <div class="swatch-name">Warm 50 ★</div>
-                        <div class="swatch-role">App background (light)</div>
-                        <span class="hex-chip">#F4EDED</span>
+                        <div class="swatch-name">Warm 50</div>
+                        <div class="swatch-hex">#F4EDED</div>
                     </div>
                 </div>
-                <div class="swatch-card">
-                    <div class="swatch-color" style="background: #e8dede"></div>
+                <div class="swatch">
+                    <div class="swatch-color" style="background: #E8DEDE;"></div>
                     <div class="swatch-info">
                         <div class="swatch-name">Warm 100</div>
-                        <div class="swatch-role">Card surface (light)</div>
-                        <span class="hex-chip">#E8DEDE</span>
+                        <div class="swatch-hex">#E8DEDE</div>
                     </div>
                 </div>
-                <div class="swatch-card">
-                    <div class="swatch-color" style="background: #e0d5d5"></div>
+                <div class="swatch">
+                    <div class="swatch-color" style="background: #E0D5D5;"></div>
                     <div class="swatch-info">
                         <div class="swatch-name">Warm 200</div>
-                        <div class="swatch-role">Borders, dividers</div>
-                        <span class="hex-chip">#E0D5D5</span>
+                        <div class="swatch-hex">#E0D5D5</div>
                     </div>
                 </div>
-                <div class="swatch-card">
-                    <div class="swatch-color" style="background: #9a8e8e"></div>
+                <div class="swatch">
+                    <div class="swatch-color" style="background: #9A8E8E;"></div>
                     <div class="swatch-info">
                         <div class="swatch-name">Warm 500</div>
-                        <div class="swatch-role">Secondary / muted text</div>
-                        <span class="hex-chip">#9A8E8E</span>
+                        <div class="swatch-hex">#9A8E8E</div>
                     </div>
                 </div>
-                <div class="swatch-card">
-                    <div class="swatch-color" style="background: #3d3240"></div>
+                <div class="swatch">
+                    <div class="swatch-color" style="background: #3D3240;"></div>
                     <div class="swatch-info">
                         <div class="swatch-name">Warm 800</div>
-                        <div class="swatch-role">Primary text (light)</div>
-                        <span class="hex-chip">#3D3240</span>
+                        <div class="swatch-hex">#3D3240</div>
                     </div>
                 </div>
-                <div class="swatch-card">
-                    <div class="swatch-color" style="background: #1c1828"></div>
-                    <div class="swatch-info">
-                        <div class="swatch-name">Warm 950</div>
-                        <div class="swatch-role">App background (dark)</div>
-                        <span class="hex-chip">#1C1828</span>
-                    </div>
-                </div>
-                <div class="swatch-card">
-                    <div class="swatch-color" style="background: #261f34"></div>
-                    <div class="swatch-info">
-                        <div class="swatch-name">Warm 900</div>
-                        <div class="swatch-role">Dark card surface</div>
-                        <span class="hex-chip">#261F34</span>
-                    </div>
-                </div>
-                <div class="swatch-card">
-                    <div class="swatch-color" style="background: #352c43"></div>
+                <div class="swatch">
+                    <div class="swatch-color" style="background: #352C43;"></div>
                     <div class="swatch-info">
                         <div class="swatch-name">Warm 850</div>
-                        <div class="swatch-role">Dark elevated surface</div>
-                        <span class="hex-chip">#352C43</span>
+                        <div class="swatch-hex">#352C43</div>
+                    </div>
+                </div>
+                <div class="swatch">
+                    <div class="swatch-color" style="background: #261F34;"></div>
+                    <div class="swatch-info">
+                        <div class="swatch-name">Warm 900</div>
+                        <div class="swatch-hex">#261F34</div>
+                    </div>
+                </div>
+                <div class="swatch">
+                    <div class="swatch-color" style="background: #1C1828;"></div>
+                    <div class="swatch-info">
+                        <div class="swatch-name">Warm 950</div>
+                        <div class="swatch-hex">#1C1828</div>
                     </div>
                 </div>
             </div>
-        </div>
+        </section>
 
-        <!-- SEMANTIC STATUS -->
-        <div class="section">
-            <div class="section-label">Semantic — Status Colors</div>
-            <div class="semantic-row">
-                <div class="semantic-card">
-                    <div class="semantic-banner" data-status="error" style="background: #fceaea">
-                        <div class="sem-dot" style="background: #e66260"></div>
-                        <div
-                            class="sem-dot soft"
-                            style="background: #e66260"
-                        ></div>
-                        <div
-                            class="sem-dot tint"
-                            style="background: #e66260"
-                        ></div>
+        <!-- BLUE -->
+        <section class="section">
+            <div class="section-label">Blue</div>
+            <div class="swatch-grid">
+                <div class="swatch">
+                    <div class="swatch-color" style="background: #EDEEF5;"></div>
+                    <div class="swatch-info"><div class="swatch-name">Blue 50</div><div class="swatch-hex">#EDEEF5</div></div>
+                </div>
+                <div class="swatch">
+                    <div class="swatch-color" style="background: #C4C7DF;"></div>
+                    <div class="swatch-info"><div class="swatch-name">Blue 200</div><div class="swatch-hex">#C4C7DF</div></div>
+                </div>
+                <div class="swatch">
+                    <div class="swatch-color" style="background: #8C92BE;"></div>
+                    <div class="swatch-info"><div class="swatch-name">Blue 400</div><div class="swatch-hex">#8C92BE</div></div>
+                </div>
+                <div class="swatch">
+                    <div class="swatch-color" style="background: #656EA4;"></div>
+                    <div class="swatch-info"><div class="swatch-name">Blue 500</div><div class="swatch-hex">#656EA4</div></div>
+                </div>
+                <div class="swatch">
+                    <div class="swatch-color" style="background: #4E5688;"></div>
+                    <div class="swatch-info"><div class="swatch-name">Blue 600</div><div class="swatch-hex">#4E5688</div></div>
+                </div>
+                <div class="swatch">
+                    <div class="swatch-color" style="background: #313666;"></div>
+                    <div class="swatch-info"><div class="swatch-name">Blue 800</div><div class="swatch-hex">#313666</div></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PURPLE -->
+        <section class="section">
+            <div class="section-label">Purple</div>
+            <div class="swatch-grid">
+                <div class="swatch">
+                    <div class="swatch-color" style="background: #F3EDF7;"></div>
+                    <div class="swatch-info"><div class="swatch-name">Purple 50</div><div class="swatch-hex">#F3EDF7</div></div>
+                </div>
+                <div class="swatch">
+                    <div class="swatch-color" style="background: #D4C4DE;"></div>
+                    <div class="swatch-info"><div class="swatch-name">Purple 200</div><div class="swatch-hex">#D4C4DE</div></div>
+                </div>
+                <div class="swatch">
+                    <div class="swatch-color" style="background: #B08EC5;"></div>
+                    <div class="swatch-info"><div class="swatch-name">Purple 400</div><div class="swatch-hex">#B08EC5</div></div>
+                </div>
+                <div class="swatch">
+                    <div class="swatch-color" style="background: #8E6AA0;"></div>
+                    <div class="swatch-info"><div class="swatch-name">Purple 500</div><div class="swatch-hex">#8E6AA0</div></div>
+                </div>
+                <div class="swatch">
+                    <div class="swatch-color" style="background: #6F4F82;"></div>
+                    <div class="swatch-info"><div class="swatch-name">Purple 600</div><div class="swatch-hex">#6F4F82</div></div>
+                </div>
+                <div class="swatch">
+                    <div class="swatch-color" style="background: #432E54;"></div>
+                    <div class="swatch-info"><div class="swatch-name">Purple 800</div><div class="swatch-hex">#432E54</div></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CYAN -->
+        <section class="section">
+            <div class="section-label">Cyan</div>
+            <div class="swatch-grid">
+                <div class="swatch">
+                    <div class="swatch-color" style="background: #E8F6F4;"></div>
+                    <div class="swatch-info"><div class="swatch-name">Cyan 50</div><div class="swatch-hex">#E8F6F4</div></div>
+                </div>
+                <div class="swatch">
+                    <div class="swatch-color" style="background: #B5E2DC;"></div>
+                    <div class="swatch-info"><div class="swatch-name">Cyan 200</div><div class="swatch-hex">#B5E2DC</div></div>
+                </div>
+                <div class="swatch">
+                    <div class="swatch-color" style="background: #6EC5BA;"></div>
+                    <div class="swatch-info"><div class="swatch-name">Cyan 400</div><div class="swatch-hex">#6EC5BA</div></div>
+                </div>
+                <div class="swatch">
+                    <div class="swatch-color" style="background: #3AAFA0;"></div>
+                    <div class="swatch-info"><div class="swatch-name">Cyan 500</div><div class="swatch-hex">#3AAFA0</div></div>
+                </div>
+                <div class="swatch">
+                    <div class="swatch-color" style="background: #2D8A7E;"></div>
+                    <div class="swatch-info"><div class="swatch-name">Cyan 600</div><div class="swatch-hex">#2D8A7E</div></div>
+                </div>
+                <div class="swatch">
+                    <div class="swatch-color" style="background: #1A524C;"></div>
+                    <div class="swatch-info"><div class="swatch-name">Cyan 800</div><div class="swatch-hex">#1A524C</div></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ROSE -->
+        <section class="section">
+            <div class="section-label">Rosé</div>
+            <div class="swatch-grid">
+                <div class="swatch">
+                    <div class="swatch-color" style="background: #FCF0F3;"></div>
+                    <div class="swatch-info"><div class="swatch-name">Rosé 50</div><div class="swatch-hex">#FCF0F3</div></div>
+                </div>
+                <div class="swatch">
+                    <div class="swatch-color" style="background: #F0C4D0;"></div>
+                    <div class="swatch-info"><div class="swatch-name">Rosé 200</div><div class="swatch-hex">#F0C4D0</div></div>
+                </div>
+                <div class="swatch">
+                    <div class="swatch-color" style="background: #E295AC;"></div>
+                    <div class="swatch-info"><div class="swatch-name">Rosé 400</div><div class="swatch-hex">#E295AC</div></div>
+                </div>
+                <div class="swatch">
+                    <div class="swatch-color" style="background: #D4738C;"></div>
+                    <div class="swatch-info"><div class="swatch-name">Rosé 500</div><div class="swatch-hex">#D4738C</div></div>
+                </div>
+                <div class="swatch">
+                    <div class="swatch-color" style="background: #B85A73;"></div>
+                    <div class="swatch-info"><div class="swatch-name">Rosé 600</div><div class="swatch-hex">#B85A73</div></div>
+                </div>
+                <div class="swatch">
+                    <div class="swatch-color" style="background: #6E2F40;"></div>
+                    <div class="swatch-info"><div class="swatch-name">Rosé 800</div><div class="swatch-hex">#6E2F40</div></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- STATUS COLORS -->
+        <section class="section">
+            <div class="section-label">Status Colors</div>
+            <div class="swatch-grid status-grid">
+                <div class="swatch">
+                    <div class="swatch-color status-circles" style="background: #FCEAEA;">
+                        <div class="status-dot" style="background: #E66260;" title="Main #E66260"></div>
+                        <div class="status-dot" style="background: #F3A8A7;" title="Soft #F3A8A7"></div>
+                        <div class="status-dot" style="background: #FCEAEA; border: 1px solid #F3A8A7;" title="Tint #FCEAEA"></div>
                     </div>
-                    <div class="semantic-info">
-                        <div class="swatch-name">Error / Danger</div>
-                        <div
-                            class="swatch-role"
-                            style="
-                                font-size: 11px;
-                                color: var(--text-muted);
-                                margin-bottom: 0;
-                            "
-                        >
-                            Failed payments, alerts
-                        </div>
-                        <div class="tier-row">
-                            <div class="tier">
-                                <div
-                                    class="tier-swatch"
-                                    style="background: #e66260"
-                                ></div>
-                                #E66260 · Main
-                            </div>
-                            <div class="tier">
-                                <div
-                                    class="tier-swatch"
-                                    style="background: #f3a8a7"
-                                ></div>
-                                #F3A8A7 · Soft
-                            </div>
-                            <div class="tier">
-                                <div
-                                    class="tier-swatch"
-                                    style="background: #fceaea"
-                                ></div>
-                                #FCEAEA · Tint
-                            </div>
-                        </div>
+                    <div class="swatch-info">
+                        <div class="swatch-name">Red</div>
+                        <div class="swatch-hex">#E66260 · #F3A8A7 · #FCEAEA</div>
                     </div>
                 </div>
-
-                <div class="semantic-card">
-                    <div class="semantic-banner" data-status="warning" style="background: #fef9e6">
-                        <div class="sem-dot" style="background: #f9db6d"></div>
-                        <div
-                            class="sem-dot soft"
-                            style="background: #f9db6d"
-                        ></div>
-                        <div
-                            class="sem-dot tint"
-                            style="background: #f9db6d"
-                        ></div>
+                <div class="swatch">
+                    <div class="swatch-color status-circles" style="background: #FEF9E6;">
+                        <div class="status-dot" style="background: #F9DB6D;" title="Main #F9DB6D"></div>
+                        <div class="status-dot" style="background: #FCEEA8;" title="Soft #FCEEA8"></div>
+                        <div class="status-dot" style="background: #FEF9E6; border: 1px solid #FCEEA8;" title="Tint #FEF9E6"></div>
                     </div>
-                    <div class="semantic-info">
-                        <div class="swatch-name">Warning</div>
-                        <div
-                            class="swatch-role"
-                            style="
-                                font-size: 11px;
-                                color: var(--text-muted);
-                                margin-bottom: 0;
-                            "
-                        >
-                            Pending, in-progress
-                        </div>
-                        <div class="tier-row">
-                            <div class="tier">
-                                <div
-                                    class="tier-swatch"
-                                    style="background: #f9db6d"
-                                ></div>
-                                #F9DB6D · Main
-                            </div>
-                            <div class="tier">
-                                <div
-                                    class="tier-swatch"
-                                    style="background: #fceea8"
-                                ></div>
-                                #FCEEA8 · Soft
-                            </div>
-                            <div class="tier">
-                                <div
-                                    class="tier-swatch"
-                                    style="background: #fef9e6"
-                                ></div>
-                                #FEF9E6 · Tint
-                            </div>
-                        </div>
+                    <div class="swatch-info">
+                        <div class="swatch-name">Yellow</div>
+                        <div class="swatch-hex">#F9DB6D · #FCEEA8 · #FEF9E6</div>
                     </div>
                 </div>
-
-                <div class="semantic-card">
-                    <div class="semantic-banner" data-status="success" style="background: #eaf7ef">
-                        <div class="sem-dot" style="background: #52b788"></div>
-                        <div
-                            class="sem-dot soft"
-                            style="background: #52b788"
-                        ></div>
-                        <div
-                            class="sem-dot tint"
-                            style="background: #52b788"
-                        ></div>
+                <div class="swatch">
+                    <div class="swatch-color status-circles" style="background: #EAF7EF;">
+                        <div class="status-dot" style="background: #52B788;" title="Main #52B788"></div>
+                        <div class="status-dot" style="background: #95D4B3;" title="Soft #95D4B3"></div>
+                        <div class="status-dot" style="background: #EAF7EF; border: 1px solid #95D4B3;" title="Tint #EAF7EF"></div>
                     </div>
-                    <div class="semantic-info">
-                        <div class="swatch-name">Success</div>
-                        <div
-                            class="swatch-role"
-                            style="
-                                font-size: 11px;
-                                color: var(--text-muted);
-                                margin-bottom: 0;
-                            "
-                        >
-                            Completed, paid
-                        </div>
-                        <div class="tier-row">
-                            <div class="tier">
-                                <div
-                                    class="tier-swatch"
-                                    style="background: #52b788"
-                                ></div>
-                                #52B788 · Main
-                            </div>
-                            <div class="tier">
-                                <div
-                                    class="tier-swatch"
-                                    style="background: #95d4b3"
-                                ></div>
-                                #95D4B3 · Soft
-                            </div>
-                            <div class="tier">
-                                <div
-                                    class="tier-swatch"
-                                    style="background: #eaf7ef"
-                                ></div>
-                                #EAF7EF · Tint
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="semantic-card">
-                    <div class="semantic-banner" data-status="info" style="background: #edeef5">
-                        <div class="sem-dot" style="background: #656ea4"></div>
-                        <div
-                            class="sem-dot soft"
-                            style="background: #656ea4"
-                        ></div>
-                        <div
-                            class="sem-dot tint"
-                            style="background: #656ea4"
-                        ></div>
-                    </div>
-                    <div class="semantic-info">
-                        <div class="swatch-name">Info</div>
-                        <div
-                            class="swatch-role"
-                            style="
-                                font-size: 11px;
-                                color: var(--text-muted);
-                                margin-bottom: 0;
-                            "
-                        >
-                            Tips, schedule notices
-                        </div>
-                        <div class="tier-row">
-                            <div class="tier">
-                                <div
-                                    class="tier-swatch"
-                                    style="background: #656ea4"
-                                ></div>
-                                #656EA4 · Main
-                            </div>
-                            <div class="tier">
-                                <div
-                                    class="tier-swatch"
-                                    style="background: #b0b5d4"
-                                ></div>
-                                #B0B5D4 · Soft
-                            </div>
-                            <div class="tier">
-                                <div
-                                    class="tier-swatch"
-                                    style="background: #edeef5"
-                                ></div>
-                                #EDEEF5 · Tint
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="semantic-card">
-                    <div class="semantic-banner" data-status="purple" style="background: #f3edf7">
-                        <div class="sem-dot" style="background: #8e6aa0"></div>
-                        <div class="sem-dot soft" style="background: #8e6aa0"></div>
-                        <div class="sem-dot tint" style="background: #8e6aa0"></div>
-                    </div>
-                    <div class="semantic-info">
-                        <div class="swatch-name">Purple</div>
-                        <div class="swatch-role" style="font-size: 11px; color: var(--text-muted); margin-bottom: 0;">
-                            Premium tiers, tags
-                        </div>
-                        <div class="tier-row">
-                            <div class="tier">
-                                <div class="tier-swatch" style="background: #8e6aa0"></div>
-                                #8E6AA0 · Main
-                            </div>
-                            <div class="tier">
-                                <div class="tier-swatch" style="background: #c4a5d2"></div>
-                                #C4A5D2 · Soft
-                            </div>
-                            <div class="tier">
-                                <div class="tier-swatch" style="background: #f3edf7"></div>
-                                #F3EDF7 · Tint
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="semantic-card">
-                    <div class="semantic-banner" data-status="cyan" style="background: #e8f6f4">
-                        <div class="sem-dot" style="background: #3aafa0"></div>
-                        <div class="sem-dot soft" style="background: #3aafa0"></div>
-                        <div class="sem-dot tint" style="background: #3aafa0"></div>
-                    </div>
-                    <div class="semantic-info">
-                        <div class="swatch-name">Cyan</div>
-                        <div class="swatch-role" style="font-size: 11px; color: var(--text-muted); margin-bottom: 0;">
-                            Highlights, links
-                        </div>
-                        <div class="tier-row">
-                            <div class="tier">
-                                <div class="tier-swatch" style="background: #3aafa0"></div>
-                                #3AAFA0 · Main
-                            </div>
-                            <div class="tier">
-                                <div class="tier-swatch" style="background: #8ad4cb"></div>
-                                #8AD4CB · Soft
-                            </div>
-                            <div class="tier">
-                                <div class="tier-swatch" style="background: #e8f6f4"></div>
-                                #E8F6F4 · Tint
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="semantic-card">
-                    <div class="semantic-banner" data-status="rose" style="background: #fcf0f3">
-                        <div class="sem-dot" style="background: #d4738c"></div>
-                        <div class="sem-dot soft" style="background: #d4738c"></div>
-                        <div class="sem-dot tint" style="background: #d4738c"></div>
-                    </div>
-                    <div class="semantic-info">
-                        <div class="swatch-name">Rosé</div>
-                        <div class="swatch-role" style="font-size: 11px; color: var(--text-muted); margin-bottom: 0;">
-                            Promotions, favorites
-                        </div>
-                        <div class="tier-row">
-                            <div class="tier">
-                                <div class="tier-swatch" style="background: #d4738c"></div>
-                                #D4738C · Main
-                            </div>
-                            <div class="tier">
-                                <div class="tier-swatch" style="background: #e8adc0"></div>
-                                #E8ADC0 · Soft
-                            </div>
-                            <div class="tier">
-                                <div class="tier-swatch" style="background: #fcf0f3"></div>
-                                #FCF0F3 · Tint
-                            </div>
-                        </div>
+                    <div class="swatch-info">
+                        <div class="swatch-name">Green</div>
+                        <div class="swatch-hex">#52B788 · #95D4B3 · #EAF7EF</div>
                     </div>
                 </div>
             </div>
-        </div>
+        </section>
 
-        <!-- SEMANTIC TOKENS -->
-        <div class="section">
-            <div class="section-label">Semantic Tokens — Light &amp; Dark</div>
-            <div class="theme-panels">
-                <div class="theme-panel light-panel theme-only-light">
-                    <div class="panel-title" style="color: #1c1828">
-                        Light Theme
-                    </div>
-                    <div class="panel-swatches">
-                        <div class="panel-swatch">
-                            <div
-                                class="panel-dot"
-                                style="
-                                    background: #f4eded;
-                                    border: 1px solid #e0d5d5;
-                                "
-                            ></div>
-                            <div
-                                class="panel-swatch-name"
-                                style="color: #3d3240"
-                            >
-                                background
-                            </div>
-                            <div
-                                class="panel-swatch-hex"
-                                style="color: #3d3240"
-                            >
-                                #F4EDED
-                            </div>
-                        </div>
-                        <div class="panel-swatch">
-                            <div
-                                class="panel-dot"
-                                style="
-                                    background: #ffffff;
-                                    border: 1px solid #e0d5d5;
-                                "
-                            ></div>
-                            <div
-                                class="panel-swatch-name"
-                                style="color: #3d3240"
-                            >
-                                surface
-                            </div>
-                            <div
-                                class="panel-swatch-hex"
-                                style="color: #3d3240"
-                            >
-                                #FFFFFF
-                            </div>
-                        </div>
-                        <div class="panel-swatch">
-                            <div
-                                class="panel-dot"
-                                style="background: #e0d5d5"
-                            ></div>
-                            <div
-                                class="panel-swatch-name"
-                                style="color: #3d3240"
-                            >
-                                border
-                            </div>
-                            <div
-                                class="panel-swatch-hex"
-                                style="color: #3d3240"
-                            >
-                                #E0D5D5
-                            </div>
-                        </div>
-                        <div class="panel-swatch">
-                            <div
-                                class="panel-dot"
-                                style="background: #1c1828"
-                            ></div>
-                            <div
-                                class="panel-swatch-name"
-                                style="color: #3d3240"
-                            >
-                                text.primary
-                            </div>
-                            <div
-                                class="panel-swatch-hex"
-                                style="color: #3d3240"
-                            >
-                                #1C1828
-                            </div>
-                        </div>
-                        <div class="panel-swatch">
-                            <div
-                                class="panel-dot"
-                                style="background: #9a8e8e"
-                            ></div>
-                            <div
-                                class="panel-swatch-name"
-                                style="color: #3d3240"
-                            >
-                                text.secondary
-                            </div>
-                            <div
-                                class="panel-swatch-hex"
-                                style="color: #3d3240"
-                            >
-                                #9A8E8E
-                            </div>
-                        </div>
-                        <div class="panel-swatch">
-                            <div
-                                class="panel-dot"
-                                style="background: #656ea4"
-                            ></div>
-                            <div
-                                class="panel-swatch-name"
-                                style="color: #3d3240"
-                            >
-                                interactive.primary
-                            </div>
-                            <div
-                                class="panel-swatch-hex"
-                                style="color: #3d3240"
-                            >
-                                #656EA4
-                            </div>
-                        </div>
-                        <div class="panel-swatch">
-                            <div
-                                class="panel-dot"
-                                style="background: #4e5688"
-                            ></div>
-                            <div
-                                class="panel-swatch-name"
-                                style="color: #3d3240"
-                            >
-                                interactive.hover
-                            </div>
-                            <div
-                                class="panel-swatch-hex"
-                                style="color: #3d3240"
-                            >
-                                #4E5688
-                            </div>
-                        </div>
-                        <div class="panel-swatch">
-                            <div
-                                class="panel-dot"
-                                style="background: #edeef5"
-                            ></div>
-                            <div
-                                class="panel-swatch-name"
-                                style="color: #3d3240"
-                            >
-                                interactive.subtle
-                            </div>
-                            <div
-                                class="panel-swatch-hex"
-                                style="color: #3d3240"
-                            >
-                                #EDEEF5
-                            </div>
-                        </div>
-                        <div class="panel-swatch">
-                            <div class="panel-dot" style="background: #8e6aa0"></div>
-                            <div class="panel-swatch-name" style="color: #3d3240">purple</div>
-                            <div class="panel-swatch-hex" style="color: #3d3240">#8E6AA0</div>
-                        </div>
-                        <div class="panel-swatch">
-                            <div class="panel-dot" style="background: #3aafa0"></div>
-                            <div class="panel-swatch-name" style="color: #3d3240">cyan</div>
-                            <div class="panel-swatch-hex" style="color: #3d3240">#3AAFA0</div>
-                        </div>
-                        <div class="panel-swatch">
-                            <div class="panel-dot" style="background: #d4738c"></div>
-                            <div class="panel-swatch-name" style="color: #3d3240">rosé</div>
-                            <div class="panel-swatch-hex" style="color: #3d3240">#D4738C</div>
-                        </div>
-                    </div>
-                </div>
+        <!-- SHOWCASE: LIGHT + DARK -->
+        <section class="section">
+            <div class="section-label">Theme Showcase</div>
 
-                <div class="theme-panel dark-panel theme-only-dark">
-                    <div class="panel-title" style="color: #f4eded">
-                        Dark Theme
-                    </div>
-                    <div class="panel-swatches">
-                        <div class="panel-swatch">
-                            <div
-                                class="panel-dot"
-                                style="
-                                    background: #1c1828;
-                                    border: 1px solid #352c43;
-                                "
-                            ></div>
-                            <div
-                                class="panel-swatch-name"
-                                style="color: #f4eded"
-                            >
-                                background
-                            </div>
-                            <div
-                                class="panel-swatch-hex"
-                                style="color: #f4eded"
-                            >
-                                #1C1828
-                            </div>
-                        </div>
-                        <div class="panel-swatch">
-                            <div
-                                class="panel-dot"
-                                style="
-                                    background: #261f34;
-                                    border: 1px solid #352c43;
-                                "
-                            ></div>
-                            <div
-                                class="panel-swatch-name"
-                                style="color: #f4eded"
-                            >
-                                surface
-                            </div>
-                            <div
-                                class="panel-swatch-hex"
-                                style="color: #f4eded"
-                            >
-                                #261F34
-                            </div>
-                        </div>
-                        <div class="panel-swatch">
-                            <div
-                                class="panel-dot"
-                                style="background: #352c43"
-                            ></div>
-                            <div
-                                class="panel-swatch-name"
-                                style="color: #f4eded"
-                            >
-                                border
-                            </div>
-                            <div
-                                class="panel-swatch-hex"
-                                style="color: #f4eded"
-                            >
-                                #352C43
-                            </div>
-                        </div>
-                        <div class="panel-swatch">
-                            <div
-                                class="panel-dot"
-                                style="background: #f4eded"
-                            ></div>
-                            <div
-                                class="panel-swatch-name"
-                                style="color: #f4eded"
-                            >
-                                text.primary
-                            </div>
-                            <div
-                                class="panel-swatch-hex"
-                                style="color: #f4eded"
-                            >
-                                #F4EDED
-                            </div>
-                        </div>
-                        <div class="panel-swatch">
-                            <div
-                                class="panel-dot"
-                                style="background: #9a8e9e"
-                            ></div>
-                            <div
-                                class="panel-swatch-name"
-                                style="color: #f4eded"
-                            >
-                                text.secondary
-                            </div>
-                            <div
-                                class="panel-swatch-hex"
-                                style="color: #f4eded"
-                            >
-                                #9A8E9E
-                            </div>
-                        </div>
-                        <div class="panel-swatch">
-                            <div
-                                class="panel-dot"
-                                style="background: #8c92be"
-                            ></div>
-                            <div
-                                class="panel-swatch-name"
-                                style="color: #f4eded"
-                            >
-                                interactive.primary
-                            </div>
-                            <div
-                                class="panel-swatch-hex"
-                                style="color: #f4eded"
-                            >
-                                #8C92BE
-                            </div>
-                        </div>
-                        <div class="panel-swatch">
-                            <div
-                                class="panel-dot"
-                                style="background: #c4c7df"
-                            ></div>
-                            <div
-                                class="panel-swatch-name"
-                                style="color: #f4eded"
-                            >
-                                interactive.hover
-                            </div>
-                            <div
-                                class="panel-swatch-hex"
-                                style="color: #f4eded"
-                            >
-                                #C4C7DF
-                            </div>
-                        </div>
-                        <div class="panel-swatch">
-                            <div
-                                class="panel-dot"
-                                style="background: #313666"
-                            ></div>
-                            <div
-                                class="panel-swatch-name"
-                                style="color: #f4eded"
-                            >
-                                interactive.subtle
-                            </div>
-                            <div
-                                class="panel-swatch-hex"
-                                style="color: #f4eded"
-                            >
-                                #313666
-                            </div>
-                        </div>
-                        <div class="panel-swatch">
-                            <div class="panel-dot" style="background: #b08ec5"></div>
-                            <div class="panel-swatch-name" style="color: #f4eded">purple</div>
-                            <div class="panel-swatch-hex" style="color: #f4eded">#B08EC5</div>
-                        </div>
-                        <div class="panel-swatch">
-                            <div class="panel-dot" style="background: #6ec5ba"></div>
-                            <div class="panel-swatch-name" style="color: #f4eded">cyan</div>
-                            <div class="panel-swatch-hex" style="color: #f4eded">#6EC5BA</div>
-                        </div>
-                        <div class="panel-swatch">
-                            <div class="panel-dot" style="background: #e295ac"></div>
-                            <div class="panel-swatch-name" style="color: #f4eded">rosé</div>
-                            <div class="panel-swatch-hex" style="color: #f4eded">#E295AC</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- UI PREVIEW -->
-        <div class="section">
-            <div class="theme-only-light">
-                <div class="section-label">UI Preview</div>
-                <div class="preview-box" style="background: #ffffff">
-                    <div class="preview-header">
-                        <div class="preview-title" style="color: #1c1828">
-                            Schedule a Wash
-                        </div>
-                        <span
-                            class="status-badge"
-                            style="background: #eaf7ef; color: #2e8c61"
-                            >● Confirmed</span
-                        >
-                    </div>
-                    <div class="btn-row">
-                        <button
-                            class="btn"
-                            style="background: #656ea4; color: #f4eded"
-                        >
-                            Book Now
-                        </button>
-                        <button
-                            class="btn btn-secondary"
-                            style="background: #edeef5; color: #4e5688"
-                        >
-                            View History
-                        </button>
-                        <button
-                            class="btn btn-ghost"
-                            style="background: #f4eded; color: #9a8e8e"
-                        >
-                            Cancel
-                        </button>
-                    </div>
-                    <div class="card-row" style="grid-template-columns: repeat(3, 1fr);">
-                        <div
-                            class="mini-card card-error"
-                            style="background: #fceaea; color: #c94442"
-                        >
-                            <div class="mini-label" style="color: #c94442">
-                                Payment
-                            </div>
-                            ✕ Declined
-                        </div>
-                        <div
-                            class="mini-card card-warning"
-                            style="background: #fef9e6; color: #c4952a"
-                        >
-                            <div class="mini-label" style="color: #c4952a">
-                                Status
-                            </div>
-                            ⏳ In Progress
-                        </div>
-                        <div
-                            class="mini-card card-success"
-                            style="background: #eaf7ef; color: #2e8c61"
-                        >
-                            <div class="mini-label" style="color: #2e8c61">
-                                Wash
-                            </div>
-                            ✓ Complete
-                        </div>
-                        <div
-                            class="mini-card card-purple"
-                            style="background: #f3edf7; color: #6f4f82"
-                        >
-                            <div class="mini-label" style="color: #6f4f82">
-                                Tier
-                            </div>
-                            ★ Premium
-                        </div>
-                        <div
-                            class="mini-card card-cyan"
-                            style="background: #e8f6f4; color: #2d8a7e"
-                        >
-                            <div class="mini-label" style="color: #2d8a7e">
-                                Promo
-                            </div>
-                            ↗ Active
-                        </div>
-                        <div
-                            class="mini-card card-rose"
-                            style="background: #fcf0f3; color: #b85a73"
-                        >
-                            <div class="mini-label" style="color: #b85a73">
-                                Favorite
-                            </div>
-                            ♥ Saved
-                        </div>
-                    </div>
+            <div class="showcase-panel light" style="margin-bottom: 16px;">
+                <div class="demo-label">Light Mode</div>
+                <h3 style="margin-bottom: 8px;">Heading in light mode</h3>
+                <p style="color: #9A8E8E; margin-bottom: 16px;">Body text with muted color on a warm light surface. The background uses Warm 50 and the text uses Warm 800.</p>
+                <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+                    <span class="badge" style="background: #EDEEF5; color: #656EA4;">Blue</span>
+                    <span class="badge" style="background: #F3EDF7; color: #8E6AA0;">Purple</span>
+                    <span class="badge" style="background: #E8F6F4; color: #3AAFA0;">Cyan</span>
+                    <span class="badge" style="background: #FCF0F3; color: #D4738C;">Rosé</span>
+                    <span class="badge" style="background: #EAF7EF; color: #52B788;">Success</span>
+                    <span class="badge" style="background: #FEF9E6; color: #C4A830;">Warning</span>
+                    <span class="badge" style="background: #FCEAEA; color: #E66260;">Error</span>
                 </div>
             </div>
 
-            <div class="theme-only-dark">
-                <div class="section-label">UI Preview</div>
-                <div
-                    class="preview-box"
-                    style="background: #261f34; border-color: #352c43"
-                >
-                    <div class="preview-header">
-                        <div class="preview-title" style="color: #f4eded">
-                            Provider Dashboard
-                        </div>
-                        <span
-                            class="status-badge"
-                            style="background: #313666; color: #c4c7df"
-                            >● 3 Incoming</span
-                        >
-                    </div>
-                    <div class="btn-row">
-                        <button
-                            class="btn"
-                            style="background: #8c92be; color: #1c1828"
-                        >
-                            Accept Job
-                        </button>
-                        <button
-                            class="btn"
-                            style="background: #313666; color: #c4c7df"
-                        >
-                            View Earnings
-                        </button>
-                        <button
-                            class="btn"
-                            style="
-                                background: #1c1828;
-                                color: #9a8e9e;
-                                border: 1px solid #352c43;
-                            "
-                        >
-                            Decline
-                        </button>
-                    </div>
-                    <div class="card-row" style="grid-template-columns: repeat(3, 1fr);">
-                        <div
-                            class="mini-card"
-                            style="background: #2e1a1a; color: #f3a8a7"
-                        >
-                            <div class="mini-label" style="color: #f3a8a7">
-                                Alert
-                            </div>
-                            ✕ No-show
-                        </div>
-                        <div
-                            class="mini-card"
-                            style="background: #2a2110; color: #fceea8"
-                        >
-                            <div class="mini-label" style="color: #fceea8">ETA</div>
-                            ⏳ 12 min
-                        </div>
-                        <div
-                            class="mini-card"
-                            style="background: #0e2419; color: #95d4b3"
-                        >
-                            <div class="mini-label" style="color: #95d4b3">
-                                Payout
-                            </div>
-                            ✓ $34.00
-                        </div>
-                        <div
-                            class="mini-card"
-                            style="background: #2a1a32; color: #c4a5d2"
-                        >
-                            <div class="mini-label" style="color: #c4a5d2">
-                                Tier
-                            </div>
-                            ★ Premium
-                        </div>
-                        <div
-                            class="mini-card"
-                            style="background: #0e2a27; color: #8ad4cb"
-                        >
-                            <div class="mini-label" style="color: #8ad4cb">
-                                Promo
-                            </div>
-                            ↗ Active
-                        </div>
-                        <div
-                            class="mini-card"
-                            style="background: #321a22; color: #e8adc0"
-                        >
-                            <div class="mini-label" style="color: #e8adc0">
-                                Favorite
-                            </div>
-                            ♥ Saved
-                        </div>
-                    </div>
+            <div class="showcase-panel dark">
+                <div class="demo-label" style="color: #9A8E8E;">Dark Mode</div>
+                <h3 style="margin-bottom: 8px; color: #F4EDED;">Heading in dark mode</h3>
+                <p style="color: #9A8E8E; margin-bottom: 16px;">Body text with muted color on a dark surface. The background uses Warm 950 and the text uses Warm 50.</p>
+                <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+                    <span class="badge" style="background: #313666; color: #C4C7DF;">Blue</span>
+                    <span class="badge" style="background: #432E54; color: #D4C4DE;">Purple</span>
+                    <span class="badge" style="background: #1A524C; color: #B5E2DC;">Cyan</span>
+                    <span class="badge" style="background: #6E2F40; color: #F0C4D0;">Rosé</span>
+                    <span class="badge" style="background: #1A3D2A; color: #95D4B3;">Success</span>
+                    <span class="badge" style="background: #3D3520; color: #FCEEA8;">Warning</span>
+                    <span class="badge" style="background: #3D2020; color: #F3A8A7;">Error</span>
                 </div>
             </div>
-        </div>
+        </section>
+
         <script>
-            (function() {
-                var saved = localStorage.getItem('aquadrive-theme');
-                var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-                var theme = saved || (prefersDark ? 'dark' : 'light');
-                if (theme === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
-                updateToggleLabel();
-            })();
             function toggleTheme() {
                 var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
                 var next = isDark ? 'light' : 'dark';
@@ -1634,12 +367,178 @@
                 localStorage.setItem('aquadrive-theme', next);
                 updateToggleLabel();
             }
+            function toggleSettings(e) {
+                if (e) e.stopPropagation();
+                var dd = document.getElementById('navSettingsDropdown');
+                dd.classList.toggle('open');
+            }
+            document.addEventListener('click', function(e) {
+                var settings = document.querySelector('.aqua-navbar-settings');
+                if (settings && !settings.contains(e.target)) {
+                    document.getElementById('navSettingsDropdown').classList.remove('open');
+                }
+            });
+            function toggleNav() {
+                document.querySelector('.aqua-navbar').classList.toggle('nav-open');
+            }
             function updateToggleLabel() {
                 var btn = document.querySelector('.theme-toggle');
                 if (!btn) return;
                 var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
                 btn.textContent = isDark ? 'Light' : 'Dark';
             }
+            function setAccent(color) {
+                document.documentElement.setAttribute('data-accent', color);
+                localStorage.setItem('aquadrive-accent', color);
+                updateAccentDots();
+            }
+            function updateAccentDots() {
+                var current = document.documentElement.getAttribute('data-accent') || 'blue';
+                document.querySelectorAll('.accent-dot').forEach(function(dot) {
+                    dot.classList.toggle('active', dot.getAttribute('data-color') === current);
+                });
+            }
+
+            /* ---- Color format conversion ---- */
+            var currentFormat = 'hex';
+
+            function hexToRgb(hex) {
+                var r = parseInt(hex.slice(1,3), 16);
+                var g = parseInt(hex.slice(3,5), 16);
+                var b = parseInt(hex.slice(5,7), 16);
+                return [r, g, b];
+            }
+
+            function rgbToHsl(r, g, b) {
+                r /= 255; g /= 255; b /= 255;
+                var max = Math.max(r, g, b), min = Math.min(r, g, b);
+                var h, s, l = (max + min) / 2;
+                if (max === min) {
+                    h = s = 0;
+                } else {
+                    var d = max - min;
+                    s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
+                    switch (max) {
+                        case r: h = ((g - b) / d + (g < b ? 6 : 0)) / 6; break;
+                        case g: h = ((b - r) / d + 2) / 6; break;
+                        case b: h = ((r - g) / d + 4) / 6; break;
+                    }
+                }
+                return [Math.round(h * 360), Math.round(s * 100), Math.round(l * 100)];
+            }
+
+            function hexToOklch(hex) {
+                var c = hexToRgb(hex);
+                function toLinear(v) { v /= 255; return v <= 0.04045 ? v / 12.92 : Math.pow((v + 0.055) / 1.055, 2.4); }
+                var lr = toLinear(c[0]), lg = toLinear(c[1]), lb = toLinear(c[2]);
+                var l = Math.cbrt(0.4122214708 * lr + 0.5363325363 * lg + 0.0514459929 * lb);
+                var m = Math.cbrt(0.2119034982 * lr + 0.6806995451 * lg + 0.1073969566 * lb);
+                var s = Math.cbrt(0.0883024619 * lr + 0.2817188376 * lg + 0.6299787005 * lb);
+                var L = 0.2104542553 * l + 0.7936177850 * m - 0.0040720468 * s;
+                var a = 1.9779984951 * l - 2.4285922050 * m + 0.4505937099 * s;
+                var bv = 0.0259040371 * l + 0.7827717662 * m - 0.8086757660 * s;
+                var C = Math.sqrt(a * a + bv * bv);
+                var H = Math.atan2(bv, a) * 180 / Math.PI;
+                if (H < 0) H += 360;
+                return [Math.round(L * 100) / 100, Math.round(C * 1000) / 1000, Math.round(H * 10) / 10];
+            }
+
+            function formatColor(hex) {
+                if (currentFormat === 'hex') return hex;
+                var rgb = hexToRgb(hex);
+                if (currentFormat === 'rgb') return 'rgb(' + rgb[0] + ', ' + rgb[1] + ', ' + rgb[2] + ')';
+                if (currentFormat === 'hsl') {
+                    var hsl = rgbToHsl(rgb[0], rgb[1], rgb[2]);
+                    return 'hsl(' + hsl[0] + ', ' + hsl[1] + '%, ' + hsl[2] + '%)';
+                }
+                if (currentFormat === 'oklch') {
+                    var ok = hexToOklch(hex);
+                    return 'oklch(' + ok[0] + ' ' + ok[1] + ' ' + ok[2] + ')';
+                }
+                return hex;
+            }
+
+            function setFormat(fmt) {
+                currentFormat = fmt;
+                document.querySelectorAll('.format-btn').forEach(function(b) {
+                    b.classList.toggle('active', b.textContent === fmt.toUpperCase());
+                });
+                updateSwatches();
+            }
+
+            function updateSwatches() {
+                document.querySelectorAll('.swatch-hex').forEach(function(el) {
+                    var hex = el.getAttribute('data-hex');
+                    var hexes = el.getAttribute('data-hexes');
+                    if (hex) {
+                        el.textContent = formatColor(hex);
+                    } else if (hexes) {
+                        el.textContent = hexes.split(',').map(function(h) {
+                            return formatColor(h.trim());
+                        }).join(' · ');
+                    }
+                });
+            }
+
+            /* ---- Copy color to clipboard ---- */
+            function copyColor(el) {
+                var text = el.textContent;
+                navigator.clipboard.writeText(text);
+                el.style.position = 'relative';
+                var badge = document.createElement('span');
+                badge.textContent = 'Copied!';
+                badge.style.cssText = 'position:absolute;inset:0;display:flex;align-items:center;background:var(--surface);color:var(--accent-500);font-size:inherit;font-family:inherit;letter-spacing:inherit;';
+                el.appendChild(badge);
+                setTimeout(function() { badge.remove(); }, 1200);
+            }
+
+            /* ---- Init ---- */
+            // Add data-hex attributes and click handlers to all swatch-hex elements
+            document.querySelectorAll('.swatch-hex').forEach(function(el) {
+                var text = el.textContent.trim();
+                // Multi-value status colors (e.g. "#E66260 · #F3A8A7 · #FCEAEA")
+                if (text.indexOf(' · ') !== -1) {
+                    var hexes = text.split(' · ').map(function(h) { return h.trim(); });
+                    el.setAttribute('data-hexes', hexes.join(','));
+                } else if (text.indexOf('#') === 0) {
+                    el.setAttribute('data-hex', text);
+                }
+                el.addEventListener('click', function() { copyColor(el); });
+            });
+
+            /* Mobile Preview */
+            function toggleMobile() {
+                var existing = document.querySelector('.mobile-preview-backdrop');
+                if (existing) { existing.classList.toggle('open'); return; }
+                var backdrop = document.createElement('div');
+                backdrop.className = 'mobile-preview-backdrop open';
+                backdrop.onclick = function(e) { if (e.target === backdrop) backdrop.classList.remove('open'); };
+                var device = document.createElement('div');
+                device.className = 'mobile-preview-device';
+                var notch = document.createElement('div');
+                notch.className = 'mobile-preview-notch';
+                var screen = document.createElement('div');
+                screen.className = 'mobile-preview-screen';
+                var iframe = document.createElement('iframe');
+                iframe.src = window.location.href;
+                var close = document.createElement('button');
+                close.className = 'mobile-preview-close';
+                close.innerHTML = '&times;';
+                close.onclick = function() { backdrop.classList.remove('open'); };
+                var label = document.createElement('div');
+                label.className = 'mobile-preview-label';
+                label.textContent = '390 × 844 — iPhone 14 Pro';
+                screen.appendChild(iframe);
+                device.appendChild(notch);
+                device.appendChild(screen);
+                device.appendChild(close);
+                device.appendChild(label);
+                backdrop.appendChild(device);
+                document.body.appendChild(backdrop);
+            }
+
+            updateToggleLabel();
+            updateAccentDots();
         </script>
     </body>
 </html>

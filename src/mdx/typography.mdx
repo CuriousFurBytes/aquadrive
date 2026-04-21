@@ -1,0 +1,193 @@
+---
+title: Typography
+description: Type scale, font weights, and text styles for AquaDrive.
+group: Typography
+slug: typography
+---
+
+export const componentCSS = `
+.type-specimen { margin-bottom: 8px; }
+.type-meta {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--text-muted);
+    margin-bottom: 4px;
+    letter-spacing: 0.06em;
+}
+mark {
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-style: normal;
+}
+mark.mark-yellow { background: var(--yellow-tint); color: var(--yellow-main); }
+mark.mark-green  { background: var(--green-tint); color: var(--green-main); }
+mark.mark-blue   { background: var(--accent-50); color: var(--accent-500); }
+mark.mark-rose   { background: var(--rose-50); color: var(--rose-500); }
+abbr { text-decoration: underline dotted; cursor: help; }
+blockquote {
+    border-left: 3px solid var(--accent-500);
+    background: var(--accent-50);
+    padding: 12px 20px;
+    border-radius: 0 8px 8px 0;
+    color: var(--text);
+    font-style: italic;
+    margin: 0;
+}
+blockquote cite { display: block; font-style: normal; font-size: var(--text-caption); color: var(--text-muted); margin-top: 8px; }
+`;
+
+export const sections = [
+  {
+    label: 'Headings',
+    demo: `<div>
+  <div class="type-meta">Display / H1 — 42px / 800 / Monaspace Krypton</div>
+  <h1 style="margin:0 0 16px">The quick brown fox</h1>
+  <div class="type-meta">H2 — 28px / 700</div>
+  <h2 style="margin:0 0 12px">Jumps over the lazy dog</h2>
+  <div class="type-meta">H3 — 20px / 700</div>
+  <h3 style="margin:0 0 12px">Design systems for everyone</h3>
+  <div class="type-meta">H4 — 15px / 700</div>
+  <h4 style="margin:0">AquaDrive component library</h4>
+</div>`,
+    tabs: [
+      {
+        label: 'HTML', lang: 'html', code: `<h1>Display heading</h1>
+<h2>Section heading</h2>
+<h3>Subsection heading</h3>
+<h4>Card title</h4>`,
+      },
+      {
+        label: 'CSS', lang: 'css', code: `h1 {
+    font-family: var(--font-display);
+    font-size: var(--text-display); /* 42px */
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    color: var(--text);
+}
+h2 {
+    font-family: var(--font-display);
+    font-size: var(--text-h2); /* 28px */
+    font-weight: 700;
+    letter-spacing: -0.01em;
+}
+h3 { font-size: var(--text-h3); font-weight: 700; }
+h4 { font-size: var(--text-h4); font-weight: 700; }`,
+      },
+    ],
+  },
+  {
+    label: 'Body & Paragraph',
+    demo: `<p style="font-family:var(--font-body);font-size:14px;line-height:1.7;color:var(--text);max-width:600px;margin:0">
+  AquaDrive is a design system built for modern web applications. It uses a warm neutral palette with four accent colors — blue, purple, cyan, and rosé — and supports both light and dark themes seamlessly.
+</p>
+<p class="subtitle" style="margin-top:12px">Subtitle text uses muted color at body size for secondary content and descriptions.</p>`,
+    tabs: [
+      {
+        label: 'HTML', lang: 'html', code: `<p>
+  AquaDrive is a design system built for modern web applications.
+</p>
+<p class="subtitle">Secondary description text.</p>`,
+      },
+      {
+        label: 'CSS', lang: 'css', code: `body {
+    font-family: var(--font-body);
+    font-size: var(--text-body); /* 14px */
+    line-height: 1.7;
+    color: var(--text);
+}
+.subtitle {
+    font-size: var(--text-body);
+    color: var(--text-muted);
+    line-height: 1.6;
+}`,
+      },
+    ],
+  },
+  {
+    label: 'Text Styles',
+    demo: `<div style="display:flex;flex-direction:column;gap:10px;font-size:14px">
+  <p style="margin:0"><strong>Bold text</strong> for emphasis on important information.</p>
+  <p style="margin:0"><em>Italic text</em> for subtle emphasis or titles.</p>
+  <p style="margin:0"><del>Strikethrough text</del> for removed or deprecated content.</p>
+  <p style="margin:0"><mark class="mark-yellow">Yellow highlight</mark> <mark class="mark-green">Green highlight</mark> <mark class="mark-blue">Blue highlight</mark> <mark class="mark-rose">Rose highlight</mark></p>
+  <p style="margin:0"><abbr title="Application Programming Interface">API</abbr> — abbreviation with tooltip on hover.</p>
+</div>`,
+    tabs: [
+      {
+        label: 'HTML', lang: 'html', code: `<strong>Bold text</strong>
+<em>Italic text</em>
+<del>Strikethrough text</del>
+
+<mark class="mark-yellow">Yellow highlight</mark>
+<mark class="mark-green">Green highlight</mark>
+<mark class="mark-blue">Blue highlight</mark>
+
+<abbr title="Application Programming Interface">API</abbr>`,
+      },
+      {
+        label: 'CSS', lang: 'css', code: `mark {
+    padding: 2px 6px;
+    border-radius: 4px;
+}
+mark.mark-yellow { background: var(--yellow-tint); color: var(--yellow-main); }
+mark.mark-green  { background: var(--green-tint); color: var(--green-main); }
+mark.mark-blue   { background: var(--accent-50); color: var(--accent-500); }
+
+abbr { text-decoration: underline dotted; cursor: help; }`,
+      },
+    ],
+  },
+  {
+    label: 'Links',
+    demo: `<p style="font-size:14px;line-height:1.8;color:var(--text)">
+  Visit the <a href="#" style="color:var(--accent-500);text-decoration:none;border-bottom:0.2ch solid var(--accent-500);padding-bottom:0.1rem">AquaDrive documentation</a> to get started. Also check out the <a href="#" style="color:var(--accent-500);text-decoration:none;border-bottom:0.2ch solid var(--accent-500);padding-bottom:0.1rem">component library</a> for interactive examples.
+</p>`,
+    tabs: [
+      {
+        label: 'HTML', lang: 'html', code: `<a href="/docs" class="aqua-link">AquaDrive documentation</a>`,
+      },
+      {
+        label: 'CSS', lang: 'css', code: `.aqua-link, a {
+    color: var(--accent-500);
+    text-decoration: none;
+    border-bottom: 0.2ch solid var(--accent-500);
+    padding-bottom: 0.1rem;
+    transition: opacity 0.15s;
+}
+a:hover { opacity: 0.75; }`,
+      },
+    ],
+  },
+  {
+    label: 'Blockquote',
+    demo: `<blockquote>
+  Great design is not just what it looks like and feels like. Great design is how it works.
+  <cite>— Steve Jobs</cite>
+</blockquote>`,
+    tabs: [
+      {
+        label: 'HTML', lang: 'html', code: `<blockquote>
+  Great design is not just what it looks like and feels like.
+  <cite>— Steve Jobs</cite>
+</blockquote>`,
+      },
+      {
+        label: 'CSS', lang: 'css', code: `blockquote {
+    border-left: 3px solid var(--accent-500);
+    background: var(--accent-50);
+    padding: 12px 20px;
+    border-radius: 0 8px 8px 0;
+    font-style: italic;
+    margin: 0;
+}
+blockquote cite {
+    display: block;
+    font-style: normal;
+    font-size: var(--text-caption);
+    color: var(--text-muted);
+    margin-top: 8px;
+}`,
+      },
+    ],
+  },
+];

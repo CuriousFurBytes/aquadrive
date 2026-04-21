@@ -1,0 +1,96 @@
+---
+title: Toast
+description: Brief non-intrusive messages for feedback and confirmations.
+group: Feedback & Status
+slug: toast
+---
+
+export const componentCSS = `
+.toast-demo {
+    position: relative;
+    height: 100px;
+    border: 1px dashed var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+    background: var(--surface);
+}
+.toast {
+    position: absolute;
+    bottom: 16px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 20px;
+    background: var(--text);
+    color: var(--bg);
+    border-radius: 8px;
+    font-size: var(--text-small);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.18);
+    white-space: nowrap;
+}
+.toast-icon { font-size: 16px; line-height: 1; }
+.toast-close { background: none; border: none; color: var(--bg); opacity: 0.6; cursor: pointer; font-size: 14px; padding: 0 2px; line-height: 1; }
+.toast-close:hover { opacity: 1; }
+.toast--success { background: var(--green-main); color: #fff; }
+.toast--error { background: var(--red-main); color: #fff; }
+`;
+
+export const sections = [
+  {
+    label: 'Toast',
+    demo: `<div style="display:flex;flex-direction:column;gap:16px">
+  <div class="toast-demo">
+    <div class="toast">
+      <span class="toast-icon">&#10003;</span>
+      Changes saved successfully.
+      <button class="toast-close">&#10005;</button>
+    </div>
+  </div>
+  <div class="toast-demo">
+    <div class="toast toast--success">
+      <span class="toast-icon">&#128176;</span>
+      Payment processed!
+      <button class="toast-close">&#10005;</button>
+    </div>
+  </div>
+  <div class="toast-demo">
+    <div class="toast toast--error">
+      <span class="toast-icon">&#10005;</span>
+      Something went wrong.
+      <button class="toast-close">&#10005;</button>
+    </div>
+  </div>
+</div>`,
+    tabs: [
+      {
+        label: 'HTML', lang: 'html', code: `<div class="toast">
+  <span class="toast-icon">&#10003;</span>
+  Changes saved successfully.
+  <button class="toast-close">&#10005;</button>
+</div>
+
+<!-- Variants -->
+<div class="toast toast--success">...</div>
+<div class="toast toast--error">...</div>`,
+      },
+      {
+        label: 'CSS', lang: 'css', code: `.toast {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 20px;
+    background: var(--text);
+    color: var(--bg);
+    border-radius: 8px;
+    font-size: var(--text-small);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.18);
+    white-space: nowrap;
+}
+.toast--success { background: var(--green-main); color: #fff; }
+.toast--error { background: var(--red-main); color: #fff; }`,
+      },
+    ],
+  },
+];

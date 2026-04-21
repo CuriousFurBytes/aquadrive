@@ -1,0 +1,736 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>AquaDrive — Data Display</title>
+        <link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml" />
+        <script>(function(){var t=localStorage.getItem('aquadrive-theme');var a=localStorage.getItem('aquadrive-accent')||'blue';if(!t)t=window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light';if(t==='dark'){document.documentElement.setAttribute('data-theme','dark');}else{document.documentElement.removeAttribute('data-theme');}document.documentElement.setAttribute('data-accent',a);})()</script>
+        <link rel="stylesheet" href="../assets/css/style.css" />
+        <style>
+            /* ---- Table ---- */
+            .demo-table {
+                width: 100%;
+                border-collapse: collapse;
+                font-family: var(--font-body);
+                font-size: var(--text-body);
+                background: var(--surface);
+            }
+            .demo-table thead th {
+                text-align: left;
+                padding: 10px 14px;
+                font-family: var(--font-display);
+                font-size: var(--text-small);
+                letter-spacing: 0.06em;
+                text-transform: uppercase;
+                color: var(--text-muted);
+                border-bottom: 1px solid var(--border);
+                background: var(--surface);
+            }
+            .demo-table tbody td {
+                padding: 10px 14px;
+                border-bottom: 1px solid var(--border);
+                color: var(--text);
+            }
+            .demo-table tbody tr:nth-child(even) {
+                background: transparent;
+            }
+            .demo-table tbody tr:hover {
+                background: var(--accent-50);
+            }
+            .demo-table .status {
+                display: inline-block;
+                padding: 2px 10px;
+                border-radius: 100px;
+                font-size: var(--text-caption);
+                font-weight: 600;
+            }
+            .demo-table .status--paid { background: var(--green-tint); color: var(--green-main); }
+            .demo-table .status--pending { background: var(--yellow-tint); color: #8B6914; }
+            .demo-table .status--overdue { background: var(--red-tint); color: var(--red-main); }
+            .table-responsive {
+                overflow-x: auto;
+                border: 1px solid var(--border);
+                border-radius: 8px;
+            }
+
+            /* ---- List Items ---- */
+            .list-item {
+                display: flex;
+                align-items: center;
+                gap: 14px;
+                padding: 14px 16px;
+                border: 1px solid var(--border);
+                border-radius: 8px;
+                background: var(--surface);
+                margin-bottom: 8px;
+                transition: background 0.15s;
+            }
+            .list-item:hover {
+                background: var(--accent-50);
+            }
+            .list-item-avatar {
+                width: 38px;
+                height: 38px;
+                border-radius: 50%;
+                background: var(--accent-200);
+                color: var(--accent-600);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-family: var(--font-display);
+                font-size: var(--text-small);
+                font-weight: 700;
+                flex-shrink: 0;
+            }
+            .list-item-body {
+                flex: 1;
+                min-width: 0;
+            }
+            .list-item-title {
+                font-family: var(--font-display);
+                font-size: var(--text-body);
+                font-weight: 600;
+                color: var(--text);
+            }
+            .list-item-desc {
+                font-size: var(--text-small);
+                color: var(--text-muted);
+                margin-top: 2px;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+            .list-item-action {
+                font-family: var(--font-mono);
+                font-size: var(--text-caption);
+                padding: 4px 12px;
+                border-radius: 100px;
+                border: 1px solid var(--border);
+                background: var(--surface);
+                color: var(--text-muted);
+                cursor: pointer;
+                transition: all 0.15s;
+                flex-shrink: 0;
+            }
+            .list-item-action:hover {
+                background: var(--accent-500);
+                color: var(--surface);
+                border-color: var(--accent-500);
+            }
+
+            /* ---- Timeline ---- */
+            .timeline {
+                position: relative;
+                padding-left: 28px;
+            }
+            .timeline::before {
+                content: '';
+                position: absolute;
+                left: 7px;
+                top: 4px;
+                bottom: 4px;
+                width: 2px;
+                background: var(--border);
+            }
+            .timeline-item {
+                position: relative;
+                padding-bottom: 28px;
+            }
+            .timeline-item:last-child {
+                padding-bottom: 0;
+            }
+            .timeline-dot {
+                position: absolute;
+                left: -28px;
+                top: 4px;
+                width: 16px;
+                height: 16px;
+                border-radius: 50%;
+                background: var(--accent-500);
+                border: 3px solid var(--bg);
+                box-shadow: 0 0 0 2px var(--accent-500);
+            }
+            .timeline-title {
+                font-family: var(--font-display);
+                font-size: var(--text-body);
+                font-weight: 600;
+                color: var(--text);
+            }
+            .timeline-time {
+                font-family: var(--font-mono);
+                font-size: var(--text-caption);
+                color: var(--text-muted);
+                margin-top: 2px;
+            }
+            .timeline-desc {
+                font-size: var(--text-small);
+                color: var(--text-muted);
+                margin-top: 4px;
+            }
+
+            /* ---- Pagination ---- */
+            .pagination {
+                display: flex;
+                gap: 4px;
+                align-items: center;
+            }
+            .page-btn {
+                font-family: var(--font-mono);
+                font-size: var(--text-small);
+                min-width: 34px;
+                height: 34px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border: 1px solid var(--border);
+                border-radius: 6px;
+                background: var(--surface);
+                color: var(--text-muted);
+                cursor: pointer;
+                transition: all 0.15s;
+                padding: 0 8px;
+            }
+            .page-btn:hover {
+                background: var(--accent-50);
+                border-color: var(--accent-200);
+                color: var(--text);
+            }
+            .page-btn.active {
+                background: var(--accent-500);
+                border-color: var(--accent-500);
+                color: #fff;
+            }
+            .page-btn:disabled {
+                opacity: 0.4;
+                cursor: not-allowed;
+            }
+
+            /* ---- Shared Demo ---- */
+            .demo-box {
+                background: var(--bg);
+                border: 1px solid var(--border);
+                border-radius: 10px;
+                padding: 28px;
+                margin-bottom: 16px;
+            }
+        </style>
+        <script src="../assets/js/highlight.js" defer></script>
+    </head>
+    <body>
+        <nav class="aqua-navbar">
+            <a href="../index.html" class="aqua-navbar-brand"><svg viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M14 3C14 3 5 10 5 17C5 21.4183 9.02944 25 14 25C18.9706 25 23 21.4183 23 17C23 10 14 3 14 3Z" fill="var(--accent-500)"/><path d="M14 9C14 9 9 13.5 9 17C9 19.7614 11.2386 22 14 22C16.7614 22 19 19.7614 19 17C19 13.5 14 9 14 9Z" fill="var(--bg)" opacity="0.7"/></svg>Aqua<span>Drive</span></a>
+            <button class="aqua-navbar-toggle" onclick="toggleNav()" aria-label="Toggle menu"><span></span></button>
+            <div class="aqua-navbar-collapse">
+            <div class="aqua-navbar-links">
+                <a href="../index.html">Colors</a>
+                <a href="../typography.html">Typography</a>
+                <a href="../elements.html" class="active">Elements</a>
+                <a href="../ports.html">Ports</a>
+            </div>
+            <div class="aqua-navbar-actions">
+                <div class="aqua-navbar-settings">
+                    <button class="aqua-navbar-settings-btn" onclick="toggleSettings(event)">
+                        <svg viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="3" stroke="currentColor" stroke-width="1.5"/><path d="M8 1v2M8 13v2M1 8h2M13 8h2M3.05 3.05l1.41 1.41M11.54 11.54l1.41 1.41M3.05 12.95l1.41-1.41M11.54 4.46l1.41-1.41" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+                        Settings
+                    </button>
+                    <div class="aqua-navbar-dropdown" id="navSettingsDropdown">
+                        <div class="aqua-navbar-dropdown-label">Accent Color</div>
+                        <div class="aqua-navbar-dropdown-row">
+                            <button class="accent-dot" data-color="blue" onclick="setAccent('blue')" aria-label="Blue accent"></button>
+                            <button class="accent-dot" data-color="purple" onclick="setAccent('purple')" aria-label="Purple accent"></button>
+                            <button class="accent-dot" data-color="cyan" onclick="setAccent('cyan')" aria-label="Cyan accent"></button>
+                            <button class="accent-dot" data-color="rose" onclick="setAccent('rose')" aria-label="Rose accent"></button>
+                        </div>
+                        <div class="aqua-navbar-dropdown-divider"></div>
+                        <button class="aqua-navbar-dropdown-item" onclick="toggleTheme()">
+                            <svg viewBox="0 0 16 16" fill="none"><path d="M8 1a7 7 0 1 0 0 14A7 7 0 0 0 8 1Z" stroke="currentColor" stroke-width="1.5"/><path d="M8 3v10a5 5 0 0 0 0-10Z" fill="currentColor"/></svg>
+                            <span class="theme-toggle-label">Toggle Theme</span>
+                        </button>
+                        <button class="aqua-navbar-dropdown-item" onclick="toggleMobile()">
+                            <svg viewBox="0 0 16 16" fill="none"><rect x="4" y="1" width="8" height="14" rx="1.5" stroke="currentColor" stroke-width="1.5"/><line x1="6.5" y1="12.5" x2="9.5" y2="12.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+                            Mobile Preview
+                        </button>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </nav>
+
+        <nav class="breadcrumb">
+            <a href="../index.html">AquaDrive</a>
+            <span class="sep">/</span>
+            <a href="../elements.html">Elements</a>
+            <span class="sep">/</span>
+            <span class="current">Data Display</span>
+        </nav>
+
+        <header>
+            <div class="brand-tag">AquaDrive &middot; Design System</div>
+            <h1>Data<span> Display</span></h1>
+            <p class="subtitle">Components for presenting structured data.</p>
+        </header>
+
+        <!-- ============ TABLE ============ -->
+        <section class="section">
+            <div class="section-label">Table</div>
+            <div class="demo-box">
+                <div class="table-responsive">
+                    <table class="demo-table">
+                        <thead>
+                            <tr>
+                                <th>Invoice</th>
+                                <th>Date</th>
+                                <th>Client</th>
+                                <th>Amount</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>#INV-0041</td>
+                                <td>2026-03-12</td>
+                                <td>Northwave Labs</td>
+                                <td>$2,400.00</td>
+                                <td><span class="status status--paid">Paid</span></td>
+                            </tr>
+                            <tr>
+                                <td>#INV-0042</td>
+                                <td>2026-03-14</td>
+                                <td>Coral Systems</td>
+                                <td>$1,180.00</td>
+                                <td><span class="status status--pending">Pending</span></td>
+                            </tr>
+                            <tr>
+                                <td>#INV-0043</td>
+                                <td>2026-03-15</td>
+                                <td>Tidemark Inc.</td>
+                                <td>$3,750.00</td>
+                                <td><span class="status status--paid">Paid</span></td>
+                            </tr>
+                            <tr>
+                                <td>#INV-0044</td>
+                                <td>2026-03-17</td>
+                                <td>Ebb &amp; Flow Co.</td>
+                                <td>$890.00</td>
+                                <td><span class="status status--overdue">Overdue</span></td>
+                            </tr>
+                            <tr>
+                                <td>#INV-0045</td>
+                                <td>2026-03-19</td>
+                                <td>Seafoam Digital</td>
+                                <td>$5,200.00</td>
+                                <td><span class="status status--pending">Pending</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="code-wrapper">
+                <div class="code-tabs">
+                    <button class="code-tab active" onclick="switchTab(this, 'html')">HTML</button>
+                    <button class="code-tab" onclick="switchTab(this, 'css')">CSS</button>
+                </div>
+                <div class="code-panel active" data-lang="html">
+                    <button class="code-copy" onclick="copyCode(this)">Copy</button>
+                    <pre>&lt;div class="table-responsive"&gt;
+  &lt;table class="demo-table"&gt;
+    &lt;thead&gt;
+      &lt;tr&gt;
+        &lt;th&gt;Invoice&lt;/th&gt;
+        &lt;th&gt;Date&lt;/th&gt;
+        &lt;th&gt;Client&lt;/th&gt;
+        &lt;th&gt;Amount&lt;/th&gt;
+        &lt;th&gt;Status&lt;/th&gt;
+      &lt;/tr&gt;
+    &lt;/thead&gt;
+    &lt;tbody&gt;
+      &lt;tr&gt;
+        &lt;td&gt;#INV-0041&lt;/td&gt;
+        &lt;td&gt;2026-03-12&lt;/td&gt;
+        &lt;td&gt;Northwave Labs&lt;/td&gt;
+        &lt;td&gt;$2,400.00&lt;/td&gt;
+        &lt;td&gt;&lt;span class="status status--paid"&gt;Paid&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;!-- more rows... --&gt;
+    &lt;/tbody&gt;
+  &lt;/table&gt;
+&lt;/div&gt;</pre>
+                </div>
+                <div class="code-panel" data-lang="css">
+                    <button class="code-copy" onclick="copyCode(this)">Copy</button>
+                    <pre>.demo-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: var(--font-body);
+  font-size: var(--text-body);
+  background: var(--surface);
+}
+.demo-table thead th {
+  text-align: left;
+  padding: 10px 14px;
+  font-family: var(--font-display);
+  font-size: var(--text-small);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  border-bottom: 1px solid var(--border);
+  background: var(--surface);
+}
+.demo-table tbody td {
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--border);
+  color: var(--text);
+}
+.demo-table tbody tr:nth-child(even) {
+  background: transparent;
+}
+.demo-table tbody tr:hover {
+  background: var(--accent-50);
+}
+.status {
+  display: inline-block;
+  padding: 2px 10px;
+  border-radius: 100px;
+  font-size: var(--text-caption);
+  font-weight: 600;
+}
+.status--paid   { background: var(--green-tint); color: var(--green-main); }
+.status--pending { background: var(--yellow-tint); color: #8B6914; }
+.status--overdue { background: var(--red-tint); color: var(--red-main); }
+.table-responsive {
+  overflow-x: auto;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+}</pre>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ LIST ITEMS ============ -->
+        <section class="section">
+            <div class="section-label">List Items</div>
+            <div class="demo-box">
+                <div class="list-item">
+                    <div class="list-item-avatar">NL</div>
+                    <div class="list-item-body">
+                        <div class="list-item-title">Deploy to production</div>
+                        <div class="list-item-desc">Pipeline completed successfully &mdash; 3 minutes ago</div>
+                    </div>
+                    <button class="list-item-action">View</button>
+                </div>
+                <div class="list-item">
+                    <div class="list-item-avatar">CS</div>
+                    <div class="list-item-body">
+                        <div class="list-item-title">New comment on issue #128</div>
+                        <div class="list-item-desc">Coral Systems left feedback on the typography update</div>
+                    </div>
+                    <button class="list-item-action">View</button>
+                </div>
+                <div class="list-item">
+                    <div class="list-item-avatar">TM</div>
+                    <div class="list-item-body">
+                        <div class="list-item-title">Invoice #INV-0043 paid</div>
+                        <div class="list-item-desc">Payment of $3,750.00 received from Tidemark Inc.</div>
+                    </div>
+                    <button class="list-item-action">Details</button>
+                </div>
+                <div class="list-item">
+                    <div class="list-item-avatar">EF</div>
+                    <div class="list-item-body">
+                        <div class="list-item-title">Access request pending</div>
+                        <div class="list-item-desc">Ebb &amp; Flow Co. requested access to the staging environment</div>
+                    </div>
+                    <button class="list-item-action">Approve</button>
+                </div>
+            </div>
+            <div class="code-wrapper">
+                <div class="code-tabs">
+                    <button class="code-tab active" onclick="switchTab(this, 'html')">HTML</button>
+                    <button class="code-tab" onclick="switchTab(this, 'css')">CSS</button>
+                </div>
+                <div class="code-panel active" data-lang="html">
+                    <button class="code-copy" onclick="copyCode(this)">Copy</button>
+                    <pre>&lt;div class="list-item"&gt;
+  &lt;div class="list-item-avatar"&gt;NL&lt;/div&gt;
+  &lt;div class="list-item-body"&gt;
+    &lt;div class="list-item-title"&gt;Deploy to production&lt;/div&gt;
+    &lt;div class="list-item-desc"&gt;Pipeline completed successfully &amp;mdash; 3 minutes ago&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;button class="list-item-action"&gt;View&lt;/button&gt;
+&lt;/div&gt;</pre>
+                </div>
+                <div class="code-panel" data-lang="css">
+                    <button class="code-copy" onclick="copyCode(this)">Copy</button>
+                    <pre>.list-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 16px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--surface);
+  margin-bottom: 8px;
+  transition: background 0.15s;
+}
+.list-item:hover { background: var(--accent-50); }
+.list-item-avatar {
+  width: 38px; height: 38px;
+  border-radius: 50%;
+  background: var(--accent-200);
+  color: var(--accent-600);
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-display);
+  font-size: var(--text-small);
+  font-weight: 700;
+}
+.list-item-body { flex: 1; min-width: 0; }
+.list-item-title {
+  font-family: var(--font-display);
+  font-size: var(--text-body);
+  font-weight: 600;
+}
+.list-item-desc {
+  font-size: var(--text-small);
+  color: var(--text-muted);
+  margin-top: 2px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.list-item-action {
+  font-family: var(--font-mono);
+  font-size: var(--text-caption);
+  padding: 4px 12px;
+  border-radius: 100px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text-muted);
+  cursor: pointer;
+}
+.list-item-action:hover {
+  background: var(--accent-500);
+  color: var(--surface);
+  border-color: var(--accent-500);
+}</pre>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ TIMELINE ============ -->
+        <section class="section">
+            <div class="section-label">Timeline</div>
+            <div class="demo-box">
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-title">Project kickoff</div>
+                        <div class="timeline-time">March 1, 2026</div>
+                        <div class="timeline-desc">Initial requirements gathered and team assembled.</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-title">Design system created</div>
+                        <div class="timeline-time">March 8, 2026</div>
+                        <div class="timeline-desc">Color tokens, typography, and base components defined.</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-title">Component library shipped</div>
+                        <div class="timeline-time">March 15, 2026</div>
+                        <div class="timeline-desc">All core UI elements documented and published.</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-title">Beta release</div>
+                        <div class="timeline-time">March 20, 2026</div>
+                        <div class="timeline-desc">First public preview available for early adopters.</div>
+                    </div>
+                </div>
+            </div>
+            <div class="code-wrapper">
+                <div class="code-tabs">
+                    <button class="code-tab active" onclick="switchTab(this, 'html')">HTML</button>
+                    <button class="code-tab" onclick="switchTab(this, 'css')">CSS</button>
+                </div>
+                <div class="code-panel active" data-lang="html">
+                    <button class="code-copy" onclick="copyCode(this)">Copy</button>
+                    <pre>&lt;div class="timeline"&gt;
+  &lt;div class="timeline-item"&gt;
+    &lt;div class="timeline-dot"&gt;&lt;/div&gt;
+    &lt;div class="timeline-title"&gt;Project kickoff&lt;/div&gt;
+    &lt;div class="timeline-time"&gt;March 1, 2026&lt;/div&gt;
+    &lt;div class="timeline-desc"&gt;Initial requirements gathered.&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="timeline-item"&gt;
+    &lt;div class="timeline-dot"&gt;&lt;/div&gt;
+    &lt;div class="timeline-title"&gt;Design system created&lt;/div&gt;
+    &lt;div class="timeline-time"&gt;March 8, 2026&lt;/div&gt;
+    &lt;div class="timeline-desc"&gt;Tokens and base components defined.&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;!-- more items... --&gt;
+&lt;/div&gt;</pre>
+                </div>
+                <div class="code-panel" data-lang="css">
+                    <button class="code-copy" onclick="copyCode(this)">Copy</button>
+                    <pre>.timeline {
+  position: relative;
+  padding-left: 28px;
+}
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 7px;
+  top: 4px;
+  bottom: 4px;
+  width: 2px;
+  background: var(--border);
+}
+.timeline-item {
+  position: relative;
+  padding-bottom: 28px;
+}
+.timeline-item:last-child { padding-bottom: 0; }
+.timeline-dot {
+  position: absolute;
+  left: -28px;
+  top: 4px;
+  width: 16px; height: 16px;
+  border-radius: 50%;
+  background: var(--accent-500);
+  border: 3px solid var(--bg);
+  box-shadow: 0 0 0 2px var(--accent-500);
+}
+.timeline-title {
+  font-family: var(--font-display);
+  font-weight: 600;
+}
+.timeline-time {
+  font-family: var(--font-mono);
+  font-size: var(--text-caption);
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+.timeline-desc {
+  font-size: var(--text-small);
+  color: var(--text-muted);
+  margin-top: 4px;
+}</pre>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ PAGINATION ============ -->
+        <section class="section">
+            <div class="section-label">Pagination</div>
+            <div class="demo-box">
+                <div class="pagination">
+                    <button class="page-btn" disabled>&larr; Prev</button>
+                    <button class="page-btn">1</button>
+                    <button class="page-btn">2</button>
+                    <button class="page-btn active">3</button>
+                    <button class="page-btn">4</button>
+                    <button class="page-btn">5</button>
+                    <button class="page-btn">Next &rarr;</button>
+                </div>
+            </div>
+            <div class="code-wrapper">
+                <div class="code-tabs">
+                    <button class="code-tab active" onclick="switchTab(this, 'html')">HTML</button>
+                    <button class="code-tab" onclick="switchTab(this, 'css')">CSS</button>
+                </div>
+                <div class="code-panel active" data-lang="html">
+                    <button class="code-copy" onclick="copyCode(this)">Copy</button>
+                    <pre>&lt;div class="pagination"&gt;
+  &lt;button class="page-btn" disabled&gt;&amp;larr; Prev&lt;/button&gt;
+  &lt;button class="page-btn"&gt;1&lt;/button&gt;
+  &lt;button class="page-btn"&gt;2&lt;/button&gt;
+  &lt;button class="page-btn active"&gt;3&lt;/button&gt;
+  &lt;button class="page-btn"&gt;4&lt;/button&gt;
+  &lt;button class="page-btn"&gt;5&lt;/button&gt;
+  &lt;button class="page-btn"&gt;Next &amp;rarr;&lt;/button&gt;
+&lt;/div&gt;</pre>
+                </div>
+                <div class="code-panel" data-lang="css">
+                    <button class="code-copy" onclick="copyCode(this)">Copy</button>
+                    <pre>.pagination {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+}
+.page-btn {
+  font-family: var(--font-mono);
+  font-size: var(--text-small);
+  min-width: 34px; height: 34px;
+  display: flex; align-items: center; justify-content: center;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--surface);
+  color: var(--text-muted);
+  cursor: pointer;
+  padding: 0 8px;
+  transition: all 0.15s;
+}
+.page-btn:hover {
+  background: var(--accent-50);
+  border-color: var(--accent-200);
+  color: var(--text);
+}
+.page-btn.active {
+  background: var(--accent-500);
+  border-color: var(--accent-500);
+  color: #fff;
+}
+.page-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}</pre>
+                </div>
+            </div>
+        </section>
+
+        <script>
+            function toggleTheme(){var d=document.documentElement.getAttribute('data-theme')==='dark';var n=d?'light':'dark';n==='dark'?document.documentElement.setAttribute('data-theme','dark'):document.documentElement.removeAttribute('data-theme');localStorage.setItem('aquadrive-theme',n);updateToggleLabel();}
+            function toggleSettings(e){if(e)e.stopPropagation();var dd=document.getElementById('navSettingsDropdown');dd.classList.toggle('open');}
+            document.addEventListener('click',function(e){var s=document.querySelector('.aqua-navbar-settings');if(s&&!s.contains(e.target)){document.getElementById('navSettingsDropdown').classList.remove('open');}});
+            function toggleNav(){document.querySelector('.aqua-navbar').classList.toggle('nav-open');}
+            function updateToggleLabel(){var b=document.querySelector('.theme-toggle');if(!b)return;b.textContent=document.documentElement.getAttribute('data-theme')==='dark'?'Light':'Dark';}
+            function setAccent(c){document.documentElement.setAttribute('data-accent',c);localStorage.setItem('aquadrive-accent',c);updateAccentDots();}
+            function updateAccentDots(){var c=document.documentElement.getAttribute('data-accent')||'blue';document.querySelectorAll('.accent-dot').forEach(function(d){d.classList.toggle('active',d.getAttribute('data-color')===c);});}
+            function switchTab(btn,lang){var w=btn.closest('.code-wrapper');w.querySelectorAll('.code-tab').forEach(function(t){t.classList.remove('active');});btn.classList.add('active');w.querySelectorAll('.code-panel').forEach(function(p){p.classList.toggle('active',p.getAttribute('data-lang')===lang);});}
+            function copyCode(btn){var pre=btn.parentElement.querySelector('pre');navigator.clipboard.writeText(pre.textContent).then(function(){btn.textContent='Copied!';setTimeout(function(){btn.textContent='Copy';},1500);});}
+            /* Mobile Preview */
+            function toggleMobile() {
+                var existing = document.querySelector('.mobile-preview-backdrop');
+                if (existing) { existing.classList.toggle('open'); return; }
+                var backdrop = document.createElement('div');
+                backdrop.className = 'mobile-preview-backdrop open';
+                backdrop.onclick = function(e) { if (e.target === backdrop) backdrop.classList.remove('open'); };
+                var device = document.createElement('div');
+                device.className = 'mobile-preview-device';
+                var notch = document.createElement('div');
+                notch.className = 'mobile-preview-notch';
+                var screen = document.createElement('div');
+                screen.className = 'mobile-preview-screen';
+                var iframe = document.createElement('iframe');
+                iframe.src = window.location.href;
+                var close = document.createElement('button');
+                close.className = 'mobile-preview-close';
+                close.innerHTML = '&times;';
+                close.onclick = function() { backdrop.classList.remove('open'); };
+                var label = document.createElement('div');
+                label.className = 'mobile-preview-label';
+                label.textContent = '390 × 844 — iPhone 14 Pro';
+                screen.appendChild(iframe);
+                device.appendChild(notch);
+                device.appendChild(screen);
+                device.appendChild(close);
+                device.appendChild(label);
+                backdrop.appendChild(device);
+                document.body.appendChild(backdrop);
+            }
+
+            updateToggleLabel();updateAccentDots();
+        </script>
+    </body>
+</html>

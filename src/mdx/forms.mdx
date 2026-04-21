@@ -1,0 +1,431 @@
+---
+title: Forms
+description: Form controls, inputs, and validation patterns.
+group: Forms
+slug: forms
+---
+
+export const componentCSS = `
+.aqua-label {
+    display: block;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 6px;
+}
+.aqua-input, .aqua-textarea, .aqua-select {
+    width: 100%;
+    font-family: var(--font-body);
+    font-size: var(--text-body);
+    color: var(--text);
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 10px 14px;
+    transition: border-color 0.15s, box-shadow 0.15s;
+    outline: none;
+    box-sizing: border-box;
+}
+.aqua-input:focus, .aqua-textarea:focus, .aqua-select:focus {
+    border-color: var(--accent-500);
+    box-shadow: 0 0 0 3px var(--accent-50);
+}
+.aqua-textarea { min-height: 100px; resize: vertical; }
+.aqua-select {
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath d='M2 4l4 4 4-4' stroke='%239A8E8E' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    padding-right: 36px;
+    cursor: pointer;
+}
+.aqua-toggle-wrapper { display: flex; align-items: center; gap: 10px; cursor: pointer; }
+.aqua-toggle { position: relative; display: inline-block; width: 44px; height: 24px; }
+.aqua-toggle input { opacity: 0; width: 0; height: 0; }
+.aqua-toggle-slider {
+    position: absolute;
+    inset: 0;
+    background: var(--border);
+    border-radius: 24px;
+    transition: background 0.2s;
+    cursor: pointer;
+}
+.aqua-toggle-slider::before {
+    content: '';
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    left: 3px;
+    top: 3px;
+    background: var(--surface);
+    border-radius: 50%;
+    transition: transform 0.2s;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.15);
+}
+.aqua-toggle input:checked + .aqua-toggle-slider { background: var(--accent-500); }
+.aqua-toggle input:checked + .aqua-toggle-slider::before { transform: translateX(20px); }
+.aqua-checkbox-wrapper { display: flex; align-items: flex-start; gap: 10px; cursor: pointer; }
+.aqua-checkbox {
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border: 1.5px solid var(--border);
+    border-radius: 5px;
+    background: var(--surface);
+    cursor: pointer;
+    flex-shrink: 0;
+    margin-top: 1px;
+    transition: all 0.15s;
+    position: relative;
+}
+.aqua-checkbox:checked { background: var(--accent-500); border-color: var(--accent-500); }
+.aqua-checkbox:checked::after { content: ''; position: absolute; left: 5px; top: 2px; width: 6px; height: 10px; border: 2px solid #fff; border-top: none; border-left: none; transform: rotate(45deg); }
+.field-group { margin-bottom: 16px; }
+.field-hint { font-size: var(--text-caption); color: var(--text-muted); margin-top: 5px; }
+.field-group.is-success .aqua-input { border-color: var(--green-main); box-shadow: 0 0 0 3px var(--green-tint); }
+.field-group.is-success .field-hint { color: var(--green-main); }
+.field-group.is-error .aqua-input { border-color: var(--red-main); box-shadow: 0 0 0 3px var(--red-tint); }
+.field-group.is-error .field-hint { color: var(--red-main); }
+.form-card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 24px; max-width: 420px; }
+.form-card-title { font-family: var(--font-display); font-size: var(--text-h3); font-weight: 700; color: var(--text); margin-bottom: 20px; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.form-actions { display: flex; gap: 10px; justify-content: flex-end; margin-top: 20px; }
+`;
+
+export const sections = [
+  {
+    label: 'Text Input',
+    demo: `<div style="max-width:360px">
+  <label class="aqua-label" for="demo-input">Label</label>
+  <input class="aqua-input" id="demo-input" type="text" placeholder="Placeholder text..." />
+</div>`,
+    tabs: [
+      {
+        label: 'HTML', lang: 'html', code: `<label class="aqua-label" for="my-input">Label</label>
+<input class="aqua-input" id="my-input" type="text" placeholder="Placeholder text..." />`,
+      },
+      {
+        label: 'CSS', lang: 'css', code: `.aqua-label {
+    display: block;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 6px;
+}
+.aqua-input {
+    width: 100%;
+    font-family: var(--font-body);
+    font-size: var(--text-body);
+    color: var(--text);
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 10px 14px;
+    transition: border-color 0.15s, box-shadow 0.15s;
+    outline: none;
+}
+.aqua-input:focus {
+    border-color: var(--accent-500);
+    box-shadow: 0 0 0 3px var(--accent-50);
+}`,
+      },
+    ],
+  },
+  {
+    label: 'Textarea',
+    demo: `<div style="max-width:360px">
+  <label class="aqua-label" for="demo-ta">Message</label>
+  <textarea class="aqua-textarea" id="demo-ta" placeholder="Write something..."></textarea>
+</div>`,
+    tabs: [
+      {
+        label: 'HTML', lang: 'html', code: `<label class="aqua-label" for="msg">Message</label>
+<textarea class="aqua-textarea" id="msg" placeholder="Write something..."></textarea>`,
+      },
+      {
+        label: 'CSS', lang: 'css', code: `.aqua-textarea {
+    width: 100%;
+    font-family: var(--font-body);
+    font-size: var(--text-body);
+    color: var(--text);
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 10px 14px;
+    min-height: 100px;
+    resize: vertical;
+    outline: none;
+    transition: border-color 0.15s, box-shadow 0.15s;
+}
+.aqua-textarea:focus {
+    border-color: var(--accent-500);
+    box-shadow: 0 0 0 3px var(--accent-50);
+}`,
+      },
+    ],
+  },
+  {
+    label: 'Toggle Switch',
+    demo: `<div style="display:flex;flex-direction:column;gap:14px">
+  <label class="aqua-toggle-wrapper">
+    <span class="aqua-toggle"><input type="checkbox" checked /><span class="aqua-toggle-slider"></span></span>
+    <span>Enabled</span>
+  </label>
+  <label class="aqua-toggle-wrapper">
+    <span class="aqua-toggle"><input type="checkbox" /><span class="aqua-toggle-slider"></span></span>
+    <span>Disabled</span>
+  </label>
+</div>`,
+    tabs: [
+      {
+        label: 'HTML', lang: 'html', code: `<label class="aqua-toggle-wrapper">
+  <span class="aqua-toggle">
+    <input type="checkbox" checked />
+    <span class="aqua-toggle-slider"></span>
+  </span>
+  <span>Enable notifications</span>
+</label>`,
+      },
+      {
+        label: 'CSS', lang: 'css', code: `.aqua-toggle { position: relative; display: inline-block; width: 44px; height: 24px; }
+.aqua-toggle input { opacity: 0; width: 0; height: 0; }
+.aqua-toggle-slider {
+    position: absolute;
+    inset: 0;
+    background: var(--border);
+    border-radius: 24px;
+    transition: background 0.2s;
+    cursor: pointer;
+}
+.aqua-toggle-slider::before {
+    content: '';
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    left: 3px;
+    top: 3px;
+    background: var(--surface);
+    border-radius: 50%;
+    transition: transform 0.2s;
+}
+.aqua-toggle input:checked + .aqua-toggle-slider { background: var(--accent-500); }
+.aqua-toggle input:checked + .aqua-toggle-slider::before { transform: translateX(20px); }`,
+      },
+    ],
+  },
+  {
+    label: 'Checkbox',
+    demo: `<div style="display:flex;flex-direction:column;gap:12px">
+  <label class="aqua-checkbox-wrapper"><input class="aqua-checkbox" type="checkbox" checked /><span>Option one (checked)</span></label>
+  <label class="aqua-checkbox-wrapper"><input class="aqua-checkbox" type="checkbox" /><span>Option two</span></label>
+  <label class="aqua-checkbox-wrapper"><input class="aqua-checkbox" type="checkbox" /><span>Option three</span></label>
+</div>`,
+    tabs: [
+      {
+        label: 'HTML', lang: 'html', code: `<label class="aqua-checkbox-wrapper">
+  <input class="aqua-checkbox" type="checkbox" checked />
+  <span>Option one</span>
+</label>`,
+      },
+      {
+        label: 'CSS', lang: 'css', code: `.aqua-checkbox {
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border: 1.5px solid var(--border);
+    border-radius: 5px;
+    background: var(--surface);
+    cursor: pointer;
+    flex-shrink: 0;
+    transition: all 0.15s;
+    position: relative;
+}
+.aqua-checkbox:checked {
+    background: var(--accent-500);
+    border-color: var(--accent-500);
+}
+.aqua-checkbox:checked::after {
+    content: '';
+    position: absolute;
+    left: 5px;
+    top: 2px;
+    width: 6px;
+    height: 10px;
+    border: 2px solid #fff;
+    border-top: none;
+    border-left: none;
+    transform: rotate(45deg);
+}`,
+      },
+    ],
+  },
+  {
+    label: 'Select',
+    demo: `<div style="max-width:360px">
+  <label class="aqua-label" for="demo-sel">Plan</label>
+  <select class="aqua-select" id="demo-sel">
+    <option>Starter</option>
+    <option>Pro</option>
+    <option>Enterprise</option>
+  </select>
+</div>`,
+    tabs: [
+      {
+        label: 'HTML', lang: 'html', code: `<label class="aqua-label" for="plan">Plan</label>
+<select class="aqua-select" id="plan">
+  <option>Starter</option>
+  <option>Pro</option>
+  <option>Enterprise</option>
+</select>`,
+      },
+      {
+        label: 'CSS', lang: 'css', code: `.aqua-select {
+    width: 100%;
+    font-family: var(--font-body);
+    font-size: var(--text-body);
+    color: var(--text);
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 10px 36px 10px 14px;
+    appearance: none;
+    background-image: url("data:image/svg+xml,...");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    outline: none;
+    cursor: pointer;
+}
+.aqua-select:focus {
+    border-color: var(--accent-500);
+    box-shadow: 0 0 0 3px var(--accent-50);
+}`,
+      },
+    ],
+  },
+  {
+    label: 'Field Highlight & Labeling',
+    demo: `<div style="max-width:360px;display:flex;flex-direction:column;gap:16px">
+  <div class="field-group is-success">
+    <label class="aqua-label">Username</label>
+    <input class="aqua-input" type="text" value="aquadrive" readonly />
+    <p class="field-hint">&#10003; Username is available.</p>
+  </div>
+  <div class="field-group is-error">
+    <label class="aqua-label">Email</label>
+    <input class="aqua-input" type="email" value="invalid-email" />
+    <p class="field-hint">&#9785; Please enter a valid email address.</p>
+  </div>
+</div>`,
+    tabs: [
+      {
+        label: 'HTML', lang: 'html', code: `<div class="field-group is-success">
+  <label class="aqua-label">Username</label>
+  <input class="aqua-input" type="text" value="aquadrive" />
+  <p class="field-hint">&#10003; Username is available.</p>
+</div>
+
+<div class="field-group is-error">
+  <label class="aqua-label">Email</label>
+  <input class="aqua-input" type="email" />
+  <p class="field-hint">Please enter a valid email address.</p>
+</div>`,
+      },
+      {
+        label: 'CSS', lang: 'css', code: `.field-group.is-success .aqua-input {
+    border-color: var(--green-main);
+    box-shadow: 0 0 0 3px var(--green-tint);
+}
+.field-group.is-success .field-hint { color: var(--green-main); }
+
+.field-group.is-error .aqua-input {
+    border-color: var(--red-main);
+    box-shadow: 0 0 0 3px var(--red-tint);
+}
+.field-group.is-error .field-hint { color: var(--red-main); }
+
+.field-hint {
+    font-size: var(--text-caption);
+    color: var(--text-muted);
+    margin-top: 5px;
+}`,
+      },
+    ],
+  },
+  {
+    label: 'Form Group',
+    demo: `<div class="form-card">
+  <div class="form-card-title">Create Account</div>
+  <div class="form-row">
+    <div class="field-group">
+      <label class="aqua-label">First Name</label>
+      <input class="aqua-input" type="text" placeholder="Jane" />
+    </div>
+    <div class="field-group">
+      <label class="aqua-label">Last Name</label>
+      <input class="aqua-input" type="text" placeholder="Doe" />
+    </div>
+  </div>
+  <div class="field-group">
+    <label class="aqua-label">Email</label>
+    <input class="aqua-input" type="email" placeholder="jane@example.com" />
+  </div>
+  <div class="field-group" style="margin-bottom:0">
+    <label class="aqua-label">Password</label>
+    <input class="aqua-input" type="password" placeholder="••••••••" />
+  </div>
+  <div class="form-actions">
+    <button class="aqua-btn aqua-btn-ghost">Cancel</button>
+    <button class="aqua-btn aqua-btn-primary">Create Account</button>
+  </div>
+</div>`,
+    tabs: [
+      {
+        label: 'HTML', lang: 'html', code: `<div class="form-card">
+  <div class="form-card-title">Create Account</div>
+  <div class="form-row">
+    <div class="field-group">
+      <label class="aqua-label">First Name</label>
+      <input class="aqua-input" type="text" placeholder="Jane" />
+    </div>
+    <div class="field-group">
+      <label class="aqua-label">Last Name</label>
+      <input class="aqua-input" type="text" placeholder="Doe" />
+    </div>
+  </div>
+  <div class="field-group">
+    <label class="aqua-label">Email</label>
+    <input class="aqua-input" type="email" placeholder="jane@example.com" />
+  </div>
+  <div class="form-actions">
+    <button class="aqua-btn aqua-btn-ghost">Cancel</button>
+    <button class="aqua-btn aqua-btn-primary">Create Account</button>
+  </div>
+</div>`,
+      },
+      {
+        label: 'CSS', lang: 'css', code: `.form-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 24px;
+    max-width: 420px;
+}
+.form-card-title {
+    font-family: var(--font-display);
+    font-size: var(--text-h3);
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 20px;
+}
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.form-actions { display: flex; gap: 10px; justify-content: flex-end; margin-top: 20px; }`,
+      },
+    ],
+  },
+];

@@ -1,0 +1,519 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>AquaDrive — Layout & Dividers</title>
+        <link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml" />
+        <script>(function(){var t=localStorage.getItem('aquadrive-theme');var a=localStorage.getItem('aquadrive-accent')||'blue';if(!t)t=window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light';if(t==='dark'){document.documentElement.setAttribute('data-theme','dark');}else{document.documentElement.removeAttribute('data-theme');}document.documentElement.setAttribute('data-accent',a);})()</script>
+        <link rel="stylesheet" href="../assets/css/style.css" />
+        <style>
+            /* Horizontal Rules */
+            .hr-neutral {
+                border: none;
+                border-top: 1px solid var(--border);
+                margin: 20px 0;
+            }
+            .hr-accent {
+                border: none;
+                border-top: 1px solid var(--accent-500);
+                margin: 20px 0;
+            }
+            .hr-gradient {
+                border: none;
+                height: 1px;
+                background: linear-gradient(to right, var(--accent-500), transparent);
+                margin: 20px 0;
+            }
+
+            /* HR with text */
+            .hr-text {
+                display: flex;
+                align-items: center;
+                gap: 16px;
+                margin: 20px 0;
+            }
+            .hr-text::before,
+            .hr-text::after {
+                content: '';
+                flex: 1;
+                height: 1px;
+                background: var(--border);
+            }
+            .hr-text span {
+                font-family: var(--font-mono);
+                font-size: 10px;
+                text-transform: uppercase;
+                letter-spacing: 0.1em;
+                color: var(--text-muted);
+                white-space: nowrap;
+            }
+            .hr-text-left::before {
+                display: none;
+            }
+            .hr-text-right::after {
+                display: none;
+            }
+
+            /* Accordions */
+            .accordion-group {
+                border: 1px solid var(--border);
+                border-radius: 12px;
+                overflow: hidden;
+            }
+            .accordion-group details {
+                border-bottom: 1px solid var(--border);
+            }
+            .accordion-group details:last-child {
+                border-bottom: none;
+            }
+            .accordion-group summary {
+                display: flex;
+                align-items: center;
+                gap: 12px;
+                padding: 14px 20px;
+                font-family: var(--font-display);
+                font-size: 14px;
+                font-weight: 600;
+                color: var(--text);
+                cursor: pointer;
+                background: var(--surface);
+                list-style: none;
+                transition: background 0.2s;
+            }
+            .accordion-group summary::-webkit-details-marker {
+                display: none;
+            }
+            .accordion-group summary::before {
+                content: '';
+                width: 6px;
+                height: 6px;
+                border-right: 2px solid var(--accent-500);
+                border-bottom: 2px solid var(--accent-500);
+                transform: rotate(-45deg);
+                transition: transform 0.2s;
+                flex-shrink: 0;
+            }
+            .accordion-group details[open] summary::before {
+                transform: rotate(45deg);
+            }
+            .accordion-group summary:hover {
+                background: var(--accent-50);
+            }
+            .accordion-group .accordion-content {
+                padding: 0 20px 16px 38px;
+                font-size: 13px;
+                line-height: 1.7;
+                color: var(--text-muted);
+            }
+        </style>
+        <script src="../assets/js/highlight.js" defer></script>
+    </head>
+    <body>
+        <nav class="aqua-navbar">
+            <a href="../index.html" class="aqua-navbar-brand"><svg viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M14 3C14 3 5 10 5 17C5 21.4183 9.02944 25 14 25C18.9706 25 23 21.4183 23 17C23 10 14 3 14 3Z" fill="var(--accent-500)"/><path d="M14 9C14 9 9 13.5 9 17C9 19.7614 11.2386 22 14 22C16.7614 22 19 19.7614 19 17C19 13.5 14 9 14 9Z" fill="var(--bg)" opacity="0.7"/></svg>Aqua<span>Drive</span></a>
+            <button class="aqua-navbar-toggle" onclick="toggleNav()" aria-label="Toggle menu"><span></span></button>
+            <div class="aqua-navbar-collapse">
+            <div class="aqua-navbar-links">
+                <a href="../index.html">Colors</a>
+                <a href="../typography.html">Typography</a>
+                <a href="../elements.html" class="active">Elements</a>
+                <a href="../ports.html">Ports</a>
+            </div>
+            <div class="aqua-navbar-actions">
+                <div class="aqua-navbar-settings">
+                    <button class="aqua-navbar-settings-btn" onclick="toggleSettings(event)">
+                        <svg viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="3" stroke="currentColor" stroke-width="1.5"/><path d="M8 1v2M8 13v2M1 8h2M13 8h2M3.05 3.05l1.41 1.41M11.54 11.54l1.41 1.41M3.05 12.95l1.41-1.41M11.54 4.46l1.41-1.41" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+                        Settings
+                    </button>
+                    <div class="aqua-navbar-dropdown" id="navSettingsDropdown">
+                        <div class="aqua-navbar-dropdown-label">Accent Color</div>
+                        <div class="aqua-navbar-dropdown-row">
+                            <button class="accent-dot" data-color="blue" onclick="setAccent('blue')" aria-label="Blue accent"></button>
+                            <button class="accent-dot" data-color="purple" onclick="setAccent('purple')" aria-label="Purple accent"></button>
+                            <button class="accent-dot" data-color="cyan" onclick="setAccent('cyan')" aria-label="Cyan accent"></button>
+                            <button class="accent-dot" data-color="rose" onclick="setAccent('rose')" aria-label="Rose accent"></button>
+                        </div>
+                        <div class="aqua-navbar-dropdown-divider"></div>
+                        <button class="aqua-navbar-dropdown-item" onclick="toggleTheme()">
+                            <svg viewBox="0 0 16 16" fill="none"><path d="M8 1a7 7 0 1 0 0 14A7 7 0 0 0 8 1Z" stroke="currentColor" stroke-width="1.5"/><path d="M8 3v10a5 5 0 0 0 0-10Z" fill="currentColor"/></svg>
+                            <span class="theme-toggle-label">Toggle Theme</span>
+                        </button>
+                        <button class="aqua-navbar-dropdown-item" onclick="toggleMobile()">
+                            <svg viewBox="0 0 16 16" fill="none"><rect x="4" y="1" width="8" height="14" rx="1.5" stroke="currentColor" stroke-width="1.5"/><line x1="6.5" y1="12.5" x2="9.5" y2="12.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+                            Mobile Preview
+                        </button>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </nav>
+
+        <nav class="breadcrumb">
+            <a href="../index.html">AquaDrive</a>
+            <span class="sep">/</span>
+            <a href="../elements.html">Elements</a>
+            <span class="sep">/</span>
+            <span class="current">Layout &amp; Dividers</span>
+        </nav>
+
+        <header>
+            <div class="brand-tag">AquaDrive · Design System</div>
+            <h1>Layout<span> & Dividers</span></h1>
+            <p class="subtitle">Structural elements and content separators.</p>
+        </header>
+
+        <!-- HORIZONTAL RULES (NEUTRAL) -->
+        <section class="section">
+            <div class="section-label">Horizontal Rules (Neutral)</div>
+
+            <div class="demo-box">
+                <div class="demo-label">Preview</div>
+                <p style="font-size: 14px; color: var(--text); margin: 0;">Content above the divider.</p>
+                <hr class="hr-neutral">
+                <p style="font-size: 14px; color: var(--text); margin: 0;">Content below the divider.</p>
+            </div>
+
+            <div class="code-wrapper">
+                <div class="code-tabs">
+                    <button class="code-tab active" onclick="switchTab(this, 'html')">HTML</button>
+                    <button class="code-tab" onclick="switchTab(this, 'css')">CSS</button>
+                </div>
+                <div class="code-panel active" data-lang="html">
+                    <button class="code-copy" onclick="copyCode(this)">Copy</button>
+                    <pre>&lt;p&gt;Content above the divider.&lt;/p&gt;
+&lt;hr class="hr-neutral"&gt;
+&lt;p&gt;Content below the divider.&lt;/p&gt;</pre>
+                </div>
+                <div class="code-panel" data-lang="css">
+                    <button class="code-copy" onclick="copyCode(this)">Copy</button>
+                    <pre>.hr-neutral {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 20px 0;
+}</pre>
+                </div>
+            </div>
+        </section>
+
+        <!-- HORIZONTAL RULES (ACCENT) -->
+        <section class="section">
+            <div class="section-label">Horizontal Rules (Accent Color)</div>
+
+            <div class="demo-box">
+                <div class="demo-label">Solid Accent</div>
+                <p style="font-size: 14px; color: var(--text); margin: 0;">Content above the accent divider.</p>
+                <hr class="hr-accent">
+                <p style="font-size: 14px; color: var(--text); margin: 0;">Content below the accent divider.</p>
+            </div>
+
+            <div class="demo-box" style="margin-top: 16px;">
+                <div class="demo-label">Gradient Accent</div>
+                <p style="font-size: 14px; color: var(--text); margin: 0;">Content above the gradient divider.</p>
+                <hr class="hr-gradient">
+                <p style="font-size: 14px; color: var(--text); margin: 0;">Content below the gradient divider.</p>
+            </div>
+
+            <div class="code-wrapper">
+                <div class="code-tabs">
+                    <button class="code-tab active" onclick="switchTab(this, 'html')">HTML</button>
+                    <button class="code-tab" onclick="switchTab(this, 'css')">CSS</button>
+                </div>
+                <div class="code-panel active" data-lang="html">
+                    <button class="code-copy" onclick="copyCode(this)">Copy</button>
+                    <pre>&lt;!-- Solid accent --&gt;
+&lt;hr class="hr-accent"&gt;
+
+&lt;!-- Gradient accent --&gt;
+&lt;hr class="hr-gradient"&gt;</pre>
+                </div>
+                <div class="code-panel" data-lang="css">
+                    <button class="code-copy" onclick="copyCode(this)">Copy</button>
+                    <pre>.hr-accent {
+    border: none;
+    border-top: 1px solid var(--accent-500);
+    margin: 20px 0;
+}
+
+.hr-gradient {
+    border: none;
+    height: 1px;
+    background: linear-gradient(to right, var(--accent-500), transparent);
+    margin: 20px 0;
+}</pre>
+                </div>
+            </div>
+        </section>
+
+        <!-- HORIZONTAL RULES WITH TEXT -->
+        <section class="section">
+            <div class="section-label">Horizontal Rules (With Text)</div>
+
+            <div class="demo-box">
+                <div class="demo-label">Center (default)</div>
+                <div class="hr-text"><span>Or continue with</span></div>
+                <div class="demo-label" style="margin-top: 16px;">Left</div>
+                <div class="hr-text hr-text-left"><span>Section Break</span></div>
+                <div class="demo-label" style="margin-top: 16px;">Right</div>
+                <div class="hr-text hr-text-right"><span>New Chapter</span></div>
+            </div>
+
+            <div class="code-wrapper">
+                <div class="code-tabs">
+                    <button class="code-tab active" onclick="switchTab(this, 'html')">HTML</button>
+                    <button class="code-tab" onclick="switchTab(this, 'css')">CSS</button>
+                </div>
+                <div class="code-panel active" data-lang="html">
+                    <button class="code-copy" onclick="copyCode(this)">Copy</button>
+                    <pre>&lt;!-- Center (default) --&gt;
+&lt;div class="hr-text"&gt;
+    &lt;span&gt;Or continue with&lt;/span&gt;
+&lt;/div&gt;
+
+&lt;!-- Left aligned --&gt;
+&lt;div class="hr-text hr-text-left"&gt;
+    &lt;span&gt;Section Break&lt;/span&gt;
+&lt;/div&gt;
+
+&lt;!-- Right aligned --&gt;
+&lt;div class="hr-text hr-text-right"&gt;
+    &lt;span&gt;New Chapter&lt;/span&gt;
+&lt;/div&gt;</pre>
+                </div>
+                <div class="code-panel" data-lang="css">
+                    <button class="code-copy" onclick="copyCode(this)">Copy</button>
+                    <pre>.hr-text {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin: 20px 0;
+}
+.hr-text::before,
+.hr-text::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+}
+.hr-text span {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--text-muted);
+    white-space: nowrap;
+}
+.hr-text-left::before {
+    display: none;
+}
+.hr-text-right::after {
+    display: none;
+}</pre>
+                </div>
+            </div>
+        </section>
+
+        <!-- ACCORDIONS -->
+        <section class="section">
+            <div class="section-label">Accordions</div>
+
+            <div class="demo-box">
+                <div class="demo-label">Preview</div>
+                <div class="accordion-group">
+                    <details open>
+                        <summary>What products do you use?</summary>
+                        <div class="accordion-content">We exclusively use pH-neutral, biodegradable car care products. Our ceramic coatings are professional-grade SiO2 formulations that provide long-lasting protection without harming the environment.</div>
+                    </details>
+                    <details>
+                        <summary>How long does a detail take?</summary>
+                        <div class="accordion-content">A basic exterior wash takes about 30 minutes. A full interior and exterior detail takes 3-4 hours. Ceramic coating applications require 4-6 hours plus a 24-hour cure time.</div>
+                    </details>
+                    <details>
+                        <summary>Do you come to my location?</summary>
+                        <div class="accordion-content">Yes, our mobile detailing team comes to your home or office. We bring all equipment, water, and power. We just need access to your vehicle and a shaded area is preferred.</div>
+                    </details>
+                    <details>
+                        <summary>What is your cancellation policy?</summary>
+                        <div class="accordion-content">You can cancel or reschedule free of charge up to 24 hours before your appointment. Cancellations within 24 hours may incur a $25 fee.</div>
+                    </details>
+                </div>
+            </div>
+
+            <div class="code-wrapper">
+                <div class="code-tabs">
+                    <button class="code-tab active" onclick="switchTab(this, 'html')">HTML</button>
+                    <button class="code-tab" onclick="switchTab(this, 'css')">CSS</button>
+                </div>
+                <div class="code-panel active" data-lang="html">
+                    <button class="code-copy" onclick="copyCode(this)">Copy</button>
+                    <pre>&lt;div class="accordion-group"&gt;
+    &lt;details open&gt;
+        &lt;summary&gt;What products do you use?&lt;/summary&gt;
+        &lt;div class="accordion-content"&gt;
+            We exclusively use pH-neutral, biodegradable
+            car care products...
+        &lt;/div&gt;
+    &lt;/details&gt;
+    &lt;details&gt;
+        &lt;summary&gt;How long does a detail take?&lt;/summary&gt;
+        &lt;div class="accordion-content"&gt;
+            A basic exterior wash takes about 30 minutes...
+        &lt;/div&gt;
+    &lt;/details&gt;
+    &lt;details&gt;
+        &lt;summary&gt;Do you come to my location?&lt;/summary&gt;
+        &lt;div class="accordion-content"&gt;
+            Yes, our mobile detailing team comes to
+            your home or office...
+        &lt;/div&gt;
+    &lt;/details&gt;
+&lt;/div&gt;</pre>
+                </div>
+                <div class="code-panel" data-lang="css">
+                    <button class="code-copy" onclick="copyCode(this)">Copy</button>
+                    <pre>.accordion-group {
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+}
+.accordion-group details {
+    border-bottom: 1px solid var(--border);
+}
+.accordion-group details:last-child {
+    border-bottom: none;
+}
+.accordion-group summary {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 20px;
+    font-family: var(--font-display);
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text);
+    cursor: pointer;
+    background: var(--surface);
+    list-style: none;
+    transition: background 0.2s;
+}
+.accordion-group summary::-webkit-details-marker {
+    display: none;
+}
+.accordion-group summary::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    border-right: 2px solid var(--accent-500);
+    border-bottom: 2px solid var(--accent-500);
+    transform: rotate(-45deg);
+    transition: transform 0.2s;
+    flex-shrink: 0;
+}
+.accordion-group details[open] summary::before {
+    transform: rotate(45deg);
+}
+.accordion-group summary:hover {
+    background: var(--accent-50);
+}
+.accordion-group .accordion-content {
+    padding: 0 20px 16px 38px;
+    font-size: 13px;
+    line-height: 1.7;
+    color: var(--text-muted);
+}</pre>
+                </div>
+            </div>
+        </section>
+
+        <script>
+            function toggleTheme() {
+                var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+                var next = isDark ? 'light' : 'dark';
+                if (next === 'dark') {
+                    document.documentElement.setAttribute('data-theme', 'dark');
+                } else {
+                    document.documentElement.removeAttribute('data-theme');
+                }
+                localStorage.setItem('aquadrive-theme', next);
+                updateToggleLabel();
+            }
+            function toggleSettings(e) {
+                if (e) e.stopPropagation();
+                var dd = document.getElementById('navSettingsDropdown');
+                dd.classList.toggle('open');
+            }
+            document.addEventListener('click', function(e) {
+                var settings = document.querySelector('.aqua-navbar-settings');
+                if (settings && !settings.contains(e.target)) {
+                    document.getElementById('navSettingsDropdown').classList.remove('open');
+                }
+            });
+            function toggleNav() {
+                document.querySelector('.aqua-navbar').classList.toggle('nav-open');
+            }
+            function updateToggleLabel() {
+                var btn = document.querySelector('.theme-toggle');
+                if (!btn) return;
+                var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+                btn.textContent = isDark ? 'Light' : 'Dark';
+            }
+            function setAccent(color) {
+                document.documentElement.setAttribute('data-accent', color);
+                localStorage.setItem('aquadrive-accent', color);
+                updateAccentDots();
+            }
+            function updateAccentDots() {
+                var current = document.documentElement.getAttribute('data-accent') || 'blue';
+                document.querySelectorAll('.accent-dot').forEach(function(dot) {
+                    dot.classList.toggle('active', dot.getAttribute('data-color') === current);
+                });
+            }
+            function switchTab(btn, lang) {
+                var wrapper = btn.closest('.code-wrapper');
+                wrapper.querySelectorAll('.code-tab').forEach(t => t.classList.remove('active'));
+                wrapper.querySelectorAll('.code-panel').forEach(p => p.classList.remove('active'));
+                btn.classList.add('active');
+                wrapper.querySelector('[data-lang="' + lang + '"]').classList.add('active');
+            }
+            function copyCode(btn) {
+                var code = btn.nextElementSibling.textContent;
+                navigator.clipboard.writeText(code);
+                btn.textContent = 'Copied!';
+                setTimeout(function() { btn.textContent = 'Copy'; }, 1500);
+            }
+            /* Mobile Preview */
+            function toggleMobile() {
+                var existing = document.querySelector('.mobile-preview-backdrop');
+                if (existing) { existing.classList.toggle('open'); return; }
+                var backdrop = document.createElement('div');
+                backdrop.className = 'mobile-preview-backdrop open';
+                backdrop.onclick = function(e) { if (e.target === backdrop) backdrop.classList.remove('open'); };
+                var device = document.createElement('div');
+                device.className = 'mobile-preview-device';
+                var notch = document.createElement('div');
+                notch.className = 'mobile-preview-notch';
+                var screen = document.createElement('div');
+                screen.className = 'mobile-preview-screen';
+                var iframe = document.createElement('iframe');
+                iframe.src = window.location.href;
+                var close = document.createElement('button');
+                close.className = 'mobile-preview-close';
+                close.innerHTML = '&times;';
+                close.onclick = function() { backdrop.classList.remove('open'); };
+                var label = document.createElement('div');
+                label.className = 'mobile-preview-label';
+                label.textContent = '390 × 844 — iPhone 14 Pro';
+                screen.appendChild(iframe);
+                device.appendChild(notch);
+                device.appendChild(screen);
+                device.appendChild(close);
+                device.appendChild(label);
+                backdrop.appendChild(device);
+                document.body.appendChild(backdrop);
+            }
+
+            updateToggleLabel();
+            updateAccentDots();
+        </script>
+    </body>
+</html>

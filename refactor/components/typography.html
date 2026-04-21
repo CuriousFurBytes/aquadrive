@@ -1,0 +1,262 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AquaDrive — Typography</title>
+    <link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml" />
+    <script>(function(){var t=localStorage.getItem('aquadrive-theme');var a=localStorage.getItem('aquadrive-accent')||'blue';if(!t)t=window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light';if(t==='dark'){document.documentElement.setAttribute('data-theme','dark');}else{document.documentElement.removeAttribute('data-theme');}document.documentElement.setAttribute('data-accent',a);})()</script>
+    <link rel="stylesheet" href="../assets/css/style.css" />
+    <style>
+
+.type-specimen { margin-bottom: 8px; }
+.type-meta {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--text-muted);
+    margin-bottom: 4px;
+    letter-spacing: 0.06em;
+}
+mark {
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-style: normal;
+}
+mark.mark-yellow { background: var(--yellow-tint); color: var(--yellow-main); }
+mark.mark-green  { background: var(--green-tint); color: var(--green-main); }
+mark.mark-blue   { background: var(--accent-50); color: var(--accent-500); }
+mark.mark-rose   { background: var(--rose-50); color: var(--rose-500); }
+abbr { text-decoration: underline dotted; cursor: help; }
+blockquote {
+    border-left: 3px solid var(--accent-500);
+    background: var(--accent-50);
+    padding: 12px 20px;
+    border-radius: 0 8px 8px 0;
+    color: var(--text);
+    font-style: italic;
+    margin: 0;
+}
+blockquote cite { display: block; font-style: normal; font-size: var(--text-caption); color: var(--text-muted); margin-top: 8px; }
+
+    </style>
+    <script src="../assets/js/highlight.js" defer></script>
+  </head>
+  <body>
+    <nav class="aqua-navbar">
+  <a href="../index.html" class="aqua-navbar-brand"><svg viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M14 3C14 3 5 10 5 17C5 21.4183 9.02944 25 14 25C18.9706 25 23 21.4183 23 17C23 10 14 3 14 3Z" fill="var(--accent-500)"/><path d="M14 9C14 9 9 13.5 9 17C9 19.7614 11.2386 22 14 22C16.7614 22 19 19.7614 19 17C19 13.5 14 9 14 9Z" fill="var(--bg)" opacity="0.7"/></svg>Aqua<span>Drive</span></a>
+  <button class="aqua-navbar-toggle" onclick="toggleNav()" aria-label="Toggle menu"><span></span></button>
+  <div class="aqua-navbar-collapse">
+    <div class="aqua-navbar-links">
+      <a href="../index.html">Colors</a>
+      <a href="../typography.html">Typography</a>
+      <a href="../elements.html">Elements</a>
+      <a href="../ports.html">Ports</a>
+    </div>
+    <div class="aqua-navbar-actions">
+      <div class="aqua-navbar-settings">
+        <button class="aqua-navbar-settings-btn" onclick="toggleSettings(event)"><svg viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="3" stroke="currentColor" stroke-width="1.5"/><path d="M8 1v2M8 13v2M1 8h2M13 8h2M3.05 3.05l1.41 1.41M11.54 11.54l1.41 1.41M3.05 12.95l1.41-1.41M11.54 4.46l1.41-1.41" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg> Settings</button>
+        <div class="aqua-navbar-dropdown" id="navSettingsDropdown">
+          <div class="aqua-navbar-dropdown-label">Accent Color</div>
+          <div class="aqua-navbar-dropdown-row">
+            <button class="accent-dot" data-color="blue" onclick="setAccent('blue')" aria-label="Blue accent"></button>
+            <button class="accent-dot" data-color="purple" onclick="setAccent('purple')" aria-label="Purple accent"></button>
+            <button class="accent-dot" data-color="cyan" onclick="setAccent('cyan')" aria-label="Cyan accent"></button>
+            <button class="accent-dot" data-color="rose" onclick="setAccent('rose')" aria-label="Rose accent"></button>
+          </div>
+          <div class="aqua-navbar-dropdown-divider"></div>
+          <button class="aqua-navbar-dropdown-item" onclick="toggleTheme()"><svg viewBox="0 0 16 16" fill="none"><path d="M8 1a7 7 0 1 0 0 14A7 7 0 0 0 8 1Z" stroke="currentColor" stroke-width="1.5"/><path d="M8 3v10a5 5 0 0 0 0-10Z" fill="currentColor"/></svg> <span class="theme-toggle-label">Toggle Theme</span></button>
+          <button class="aqua-navbar-dropdown-item" onclick="toggleMobile()"><svg viewBox="0 0 16 16" fill="none"><rect x="4" y="1" width="8" height="14" rx="1.5" stroke="currentColor" stroke-width="1.5"/><line x1="6.5" y1="12.5" x2="9.5" y2="12.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg> Mobile Preview</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+    <nav class="breadcrumb"><a href="../index.html">AquaDrive</a><span class="sep">/</span><a href="../elements.html">Elements</a><span class="sep">/</span><span class="current">Typography</span></nav>
+    <header>
+      <div class="brand-tag">AquaDrive · Design System</div>
+      <h1>Typography</h1>
+      <p class="subtitle">Type scale, font weights, and text styles for AquaDrive.</p>
+    </header>
+    <section class="section">
+  <div class="section-label">Headings</div>
+  <div class="demo-box"><div>
+  <div class="type-meta">Display / H1 — 42px / 800 / Monaspace Krypton</div>
+  <h1 style="margin:0 0 16px">The quick brown fox</h1>
+  <div class="type-meta">H2 — 28px / 700</div>
+  <h2 style="margin:0 0 12px">Jumps over the lazy dog</h2>
+  <div class="type-meta">H3 — 20px / 700</div>
+  <h3 style="margin:0 0 12px">Design systems for everyone</h3>
+  <div class="type-meta">H4 — 15px / 700</div>
+  <h4 style="margin:0">AquaDrive component library</h4>
+</div></div>
+  <div class="code-wrapper">
+  <div class="code-tabs"><button class="code-tab active" data-lang="html">HTML</button><button class="code-tab" data-lang="css">CSS</button></div>
+  <div class="code-panel active" data-lang="html">
+      <button class="code-copy">Copy</button>
+      <pre data-lang="html">&lt;h1&gt;Display heading&lt;/h1&gt;
+&lt;h2&gt;Section heading&lt;/h2&gt;
+&lt;h3&gt;Subsection heading&lt;/h3&gt;
+&lt;h4&gt;Card title&lt;/h4&gt;</pre>
+    </div>
+<div class="code-panel" data-lang="css">
+      <button class="code-copy">Copy</button>
+      <pre data-lang="css">h1 {
+    font-family: var(--font-display);
+    font-size: var(--text-display); /* 42px */
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    color: var(--text);
+}
+h2 {
+    font-family: var(--font-display);
+    font-size: var(--text-h2); /* 28px */
+    font-weight: 700;
+    letter-spacing: -0.01em;
+}
+h3 { font-size: var(--text-h3); font-weight: 700; }
+h4 { font-size: var(--text-h4); font-weight: 700; }</pre>
+    </div>
+</div>
+</section>
+<section class="section">
+  <div class="section-label">Body & Paragraph</div>
+  <div class="demo-box"><p style="font-family:var(--font-body);font-size:14px;line-height:1.7;color:var(--text);max-width:600px;margin:0">
+  AquaDrive is a design system built for modern web applications. It uses a warm neutral palette with four accent colors — blue, purple, cyan, and rosé — and supports both light and dark themes seamlessly.
+</p>
+<p class="subtitle" style="margin-top:12px">Subtitle text uses muted color at body size for secondary content and descriptions.</p></div>
+  <div class="code-wrapper">
+  <div class="code-tabs"><button class="code-tab active" data-lang="html">HTML</button><button class="code-tab" data-lang="css">CSS</button></div>
+  <div class="code-panel active" data-lang="html">
+      <button class="code-copy">Copy</button>
+      <pre data-lang="html">&lt;p&gt;
+  AquaDrive is a design system built for modern web applications.
+&lt;/p&gt;
+&lt;p class=&quot;subtitle&quot;&gt;Secondary description text.&lt;/p&gt;</pre>
+    </div>
+<div class="code-panel" data-lang="css">
+      <button class="code-copy">Copy</button>
+      <pre data-lang="css">body {
+    font-family: var(--font-body);
+    font-size: var(--text-body); /* 14px */
+    line-height: 1.7;
+    color: var(--text);
+}
+.subtitle {
+    font-size: var(--text-body);
+    color: var(--text-muted);
+    line-height: 1.6;
+}</pre>
+    </div>
+</div>
+</section>
+<section class="section">
+  <div class="section-label">Text Styles</div>
+  <div class="demo-box"><div style="display:flex;flex-direction:column;gap:10px;font-size:14px">
+  <p style="margin:0"><strong>Bold text</strong> for emphasis on important information.</p>
+  <p style="margin:0"><em>Italic text</em> for subtle emphasis or titles.</p>
+  <p style="margin:0"><del>Strikethrough text</del> for removed or deprecated content.</p>
+  <p style="margin:0"><mark class="mark-yellow">Yellow highlight</mark> <mark class="mark-green">Green highlight</mark> <mark class="mark-blue">Blue highlight</mark> <mark class="mark-rose">Rose highlight</mark></p>
+  <p style="margin:0"><abbr title="Application Programming Interface">API</abbr> — abbreviation with tooltip on hover.</p>
+</div></div>
+  <div class="code-wrapper">
+  <div class="code-tabs"><button class="code-tab active" data-lang="html">HTML</button><button class="code-tab" data-lang="css">CSS</button></div>
+  <div class="code-panel active" data-lang="html">
+      <button class="code-copy">Copy</button>
+      <pre data-lang="html">&lt;strong&gt;Bold text&lt;/strong&gt;
+&lt;em&gt;Italic text&lt;/em&gt;
+&lt;del&gt;Strikethrough text&lt;/del&gt;
+
+&lt;mark class=&quot;mark-yellow&quot;&gt;Yellow highlight&lt;/mark&gt;
+&lt;mark class=&quot;mark-green&quot;&gt;Green highlight&lt;/mark&gt;
+&lt;mark class=&quot;mark-blue&quot;&gt;Blue highlight&lt;/mark&gt;
+
+&lt;abbr title=&quot;Application Programming Interface&quot;&gt;API&lt;/abbr&gt;</pre>
+    </div>
+<div class="code-panel" data-lang="css">
+      <button class="code-copy">Copy</button>
+      <pre data-lang="css">mark {
+    padding: 2px 6px;
+    border-radius: 4px;
+}
+mark.mark-yellow { background: var(--yellow-tint); color: var(--yellow-main); }
+mark.mark-green  { background: var(--green-tint); color: var(--green-main); }
+mark.mark-blue   { background: var(--accent-50); color: var(--accent-500); }
+
+abbr { text-decoration: underline dotted; cursor: help; }</pre>
+    </div>
+</div>
+</section>
+<section class="section">
+  <div class="section-label">Links</div>
+  <div class="demo-box"><p style="font-size:14px;line-height:1.8;color:var(--text)">
+  Visit the <a href="#" style="color:var(--accent-500);text-decoration:none;border-bottom:0.2ch solid var(--accent-500);padding-bottom:0.1rem">AquaDrive documentation</a> to get started. Also check out the <a href="#" style="color:var(--accent-500);text-decoration:none;border-bottom:0.2ch solid var(--accent-500);padding-bottom:0.1rem">component library</a> for interactive examples.
+</p></div>
+  <div class="code-wrapper">
+  <div class="code-tabs"><button class="code-tab active" data-lang="html">HTML</button><button class="code-tab" data-lang="css">CSS</button></div>
+  <div class="code-panel active" data-lang="html">
+      <button class="code-copy">Copy</button>
+      <pre data-lang="html">&lt;a href=&quot;/docs&quot; class=&quot;aqua-link&quot;&gt;AquaDrive documentation&lt;/a&gt;</pre>
+    </div>
+<div class="code-panel" data-lang="css">
+      <button class="code-copy">Copy</button>
+      <pre data-lang="css">.aqua-link, a {
+    color: var(--accent-500);
+    text-decoration: none;
+    border-bottom: 0.2ch solid var(--accent-500);
+    padding-bottom: 0.1rem;
+    transition: opacity 0.15s;
+}
+a:hover { opacity: 0.75; }</pre>
+    </div>
+</div>
+</section>
+<section class="section">
+  <div class="section-label">Blockquote</div>
+  <div class="demo-box"><blockquote>
+  Great design is not just what it looks like and feels like. Great design is how it works.
+  <cite>— Steve Jobs</cite>
+</blockquote></div>
+  <div class="code-wrapper">
+  <div class="code-tabs"><button class="code-tab active" data-lang="html">HTML</button><button class="code-tab" data-lang="css">CSS</button></div>
+  <div class="code-panel active" data-lang="html">
+      <button class="code-copy">Copy</button>
+      <pre data-lang="html">&lt;blockquote&gt;
+  Great design is not just what it looks like and feels like.
+  &lt;cite&gt;— Steve Jobs&lt;/cite&gt;
+&lt;/blockquote&gt;</pre>
+    </div>
+<div class="code-panel" data-lang="css">
+      <button class="code-copy">Copy</button>
+      <pre data-lang="css">blockquote {
+    border-left: 3px solid var(--accent-500);
+    background: var(--accent-50);
+    padding: 12px 20px;
+    border-radius: 0 8px 8px 0;
+    font-style: italic;
+    margin: 0;
+}
+blockquote cite {
+    display: block;
+    font-style: normal;
+    font-size: var(--text-caption);
+    color: var(--text-muted);
+    margin-top: 8px;
+}</pre>
+    </div>
+</div>
+</section>
+    <script>
+function toggleTheme(){var d=document.documentElement.getAttribute('data-theme')==='dark';var n=d?'light':'dark';n==='dark'?document.documentElement.setAttribute('data-theme','dark'):document.documentElement.removeAttribute('data-theme');localStorage.setItem('aquadrive-theme',n);}
+function toggleSettings(e){if(e)e.stopPropagation();document.getElementById('navSettingsDropdown').classList.toggle('open');}
+document.addEventListener('click',function(e){var s=document.querySelector('.aqua-navbar-settings');if(s&&!s.contains(e.target)){document.getElementById('navSettingsDropdown').classList.remove('open');}});
+function toggleNav(){document.querySelector('.aqua-navbar').classList.toggle('nav-open');}
+function setAccent(c){document.documentElement.setAttribute('data-accent',c);localStorage.setItem('aquadrive-accent',c);updateAccentDots();}
+function updateAccentDots(){var c=document.documentElement.getAttribute('data-accent')||'blue';document.querySelectorAll('.accent-dot').forEach(function(d){d.classList.toggle('active',d.getAttribute('data-color')===c);});}
+function switchTab(btn,lang){var w=btn.closest('.code-wrapper');w.querySelectorAll('.code-tab').forEach(function(t){t.classList.remove('active');});btn.classList.add('active');w.querySelectorAll('.code-panel').forEach(function(p){p.classList.toggle('active',p.getAttribute('data-lang')===lang);});}
+function copyCode(btn){var pre=btn.nextElementSibling;navigator.clipboard.writeText(pre.textContent).then(function(){btn.textContent='Copied!';setTimeout(function(){btn.textContent='Copy';},1500);});}
+function toggleMobile(){var existing=document.querySelector('.mobile-preview-backdrop');if(existing){existing.classList.toggle('open');return;}var backdrop=document.createElement('div');backdrop.className='mobile-preview-backdrop open';backdrop.onclick=function(e){if(e.target===backdrop)backdrop.classList.remove('open');};var device=document.createElement('div');device.className='mobile-preview-device';var notch=document.createElement('div');notch.className='mobile-preview-notch';var screen=document.createElement('div');screen.className='mobile-preview-screen';var iframe=document.createElement('iframe');iframe.src=window.location.href;var close=document.createElement('button');close.className='mobile-preview-close';close.innerHTML='&times;';close.onclick=function(){backdrop.classList.remove('open');};var label=document.createElement('div');label.className='mobile-preview-label';label.textContent='390 × 844 — iPhone 14 Pro';screen.appendChild(iframe);device.appendChild(notch);device.appendChild(screen);device.appendChild(close);device.appendChild(label);backdrop.appendChild(device);document.body.appendChild(backdrop);}
+document.querySelectorAll('.code-tab').forEach(function(btn){btn.addEventListener('click',function(){switchTab(btn,btn.getAttribute('data-lang'));});});
+document.querySelectorAll('.code-copy').forEach(function(btn){btn.addEventListener('click',function(){copyCode(btn);});});
+updateAccentDots();</script>
+  </body>
+</html>

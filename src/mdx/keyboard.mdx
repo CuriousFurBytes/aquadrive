@@ -1,0 +1,88 @@
+---
+title: Keyboard Shortcuts
+description: Display keyboard key combinations and shortcuts.
+group: Buttons & Actions
+slug: keyboard
+---
+
+export const componentCSS = `
+.aqua-kbd {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 600;
+    line-height: 1;
+    padding: 5px 8px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-bottom-width: 3px;
+    border-radius: 6px;
+    color: var(--text);
+    white-space: nowrap;
+    vertical-align: baseline;
+}
+.kbd-combo { display: inline-flex; align-items: center; gap: 4px; }
+.kbd-plus { font-family: var(--font-mono); font-size: 11px; color: var(--text-muted); }
+.kbd-row { display: flex; flex-wrap: wrap; gap: 16px; align-items: center; }
+`;
+
+export const sections = [
+  {
+    label: 'Keyboard Shortcuts',
+    demo: `<div class="kbd-row">
+  <span class="kbd-combo">
+    <kbd class="aqua-kbd">&#8984;</kbd>
+    <span class="kbd-plus">+</span>
+    <kbd class="aqua-kbd">S</kbd>
+  </span>
+  <span class="kbd-combo">
+    <kbd class="aqua-kbd">Ctrl</kbd>
+    <span class="kbd-plus">+</span>
+    <kbd class="aqua-kbd">Shift</kbd>
+    <span class="kbd-plus">+</span>
+    <kbd class="aqua-kbd">P</kbd>
+  </span>
+  <kbd class="aqua-kbd">Esc</kbd>
+  <kbd class="aqua-kbd">Enter</kbd>
+  <kbd class="aqua-kbd">Tab</kbd>
+  <kbd class="aqua-kbd">&#8593;</kbd>
+  <kbd class="aqua-kbd">&#8595;</kbd>
+</div>`,
+    tabs: [
+      {
+        label: 'HTML', lang: 'html', code: `<span class="kbd-combo">
+  <kbd class="aqua-kbd">&#8984;</kbd>
+  <span class="kbd-plus">+</span>
+  <kbd class="aqua-kbd">S</kbd>
+</span>
+
+<span class="kbd-combo">
+  <kbd class="aqua-kbd">Ctrl</kbd>
+  <span class="kbd-plus">+</span>
+  <kbd class="aqua-kbd">Shift</kbd>
+  <span class="kbd-plus">+</span>
+  <kbd class="aqua-kbd">P</kbd>
+</span>
+
+<kbd class="aqua-kbd">Esc</kbd>`,
+      },
+      {
+        label: 'CSS', lang: 'css', code: `.aqua-kbd {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 600;
+    line-height: 1;
+    padding: 5px 8px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-bottom-width: 3px;
+    border-radius: 6px;
+    color: var(--text);
+}
+.kbd-combo { display: inline-flex; align-items: center; gap: 4px; }
+.kbd-plus { font-family: var(--font-mono); font-size: 11px; color: var(--text-muted); }`,
+      },
+    ],
+  },
+];

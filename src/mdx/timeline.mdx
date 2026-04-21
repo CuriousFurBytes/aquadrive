@@ -1,0 +1,104 @@
+---
+title: Timeline
+description: Chronological event sequences with status indicators.
+group: Data Display
+slug: timeline
+---
+
+export const componentCSS = `
+.timeline { position: relative; padding-left: 28px; }
+.timeline::before {
+    content: '';
+    position: absolute;
+    left: 7px;
+    top: 8px;
+    bottom: 8px;
+    width: 2px;
+    background: var(--border);
+}
+.timeline-item { position: relative; padding-bottom: 24px; }
+.timeline-item:last-child { padding-bottom: 0; }
+.timeline-dot {
+    position: absolute;
+    left: -25px;
+    top: 3px;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: var(--accent-500);
+    border: 2px solid var(--bg);
+    box-shadow: 0 0 0 2px var(--accent-500);
+}
+.timeline-dot--muted { background: var(--border); box-shadow: 0 0 0 2px var(--border); }
+.timeline-title { font-family: var(--font-body); font-size: var(--text-body); font-weight: 500; color: var(--text); }
+.timeline-sub { font-size: var(--text-caption); color: var(--text-muted); margin-top: 3px; }
+.timeline-time { font-family: var(--font-mono); font-size: var(--text-caption); color: var(--text-muted); margin-top: 6px; }
+`;
+
+export const sections = [
+  {
+    label: 'Timeline',
+    demo: `<div class="timeline">
+  <div class="timeline-item">
+    <div class="timeline-dot"></div>
+    <div class="timeline-title">Payment received</div>
+    <div class="timeline-sub">Invoice #INV-001 · $240.00 from Jane Cooper</div>
+    <div class="timeline-time">Today, 2:14 PM</div>
+  </div>
+  <div class="timeline-item">
+    <div class="timeline-dot"></div>
+    <div class="timeline-title">Account upgraded</div>
+    <div class="timeline-sub">Switched to Pro plan</div>
+    <div class="timeline-time">Today, 11:30 AM</div>
+  </div>
+  <div class="timeline-item">
+    <div class="timeline-dot timeline-dot--muted"></div>
+    <div class="timeline-title">New user registered</div>
+    <div class="timeline-sub">Robert Fox joined the workspace</div>
+    <div class="timeline-time">Yesterday, 4:52 PM</div>
+  </div>
+  <div class="timeline-item">
+    <div class="timeline-dot timeline-dot--muted"></div>
+    <div class="timeline-title">Project created</div>
+    <div class="timeline-sub">AquaDrive Design System · 3 members</div>
+    <div class="timeline-time">Apr 10, 2025</div>
+  </div>
+</div>`,
+    tabs: [
+      {
+        label: 'HTML', lang: 'html', code: `<div class="timeline">
+  <div class="timeline-item">
+    <div class="timeline-dot"></div>
+    <div class="timeline-title">Payment received</div>
+    <div class="timeline-sub">Invoice #INV-001 · $240.00</div>
+    <div class="timeline-time">Today, 2:14 PM</div>
+  </div>
+</div>`,
+      },
+      {
+        label: 'CSS', lang: 'css', code: `.timeline { position: relative; padding-left: 28px; }
+.timeline::before {
+    content: '';
+    position: absolute;
+    left: 7px;
+    top: 8px;
+    bottom: 8px;
+    width: 2px;
+    background: var(--border);
+}
+.timeline-item { position: relative; padding-bottom: 24px; }
+.timeline-dot {
+    position: absolute;
+    left: -25px;
+    top: 3px;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: var(--accent-500);
+    border: 2px solid var(--bg);
+    box-shadow: 0 0 0 2px var(--accent-500);
+}`,
+      },
+    ],
+  },
+];

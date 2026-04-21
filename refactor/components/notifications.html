@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AquaDrive — Notifications</title>
+    <link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml" />
+    <script>(function(){var t=localStorage.getItem('aquadrive-theme');var a=localStorage.getItem('aquadrive-accent')||'blue';if(!t)t=window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light';if(t==='dark'){document.documentElement.setAttribute('data-theme','dark');}else{document.documentElement.removeAttribute('data-theme');}document.documentElement.setAttribute('data-accent',a);})()</script>
+    <link rel="stylesheet" href="../assets/css/style.css" />
+    <style>
+
+.notification {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 16px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: var(--surface);
+    margin-bottom: 10px;
+    position: relative;
+}
+.notification:last-child { margin-bottom: 0; }
+.notification-icon {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    background: var(--accent-50);
+    color: var(--accent-500);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    flex-shrink: 0;
+}
+.notification-body { flex: 1; min-width: 0; }
+.notification-title { font-family: var(--font-display); font-weight: 600; font-size: var(--text-body); color: var(--text); }
+.notification-text { font-size: var(--text-small); color: var(--text-muted); margin-top: 2px; }
+.notification-time { font-family: var(--font-mono); font-size: var(--text-caption); color: var(--text-muted); margin-top: 6px; }
+.notification-dismiss {
+    position: absolute;
+    top: 10px;
+    right: 12px;
+    background: none;
+    border: none;
+    font-size: 16px;
+    color: var(--text-muted);
+    cursor: pointer;
+    padding: 2px 6px;
+    border-radius: 4px;
+    line-height: 1;
+    transition: all 0.15s;
+}
+.notification-dismiss:hover { background: var(--accent-50); color: var(--text); }
+
+    </style>
+    <script src="../assets/js/highlight.js" defer></script>
+  </head>
+  <body>
+    <nav class="aqua-navbar">
+  <a href="../index.html" class="aqua-navbar-brand"><svg viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M14 3C14 3 5 10 5 17C5 21.4183 9.02944 25 14 25C18.9706 25 23 21.4183 23 17C23 10 14 3 14 3Z" fill="var(--accent-500)"/><path d="M14 9C14 9 9 13.5 9 17C9 19.7614 11.2386 22 14 22C16.7614 22 19 19.7614 19 17C19 13.5 14 9 14 9Z" fill="var(--bg)" opacity="0.7"/></svg>Aqua<span>Drive</span></a>
+  <button class="aqua-navbar-toggle" onclick="toggleNav()" aria-label="Toggle menu"><span></span></button>
+  <div class="aqua-navbar-collapse">
+    <div class="aqua-navbar-links">
+      <a href="../index.html">Colors</a>
+      <a href="../typography.html">Typography</a>
+      <a href="../elements.html">Elements</a>
+      <a href="../ports.html">Ports</a>
+    </div>
+    <div class="aqua-navbar-actions">
+      <div class="aqua-navbar-settings">
+        <button class="aqua-navbar-settings-btn" onclick="toggleSettings(event)"><svg viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="3" stroke="currentColor" stroke-width="1.5"/><path d="M8 1v2M8 13v2M1 8h2M13 8h2M3.05 3.05l1.41 1.41M11.54 11.54l1.41 1.41M3.05 12.95l1.41-1.41M11.54 4.46l1.41-1.41" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg> Settings</button>
+        <div class="aqua-navbar-dropdown" id="navSettingsDropdown">
+          <div class="aqua-navbar-dropdown-label">Accent Color</div>
+          <div class="aqua-navbar-dropdown-row">
+            <button class="accent-dot" data-color="blue" onclick="setAccent('blue')" aria-label="Blue accent"></button>
+            <button class="accent-dot" data-color="purple" onclick="setAccent('purple')" aria-label="Purple accent"></button>
+            <button class="accent-dot" data-color="cyan" onclick="setAccent('cyan')" aria-label="Cyan accent"></button>
+            <button class="accent-dot" data-color="rose" onclick="setAccent('rose')" aria-label="Rose accent"></button>
+          </div>
+          <div class="aqua-navbar-dropdown-divider"></div>
+          <button class="aqua-navbar-dropdown-item" onclick="toggleTheme()"><svg viewBox="0 0 16 16" fill="none"><path d="M8 1a7 7 0 1 0 0 14A7 7 0 0 0 8 1Z" stroke="currentColor" stroke-width="1.5"/><path d="M8 3v10a5 5 0 0 0 0-10Z" fill="currentColor"/></svg> <span class="theme-toggle-label">Toggle Theme</span></button>
+          <button class="aqua-navbar-dropdown-item" onclick="toggleMobile()"><svg viewBox="0 0 16 16" fill="none"><rect x="4" y="1" width="8" height="14" rx="1.5" stroke="currentColor" stroke-width="1.5"/><line x1="6.5" y1="12.5" x2="9.5" y2="12.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg> Mobile Preview</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+    <nav class="breadcrumb"><a href="../index.html">AquaDrive</a><span class="sep">/</span><a href="../elements.html">Elements</a><span class="sep">/</span><span class="current">Notifications</span></nav>
+    <header>
+      <div class="brand-tag">AquaDrive · Design System</div>
+      <h1>Notifications</h1>
+      <p class="subtitle">In-app notification items with icons and actions.</p>
+    </header>
+    <section class="section">
+  <div class="section-label">Notifications</div>
+  <div class="demo-box"><div class="notification">
+  <div class="notification-icon">&#128176;</div>
+  <div class="notification-body">
+    <div class="notification-title">Payment received</div>
+    <div class="notification-text">Jane Cooper paid Invoice #INV-001 for $240.00.</div>
+    <div class="notification-time">2 minutes ago</div>
+  </div>
+  <button class="notification-dismiss" aria-label="Dismiss">&#10005;</button>
+</div>
+<div class="notification">
+  <div class="notification-icon" style="background:var(--purple-50);color:var(--purple-500)">&#128101;</div>
+  <div class="notification-body">
+    <div class="notification-title">New team member</div>
+    <div class="notification-text">Robert Fox joined your workspace.</div>
+    <div class="notification-time">1 hour ago</div>
+  </div>
+  <button class="notification-dismiss" aria-label="Dismiss">&#10005;</button>
+</div></div>
+  <div class="code-wrapper">
+  <div class="code-tabs"><button class="code-tab active" data-lang="html">HTML</button><button class="code-tab" data-lang="css">CSS</button></div>
+  <div class="code-panel active" data-lang="html">
+      <button class="code-copy">Copy</button>
+      <pre data-lang="html">&lt;div class=&quot;notification&quot;&gt;
+  &lt;div class=&quot;notification-icon&quot;&gt;&amp;#128176;&lt;/div&gt;
+  &lt;div class=&quot;notification-body&quot;&gt;
+    &lt;div class=&quot;notification-title&quot;&gt;Payment received&lt;/div&gt;
+    &lt;div class=&quot;notification-text&quot;&gt;Jane Cooper paid Invoice #INV-001.&lt;/div&gt;
+    &lt;div class=&quot;notification-time&quot;&gt;2 minutes ago&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;button class=&quot;notification-dismiss&quot; aria-label=&quot;Dismiss&quot;&gt;&amp;#10005;&lt;/button&gt;
+&lt;/div&gt;</pre>
+    </div>
+<div class="code-panel" data-lang="css">
+      <button class="code-copy">Copy</button>
+      <pre data-lang="css">.notification {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 16px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: var(--surface);
+    position: relative;
+}
+.notification-icon {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    background: var(--accent-50);
+    color: var(--accent-500);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    flex-shrink: 0;
+}
+.notification-dismiss {
+    position: absolute;
+    top: 10px;
+    right: 12px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 2px 6px;
+    border-radius: 4px;
+}</pre>
+    </div>
+</div>
+</section>
+    <script>
+function toggleTheme(){var d=document.documentElement.getAttribute('data-theme')==='dark';var n=d?'light':'dark';n==='dark'?document.documentElement.setAttribute('data-theme','dark'):document.documentElement.removeAttribute('data-theme');localStorage.setItem('aquadrive-theme',n);}
+function toggleSettings(e){if(e)e.stopPropagation();document.getElementById('navSettingsDropdown').classList.toggle('open');}
+document.addEventListener('click',function(e){var s=document.querySelector('.aqua-navbar-settings');if(s&&!s.contains(e.target)){document.getElementById('navSettingsDropdown').classList.remove('open');}});
+function toggleNav(){document.querySelector('.aqua-navbar').classList.toggle('nav-open');}
+function setAccent(c){document.documentElement.setAttribute('data-accent',c);localStorage.setItem('aquadrive-accent',c);updateAccentDots();}
+function updateAccentDots(){var c=document.documentElement.getAttribute('data-accent')||'blue';document.querySelectorAll('.accent-dot').forEach(function(d){d.classList.toggle('active',d.getAttribute('data-color')===c);});}
+function switchTab(btn,lang){var w=btn.closest('.code-wrapper');w.querySelectorAll('.code-tab').forEach(function(t){t.classList.remove('active');});btn.classList.add('active');w.querySelectorAll('.code-panel').forEach(function(p){p.classList.toggle('active',p.getAttribute('data-lang')===lang);});}
+function copyCode(btn){var pre=btn.nextElementSibling;navigator.clipboard.writeText(pre.textContent).then(function(){btn.textContent='Copied!';setTimeout(function(){btn.textContent='Copy';},1500);});}
+function toggleMobile(){var existing=document.querySelector('.mobile-preview-backdrop');if(existing){existing.classList.toggle('open');return;}var backdrop=document.createElement('div');backdrop.className='mobile-preview-backdrop open';backdrop.onclick=function(e){if(e.target===backdrop)backdrop.classList.remove('open');};var device=document.createElement('div');device.className='mobile-preview-device';var notch=document.createElement('div');notch.className='mobile-preview-notch';var screen=document.createElement('div');screen.className='mobile-preview-screen';var iframe=document.createElement('iframe');iframe.src=window.location.href;var close=document.createElement('button');close.className='mobile-preview-close';close.innerHTML='&times;';close.onclick=function(){backdrop.classList.remove('open');};var label=document.createElement('div');label.className='mobile-preview-label';label.textContent='390 × 844 — iPhone 14 Pro';screen.appendChild(iframe);device.appendChild(notch);device.appendChild(screen);device.appendChild(close);device.appendChild(label);backdrop.appendChild(device);document.body.appendChild(backdrop);}
+document.querySelectorAll('.code-tab').forEach(function(btn){btn.addEventListener('click',function(){switchTab(btn,btn.getAttribute('data-lang'));});});
+document.querySelectorAll('.code-copy').forEach(function(btn){btn.addEventListener('click',function(){copyCode(btn);});});
+updateAccentDots();</script>
+  </body>
+</html>

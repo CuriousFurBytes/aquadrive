@@ -1,0 +1,638 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>AquaDrive — Identity & Media</title>
+        <link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml" />
+        <script>(function(){var t=localStorage.getItem('aquadrive-theme');var a=localStorage.getItem('aquadrive-accent')||'blue';if(!t)t=window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light';if(t==='dark'){document.documentElement.setAttribute('data-theme','dark');}else{document.documentElement.removeAttribute('data-theme');}document.documentElement.setAttribute('data-accent',a);})()</script>
+        <link rel="stylesheet" href="../assets/css/style.css" />
+        <style>
+            .avatar {
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                border-radius: 50%;
+                background: var(--accent-500);
+                color: #fff;
+                font-family: var(--font-display);
+                font-weight: 700;
+                flex-shrink: 0;
+                overflow: hidden;
+            }
+            .avatar-sm { width: 24px; height: 24px; font-size: 10px; }
+            .avatar-md { width: 40px; height: 40px; font-size: 14px; }
+            .avatar-lg { width: 56px; height: 56px; font-size: 20px; }
+            .avatar-placeholder {
+                background: var(--surface-elevated);
+                border: 1px solid var(--border);
+            }
+            .avatar-placeholder svg {
+                width: 50%;
+                height: 50%;
+                fill: var(--text-muted);
+            }
+            .avatar-group {
+                display: flex;
+                align-items: center;
+            }
+            .avatar-group .avatar {
+                border: 2px solid var(--bg);
+                margin-left: -10px;
+            }
+            .avatar-group .avatar:first-child {
+                margin-left: 0;
+            }
+
+            .content-card {
+                background: var(--surface);
+                border: 1px solid var(--border);
+                border-radius: 16px;
+                overflow: hidden;
+                max-width: 320px;
+            }
+            .content-card-image {
+                height: 160px;
+                background: var(--accent-50);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: var(--accent-500);
+                font-family: var(--font-mono);
+                font-size: 12px;
+            }
+            .content-card-body {
+                padding: 20px;
+            }
+            .content-card-title {
+                font-family: var(--font-display);
+                font-size: 16px;
+                font-weight: 700;
+                margin-bottom: 8px;
+                color: var(--text);
+            }
+            .content-card-desc {
+                font-size: 13px;
+                color: var(--text-muted);
+                line-height: 1.6;
+                margin-bottom: 12px;
+            }
+            .content-card-tags {
+                display: flex;
+                gap: 6px;
+                flex-wrap: wrap;
+                margin-bottom: 16px;
+            }
+            .content-card-tag {
+                display: inline-flex;
+                align-items: center;
+                gap: 8px;
+                font-family: var(--font-body);
+                font-size: 13px;
+                font-weight: 500;
+                padding: 6px 14px;
+                border-radius: 999px;
+                background: var(--accent-50);
+                color: var(--text);
+                border: none;
+                line-height: 1.4;
+            }
+            .content-card-action {
+                display: inline-block;
+                font-family: var(--font-mono);
+                font-size: 12px;
+                padding: 8px 20px;
+                border-radius: 8px;
+                background: var(--accent-500);
+                color: #fff;
+                border: none;
+                cursor: pointer;
+                text-decoration: none;
+            }
+            .content-card-footer {
+                padding: 12px 20px;
+                border-top: 1px solid var(--border);
+                display: flex;
+                gap: 12px;
+                align-items: center;
+            }
+            .content-card-footer button {
+                font-family: var(--font-mono);
+                font-size: 11px;
+                padding: 6px 14px;
+                border-radius: 6px;
+                border: 1px solid var(--border);
+                background: var(--surface);
+                color: var(--text);
+                cursor: pointer;
+            }
+            .content-card-footer button.primary {
+                background: var(--accent-500);
+                color: #fff;
+                border-color: var(--accent-500);
+            }
+
+            .card-horizontal {
+                display: flex;
+                max-width: 480px;
+            }
+            .card-horizontal .content-card-image {
+                width: 160px;
+                height: auto;
+                min-height: 140px;
+                flex-shrink: 0;
+            }
+            .card-horizontal .content-card-body {
+                padding: 16px 20px;
+            }
+
+            .demo-row {
+                display: flex;
+                align-items: center;
+                gap: 16px;
+                flex-wrap: wrap;
+            }
+            .cards-row {
+                display: flex;
+                gap: 20px;
+                flex-wrap: wrap;
+            }
+
+            @media (max-width: 640px) {
+                .card-horizontal {
+                    flex-direction: column;
+                }
+                .card-horizontal .content-card-image {
+                    width: 100%;
+                    height: 120px;
+                }
+            }
+        </style>
+        <script src="../assets/js/highlight.js" defer></script>
+    </head>
+    <body>
+        <nav class="aqua-navbar">
+            <a href="../index.html" class="aqua-navbar-brand"><svg viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M14 3C14 3 5 10 5 17C5 21.4183 9.02944 25 14 25C18.9706 25 23 21.4183 23 17C23 10 14 3 14 3Z" fill="var(--accent-500)"/><path d="M14 9C14 9 9 13.5 9 17C9 19.7614 11.2386 22 14 22C16.7614 22 19 19.7614 19 17C19 13.5 14 9 14 9Z" fill="var(--bg)" opacity="0.7"/></svg>Aqua<span>Drive</span></a>
+            <button class="aqua-navbar-toggle" onclick="toggleNav()" aria-label="Toggle menu"><span></span></button>
+            <div class="aqua-navbar-collapse">
+            <div class="aqua-navbar-links">
+                <a href="../index.html">Colors</a>
+                <a href="../typography.html">Typography</a>
+                <a href="../elements.html" class="active">Elements</a>
+                <a href="../ports.html">Ports</a>
+            </div>
+            <div class="aqua-navbar-actions">
+                <div class="aqua-navbar-settings">
+                    <button class="aqua-navbar-settings-btn" onclick="toggleSettings(event)">
+                        <svg viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="3" stroke="currentColor" stroke-width="1.5"/><path d="M8 1v2M8 13v2M1 8h2M13 8h2M3.05 3.05l1.41 1.41M11.54 11.54l1.41 1.41M3.05 12.95l1.41-1.41M11.54 4.46l1.41-1.41" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+                        Settings
+                    </button>
+                    <div class="aqua-navbar-dropdown" id="navSettingsDropdown">
+                        <div class="aqua-navbar-dropdown-label">Accent Color</div>
+                        <div class="aqua-navbar-dropdown-row">
+                            <button class="accent-dot" data-color="blue" onclick="setAccent('blue')" aria-label="Blue accent"></button>
+                            <button class="accent-dot" data-color="purple" onclick="setAccent('purple')" aria-label="Purple accent"></button>
+                            <button class="accent-dot" data-color="cyan" onclick="setAccent('cyan')" aria-label="Cyan accent"></button>
+                            <button class="accent-dot" data-color="rose" onclick="setAccent('rose')" aria-label="Rose accent"></button>
+                        </div>
+                        <div class="aqua-navbar-dropdown-divider"></div>
+                        <button class="aqua-navbar-dropdown-item" onclick="toggleTheme()">
+                            <svg viewBox="0 0 16 16" fill="none"><path d="M8 1a7 7 0 1 0 0 14A7 7 0 0 0 8 1Z" stroke="currentColor" stroke-width="1.5"/><path d="M8 3v10a5 5 0 0 0 0-10Z" fill="currentColor"/></svg>
+                            <span class="theme-toggle-label">Toggle Theme</span>
+                        </button>
+                        <button class="aqua-navbar-dropdown-item" onclick="toggleMobile()">
+                            <svg viewBox="0 0 16 16" fill="none"><rect x="4" y="1" width="8" height="14" rx="1.5" stroke="currentColor" stroke-width="1.5"/><line x1="6.5" y1="12.5" x2="9.5" y2="12.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+                            Mobile Preview
+                        </button>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </nav>
+
+        <nav class="breadcrumb">
+            <a href="../index.html">AquaDrive</a>
+            <span class="sep">/</span>
+            <a href="../elements.html">Elements</a>
+            <span class="sep">/</span>
+            <span class="current">Identity &amp; Media</span>
+        </nav>
+
+        <header>
+            <div class="brand-tag">AquaDrive · Design System</div>
+            <h1>Identity<span> & Media</span></h1>
+            <p class="subtitle">Visual identity and content presentation elements.</p>
+        </header>
+
+        <!-- AVATARS -->
+        <section class="section">
+            <div class="section-label">Avatars</div>
+
+            <div class="demo-box">
+                <div class="demo-label">Sizes with Initials</div>
+                <div class="demo-row">
+                    <div class="avatar avatar-sm">A</div>
+                    <div class="avatar avatar-md">BK</div>
+                    <div class="avatar avatar-lg">JD</div>
+                </div>
+            </div>
+
+            <div class="demo-box" style="margin-top: 16px;">
+                <div class="demo-label">Placeholder Icons</div>
+                <div class="demo-row">
+                    <div class="avatar avatar-sm avatar-placeholder">
+                        <svg viewBox="0 0 24 24"><path d="M12 12c2.7 0 5-2.3 5-5s-2.3-5-5-5-5 2.3-5 5 2.3 5 5 5zm0 2c-3.3 0-10 1.7-10 5v2h20v-2c0-3.3-6.7-5-10-5z"/></svg>
+                    </div>
+                    <div class="avatar avatar-md avatar-placeholder">
+                        <svg viewBox="0 0 24 24"><path d="M12 12c2.7 0 5-2.3 5-5s-2.3-5-5-5-5 2.3-5 5 2.3 5 5 5zm0 2c-3.3 0-10 1.7-10 5v2h20v-2c0-3.3-6.7-5-10-5z"/></svg>
+                    </div>
+                    <div class="avatar avatar-lg avatar-placeholder">
+                        <svg viewBox="0 0 24 24"><path d="M12 12c2.7 0 5-2.3 5-5s-2.3-5-5-5-5 2.3-5 5 2.3 5 5 5zm0 2c-3.3 0-10 1.7-10 5v2h20v-2c0-3.3-6.7-5-10-5z"/></svg>
+                    </div>
+                </div>
+            </div>
+
+            <div class="demo-box" style="margin-top: 16px;">
+                <div class="demo-label">Grouped / Stacked</div>
+                <div class="avatar-group">
+                    <div class="avatar avatar-md">JD</div>
+                    <div class="avatar avatar-md">SK</div>
+                    <div class="avatar avatar-md">AR</div>
+                    <div class="avatar avatar-md">ML</div>
+                    <div class="avatar avatar-md avatar-placeholder">
+                        <svg viewBox="0 0 24 24"><path d="M12 12c2.7 0 5-2.3 5-5s-2.3-5-5-5-5 2.3-5 5 2.3 5 5 5zm0 2c-3.3 0-10 1.7-10 5v2h20v-2c0-3.3-6.7-5-10-5z"/></svg>
+                    </div>
+                </div>
+            </div>
+
+            <div class="code-wrapper">
+                <div class="code-tabs">
+                    <button class="code-tab active" onclick="switchTab(this, 'html')">HTML</button>
+                    <button class="code-tab" onclick="switchTab(this, 'css')">CSS</button>
+                </div>
+                <div class="code-panel active" data-lang="html">
+                    <button class="code-copy" onclick="copyCode(this)">Copy</button>
+                    <pre>&lt;!-- Initials avatar --&gt;
+&lt;div class="avatar avatar-sm"&gt;A&lt;/div&gt;
+&lt;div class="avatar avatar-md"&gt;BK&lt;/div&gt;
+&lt;div class="avatar avatar-lg"&gt;JD&lt;/div&gt;
+
+&lt;!-- Placeholder avatar --&gt;
+&lt;div class="avatar avatar-md avatar-placeholder"&gt;
+    &lt;svg viewBox="0 0 24 24"&gt;
+        &lt;path d="M12 12c2.7 0 5-2.3 5-5s-2.3-5-5-5-5
+        2.3-5 5 2.3 5 5 5zm0 2c-3.3 0-10 1.7-10 5v2h20v-2
+        c0-3.3-6.7-5-10-5z"/&gt;
+    &lt;/svg&gt;
+&lt;/div&gt;
+
+&lt;!-- Grouped avatars --&gt;
+&lt;div class="avatar-group"&gt;
+    &lt;div class="avatar avatar-md"&gt;JD&lt;/div&gt;
+    &lt;div class="avatar avatar-md"&gt;SK&lt;/div&gt;
+    &lt;div class="avatar avatar-md"&gt;AR&lt;/div&gt;
+&lt;/div&gt;</pre>
+                </div>
+                <div class="code-panel" data-lang="css">
+                    <button class="code-copy" onclick="copyCode(this)">Copy</button>
+                    <pre>.avatar {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: var(--accent-500);
+    color: #fff;
+    font-family: var(--font-display);
+    font-weight: 700;
+    flex-shrink: 0;
+    overflow: hidden;
+}
+.avatar-sm { width: 24px; height: 24px; font-size: 10px; }
+.avatar-md { width: 40px; height: 40px; font-size: 14px; }
+.avatar-lg { width: 56px; height: 56px; font-size: 20px; }
+
+.avatar-placeholder {
+    background: var(--surface-elevated);
+    border: 1px solid var(--border);
+}
+.avatar-placeholder svg {
+    width: 50%;
+    height: 50%;
+    fill: var(--text-muted);
+}
+
+.avatar-group {
+    display: flex;
+    align-items: center;
+}
+.avatar-group .avatar {
+    border: 2px solid var(--bg);
+    margin-left: -10px;
+}
+.avatar-group .avatar:first-child {
+    margin-left: 0;
+}</pre>
+                </div>
+            </div>
+        </section>
+
+        <!-- CARDS -->
+        <section class="section">
+            <div class="section-label">Cards</div>
+
+            <div class="demo-box">
+                <div class="demo-label">Default Card</div>
+                <div class="cards-row">
+                    <div class="content-card">
+                        <div class="content-card-image">800 x 400</div>
+                        <div class="content-card-body">
+                            <div class="content-card-title">Premium Detail</div>
+                            <div class="content-card-desc">Full interior and exterior detail with clay bar treatment, polish, and ceramic sealant.</div>
+                            <div class="content-card-tags">
+                                <span class="content-card-tag">Exterior</span>
+                                <span class="content-card-tag">Interior</span>
+                                <span class="content-card-tag">Ceramic</span>
+                            </div>
+                            <button class="content-card-action">Book Now</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="demo-box" style="margin-top: 16px;">
+                <div class="demo-label">Horizontal Card</div>
+                <div class="cards-row">
+                    <div class="content-card card-horizontal">
+                        <div class="content-card-image">400 x 300</div>
+                        <div class="content-card-body">
+                            <div class="content-card-title">Quick Wash</div>
+                            <div class="content-card-desc">Exterior hand wash with tire dressing and window cleaning. Done in 30 minutes.</div>
+                            <div class="content-card-tags">
+                                <span class="content-card-tag">Exterior</span>
+                                <span class="content-card-tag">Quick</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="demo-box" style="margin-top: 16px;">
+                <div class="demo-label">Card with Footer Actions</div>
+                <div class="cards-row">
+                    <div class="content-card">
+                        <div class="content-card-image">800 x 400</div>
+                        <div class="content-card-body">
+                            <div class="content-card-title">Ceramic Coating</div>
+                            <div class="content-card-desc">Professional-grade SiO2 ceramic coating. Up to 2 years of paint protection.</div>
+                            <div class="content-card-tags">
+                                <span class="content-card-tag">Protection</span>
+                                <span class="content-card-tag">Premium</span>
+                            </div>
+                        </div>
+                        <div class="content-card-footer">
+                            <button class="primary">Book</button>
+                            <button>Details</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="code-wrapper">
+                <div class="code-tabs">
+                    <button class="code-tab active" onclick="switchTab(this, 'html')">HTML</button>
+                    <button class="code-tab" onclick="switchTab(this, 'css')">CSS</button>
+                </div>
+                <div class="code-panel active" data-lang="html">
+                    <button class="code-copy" onclick="copyCode(this)">Copy</button>
+                    <pre>&lt;!-- Default card --&gt;
+&lt;div class="content-card"&gt;
+    &lt;div class="content-card-image"&gt;800 x 400&lt;/div&gt;
+    &lt;div class="content-card-body"&gt;
+        &lt;div class="content-card-title"&gt;Premium Detail&lt;/div&gt;
+        &lt;div class="content-card-desc"&gt;Full interior and exterior detail...&lt;/div&gt;
+        &lt;div class="content-card-tags"&gt;
+            &lt;span class="content-card-tag"&gt;Exterior&lt;/span&gt;
+            &lt;span class="content-card-tag"&gt;Interior&lt;/span&gt;
+        &lt;/div&gt;
+        &lt;button class="content-card-action"&gt;Book Now&lt;/button&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- Horizontal card --&gt;
+&lt;div class="content-card card-horizontal"&gt;
+    &lt;div class="content-card-image"&gt;400 x 300&lt;/div&gt;
+    &lt;div class="content-card-body"&gt;
+        &lt;div class="content-card-title"&gt;Quick Wash&lt;/div&gt;
+        &lt;div class="content-card-desc"&gt;Exterior hand wash...&lt;/div&gt;
+        &lt;div class="content-card-tags"&gt;
+            &lt;span class="content-card-tag"&gt;Exterior&lt;/span&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- Card with footer actions --&gt;
+&lt;div class="content-card"&gt;
+    &lt;div class="content-card-image"&gt;800 x 400&lt;/div&gt;
+    &lt;div class="content-card-body"&gt;
+        &lt;div class="content-card-title"&gt;Ceramic Coating&lt;/div&gt;
+        &lt;div class="content-card-desc"&gt;Professional-grade coating...&lt;/div&gt;
+        &lt;div class="content-card-tags"&gt;
+            &lt;span class="content-card-tag"&gt;Protection&lt;/span&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="content-card-footer"&gt;
+        &lt;button class="primary"&gt;Book&lt;/button&gt;
+        &lt;button&gt;Details&lt;/button&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</pre>
+                </div>
+                <div class="code-panel" data-lang="css">
+                    <button class="code-copy" onclick="copyCode(this)">Copy</button>
+                    <pre>.content-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    overflow: hidden;
+    max-width: 320px;
+}
+.content-card-image {
+    height: 160px;
+    background: var(--accent-50);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--accent-500);
+    font-family: var(--font-mono);
+    font-size: 12px;
+}
+.content-card-body {
+    padding: 20px;
+}
+.content-card-title {
+    font-family: var(--font-display);
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+.content-card-desc {
+    font-size: 13px;
+    color: var(--text-muted);
+    line-height: 1.6;
+    margin-bottom: 12px;
+}
+.content-card-tags {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    margin-bottom: 16px;
+}
+.content-card-tag {
+    display: inline-flex;
+    align-items: center;
+    font-family: var(--font-body);
+    font-size: 13px;
+    font-weight: 500;
+    padding: 6px 14px;
+    border-radius: 999px;
+    background: var(--accent-50);
+    color: var(--text);
+}
+.content-card-action {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    padding: 8px 20px;
+    border-radius: 8px;
+    background: var(--accent-500);
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+.content-card-footer {
+    padding: 12px 20px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    gap: 12px;
+}
+.content-card-footer button {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    padding: 6px 14px;
+    border-radius: 6px;
+    border: 1px solid var(--border);
+    background: var(--surface);
+    color: var(--text);
+    cursor: pointer;
+}
+.content-card-footer button.primary {
+    background: var(--accent-500);
+    color: #fff;
+    border-color: var(--accent-500);
+}
+
+/* Horizontal variant */
+.card-horizontal {
+    display: flex;
+    max-width: 480px;
+}
+.card-horizontal .content-card-image {
+    width: 160px;
+    height: auto;
+    min-height: 140px;
+    flex-shrink: 0;
+}</pre>
+                </div>
+            </div>
+        </section>
+
+        <script>
+            function toggleTheme() {
+                var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+                var next = isDark ? 'light' : 'dark';
+                if (next === 'dark') {
+                    document.documentElement.setAttribute('data-theme', 'dark');
+                } else {
+                    document.documentElement.removeAttribute('data-theme');
+                }
+                localStorage.setItem('aquadrive-theme', next);
+                updateToggleLabel();
+            }
+            function toggleSettings(e) {
+                if (e) e.stopPropagation();
+                var dd = document.getElementById('navSettingsDropdown');
+                dd.classList.toggle('open');
+            }
+            document.addEventListener('click', function(e) {
+                var settings = document.querySelector('.aqua-navbar-settings');
+                if (settings && !settings.contains(e.target)) {
+                    document.getElementById('navSettingsDropdown').classList.remove('open');
+                }
+            });
+            function toggleNav() {
+                document.querySelector('.aqua-navbar').classList.toggle('nav-open');
+            }
+            function updateToggleLabel() {
+                var btn = document.querySelector('.theme-toggle');
+                if (!btn) return;
+                var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+                btn.textContent = isDark ? 'Light' : 'Dark';
+            }
+            function setAccent(color) {
+                document.documentElement.setAttribute('data-accent', color);
+                localStorage.setItem('aquadrive-accent', color);
+                updateAccentDots();
+            }
+            function updateAccentDots() {
+                var current = document.documentElement.getAttribute('data-accent') || 'blue';
+                document.querySelectorAll('.accent-dot').forEach(function(dot) {
+                    dot.classList.toggle('active', dot.getAttribute('data-color') === current);
+                });
+            }
+            function switchTab(btn, lang) {
+                var wrapper = btn.closest('.code-wrapper');
+                wrapper.querySelectorAll('.code-tab').forEach(t => t.classList.remove('active'));
+                wrapper.querySelectorAll('.code-panel').forEach(p => p.classList.remove('active'));
+                btn.classList.add('active');
+                wrapper.querySelector('[data-lang="' + lang + '"]').classList.add('active');
+            }
+            function copyCode(btn) {
+                var code = btn.nextElementSibling.textContent;
+                navigator.clipboard.writeText(code);
+                btn.textContent = 'Copied!';
+                setTimeout(function() { btn.textContent = 'Copy'; }, 1500);
+            }
+            /* Mobile Preview */
+            function toggleMobile() {
+                var existing = document.querySelector('.mobile-preview-backdrop');
+                if (existing) { existing.classList.toggle('open'); return; }
+                var backdrop = document.createElement('div');
+                backdrop.className = 'mobile-preview-backdrop open';
+                backdrop.onclick = function(e) { if (e.target === backdrop) backdrop.classList.remove('open'); };
+                var device = document.createElement('div');
+                device.className = 'mobile-preview-device';
+                var notch = document.createElement('div');
+                notch.className = 'mobile-preview-notch';
+                var screen = document.createElement('div');
+                screen.className = 'mobile-preview-screen';
+                var iframe = document.createElement('iframe');
+                iframe.src = window.location.href;
+                var close = document.createElement('button');
+                close.className = 'mobile-preview-close';
+                close.innerHTML = '&times;';
+                close.onclick = function() { backdrop.classList.remove('open'); };
+                var label = document.createElement('div');
+                label.className = 'mobile-preview-label';
+                label.textContent = '390 × 844 — iPhone 14 Pro';
+                screen.appendChild(iframe);
+                device.appendChild(notch);
+                device.appendChild(screen);
+                device.appendChild(close);
+                device.appendChild(label);
+                backdrop.appendChild(device);
+                document.body.appendChild(backdrop);
+            }
+
+            updateToggleLabel();
+            updateAccentDots();
+        </script>
+    </body>
+</html>

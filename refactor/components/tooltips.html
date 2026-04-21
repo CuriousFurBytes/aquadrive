@@ -105,7 +105,7 @@
   <span class="tooltip-trigger tooltip-right" data-tooltip="Tooltip right">Hover me (right)</span>
 </div></div>
   <div class="code-wrapper">
-  <div class="code-tabs"><button class="code-tab active" data-lang="html">HTML</button><button class="code-tab" data-lang="css">CSS</button></div>
+  <div class="code-tabs"><button class="code-tab active" data-lang="html">HTML</button></div>
   <div class="code-panel active" data-lang="html">
       <button class="code-copy">Copy</button>
       <pre data-lang="html">&lt;span class=&quot;tooltip-trigger&quot; data-tooltip=&quot;Default tooltip&quot;&gt;
@@ -123,34 +123,6 @@
 &lt;span class=&quot;tooltip-trigger tooltip-right&quot; data-tooltip=&quot;Tooltip right&quot;&gt;
   Hover me (right)
 &lt;/span&gt;</pre>
-    </div>
-<div class="code-panel" data-lang="css">
-      <button class="code-copy">Copy</button>
-      <pre data-lang="css">.tooltip-trigger {
-    position: relative;
-    display: inline-block;
-    cursor: help;
-    border-bottom: 1px dashed var(--text-muted);
-}
-.tooltip-trigger::after {
-    content: attr(data-tooltip);
-    position: absolute;
-    font-size: 12px;
-    white-space: nowrap;
-    background: var(--warm-950);
-    color: #fafaf9;
-    padding: 6px 12px;
-    border-radius: 6px;
-    pointer-events: none;
-    opacity: 0;
-    transition: opacity 0.15s;
-    /* Top position */
-    bottom: calc(100% + 8px);
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 100;
-}
-.tooltip-trigger:hover::after { opacity: 1; }</pre>
     </div>
 </div>
 </section>

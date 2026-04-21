@@ -126,7 +126,7 @@
 </div>
 <script>function switchDemoTab(btn,id){btn.closest('.demo-tabs').querySelectorAll('.demo-tab').forEach(b=>b.classList.remove('active'));btn.classList.add('active');document.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('active'));document.getElementById(id).classList.add('active');}</script></div>
   <div class="code-wrapper">
-  <div class="code-tabs"><button class="code-tab active" data-lang="html">HTML</button><button class="code-tab" data-lang="css">CSS</button><button class="code-tab" data-lang="js">JS</button></div>
+  <div class="code-tabs"><button class="code-tab active" data-lang="html">HTML</button><button class="code-tab" data-lang="js">JS</button></div>
   <div class="code-panel active" data-lang="html">
       <button class="code-copy">Copy</button>
       <pre data-lang="html">&lt;div class=&quot;demo-tabs&quot; role=&quot;tablist&quot;&gt;
@@ -136,26 +136,6 @@
 &lt;/div&gt;
 &lt;div class=&quot;tab-panel active&quot;&gt;Overview content...&lt;/div&gt;
 &lt;div class=&quot;tab-panel&quot;&gt;Details content...&lt;/div&gt;</pre>
-    </div>
-<div class="code-panel" data-lang="css">
-      <button class="code-copy">Copy</button>
-      <pre data-lang="css">.demo-tabs { display: flex; border-bottom: 1px solid var(--border); gap: 4px; }
-.demo-tab {
-    font-family: var(--font-mono);
-    font-size: 12px;
-    font-weight: 600;
-    padding: 8px 14px;
-    border: none;
-    background: none;
-    color: var(--text-muted);
-    cursor: pointer;
-    border-bottom: 2px solid transparent;
-    margin-bottom: -1px;
-    transition: color 0.15s, border-color 0.15s;
-}
-.demo-tab.active { color: var(--accent-500); border-bottom-color: var(--accent-500); }
-.tab-panel { display: none; }
-.tab-panel.active { display: block; }</pre>
     </div>
 <div class="code-panel" data-lang="js">
       <button class="code-copy">Copy</button>
@@ -190,7 +170,7 @@
 </div>
 <script>function switchGroup(btn,id){btn.closest('.tab-group-header').querySelectorAll('.tab-group-btn').forEach(b=>b.classList.remove('active'));btn.classList.add('active');btn.closest('.tab-group').querySelectorAll('.tab-group-panel').forEach(p=>p.classList.remove('active'));document.getElementById(id).classList.add('active');}</script></div>
   <div class="code-wrapper">
-  <div class="code-tabs"><button class="code-tab active" data-lang="html">HTML</button><button class="code-tab" data-lang="css">CSS</button></div>
+  <div class="code-tabs"><button class="code-tab active" data-lang="html">HTML</button></div>
   <div class="code-panel active" data-lang="html">
       <button class="code-copy">Copy</button>
       <pre data-lang="html">&lt;div class=&quot;tab-group&quot;&gt;
@@ -202,27 +182,6 @@
   &lt;div class=&quot;tab-group-panel active&quot;&gt;General settings...&lt;/div&gt;
   &lt;div class=&quot;tab-group-panel&quot;&gt;Security settings...&lt;/div&gt;
 &lt;/div&gt;</pre>
-    </div>
-<div class="code-panel" data-lang="css">
-      <button class="code-copy">Copy</button>
-      <pre data-lang="css">.tab-group { border: 1px solid var(--border); border-radius: 12px; overflow: hidden; }
-.tab-group-header { display: flex; gap: 2px; padding: 6px 6px 0; background: var(--surface); border-bottom: 1px solid var(--border); }
-.tab-group-btn {
-    font-family: var(--font-mono);
-    font-size: 11px;
-    font-weight: 600;
-    padding: 7px 14px;
-    border-radius: 8px 8px 0 0;
-    border: 1px solid transparent;
-    border-bottom: none;
-    background: none;
-    color: var(--text-muted);
-    cursor: pointer;
-    transition: all 0.15s;
-}
-.tab-group-btn.active { background: var(--bg); color: var(--text); border-color: var(--border); border-bottom-color: var(--bg); }
-.tab-group-panel { display: none; padding: 20px; background: var(--bg); }
-.tab-group-panel.active { display: block; }</pre>
     </div>
 </div>
 </section>
@@ -244,7 +203,7 @@
 </div>
 <script>function switchVertical(btn,id){btn.closest('.tab-group-v-sidebar').querySelectorAll('.tab-group-v-btn').forEach(b=>b.classList.remove('active'));btn.classList.add('active');btn.closest('.tab-group-v').querySelectorAll('.tab-group-v-panel').forEach(p=>p.classList.remove('active'));document.getElementById(id).classList.add('active');}</script></div>
   <div class="code-wrapper">
-  <div class="code-tabs"><button class="code-tab active" data-lang="html">HTML</button><button class="code-tab" data-lang="css">CSS</button></div>
+  <div class="code-tabs"><button class="code-tab active" data-lang="html">HTML</button></div>
   <div class="code-panel active" data-lang="html">
       <button class="code-copy">Copy</button>
       <pre data-lang="html">&lt;div class=&quot;tab-group-v&quot;&gt;
@@ -258,33 +217,6 @@
     &lt;div class=&quot;tab-group-v-panel&quot;&gt;Password settings...&lt;/div&gt;
   &lt;/div&gt;
 &lt;/div&gt;</pre>
-    </div>
-<div class="code-panel" data-lang="css">
-      <button class="code-copy">Copy</button>
-      <pre data-lang="css">.tab-group-v { display: flex; border: 1px solid var(--border); border-radius: 12px; overflow: hidden; }
-.tab-group-v-sidebar { min-width: 160px; background: var(--surface); border-right: 1px solid var(--border); padding: 8px; }
-.tab-group-v-btn {
-    width: 100%;
-    font-family: var(--font-mono);
-    font-size: 11px;
-    font-weight: 600;
-    padding: 8px 12px;
-    border-radius: 8px;
-    border: none;
-    background: none;
-    color: var(--text-muted);
-    cursor: pointer;
-    text-align: left;
-    border-left: 3px solid transparent;
-    transition: all 0.15s;
-}
-.tab-group-v-btn.active {
-    color: var(--accent-500);
-    background: var(--accent-50);
-    border-left-color: var(--accent-500);
-}
-.tab-group-v-panel { display: none; padding: 20px; }
-.tab-group-v-panel.active { display: block; }</pre>
     </div>
 </div>
 </section>

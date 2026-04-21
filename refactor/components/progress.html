@@ -96,7 +96,7 @@
   <div class="progress-track progress-indeterminate"><div class="progress-fill"></div></div>
 </div></div>
   <div class="code-wrapper">
-  <div class="code-tabs"><button class="code-tab active" data-lang="html">HTML</button><button class="code-tab" data-lang="css">CSS</button></div>
+  <div class="code-tabs"><button class="code-tab active" data-lang="html">HTML</button></div>
   <div class="code-panel active" data-lang="html">
       <button class="code-copy">Copy</button>
       <pre data-lang="html">&lt;!-- Determinate --&gt;
@@ -112,30 +112,6 @@
 &lt;div class=&quot;progress-track progress-indeterminate&quot;&gt;
   &lt;div class=&quot;progress-fill&quot;&gt;&lt;/div&gt;
 &lt;/div&gt;</pre>
-    </div>
-<div class="code-panel" data-lang="css">
-      <button class="code-copy">Copy</button>
-      <pre data-lang="css">.progress-track {
-    width: 100%;
-    height: 8px;
-    background: var(--accent-50);
-    border-radius: 100px;
-    overflow: hidden;
-}
-.progress-fill {
-    height: 100%;
-    background: var(--accent-500);
-    border-radius: 100px;
-    transition: width 0.4s ease;
-}
-.progress-indeterminate .progress-fill {
-    width: 40%;
-    animation: indeterminate 1.4s ease-in-out infinite;
-}
-@keyframes indeterminate {
-    0%   { transform: translateX(-100%); }
-    100% { transform: translateX(350%); }
-}</pre>
     </div>
 </div>
 </section>

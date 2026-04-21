@@ -94,7 +94,7 @@
   <div class="skeleton skeleton-line" style="height:100px;border-radius:10px;margin-top:8px"></div>
 </div></div>
   <div class="code-wrapper">
-  <div class="code-tabs"><button class="code-tab active" data-lang="html">HTML</button><button class="code-tab" data-lang="css">CSS</button></div>
+  <div class="code-tabs"><button class="code-tab active" data-lang="html">HTML</button></div>
   <div class="code-panel active" data-lang="html">
       <button class="code-copy">Copy</button>
       <pre data-lang="html">&lt;!-- Card skeleton --&gt;
@@ -105,28 +105,6 @@
     &lt;div class=&quot;skeleton skeleton-line skeleton-line--short&quot;&gt;&lt;/div&gt;
   &lt;/div&gt;
 &lt;/div&gt;</pre>
-    </div>
-<div class="code-panel" data-lang="css">
-      <button class="code-copy">Copy</button>
-      <pre data-lang="css">.skeleton {
-    background: var(--border);
-    border-radius: 6px;
-    position: relative;
-    overflow: hidden;
-}
-.skeleton::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(90deg, transparent, var(--accent-50), transparent);
-    animation: skeleton-pulse 1.6s ease-in-out infinite;
-}
-@keyframes skeleton-pulse {
-    0%   { transform: translateX(-100%); }
-    100% { transform: translateX(100%); }
-}
-.skeleton-line { height: 12px; margin-bottom: 10px; }
-.skeleton-circle { width: 42px; height: 42px; border-radius: 50%; }</pre>
     </div>
 </div>
 </section>

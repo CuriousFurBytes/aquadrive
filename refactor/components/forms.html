@@ -143,40 +143,11 @@
   <input class="aqua-input" id="demo-input" type="text" placeholder="Placeholder text..." />
 </div></div>
   <div class="code-wrapper">
-  <div class="code-tabs"><button class="code-tab active" data-lang="html">HTML</button><button class="code-tab" data-lang="css">CSS</button></div>
+  <div class="code-tabs"><button class="code-tab active" data-lang="html">HTML</button></div>
   <div class="code-panel active" data-lang="html">
       <button class="code-copy">Copy</button>
       <pre data-lang="html">&lt;label class=&quot;aqua-label&quot; for=&quot;my-input&quot;&gt;Label&lt;/label&gt;
 &lt;input class=&quot;aqua-input&quot; id=&quot;my-input&quot; type=&quot;text&quot; placeholder=&quot;Placeholder text...&quot; /&gt;</pre>
-    </div>
-<div class="code-panel" data-lang="css">
-      <button class="code-copy">Copy</button>
-      <pre data-lang="css">.aqua-label {
-    display: block;
-    font-family: var(--font-mono);
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    color: var(--text-muted);
-    margin-bottom: 6px;
-}
-.aqua-input {
-    width: 100%;
-    font-family: var(--font-body);
-    font-size: var(--text-body);
-    color: var(--text);
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    padding: 10px 14px;
-    transition: border-color 0.15s, box-shadow 0.15s;
-    outline: none;
-}
-.aqua-input:focus {
-    border-color: var(--accent-500);
-    box-shadow: 0 0 0 3px var(--accent-50);
-}</pre>
     </div>
 </div>
 </section>
@@ -187,32 +158,11 @@
   <textarea class="aqua-textarea" id="demo-ta" placeholder="Write something..."></textarea>
 </div></div>
   <div class="code-wrapper">
-  <div class="code-tabs"><button class="code-tab active" data-lang="html">HTML</button><button class="code-tab" data-lang="css">CSS</button></div>
+  <div class="code-tabs"><button class="code-tab active" data-lang="html">HTML</button></div>
   <div class="code-panel active" data-lang="html">
       <button class="code-copy">Copy</button>
       <pre data-lang="html">&lt;label class=&quot;aqua-label&quot; for=&quot;msg&quot;&gt;Message&lt;/label&gt;
 &lt;textarea class=&quot;aqua-textarea&quot; id=&quot;msg&quot; placeholder=&quot;Write something...&quot;&gt;&lt;/textarea&gt;</pre>
-    </div>
-<div class="code-panel" data-lang="css">
-      <button class="code-copy">Copy</button>
-      <pre data-lang="css">.aqua-textarea {
-    width: 100%;
-    font-family: var(--font-body);
-    font-size: var(--text-body);
-    color: var(--text);
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    padding: 10px 14px;
-    min-height: 100px;
-    resize: vertical;
-    outline: none;
-    transition: border-color 0.15s, box-shadow 0.15s;
-}
-.aqua-textarea:focus {
-    border-color: var(--accent-500);
-    box-shadow: 0 0 0 3px var(--accent-50);
-}</pre>
     </div>
 </div>
 </section>
@@ -229,7 +179,7 @@
   </label>
 </div></div>
   <div class="code-wrapper">
-  <div class="code-tabs"><button class="code-tab active" data-lang="html">HTML</button><button class="code-tab" data-lang="css">CSS</button></div>
+  <div class="code-tabs"><button class="code-tab active" data-lang="html">HTML</button></div>
   <div class="code-panel active" data-lang="html">
       <button class="code-copy">Copy</button>
       <pre data-lang="html">&lt;label class=&quot;aqua-toggle-wrapper&quot;&gt;
@@ -239,32 +189,6 @@
   &lt;/span&gt;
   &lt;span&gt;Enable notifications&lt;/span&gt;
 &lt;/label&gt;</pre>
-    </div>
-<div class="code-panel" data-lang="css">
-      <button class="code-copy">Copy</button>
-      <pre data-lang="css">.aqua-toggle { position: relative; display: inline-block; width: 44px; height: 24px; }
-.aqua-toggle input { opacity: 0; width: 0; height: 0; }
-.aqua-toggle-slider {
-    position: absolute;
-    inset: 0;
-    background: var(--border);
-    border-radius: 24px;
-    transition: background 0.2s;
-    cursor: pointer;
-}
-.aqua-toggle-slider::before {
-    content: '';
-    position: absolute;
-    width: 18px;
-    height: 18px;
-    left: 3px;
-    top: 3px;
-    background: var(--surface);
-    border-radius: 50%;
-    transition: transform 0.2s;
-}
-.aqua-toggle input:checked + .aqua-toggle-slider { background: var(--accent-500); }
-.aqua-toggle input:checked + .aqua-toggle-slider::before { transform: translateX(20px); }</pre>
     </div>
 </div>
 </section>
@@ -276,44 +200,13 @@
   <label class="aqua-checkbox-wrapper"><input class="aqua-checkbox" type="checkbox" /><span>Option three</span></label>
 </div></div>
   <div class="code-wrapper">
-  <div class="code-tabs"><button class="code-tab active" data-lang="html">HTML</button><button class="code-tab" data-lang="css">CSS</button></div>
+  <div class="code-tabs"><button class="code-tab active" data-lang="html">HTML</button></div>
   <div class="code-panel active" data-lang="html">
       <button class="code-copy">Copy</button>
       <pre data-lang="html">&lt;label class=&quot;aqua-checkbox-wrapper&quot;&gt;
   &lt;input class=&quot;aqua-checkbox&quot; type=&quot;checkbox&quot; checked /&gt;
   &lt;span&gt;Option one&lt;/span&gt;
 &lt;/label&gt;</pre>
-    </div>
-<div class="code-panel" data-lang="css">
-      <button class="code-copy">Copy</button>
-      <pre data-lang="css">.aqua-checkbox {
-    appearance: none;
-    width: 20px;
-    height: 20px;
-    border: 1.5px solid var(--border);
-    border-radius: 5px;
-    background: var(--surface);
-    cursor: pointer;
-    flex-shrink: 0;
-    transition: all 0.15s;
-    position: relative;
-}
-.aqua-checkbox:checked {
-    background: var(--accent-500);
-    border-color: var(--accent-500);
-}
-.aqua-checkbox:checked::after {
-    content: '';
-    position: absolute;
-    left: 5px;
-    top: 2px;
-    width: 6px;
-    height: 10px;
-    border: 2px solid #fff;
-    border-top: none;
-    border-left: none;
-    transform: rotate(45deg);
-}</pre>
     </div>
 </div>
 </section>
@@ -328,7 +221,7 @@
   </select>
 </div></div>
   <div class="code-wrapper">
-  <div class="code-tabs"><button class="code-tab active" data-lang="html">HTML</button><button class="code-tab" data-lang="css">CSS</button></div>
+  <div class="code-tabs"><button class="code-tab active" data-lang="html">HTML</button></div>
   <div class="code-panel active" data-lang="html">
       <button class="code-copy">Copy</button>
       <pre data-lang="html">&lt;label class=&quot;aqua-label&quot; for=&quot;plan&quot;&gt;Plan&lt;/label&gt;
@@ -337,29 +230,6 @@
   &lt;option&gt;Pro&lt;/option&gt;
   &lt;option&gt;Enterprise&lt;/option&gt;
 &lt;/select&gt;</pre>
-    </div>
-<div class="code-panel" data-lang="css">
-      <button class="code-copy">Copy</button>
-      <pre data-lang="css">.aqua-select {
-    width: 100%;
-    font-family: var(--font-body);
-    font-size: var(--text-body);
-    color: var(--text);
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    padding: 10px 36px 10px 14px;
-    appearance: none;
-    background-image: url(&quot;data:image/svg+xml,...&quot;);
-    background-repeat: no-repeat;
-    background-position: right 12px center;
-    outline: none;
-    cursor: pointer;
-}
-.aqua-select:focus {
-    border-color: var(--accent-500);
-    box-shadow: 0 0 0 3px var(--accent-50);
-}</pre>
     </div>
 </div>
 </section>
@@ -378,7 +248,7 @@
   </div>
 </div></div>
   <div class="code-wrapper">
-  <div class="code-tabs"><button class="code-tab active" data-lang="html">HTML</button><button class="code-tab" data-lang="css">CSS</button></div>
+  <div class="code-tabs"><button class="code-tab active" data-lang="html">HTML</button></div>
   <div class="code-panel active" data-lang="html">
       <button class="code-copy">Copy</button>
       <pre data-lang="html">&lt;div class=&quot;field-group is-success&quot;&gt;
@@ -392,26 +262,6 @@
   &lt;input class=&quot;aqua-input&quot; type=&quot;email&quot; /&gt;
   &lt;p class=&quot;field-hint&quot;&gt;Please enter a valid email address.&lt;/p&gt;
 &lt;/div&gt;</pre>
-    </div>
-<div class="code-panel" data-lang="css">
-      <button class="code-copy">Copy</button>
-      <pre data-lang="css">.field-group.is-success .aqua-input {
-    border-color: var(--green-main);
-    box-shadow: 0 0 0 3px var(--green-tint);
-}
-.field-group.is-success .field-hint { color: var(--green-main); }
-
-.field-group.is-error .aqua-input {
-    border-color: var(--red-main);
-    box-shadow: 0 0 0 3px var(--red-tint);
-}
-.field-group.is-error .field-hint { color: var(--red-main); }
-
-.field-hint {
-    font-size: var(--text-caption);
-    color: var(--text-muted);
-    margin-top: 5px;
-}</pre>
     </div>
 </div>
 </section>
@@ -443,7 +293,7 @@
   </div>
 </div></div>
   <div class="code-wrapper">
-  <div class="code-tabs"><button class="code-tab active" data-lang="html">HTML</button><button class="code-tab" data-lang="css">CSS</button></div>
+  <div class="code-tabs"><button class="code-tab active" data-lang="html">HTML</button></div>
   <div class="code-panel active" data-lang="html">
       <button class="code-copy">Copy</button>
       <pre data-lang="html">&lt;div class=&quot;form-card&quot;&gt;
@@ -467,25 +317,6 @@
     &lt;button class=&quot;aqua-btn aqua-btn-primary&quot;&gt;Create Account&lt;/button&gt;
   &lt;/div&gt;
 &lt;/div&gt;</pre>
-    </div>
-<div class="code-panel" data-lang="css">
-      <button class="code-copy">Copy</button>
-      <pre data-lang="css">.form-card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 24px;
-    max-width: 420px;
-}
-.form-card-title {
-    font-family: var(--font-display);
-    font-size: var(--text-h3);
-    font-weight: 700;
-    color: var(--text);
-    margin-bottom: 20px;
-}
-.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-.form-actions { display: flex; gap: 10px; justify-content: flex-end; margin-top: 20px; }</pre>
     </div>
 </div>
 </section>

@@ -90,13 +90,31 @@ blockquote cite { display: block; font-style: normal; font-size: var(--text-capt
   <h4 style="margin:0">AquaDrive component library</h4>
 </div></div>
   <div class="code-wrapper">
-  
+  <div class="code-tabs"><button class="code-tab active" data-lang="html">HTML</button><button class="code-tab" data-lang="css">CSS</button></div>
   <div class="code-panel active" data-lang="html">
       <button class="code-copy">Copy</button>
-      <ol class="code-lines" data-lang="html"><li>&lt;h1&gt;Display heading&lt;/h1&gt;</li>
-<li>&lt;h2&gt;Section heading&lt;/h2&gt;</li>
-<li>&lt;h3&gt;Subsection heading&lt;/h3&gt;</li>
-<li>&lt;h4&gt;Card title&lt;/h4&gt;</li></ol>
+      <pre data-lang="html">&lt;h1&gt;Display heading&lt;/h1&gt;
+&lt;h2&gt;Section heading&lt;/h2&gt;
+&lt;h3&gt;Subsection heading&lt;/h3&gt;
+&lt;h4&gt;Card title&lt;/h4&gt;</pre>
+    </div>
+<div class="code-panel" data-lang="css">
+      <button class="code-copy">Copy</button>
+      <pre data-lang="css">h1 {
+    font-family: var(--font-display);
+    font-size: var(--text-display); /* 42px */
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    color: var(--text);
+}
+h2 {
+    font-family: var(--font-display);
+    font-size: var(--text-h2); /* 28px */
+    font-weight: 700;
+    letter-spacing: -0.01em;
+}
+h3 { font-size: var(--text-h3); font-weight: 700; }
+h4 { font-size: var(--text-h4); font-weight: 700; }</pre>
     </div>
 </div>
 </section>
@@ -107,13 +125,27 @@ blockquote cite { display: block; font-style: normal; font-size: var(--text-capt
 </p>
 <p class="subtitle" style="margin-top:12px">Subtitle text uses muted color at body size for secondary content and descriptions.</p></div>
   <div class="code-wrapper">
-  
+  <div class="code-tabs"><button class="code-tab active" data-lang="html">HTML</button><button class="code-tab" data-lang="css">CSS</button></div>
   <div class="code-panel active" data-lang="html">
       <button class="code-copy">Copy</button>
-      <ol class="code-lines" data-lang="html"><li>&lt;p&gt;</li>
-<li>  AquaDrive is a design system built for modern web applications.</li>
-<li>&lt;/p&gt;</li>
-<li>&lt;p class=&quot;subtitle&quot;&gt;Secondary description text.&lt;/p&gt;</li></ol>
+      <pre data-lang="html">&lt;p&gt;
+  AquaDrive is a design system built for modern web applications.
+&lt;/p&gt;
+&lt;p class=&quot;subtitle&quot;&gt;Secondary description text.&lt;/p&gt;</pre>
+    </div>
+<div class="code-panel" data-lang="css">
+      <button class="code-copy">Copy</button>
+      <pre data-lang="css">body {
+    font-family: var(--font-body);
+    font-size: var(--text-body); /* 14px */
+    line-height: 1.7;
+    color: var(--text);
+}
+.subtitle {
+    font-size: var(--text-body);
+    color: var(--text-muted);
+    line-height: 1.6;
+}</pre>
     </div>
 </div>
 </section>
@@ -127,18 +159,30 @@ blockquote cite { display: block; font-style: normal; font-size: var(--text-capt
   <p style="margin:0"><abbr title="Application Programming Interface">API</abbr> — abbreviation with tooltip on hover.</p>
 </div></div>
   <div class="code-wrapper">
-  
+  <div class="code-tabs"><button class="code-tab active" data-lang="html">HTML</button><button class="code-tab" data-lang="css">CSS</button></div>
   <div class="code-panel active" data-lang="html">
       <button class="code-copy">Copy</button>
-      <ol class="code-lines" data-lang="html"><li>&lt;strong&gt;Bold text&lt;/strong&gt;</li>
-<li>&lt;em&gt;Italic text&lt;/em&gt;</li>
-<li>&lt;del&gt;Strikethrough text&lt;/del&gt;</li>
-<li> </li>
-<li>&lt;mark class=&quot;mark-yellow&quot;&gt;Yellow highlight&lt;/mark&gt;</li>
-<li>&lt;mark class=&quot;mark-green&quot;&gt;Green highlight&lt;/mark&gt;</li>
-<li>&lt;mark class=&quot;mark-blue&quot;&gt;Blue highlight&lt;/mark&gt;</li>
-<li> </li>
-<li>&lt;abbr title=&quot;Application Programming Interface&quot;&gt;API&lt;/abbr&gt;</li></ol>
+      <pre data-lang="html">&lt;strong&gt;Bold text&lt;/strong&gt;
+&lt;em&gt;Italic text&lt;/em&gt;
+&lt;del&gt;Strikethrough text&lt;/del&gt;
+
+&lt;mark class=&quot;mark-yellow&quot;&gt;Yellow highlight&lt;/mark&gt;
+&lt;mark class=&quot;mark-green&quot;&gt;Green highlight&lt;/mark&gt;
+&lt;mark class=&quot;mark-blue&quot;&gt;Blue highlight&lt;/mark&gt;
+
+&lt;abbr title=&quot;Application Programming Interface&quot;&gt;API&lt;/abbr&gt;</pre>
+    </div>
+<div class="code-panel" data-lang="css">
+      <button class="code-copy">Copy</button>
+      <pre data-lang="css">mark {
+    padding: 2px 6px;
+    border-radius: 4px;
+}
+mark.mark-yellow { background: var(--yellow-tint); color: var(--yellow-main); }
+mark.mark-green  { background: var(--green-tint); color: var(--green-main); }
+mark.mark-blue   { background: var(--accent-50); color: var(--accent-500); }
+
+abbr { text-decoration: underline dotted; cursor: help; }</pre>
     </div>
 </div>
 </section>
@@ -148,10 +192,21 @@ blockquote cite { display: block; font-style: normal; font-size: var(--text-capt
   Visit the <a href="#" style="color:var(--accent-500);text-decoration:none;border-bottom:0.2ch solid var(--accent-500);padding-bottom:0.1rem">AquaDrive documentation</a> to get started. Also check out the <a href="#" style="color:var(--accent-500);text-decoration:none;border-bottom:0.2ch solid var(--accent-500);padding-bottom:0.1rem">component library</a> for interactive examples.
 </p></div>
   <div class="code-wrapper">
-  
+  <div class="code-tabs"><button class="code-tab active" data-lang="html">HTML</button><button class="code-tab" data-lang="css">CSS</button></div>
   <div class="code-panel active" data-lang="html">
       <button class="code-copy">Copy</button>
-      <ol class="code-lines" data-lang="html"><li>&lt;a href=&quot;/docs&quot; class=&quot;aqua-link&quot;&gt;AquaDrive documentation&lt;/a&gt;</li></ol>
+      <pre data-lang="html">&lt;a href=&quot;/docs&quot; class=&quot;aqua-link&quot;&gt;AquaDrive documentation&lt;/a&gt;</pre>
+    </div>
+<div class="code-panel" data-lang="css">
+      <button class="code-copy">Copy</button>
+      <pre data-lang="css">.aqua-link, a {
+    color: var(--accent-500);
+    text-decoration: none;
+    border-bottom: 0.2ch solid var(--accent-500);
+    padding-bottom: 0.1rem;
+    transition: opacity 0.15s;
+}
+a:hover { opacity: 0.75; }</pre>
     </div>
 </div>
 </section>
@@ -162,13 +217,31 @@ blockquote cite { display: block; font-style: normal; font-size: var(--text-capt
   <cite>— Steve Jobs</cite>
 </blockquote></div>
   <div class="code-wrapper">
-  
+  <div class="code-tabs"><button class="code-tab active" data-lang="html">HTML</button><button class="code-tab" data-lang="css">CSS</button></div>
   <div class="code-panel active" data-lang="html">
       <button class="code-copy">Copy</button>
-      <ol class="code-lines" data-lang="html"><li>&lt;blockquote&gt;</li>
-<li>  Great design is not just what it looks like and feels like.</li>
-<li>  &lt;cite&gt;— Steve Jobs&lt;/cite&gt;</li>
-<li>&lt;/blockquote&gt;</li></ol>
+      <pre data-lang="html">&lt;blockquote&gt;
+  Great design is not just what it looks like and feels like.
+  &lt;cite&gt;— Steve Jobs&lt;/cite&gt;
+&lt;/blockquote&gt;</pre>
+    </div>
+<div class="code-panel" data-lang="css">
+      <button class="code-copy">Copy</button>
+      <pre data-lang="css">blockquote {
+    border-left: 3px solid var(--accent-500);
+    background: var(--accent-50);
+    padding: 12px 20px;
+    border-radius: 0 8px 8px 0;
+    font-style: italic;
+    margin: 0;
+}
+blockquote cite {
+    display: block;
+    font-style: normal;
+    font-size: var(--text-caption);
+    color: var(--text-muted);
+    margin-top: 8px;
+}</pre>
     </div>
 </div>
 </section>
@@ -180,8 +253,7 @@ function toggleNav(){document.querySelector('.aqua-navbar').classList.toggle('na
 function setAccent(c){document.documentElement.setAttribute('data-accent',c);localStorage.setItem('aquadrive-accent',c);updateAccentDots();}
 function updateAccentDots(){var c=document.documentElement.getAttribute('data-accent')||'blue';document.querySelectorAll('.accent-dot').forEach(function(d){d.classList.toggle('active',d.getAttribute('data-color')===c);});}
 function switchTab(btn,lang){var w=btn.closest('.code-wrapper');w.querySelectorAll('.code-tab').forEach(function(t){t.classList.remove('active');});btn.classList.add('active');w.querySelectorAll('.code-panel').forEach(function(p){p.classList.toggle('active',p.getAttribute('data-lang')===lang);});}
-function copyCode(btn){var panel=btn.closest('.code-panel');var ol=panel&&panel.querySelector('ol.code-lines');var code=ol?Array.from(ol.querySelectorAll('li')).map(function(l){return l.textContent;}).join('
-'):(btn.nextElementSibling?btn.nextElementSibling.textContent:'');navigator.clipboard.writeText(code).then(function(){btn.textContent='Copied!';setTimeout(function(){btn.textContent='Copy';},1500);});}
+function copyCode(btn){var pre=btn.nextElementSibling;navigator.clipboard.writeText(pre.textContent).then(function(){btn.textContent='Copied!';setTimeout(function(){btn.textContent='Copy';},1500);});}
 function toggleMobile(){var existing=document.querySelector('.mobile-preview-backdrop');if(existing){existing.classList.toggle('open');return;}var backdrop=document.createElement('div');backdrop.className='mobile-preview-backdrop open';backdrop.onclick=function(e){if(e.target===backdrop)backdrop.classList.remove('open');};var device=document.createElement('div');device.className='mobile-preview-device';var notch=document.createElement('div');notch.className='mobile-preview-notch';var screen=document.createElement('div');screen.className='mobile-preview-screen';var iframe=document.createElement('iframe');iframe.src=window.location.href;var close=document.createElement('button');close.className='mobile-preview-close';close.innerHTML='&times;';close.onclick=function(){backdrop.classList.remove('open');};var label=document.createElement('div');label.className='mobile-preview-label';label.textContent='390 × 844 — iPhone 14 Pro';screen.appendChild(iframe);device.appendChild(notch);device.appendChild(screen);device.appendChild(close);device.appendChild(label);backdrop.appendChild(device);document.body.appendChild(backdrop);}
 document.querySelectorAll('.code-tab').forEach(function(btn){btn.addEventListener('click',function(){switchTab(btn,btn.getAttribute('data-lang'));});});
 document.querySelectorAll('.code-copy').forEach(function(btn){btn.addEventListener('click',function(){copyCode(btn);});});

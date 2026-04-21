@@ -116,10 +116,21 @@ code {
   The font stack uses <code>var(--font-mono)</code> for code and <code>var(--font-display)</code> for headings.
 </p></div>
   <div class="code-wrapper">
-  
+  <div class="code-tabs"><button class="code-tab active" data-lang="html">HTML</button><button class="code-tab" data-lang="css">CSS</button></div>
   <div class="code-panel active" data-lang="html">
       <button class="code-copy">Copy</button>
-      <ol class="code-lines" data-lang="html"><li>&lt;p&gt;Use the &lt;code&gt;data-accent&lt;/code&gt; attribute to change accent colors.&lt;/p&gt;</li></ol>
+      <pre data-lang="html">&lt;p&gt;Use the &lt;code&gt;data-accent&lt;/code&gt; attribute to change accent colors.&lt;/p&gt;</pre>
+    </div>
+<div class="code-panel" data-lang="css">
+      <button class="code-copy">Copy</button>
+      <pre data-lang="css">code {
+    font-family: var(--font-mono);
+    font-size: 13px;
+    background: var(--accent-50);
+    color: var(--accent-500);
+    padding: 2px 8px;
+    border-radius: 4px;
+}</pre>
     </div>
 </div>
 </section>
@@ -139,12 +150,29 @@ code {
 &lt;/html&gt;</code></pre>
 </div></div>
   <div class="code-wrapper">
-  
+  <div class="code-tabs"><button class="code-tab active" data-lang="html">HTML</button><button class="code-tab" data-lang="css">CSS</button></div>
   <div class="code-panel active" data-lang="html">
       <button class="code-copy">Copy</button>
-      <ol class="code-lines" data-lang="html"><li>&lt;div class=&quot;code-block&quot;&gt;</li>
-<li>  &lt;pre&gt;&lt;code&gt;your code here...&lt;/code&gt;&lt;/pre&gt;</li>
-<li>&lt;/div&gt;</li></ol>
+      <pre data-lang="html">&lt;div class=&quot;code-block&quot;&gt;
+  &lt;pre&gt;&lt;code&gt;your code here...&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;</pre>
+    </div>
+<div class="code-panel" data-lang="css">
+      <button class="code-copy">Copy</button>
+      <pre data-lang="css">.code-block {
+    background: var(--warm-950);
+    border-radius: 10px;
+    overflow: hidden;
+}
+.code-block pre {
+    margin: 0;
+    padding: 20px;
+    font-family: var(--font-mono);
+    font-size: 13px;
+    line-height: 1.7;
+    color: var(--blue-200);
+    overflow-x: auto;
+}</pre>
     </div>
 </div>
 </section>
@@ -162,16 +190,30 @@ code {
 }</code></pre>
 </div></div>
   <div class="code-wrapper">
-  
+  <div class="code-tabs"><button class="code-tab active" data-lang="html">HTML</button><button class="code-tab" data-lang="css">CSS</button></div>
   <div class="code-panel active" data-lang="html">
       <button class="code-copy">Copy</button>
-      <ol class="code-lines" data-lang="html"><li>&lt;div class=&quot;code-block&quot;&gt;</li>
-<li>  &lt;div class=&quot;code-block-filename&quot;&gt;</li>
-<li>    &lt;span&gt;&amp;#128196;&lt;/span&gt;</li>
-<li>    &lt;span&gt;style.css&lt;/span&gt;</li>
-<li>  &lt;/div&gt;</li>
-<li>  &lt;pre&gt;&lt;code&gt;/* your CSS here */&lt;/code&gt;&lt;/pre&gt;</li>
-<li>&lt;/div&gt;</li></ol>
+      <pre data-lang="html">&lt;div class=&quot;code-block&quot;&gt;
+  &lt;div class=&quot;code-block-filename&quot;&gt;
+    &lt;span&gt;&amp;#128196;&lt;/span&gt;
+    &lt;span&gt;style.css&lt;/span&gt;
+  &lt;/div&gt;
+  &lt;pre&gt;&lt;code&gt;/* your CSS here */&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;</pre>
+    </div>
+<div class="code-panel" data-lang="css">
+      <button class="code-copy">Copy</button>
+      <pre data-lang="css">.code-block-filename {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 16px;
+    background: var(--warm-900);
+    border-bottom: 1px solid var(--warm-850);
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--warm-500);
+}</pre>
     </div>
 </div>
 </section>
@@ -181,16 +223,39 @@ code {
   <pre><span class="code-line">.aqua-btn {</span><span class="code-line">    display: inline-flex;</span><span class="code-line">    align-items: center;</span><span class="code-line">    padding: 10px 20px;</span><span class="code-line">    border-radius: 8px;</span><span class="code-line">    font-family: var(--font-mono);</span><span class="code-line">}</span></pre>
 </div></div>
   <div class="code-wrapper">
-  
+  <div class="code-tabs"><button class="code-tab active" data-lang="html">HTML</button><button class="code-tab" data-lang="css">CSS</button></div>
   <div class="code-panel active" data-lang="html">
       <button class="code-copy">Copy</button>
-      <ol class="code-lines" data-lang="html"><li>&lt;div class=&quot;code-block code-block-numbered&quot;&gt;</li>
-<li>  &lt;pre&gt;</li>
-<li>    &lt;span class=&quot;code-line&quot;&gt;.aqua-btn {&lt;/span&gt;</li>
-<li>    &lt;span class=&quot;code-line&quot;&gt;    display: inline-flex;&lt;/span&gt;</li>
-<li>    &lt;span class=&quot;code-line&quot;&gt;}&lt;/span&gt;</li>
-<li>  &lt;/pre&gt;</li>
-<li>&lt;/div&gt;</li></ol>
+      <pre data-lang="html">&lt;div class=&quot;code-block code-block-numbered&quot;&gt;
+  &lt;pre&gt;
+    &lt;span class=&quot;code-line&quot;&gt;.aqua-btn {&lt;/span&gt;
+    &lt;span class=&quot;code-line&quot;&gt;    display: inline-flex;&lt;/span&gt;
+    &lt;span class=&quot;code-line&quot;&gt;}&lt;/span&gt;
+  &lt;/pre&gt;
+&lt;/div&gt;</pre>
+    </div>
+<div class="code-panel" data-lang="css">
+      <button class="code-copy">Copy</button>
+      <pre data-lang="css">.code-block-numbered pre {
+    counter-reset: line;
+    padding-left: 0;
+}
+.code-line {
+    display: block;
+    padding-left: 20px;
+    counter-increment: line;
+}
+.code-line::before {
+    content: counter(line);
+    display: inline-block;
+    min-width: 2em;
+    padding-right: 16px;
+    margin-right: 12px;
+    color: var(--warm-700);
+    border-right: 1px solid var(--warm-850);
+    text-align: right;
+    user-select: none;
+}</pre>
     </div>
 </div>
 </section>
@@ -200,17 +265,22 @@ code {
   <pre><span class="code-line">.aqua-btn {</span><span class="code-line diff-remove">    padding: 8px 16px;</span><span class="code-line diff-add">    padding: 10px 20px;</span><span class="code-line diff-remove">    border-radius: 4px;</span><span class="code-line diff-add">    border-radius: 8px;</span><span class="code-line">    font-family: var(--font-mono);</span><span class="code-line">}</span></pre>
 </div></div>
   <div class="code-wrapper">
-  
+  <div class="code-tabs"><button class="code-tab active" data-lang="html">HTML</button><button class="code-tab" data-lang="css">CSS</button></div>
   <div class="code-panel active" data-lang="html">
       <button class="code-copy">Copy</button>
-      <ol class="code-lines" data-lang="html"><li>&lt;div class=&quot;code-block code-block-numbered&quot;&gt;</li>
-<li>  &lt;pre&gt;</li>
-<li>    &lt;span class=&quot;code-line&quot;&gt;.aqua-btn {&lt;/span&gt;</li>
-<li>    &lt;span class=&quot;code-line diff-remove&quot;&gt;    padding: 8px 16px;&lt;/span&gt;</li>
-<li>    &lt;span class=&quot;code-line diff-add&quot;&gt;    padding: 10px 20px;&lt;/span&gt;</li>
-<li>    &lt;span class=&quot;code-line&quot;&gt;}&lt;/span&gt;</li>
-<li>  &lt;/pre&gt;</li>
-<li>&lt;/div&gt;</li></ol>
+      <pre data-lang="html">&lt;div class=&quot;code-block code-block-numbered&quot;&gt;
+  &lt;pre&gt;
+    &lt;span class=&quot;code-line&quot;&gt;.aqua-btn {&lt;/span&gt;
+    &lt;span class=&quot;code-line diff-remove&quot;&gt;    padding: 8px 16px;&lt;/span&gt;
+    &lt;span class=&quot;code-line diff-add&quot;&gt;    padding: 10px 20px;&lt;/span&gt;
+    &lt;span class=&quot;code-line&quot;&gt;}&lt;/span&gt;
+  &lt;/pre&gt;
+&lt;/div&gt;</pre>
+    </div>
+<div class="code-panel" data-lang="css">
+      <button class="code-copy">Copy</button>
+      <pre data-lang="css">.diff-add { background: rgba(82, 183, 136, 0.12); }
+.diff-remove { background: rgba(230, 98, 96, 0.12); }</pre>
     </div>
 </div>
 </section>
@@ -222,8 +292,7 @@ function toggleNav(){document.querySelector('.aqua-navbar').classList.toggle('na
 function setAccent(c){document.documentElement.setAttribute('data-accent',c);localStorage.setItem('aquadrive-accent',c);updateAccentDots();}
 function updateAccentDots(){var c=document.documentElement.getAttribute('data-accent')||'blue';document.querySelectorAll('.accent-dot').forEach(function(d){d.classList.toggle('active',d.getAttribute('data-color')===c);});}
 function switchTab(btn,lang){var w=btn.closest('.code-wrapper');w.querySelectorAll('.code-tab').forEach(function(t){t.classList.remove('active');});btn.classList.add('active');w.querySelectorAll('.code-panel').forEach(function(p){p.classList.toggle('active',p.getAttribute('data-lang')===lang);});}
-function copyCode(btn){var panel=btn.closest('.code-panel');var ol=panel&&panel.querySelector('ol.code-lines');var code=ol?Array.from(ol.querySelectorAll('li')).map(function(l){return l.textContent;}).join('
-'):(btn.nextElementSibling?btn.nextElementSibling.textContent:'');navigator.clipboard.writeText(code).then(function(){btn.textContent='Copied!';setTimeout(function(){btn.textContent='Copy';},1500);});}
+function copyCode(btn){var pre=btn.nextElementSibling;navigator.clipboard.writeText(pre.textContent).then(function(){btn.textContent='Copied!';setTimeout(function(){btn.textContent='Copy';},1500);});}
 function toggleMobile(){var existing=document.querySelector('.mobile-preview-backdrop');if(existing){existing.classList.toggle('open');return;}var backdrop=document.createElement('div');backdrop.className='mobile-preview-backdrop open';backdrop.onclick=function(e){if(e.target===backdrop)backdrop.classList.remove('open');};var device=document.createElement('div');device.className='mobile-preview-device';var notch=document.createElement('div');notch.className='mobile-preview-notch';var screen=document.createElement('div');screen.className='mobile-preview-screen';var iframe=document.createElement('iframe');iframe.src=window.location.href;var close=document.createElement('button');close.className='mobile-preview-close';close.innerHTML='&times;';close.onclick=function(){backdrop.classList.remove('open');};var label=document.createElement('div');label.className='mobile-preview-label';label.textContent='390 × 844 — iPhone 14 Pro';screen.appendChild(iframe);device.appendChild(notch);device.appendChild(screen);device.appendChild(close);device.appendChild(label);backdrop.appendChild(device);document.body.appendChild(backdrop);}
 document.querySelectorAll('.code-tab').forEach(function(btn){btn.addEventListener('click',function(){switchTab(btn,btn.getAttribute('data-lang'));});});
 document.querySelectorAll('.code-copy').forEach(function(btn){btn.addEventListener('click',function(){copyCode(btn);});});

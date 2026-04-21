@@ -102,20 +102,41 @@
   <span class="tag tag-purple">Frontend <button class="tag-remove">&#10005;</button></span>
 </div></div>
   <div class="code-wrapper">
-  
+  <div class="code-tabs"><button class="code-tab active" data-lang="html">HTML</button><button class="code-tab" data-lang="css">CSS</button></div>
   <div class="code-panel active" data-lang="html">
       <button class="code-copy">Copy</button>
-      <ol class="code-lines" data-lang="html"><li>&lt;span class=&quot;tag&quot;&gt;Default&lt;/span&gt;</li>
-<li>&lt;span class=&quot;tag tag-blue&quot;&gt;Blue&lt;/span&gt;</li>
-<li>&lt;span class=&quot;tag tag-purple&quot;&gt;Purple&lt;/span&gt;</li>
-<li>&lt;span class=&quot;tag tag-cyan&quot;&gt;Cyan&lt;/span&gt;</li>
-<li>&lt;span class=&quot;tag tag-rose&quot;&gt;Rose&lt;/span&gt;</li>
-<li> </li>
-<li>&lt;!-- With remove button --&gt;</li>
-<li>&lt;span class=&quot;tag tag-blue&quot;&gt;</li>
-<li>  Design</li>
-<li>  &lt;button class=&quot;tag-remove&quot;&gt;&amp;#10005;&lt;/button&gt;</li>
-<li>&lt;/span&gt;</li></ol>
+      <pre data-lang="html">&lt;span class=&quot;tag&quot;&gt;Default&lt;/span&gt;
+&lt;span class=&quot;tag tag-blue&quot;&gt;Blue&lt;/span&gt;
+&lt;span class=&quot;tag tag-purple&quot;&gt;Purple&lt;/span&gt;
+&lt;span class=&quot;tag tag-cyan&quot;&gt;Cyan&lt;/span&gt;
+&lt;span class=&quot;tag tag-rose&quot;&gt;Rose&lt;/span&gt;
+
+&lt;!-- With remove button --&gt;
+&lt;span class=&quot;tag tag-blue&quot;&gt;
+  Design
+  &lt;button class=&quot;tag-remove&quot;&gt;&amp;#10005;&lt;/button&gt;
+&lt;/span&gt;</pre>
+    </div>
+<div class="code-panel" data-lang="css">
+      <button class="code-copy">Copy</button>
+      <pre data-lang="css">.tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: 999px;
+    background: var(--accent-50);
+    color: var(--accent-500);
+}
+.tag-blue { background: rgba(101,110,164,0.12); color: var(--blue-500); }
+.tag-purple { background: rgba(142,106,160,0.12); color: var(--purple-500); }
+.tag-cyan { background: rgba(58,175,160,0.12); color: var(--cyan-500); }
+.tag-rose { background: rgba(212,115,140,0.12); color: var(--rose-500); }</pre>
     </div>
 </div>
 </section>
@@ -127,8 +148,7 @@ function toggleNav(){document.querySelector('.aqua-navbar').classList.toggle('na
 function setAccent(c){document.documentElement.setAttribute('data-accent',c);localStorage.setItem('aquadrive-accent',c);updateAccentDots();}
 function updateAccentDots(){var c=document.documentElement.getAttribute('data-accent')||'blue';document.querySelectorAll('.accent-dot').forEach(function(d){d.classList.toggle('active',d.getAttribute('data-color')===c);});}
 function switchTab(btn,lang){var w=btn.closest('.code-wrapper');w.querySelectorAll('.code-tab').forEach(function(t){t.classList.remove('active');});btn.classList.add('active');w.querySelectorAll('.code-panel').forEach(function(p){p.classList.toggle('active',p.getAttribute('data-lang')===lang);});}
-function copyCode(btn){var panel=btn.closest('.code-panel');var ol=panel&&panel.querySelector('ol.code-lines');var code=ol?Array.from(ol.querySelectorAll('li')).map(function(l){return l.textContent;}).join('
-'):(btn.nextElementSibling?btn.nextElementSibling.textContent:'');navigator.clipboard.writeText(code).then(function(){btn.textContent='Copied!';setTimeout(function(){btn.textContent='Copy';},1500);});}
+function copyCode(btn){var pre=btn.nextElementSibling;navigator.clipboard.writeText(pre.textContent).then(function(){btn.textContent='Copied!';setTimeout(function(){btn.textContent='Copy';},1500);});}
 function toggleMobile(){var existing=document.querySelector('.mobile-preview-backdrop');if(existing){existing.classList.toggle('open');return;}var backdrop=document.createElement('div');backdrop.className='mobile-preview-backdrop open';backdrop.onclick=function(e){if(e.target===backdrop)backdrop.classList.remove('open');};var device=document.createElement('div');device.className='mobile-preview-device';var notch=document.createElement('div');notch.className='mobile-preview-notch';var screen=document.createElement('div');screen.className='mobile-preview-screen';var iframe=document.createElement('iframe');iframe.src=window.location.href;var close=document.createElement('button');close.className='mobile-preview-close';close.innerHTML='&times;';close.onclick=function(){backdrop.classList.remove('open');};var label=document.createElement('div');label.className='mobile-preview-label';label.textContent='390 × 844 — iPhone 14 Pro';screen.appendChild(iframe);device.appendChild(notch);device.appendChild(screen);device.appendChild(close);device.appendChild(label);backdrop.appendChild(device);document.body.appendChild(backdrop);}
 document.querySelectorAll('.code-tab').forEach(function(btn){btn.addEventListener('click',function(){switchTab(btn,btn.getAttribute('data-lang'));});});
 document.querySelectorAll('.code-copy').forEach(function(btn){btn.addEventListener('click',function(){copyCode(btn);});});

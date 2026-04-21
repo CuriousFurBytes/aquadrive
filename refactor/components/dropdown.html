@@ -109,41 +109,73 @@
   </div>
 </div></div>
   <div class="code-wrapper">
-  <div class="code-tabs"><button class="code-tab active" data-lang="html">HTML</button><button class="code-tab" data-lang="js">JS</button></div>
+  <div class="code-tabs"><button class="code-tab active" data-lang="html">HTML</button><button class="code-tab" data-lang="css">CSS</button><button class="code-tab" data-lang="js">JS</button></div>
   <div class="code-panel active" data-lang="html">
       <button class="code-copy">Copy</button>
-      <ol class="code-lines" data-lang="html"><li>&lt;div class=&quot;dropdown-wrapper&quot;&gt;</li>
-<li>  &lt;button id=&quot;dropBtn&quot;&gt;Options &amp;#9660;&lt;/button&gt;</li>
-<li>  &lt;div class=&quot;dropdown-menu&quot; id=&quot;dropMenu&quot;&gt;</li>
-<li>    &lt;button class=&quot;dropdown-item&quot;&gt;</li>
-<li>      &lt;span class=&quot;item-icon&quot;&gt;&amp;#9998;&lt;/span&gt;</li>
-<li>      Edit</li>
-<li>    &lt;/button&gt;</li>
-<li>    &lt;button class=&quot;dropdown-item&quot;&gt;</li>
-<li>      &lt;span class=&quot;item-icon&quot;&gt;&amp;#128190;&lt;/span&gt;</li>
-<li>      Duplicate</li>
-<li>    &lt;/button&gt;</li>
-<li>    &lt;div class=&quot;dropdown-divider&quot;&gt;&lt;/div&gt;</li>
-<li>    &lt;button class=&quot;dropdown-item&quot;&gt;</li>
-<li>      &lt;span class=&quot;item-icon&quot;&gt;&amp;#128465;&lt;/span&gt;</li>
-<li>      Delete</li>
-<li>    &lt;/button&gt;</li>
-<li>  &lt;/div&gt;</li>
-<li>&lt;/div&gt;</li></ol>
+      <pre data-lang="html">&lt;div class=&quot;dropdown-wrapper&quot;&gt;
+  &lt;button id=&quot;dropBtn&quot;&gt;Options &amp;#9660;&lt;/button&gt;
+  &lt;div class=&quot;dropdown-menu&quot; id=&quot;dropMenu&quot;&gt;
+    &lt;button class=&quot;dropdown-item&quot;&gt;
+      &lt;span class=&quot;item-icon&quot;&gt;&amp;#9998;&lt;/span&gt;
+      Edit
+    &lt;/button&gt;
+    &lt;button class=&quot;dropdown-item&quot;&gt;
+      &lt;span class=&quot;item-icon&quot;&gt;&amp;#128190;&lt;/span&gt;
+      Duplicate
+    &lt;/button&gt;
+    &lt;div class=&quot;dropdown-divider&quot;&gt;&lt;/div&gt;
+    &lt;button class=&quot;dropdown-item&quot;&gt;
+      &lt;span class=&quot;item-icon&quot;&gt;&amp;#128465;&lt;/span&gt;
+      Delete
+    &lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</pre>
+    </div>
+<div class="code-panel" data-lang="css">
+      <button class="code-copy">Copy</button>
+      <pre data-lang="css">.dropdown-wrapper { position: relative; display: inline-block; }
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    top: calc(100% + 6px);
+    left: 0;
+    min-width: 200px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+    z-index: 500;
+    padding: 6px;
+}
+.dropdown-menu.open { display: block; }
+.dropdown-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    padding: 9px 12px;
+    font-size: 13px;
+    border-radius: 8px;
+    cursor: pointer;
+    border: none;
+    background: none;
+    transition: background 0.12s;
+}
+.dropdown-item:hover { background: var(--accent-50); }</pre>
     </div>
 <div class="code-panel" data-lang="js">
       <button class="code-copy">Copy</button>
-      <ol class="code-lines" data-lang="js"><li>const btn = document.getElementById('dropBtn');</li>
-<li>const menu = document.getElementById('dropMenu');</li>
-<li> </li>
-<li>btn.addEventListener('click', (e) =&gt; {</li>
-<li>  e.stopPropagation();</li>
-<li>  menu.classList.toggle('open');</li>
-<li>});</li>
-<li> </li>
-<li>document.addEventListener('click', () =&gt; {</li>
-<li>  menu.classList.remove('open');</li>
-<li>});</li></ol>
+      <pre data-lang="js">const btn = document.getElementById('dropBtn');
+const menu = document.getElementById('dropMenu');
+
+btn.addEventListener('click', (e) =&gt; {
+  e.stopPropagation();
+  menu.classList.toggle('open');
+});
+
+document.addEventListener('click', () =&gt; {
+  menu.classList.remove('open');
+});</pre>
     </div>
 </div>
 </section>
@@ -155,8 +187,7 @@ function toggleNav(){document.querySelector('.aqua-navbar').classList.toggle('na
 function setAccent(c){document.documentElement.setAttribute('data-accent',c);localStorage.setItem('aquadrive-accent',c);updateAccentDots();}
 function updateAccentDots(){var c=document.documentElement.getAttribute('data-accent')||'blue';document.querySelectorAll('.accent-dot').forEach(function(d){d.classList.toggle('active',d.getAttribute('data-color')===c);});}
 function switchTab(btn,lang){var w=btn.closest('.code-wrapper');w.querySelectorAll('.code-tab').forEach(function(t){t.classList.remove('active');});btn.classList.add('active');w.querySelectorAll('.code-panel').forEach(function(p){p.classList.toggle('active',p.getAttribute('data-lang')===lang);});}
-function copyCode(btn){var panel=btn.closest('.code-panel');var ol=panel&&panel.querySelector('ol.code-lines');var code=ol?Array.from(ol.querySelectorAll('li')).map(function(l){return l.textContent;}).join('
-'):(btn.nextElementSibling?btn.nextElementSibling.textContent:'');navigator.clipboard.writeText(code).then(function(){btn.textContent='Copied!';setTimeout(function(){btn.textContent='Copy';},1500);});}
+function copyCode(btn){var pre=btn.nextElementSibling;navigator.clipboard.writeText(pre.textContent).then(function(){btn.textContent='Copied!';setTimeout(function(){btn.textContent='Copy';},1500);});}
 function toggleMobile(){var existing=document.querySelector('.mobile-preview-backdrop');if(existing){existing.classList.toggle('open');return;}var backdrop=document.createElement('div');backdrop.className='mobile-preview-backdrop open';backdrop.onclick=function(e){if(e.target===backdrop)backdrop.classList.remove('open');};var device=document.createElement('div');device.className='mobile-preview-device';var notch=document.createElement('div');notch.className='mobile-preview-notch';var screen=document.createElement('div');screen.className='mobile-preview-screen';var iframe=document.createElement('iframe');iframe.src=window.location.href;var close=document.createElement('button');close.className='mobile-preview-close';close.innerHTML='&times;';close.onclick=function(){backdrop.classList.remove('open');};var label=document.createElement('div');label.className='mobile-preview-label';label.textContent='390 × 844 — iPhone 14 Pro';screen.appendChild(iframe);device.appendChild(notch);device.appendChild(screen);device.appendChild(close);device.appendChild(label);backdrop.appendChild(device);document.body.appendChild(backdrop);}
 document.querySelectorAll('.code-tab').forEach(function(btn){btn.addEventListener('click',function(){switchTab(btn,btn.getAttribute('data-lang'));});});
 document.querySelectorAll('.code-copy').forEach(function(btn){btn.addEventListener('click',function(){copyCode(btn);});});

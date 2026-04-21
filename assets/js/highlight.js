@@ -1,7 +1,7 @@
 /* ============================================================
-   AquaDrive — Auto Syntax Highlighting
-   Processes ol.code-lines li elements (build-time line structure)
-   and legacy .code-panel pre elements (e.g. overlays.html).
+   AquaDrive — Auto Syntax Highlighting & Line Numbers
+   Processes all .code-panel pre elements on page load.
+   Skips blocks that already contain manual highlighting.
    ============================================================ */
 (function () {
     function esc(s) {
@@ -94,52 +94,51 @@
         return s;
     }
 
-    function applyHighlight(text, lang) {
-        if (lang === 'html') return highlightHTML(text);
-        if (lang === 'css') return highlightCSS(text);
-        if (lang === 'js') return highlightJS(text);
-        return null;
-    }
-
-    /* ---- Process ol.code-lines (build-time line structure) ---- */
-    function processLineLists() {
-        document.querySelectorAll('ol.code-lines').forEach(function (ol) {
-            var lang = ol.getAttribute('data-lang');
-            if (!lang) return;
-            ol.querySelectorAll('li').forEach(function (li) {
-                var highlighted = applyHighlight(li.textContent, lang);
-                if (highlighted !== null) li.innerHTML = highlighted;
-            });
-        });
-    }
-
-    /* ---- Process legacy pre elements (e.g. overlays.html) ---- */
-    function processPreBlocks() {
+    /* ---- Process all code blocks ---- */
+    function processCodeBlocks() {
         document.querySelectorAll('.code-panel pre').forEach(function (pre) {
-            if (pre.dataset.highlighted) return;
+            // Skip already-highlighted blocks
+            if (pre.classList.contains('code-line-numbers') || pre.querySelector('[class^="hl-"]')) return;
+
             var panel = pre.closest('.code-panel');
-            var lang = panel ? panel.getAttribute('data-lang') : pre.getAttribute('data-lang');
-            var highlighted = applyHighlight(pre.textContent, lang);
-            if (highlighted !== null) {
-                pre.innerHTML = highlighted;
-                pre.dataset.highlighted = '1';
+            var lang = panel ? panel.getAttribute('data-lang') : '';
+            var text = pre.textContent;
+            var highlighted;
+
+            if (lang === 'html') {
+                highlighted = highlightHTML(text);
+            } else if (lang === 'css') {
+                highlighted = highlightCSS(text);
+            } else if (lang === 'js') {
+                highlighted = highlightJS(text);
+            } else {
+                return;
             }
+
+            // Split into lines, wrap each in <span class="line">
+            var lines = highlighted.split('\n');
+            if (lines.length > 1 && lines[lines.length - 1].trim() === '') {
+                lines.pop();
+            }
+
+            pre.className = 'code-line-numbers';
+            pre.innerHTML = lines.map(function (line) {
+                return '<span class="line">' + (line || ' ') + '</span>';
+            }).join('');
         });
     }
 
-    /* ---- Patch copyCode to handle both ol.code-lines and pre ---- */
+    /* ---- Patch copyCode for line-numbered blocks ---- */
     function patchCopyCode() {
         window.copyCode = function (btn) {
-            var panel = btn.closest('.code-panel');
-            var ol = panel && panel.querySelector('ol.code-lines');
+            var pre = btn.nextElementSibling;
             var code;
-            if (ol) {
-                code = Array.from(ol.querySelectorAll('li')).map(function (l) {
+            if (pre && pre.classList.contains('code-line-numbers')) {
+                code = Array.from(pre.querySelectorAll('.line')).map(function (l) {
                     return l.textContent;
                 }).join('\n');
             } else {
-                var next = btn.nextElementSibling;
-                code = next ? next.textContent : '';
+                code = pre ? pre.textContent : '';
             }
             navigator.clipboard.writeText(code);
             btn.textContent = 'Copied!';
@@ -149,8 +148,7 @@
 
     /* ---- Init ---- */
     function init() {
-        processLineLists();
-        processPreBlocks();
+        processCodeBlocks();
         patchCopyCode();
     }
 

@@ -858,6 +858,7 @@ h4 {
     font-size: var(--text-caption);
     line-height: 1.8;
     color: var(--blue-200);
+    overflow-x: auto;
     position: relative;
 }
 
@@ -868,14 +869,12 @@ h4 {
 .code-panel pre {
     margin: 0;
     white-space: pre;
-    overflow-x: auto;
 }
 
 .code-copy {
-    position: sticky;
-    float: right;
+    position: absolute;
     top: 10px;
-    right: 0;
+    right: 10px;
     font-family: var(--font-mono);
     font-size: 10px;
     letter-spacing: 0.08em;
@@ -887,7 +886,6 @@ h4 {
     color: var(--warm-500);
     cursor: pointer;
     transition: all 0.2s;
-    z-index: 1;
 }
 
 .code-copy:hover {
@@ -902,7 +900,6 @@ h4 {
     padding: 6px 16px;
     background: var(--warm-900);
     border-bottom: 1px solid var(--warm-850);
-    margin: -20px -20px 16px -20px;
 }
 
 /* Syntax highlighting */
@@ -918,23 +915,17 @@ h4 {
 .hl-keyword { color: var(--purple-400); }
 .hl-num { color: var(--cyan-400); }
 
-/* Line numbers via ol > li — no JS or per-line spans needed */
-ol.code-lines {
-    list-style: none;
-    margin: 0;
-    padding: 0;
+/* Line numbers */
+.code-line-numbers {
     counter-reset: line;
-    overflow-x: auto;
 }
 
-ol.code-lines li {
+.code-line-numbers .line {
     display: block;
-    white-space: pre;
-    counter-increment: line;
-    min-height: 1.8em;
 }
 
-ol.code-lines li::before {
+.code-line-numbers .line::before {
+    counter-increment: line;
     content: counter(line);
     display: inline-block;
     min-width: 2em;

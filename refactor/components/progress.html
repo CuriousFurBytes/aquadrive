@@ -96,22 +96,46 @@
   <div class="progress-track progress-indeterminate"><div class="progress-fill"></div></div>
 </div></div>
   <div class="code-wrapper">
-  
+  <div class="code-tabs"><button class="code-tab active" data-lang="html">HTML</button><button class="code-tab" data-lang="css">CSS</button></div>
   <div class="code-panel active" data-lang="html">
       <button class="code-copy">Copy</button>
-      <ol class="code-lines" data-lang="html"><li>&lt;!-- Determinate --&gt;</li>
-<li>&lt;div class=&quot;progress-label&quot;&gt;</li>
-<li>  &lt;span&gt;Uploading&lt;/span&gt;</li>
-<li>  &lt;span&gt;75%&lt;/span&gt;</li>
-<li>&lt;/div&gt;</li>
-<li>&lt;div class=&quot;progress-track&quot;&gt;</li>
-<li>  &lt;div class=&quot;progress-fill&quot; style=&quot;width: 75%&quot;&gt;&lt;/div&gt;</li>
-<li>&lt;/div&gt;</li>
-<li> </li>
-<li>&lt;!-- Indeterminate --&gt;</li>
-<li>&lt;div class=&quot;progress-track progress-indeterminate&quot;&gt;</li>
-<li>  &lt;div class=&quot;progress-fill&quot;&gt;&lt;/div&gt;</li>
-<li>&lt;/div&gt;</li></ol>
+      <pre data-lang="html">&lt;!-- Determinate --&gt;
+&lt;div class=&quot;progress-label&quot;&gt;
+  &lt;span&gt;Uploading&lt;/span&gt;
+  &lt;span&gt;75%&lt;/span&gt;
+&lt;/div&gt;
+&lt;div class=&quot;progress-track&quot;&gt;
+  &lt;div class=&quot;progress-fill&quot; style=&quot;width: 75%&quot;&gt;&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- Indeterminate --&gt;
+&lt;div class=&quot;progress-track progress-indeterminate&quot;&gt;
+  &lt;div class=&quot;progress-fill&quot;&gt;&lt;/div&gt;
+&lt;/div&gt;</pre>
+    </div>
+<div class="code-panel" data-lang="css">
+      <button class="code-copy">Copy</button>
+      <pre data-lang="css">.progress-track {
+    width: 100%;
+    height: 8px;
+    background: var(--accent-50);
+    border-radius: 100px;
+    overflow: hidden;
+}
+.progress-fill {
+    height: 100%;
+    background: var(--accent-500);
+    border-radius: 100px;
+    transition: width 0.4s ease;
+}
+.progress-indeterminate .progress-fill {
+    width: 40%;
+    animation: indeterminate 1.4s ease-in-out infinite;
+}
+@keyframes indeterminate {
+    0%   { transform: translateX(-100%); }
+    100% { transform: translateX(350%); }
+}</pre>
     </div>
 </div>
 </section>
@@ -123,8 +147,7 @@ function toggleNav(){document.querySelector('.aqua-navbar').classList.toggle('na
 function setAccent(c){document.documentElement.setAttribute('data-accent',c);localStorage.setItem('aquadrive-accent',c);updateAccentDots();}
 function updateAccentDots(){var c=document.documentElement.getAttribute('data-accent')||'blue';document.querySelectorAll('.accent-dot').forEach(function(d){d.classList.toggle('active',d.getAttribute('data-color')===c);});}
 function switchTab(btn,lang){var w=btn.closest('.code-wrapper');w.querySelectorAll('.code-tab').forEach(function(t){t.classList.remove('active');});btn.classList.add('active');w.querySelectorAll('.code-panel').forEach(function(p){p.classList.toggle('active',p.getAttribute('data-lang')===lang);});}
-function copyCode(btn){var panel=btn.closest('.code-panel');var ol=panel&&panel.querySelector('ol.code-lines');var code=ol?Array.from(ol.querySelectorAll('li')).map(function(l){return l.textContent;}).join('
-'):(btn.nextElementSibling?btn.nextElementSibling.textContent:'');navigator.clipboard.writeText(code).then(function(){btn.textContent='Copied!';setTimeout(function(){btn.textContent='Copy';},1500);});}
+function copyCode(btn){var pre=btn.nextElementSibling;navigator.clipboard.writeText(pre.textContent).then(function(){btn.textContent='Copied!';setTimeout(function(){btn.textContent='Copy';},1500);});}
 function toggleMobile(){var existing=document.querySelector('.mobile-preview-backdrop');if(existing){existing.classList.toggle('open');return;}var backdrop=document.createElement('div');backdrop.className='mobile-preview-backdrop open';backdrop.onclick=function(e){if(e.target===backdrop)backdrop.classList.remove('open');};var device=document.createElement('div');device.className='mobile-preview-device';var notch=document.createElement('div');notch.className='mobile-preview-notch';var screen=document.createElement('div');screen.className='mobile-preview-screen';var iframe=document.createElement('iframe');iframe.src=window.location.href;var close=document.createElement('button');close.className='mobile-preview-close';close.innerHTML='&times;';close.onclick=function(){backdrop.classList.remove('open');};var label=document.createElement('div');label.className='mobile-preview-label';label.textContent='390 × 844 — iPhone 14 Pro';screen.appendChild(iframe);device.appendChild(notch);device.appendChild(screen);device.appendChild(close);device.appendChild(label);backdrop.appendChild(device);document.body.appendChild(backdrop);}
 document.querySelectorAll('.code-tab').forEach(function(btn){btn.addEventListener('click',function(){switchTab(btn,btn.getAttribute('data-lang'));});});
 document.querySelectorAll('.code-copy').forEach(function(btn){btn.addEventListener('click',function(){copyCode(btn);});});

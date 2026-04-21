@@ -5,7 +5,7 @@
 /* --- Font Faces --- */
 @font-face {
     font-family: "Monaspace Argon";
-    src: url("../../fonts/MonaspaceArgonVar.woff") format("woff");
+    src: url("../fonts/MonaspaceArgonVar.woff") format("woff");
     font-weight: 100 900;
     font-style: normal;
     font-display: swap;
@@ -13,7 +13,7 @@
 
 @font-face {
     font-family: "Monaspace Krypton";
-    src: url("../../fonts/MonaspaceKryptonVar.woff") format("woff");
+    src: url("../fonts/MonaspaceKryptonVar.woff") format("woff");
     font-weight: 100 900;
     font-style: normal;
     font-display: swap;

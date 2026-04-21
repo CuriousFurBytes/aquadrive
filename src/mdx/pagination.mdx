@@ -1,0 +1,82 @@
+---
+title: Pagination
+description: Navigate between pages of data.
+group: Data Display
+slug: pagination
+---
+
+export const componentCSS = `
+.pagination { display: flex; align-items: center; gap: 4px; }
+.page-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 34px;
+    height: 34px;
+    padding: 0 8px;
+    font-family: var(--font-mono);
+    font-size: var(--text-caption);
+    font-weight: 500;
+    color: var(--text-muted);
+    background: transparent;
+    border: 1px solid transparent;
+    border-radius: 7px;
+    cursor: pointer;
+    transition: all 0.15s;
+    text-decoration: none;
+}
+.page-btn:hover { background: var(--accent-50); color: var(--text); }
+.page-btn.active { background: var(--accent-500); color: #fff; border-color: var(--accent-500); }
+.page-btn:disabled { opacity: 0.35; cursor: not-allowed; }
+.page-ellipsis { padding: 0 6px; color: var(--text-muted); font-family: var(--font-mono); font-size: var(--text-small); }
+`;
+
+export const sections = [
+  {
+    label: 'Pagination',
+    demo: `<div class="pagination">
+  <button class="page-btn">&#8592; Prev</button>
+  <button class="page-btn">1</button>
+  <button class="page-btn active">2</button>
+  <button class="page-btn">3</button>
+  <span class="page-ellipsis">···</span>
+  <button class="page-btn">12</button>
+  <button class="page-btn">Next &#8594;</button>
+</div>`,
+    tabs: [
+      {
+        label: 'HTML', lang: 'html', code: `<div class="pagination">
+  <button class="page-btn">&#8592; Prev</button>
+  <button class="page-btn">1</button>
+  <button class="page-btn active">2</button>
+  <button class="page-btn">3</button>
+  <span class="page-ellipsis">···</span>
+  <button class="page-btn">12</button>
+  <button class="page-btn">Next &#8594;</button>
+</div>`,
+      },
+      {
+        label: 'CSS', lang: 'css', code: `.pagination { display: flex; align-items: center; gap: 4px; }
+.page-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 34px;
+    height: 34px;
+    padding: 0 8px;
+    font-family: var(--font-mono);
+    font-size: var(--text-caption);
+    font-weight: 500;
+    color: var(--text-muted);
+    background: transparent;
+    border: 1px solid transparent;
+    border-radius: 7px;
+    cursor: pointer;
+    transition: all 0.15s;
+}
+.page-btn:hover { background: var(--accent-50); color: var(--text); }
+.page-btn.active { background: var(--accent-500); color: #fff; }`,
+      },
+    ],
+  },
+];

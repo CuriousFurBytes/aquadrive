@@ -1,0 +1,232 @@
+---
+title: Code Blocks
+description: Inline and block code displays with syntax highlighting and copy support.
+group: Typography
+slug: code
+---
+
+export const componentCSS = `
+code {
+    font-family: var(--font-mono);
+    font-size: 13px;
+    background: var(--accent-50);
+    color: var(--accent-500);
+    padding: 2px 8px;
+    border-radius: 4px;
+}
+.code-block {
+    background: var(--warm-950);
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 16px;
+}
+.code-block-filename {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 16px;
+    background: var(--warm-900);
+    border-bottom: 1px solid var(--warm-850);
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--warm-500);
+}
+.code-block pre {
+    margin: 0;
+    padding: 20px;
+    font-family: var(--font-mono);
+    font-size: 13px;
+    line-height: 1.7;
+    color: var(--blue-200);
+    overflow-x: auto;
+}
+.code-block-numbered pre {
+    counter-reset: line;
+    padding-left: 0;
+}
+.code-line {
+    display: block;
+    padding-left: 20px;
+    counter-increment: line;
+}
+.code-line::before {
+    content: counter(line);
+    display: inline-block;
+    min-width: 2em;
+    padding-right: 16px;
+    margin-right: 12px;
+    color: var(--warm-700, #4a3f5c);
+    border-right: 1px solid var(--warm-850);
+    text-align: right;
+    user-select: none;
+    font-size: 11px;
+}
+.diff-add { background: rgba(82, 183, 136, 0.12); }
+.diff-remove { background: rgba(230, 98, 96, 0.12); }
+.diff-add::before { color: var(--green-main) !important; }
+.diff-remove::before { color: var(--red-main) !important; }
+`;
+
+export const sections = [
+  {
+    label: 'Inline Code',
+    demo: `<p style="font-size:14px;line-height:1.8;color:var(--text)">
+  Use the <code>data-accent</code> attribute to change accent colors.
+  Set <code>data-theme="dark"</code> on the <code>&lt;html&gt;</code> element to enable dark mode.
+  The font stack uses <code>var(--font-mono)</code> for code and <code>var(--font-display)</code> for headings.
+</p>`,
+    tabs: [
+      {
+        label: 'HTML', lang: 'html', code: `<p>Use the <code>data-accent</code> attribute to change accent colors.</p>`,
+      },
+      {
+        label: 'CSS', lang: 'css', code: `code {
+    font-family: var(--font-mono);
+    font-size: 13px;
+    background: var(--accent-50);
+    color: var(--accent-500);
+    padding: 2px 8px;
+    border-radius: 4px;
+}`,
+      },
+    ],
+  },
+  {
+    label: 'Code Block',
+    demo: `<div class="code-block">
+  <pre><code><!DOCTYPE html>
+&lt;html lang="en" data-theme="dark" data-accent="blue"&gt;
+  &lt;head&gt;
+    &lt;link rel="stylesheet" href="style.css" /&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;button class="aqua-btn aqua-btn-primary"&gt;
+      Get started
+    &lt;/button&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+</div>`,
+    tabs: [
+      {
+        label: 'HTML', lang: 'html', code: `<div class="code-block">
+  <pre><code>your code here...</code></pre>
+</div>`,
+      },
+      {
+        label: 'CSS', lang: 'css', code: `.code-block {
+    background: var(--warm-950);
+    border-radius: 10px;
+    overflow: hidden;
+}
+.code-block pre {
+    margin: 0;
+    padding: 20px;
+    font-family: var(--font-mono);
+    font-size: 13px;
+    line-height: 1.7;
+    color: var(--blue-200);
+    overflow-x: auto;
+}`,
+      },
+    ],
+  },
+  {
+    label: 'Code Block with Filename',
+    demo: `<div class="code-block">
+  <div class="code-block-filename">
+    <span>&#128196;</span>
+    <span>style.css</span>
+  </div>
+  <pre><code>:root {
+    --accent-500: #656EA4;
+    --font-mono: "Monaspace Argon", monospace;
+    --bg: #F4EDED;
+}</code></pre>
+</div>`,
+    tabs: [
+      {
+        label: 'HTML', lang: 'html', code: `<div class="code-block">
+  <div class="code-block-filename">
+    <span>&#128196;</span>
+    <span>style.css</span>
+  </div>
+  <pre><code>/* your CSS here */</code></pre>
+</div>`,
+      },
+      {
+        label: 'CSS', lang: 'css', code: `.code-block-filename {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 16px;
+    background: var(--warm-900);
+    border-bottom: 1px solid var(--warm-850);
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--warm-500);
+}`,
+      },
+    ],
+  },
+  {
+    label: 'Code Block with Line Numbers',
+    demo: `<div class="code-block code-block-numbered">
+  <pre><span class="code-line">.aqua-btn {</span><span class="code-line">    display: inline-flex;</span><span class="code-line">    align-items: center;</span><span class="code-line">    padding: 10px 20px;</span><span class="code-line">    border-radius: 8px;</span><span class="code-line">    font-family: var(--font-mono);</span><span class="code-line">}</span></pre>
+</div>`,
+    tabs: [
+      {
+        label: 'HTML', lang: 'html', code: `<div class="code-block code-block-numbered">
+  <pre>
+    <span class="code-line">.aqua-btn {</span>
+    <span class="code-line">    display: inline-flex;</span>
+    <span class="code-line">}</span>
+  </pre>
+</div>`,
+      },
+      {
+        label: 'CSS', lang: 'css', code: `.code-block-numbered pre {
+    counter-reset: line;
+    padding-left: 0;
+}
+.code-line {
+    display: block;
+    padding-left: 20px;
+    counter-increment: line;
+}
+.code-line::before {
+    content: counter(line);
+    display: inline-block;
+    min-width: 2em;
+    padding-right: 16px;
+    margin-right: 12px;
+    color: var(--warm-700);
+    border-right: 1px solid var(--warm-850);
+    text-align: right;
+    user-select: none;
+}`,
+      },
+    ],
+  },
+  {
+    label: 'Diff Code Block',
+    demo: `<div class="code-block code-block-numbered">
+  <pre><span class="code-line">.aqua-btn {</span><span class="code-line diff-remove">    padding: 8px 16px;</span><span class="code-line diff-add">    padding: 10px 20px;</span><span class="code-line diff-remove">    border-radius: 4px;</span><span class="code-line diff-add">    border-radius: 8px;</span><span class="code-line">    font-family: var(--font-mono);</span><span class="code-line">}</span></pre>
+</div>`,
+    tabs: [
+      {
+        label: 'HTML', lang: 'html', code: `<div class="code-block code-block-numbered">
+  <pre>
+    <span class="code-line">.aqua-btn {</span>
+    <span class="code-line diff-remove">    padding: 8px 16px;</span>
+    <span class="code-line diff-add">    padding: 10px 20px;</span>
+    <span class="code-line">}</span>
+  </pre>
+</div>`,
+      },
+      {
+        label: 'CSS', lang: 'css', code: `.diff-add { background: rgba(82, 183, 136, 0.12); }
+.diff-remove { background: rgba(230, 98, 96, 0.12); }`,
+      },
+    ],
+  },
+];

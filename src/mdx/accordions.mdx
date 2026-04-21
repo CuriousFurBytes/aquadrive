@@ -1,0 +1,112 @@
+---
+title: Accordions
+description: Collapsible content panels for FAQs and structured content.
+group: Layout & Dividers
+slug: accordions
+---
+
+export const componentCSS = `
+.accordion-group { border: 1px solid var(--border); border-radius: 12px; overflow: hidden; }
+.accordion-group details { border-top: 1px solid var(--border); }
+.accordion-group details:first-child { border-top: none; }
+.accordion-group summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 18px;
+    font-family: var(--font-body);
+    font-size: var(--text-body);
+    font-weight: 500;
+    color: var(--text);
+    cursor: pointer;
+    list-style: none;
+    transition: background 0.15s;
+    position: relative;
+}
+.accordion-group summary::-webkit-details-marker { display: none; }
+.accordion-group summary:hover { background: var(--accent-50); }
+.accordion-group summary::after {
+    content: '';
+    width: 6px;
+    height: 6px;
+    border-right: 1.5px solid var(--text-muted);
+    border-bottom: 1.5px solid var(--text-muted);
+    transform: rotate(45deg);
+    transition: transform 0.2s;
+    flex-shrink: 0;
+}
+.accordion-group details[open] summary::after { transform: rotate(-135deg); }
+.accordion-content {
+    padding: 4px 18px 18px;
+    font-size: var(--text-small);
+    color: var(--text-muted);
+    line-height: 1.7;
+}
+`;
+
+export const sections = [
+  {
+    label: 'Accordions',
+    demo: `<div class="accordion-group">
+  <details open>
+    <summary>What is AquaDrive?</summary>
+    <div class="accordion-content">AquaDrive is a design system and component library built with pure HTML and CSS, supporting light and dark themes with multiple accent color options.</div>
+  </details>
+  <details>
+    <summary>How do I customize the accent color?</summary>
+    <div class="accordion-content">Set the <code>data-accent</code> attribute on the <code>&lt;html&gt;</code> element to one of: <code>blue</code>, <code>purple</code>, <code>cyan</code>, or <code>rose</code>.</div>
+  </details>
+  <details>
+    <summary>Is dark mode supported?</summary>
+    <div class="accordion-content">Yes. Apply <code>data-theme="dark"</code> to the root element to enable dark mode. The system also auto-detects the user's OS preference.</div>
+  </details>
+</div>`,
+    tabs: [
+      {
+        label: 'HTML', lang: 'html', code: `<div class="accordion-group">
+  <details open>
+    <summary>What is AquaDrive?</summary>
+    <div class="accordion-content">
+      AquaDrive is a design system built with pure HTML and CSS.
+    </div>
+  </details>
+  <details>
+    <summary>How do I customize?</summary>
+    <div class="accordion-content">
+      Set the data-accent attribute on the html element.
+    </div>
+  </details>
+</div>`,
+      },
+      {
+        label: 'CSS', lang: 'css', code: `.accordion-group { border: 1px solid var(--border); border-radius: 12px; overflow: hidden; }
+.accordion-group details { border-top: 1px solid var(--border); }
+.accordion-group details:first-child { border-top: none; }
+.accordion-group summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 18px;
+    font-size: var(--text-body);
+    font-weight: 500;
+    cursor: pointer;
+    list-style: none;
+    transition: background 0.15s;
+}
+.accordion-group summary:hover { background: var(--accent-50); }
+.accordion-group summary::after {
+    content: '';
+    width: 6px;
+    height: 6px;
+    border-right: 1.5px solid var(--text-muted);
+    border-bottom: 1.5px solid var(--text-muted);
+    transform: rotate(45deg);
+    transition: transform 0.2s;
+    flex-shrink: 0;
+}
+.accordion-group details[open] summary::after { transform: rotate(-135deg); }
+.accordion-content { padding: 4px 18px 18px; font-size: var(--text-small); color: var(--text-muted); line-height: 1.7; }`,
+      },
+    ],
+  },
+];

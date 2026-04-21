@@ -1,0 +1,241 @@
+---
+title: Tabs
+description: Horizontal and vertical tab navigation for content switching.
+group: Navigation
+slug: tabs
+---
+
+export const componentCSS = `
+.demo-tabs { display: flex; border-bottom: 1px solid var(--border); gap: 4px; margin-bottom: 16px; }
+.demo-tab {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    padding: 8px 14px;
+    border: none;
+    background: none;
+    color: var(--text-muted);
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    transition: color 0.15s, border-color 0.15s;
+    margin-bottom: -1px;
+}
+.demo-tab:hover { color: var(--text); }
+.demo-tab.active { color: var(--accent-500); border-bottom-color: var(--accent-500); }
+.tab-panel { display: none; }
+.tab-panel.active { display: block; }
+
+/* Tab Group */
+.tab-group { border: 1px solid var(--border); border-radius: 12px; overflow: hidden; }
+.tab-group-header { display: flex; gap: 2px; padding: 6px 6px 0; background: var(--surface); border-bottom: 1px solid var(--border); }
+.tab-group-btn {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 600;
+    padding: 7px 14px;
+    border-radius: 8px 8px 0 0;
+    border: 1px solid transparent;
+    border-bottom: none;
+    background: none;
+    color: var(--text-muted);
+    cursor: pointer;
+    transition: all 0.15s;
+}
+.tab-group-btn:hover { color: var(--text); background: var(--accent-50); }
+.tab-group-btn.active { background: var(--bg); color: var(--text); border-color: var(--border); border-bottom-color: var(--bg); }
+.tab-group-panel { display: none; padding: 20px; background: var(--bg); }
+.tab-group-panel.active { display: block; }
+
+/* Vertical Tab Group */
+.tab-group-v { display: flex; border: 1px solid var(--border); border-radius: 12px; overflow: hidden; min-height: 200px; }
+.tab-group-v-sidebar { min-width: 160px; background: var(--surface); border-right: 1px solid var(--border); padding: 8px; display: flex; flex-direction: column; gap: 2px; }
+.tab-group-v-btn {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 600;
+    padding: 8px 12px;
+    border-radius: 8px;
+    border: none;
+    background: none;
+    color: var(--text-muted);
+    cursor: pointer;
+    text-align: left;
+    border-left: 3px solid transparent;
+    transition: all 0.15s;
+}
+.tab-group-v-btn:hover { color: var(--text); background: var(--accent-50); }
+.tab-group-v-btn.active { color: var(--accent-500); background: var(--accent-50); border-left-color: var(--accent-500); }
+.tab-group-v-content { flex: 1; background: var(--bg); }
+.tab-group-v-panel { display: none; padding: 20px; }
+.tab-group-v-panel.active { display: block; }
+`;
+
+export const sections = [
+  {
+    label: 'Tabs',
+    demo: `<div>
+  <div class="demo-tabs" role="tablist">
+    <button class="demo-tab active" onclick="switchDemoTab(this,'t1')">Overview</button>
+    <button class="demo-tab" onclick="switchDemoTab(this,'t2')">Details</button>
+    <button class="demo-tab" onclick="switchDemoTab(this,'t3')">Settings</button>
+  </div>
+  <div class="tab-panel active" id="t1" style="color:var(--text-muted);font-size:13px">Overview panel content</div>
+  <div class="tab-panel" id="t2" style="color:var(--text-muted);font-size:13px">Details panel content</div>
+  <div class="tab-panel" id="t3" style="color:var(--text-muted);font-size:13px">Settings panel content</div>
+</div>
+<script>function switchDemoTab(btn,id){btn.closest('.demo-tabs').querySelectorAll('.demo-tab').forEach(b=>b.classList.remove('active'));btn.classList.add('active');document.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('active'));document.getElementById(id).classList.add('active');}</script>`,
+    tabs: [
+      {
+        label: 'HTML', lang: 'html', code: `<div class="demo-tabs" role="tablist">
+  <button class="demo-tab active">Overview</button>
+  <button class="demo-tab">Details</button>
+  <button class="demo-tab">Settings</button>
+</div>
+<div class="tab-panel active">Overview content...</div>
+<div class="tab-panel">Details content...</div>`,
+      },
+      {
+        label: 'CSS', lang: 'css', code: `.demo-tabs { display: flex; border-bottom: 1px solid var(--border); gap: 4px; }
+.demo-tab {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    font-weight: 600;
+    padding: 8px 14px;
+    border: none;
+    background: none;
+    color: var(--text-muted);
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    margin-bottom: -1px;
+    transition: color 0.15s, border-color 0.15s;
+}
+.demo-tab.active { color: var(--accent-500); border-bottom-color: var(--accent-500); }
+.tab-panel { display: none; }
+.tab-panel.active { display: block; }`,
+      },
+      {
+        label: 'JS', lang: 'js', code: `function switchTab(btn, panelId) {
+  // Deactivate all tabs
+  btn.closest('[role="tablist"]')
+    .querySelectorAll('.demo-tab')
+    .forEach(t => t.classList.remove('active'));
+
+  // Activate clicked tab
+  btn.classList.add('active');
+
+  // Switch panels
+  document.querySelectorAll('.tab-panel')
+    .forEach(p => p.classList.remove('active'));
+  document.getElementById(panelId).classList.add('active');
+}`,
+      },
+    ],
+  },
+  {
+    label: 'Tab Groups (Horizontal)',
+    demo: `<div class="tab-group">
+  <div class="tab-group-header">
+    <button class="tab-group-btn active" onclick="switchGroup(this,'g1')">General</button>
+    <button class="tab-group-btn" onclick="switchGroup(this,'g2')">Security</button>
+    <button class="tab-group-btn" onclick="switchGroup(this,'g3')">Billing</button>
+  </div>
+  <div class="tab-group-panel active" id="g1" style="color:var(--text-muted);font-size:13px">General settings content</div>
+  <div class="tab-group-panel" id="g2" style="color:var(--text-muted);font-size:13px">Security settings content</div>
+  <div class="tab-group-panel" id="g3" style="color:var(--text-muted);font-size:13px">Billing information content</div>
+</div>
+<script>function switchGroup(btn,id){btn.closest('.tab-group-header').querySelectorAll('.tab-group-btn').forEach(b=>b.classList.remove('active'));btn.classList.add('active');btn.closest('.tab-group').querySelectorAll('.tab-group-panel').forEach(p=>p.classList.remove('active'));document.getElementById(id).classList.add('active');}</script>`,
+    tabs: [
+      {
+        label: 'HTML', lang: 'html', code: `<div class="tab-group">
+  <div class="tab-group-header">
+    <button class="tab-group-btn active">General</button>
+    <button class="tab-group-btn">Security</button>
+    <button class="tab-group-btn">Billing</button>
+  </div>
+  <div class="tab-group-panel active">General settings...</div>
+  <div class="tab-group-panel">Security settings...</div>
+</div>`,
+      },
+      {
+        label: 'CSS', lang: 'css', code: `.tab-group { border: 1px solid var(--border); border-radius: 12px; overflow: hidden; }
+.tab-group-header { display: flex; gap: 2px; padding: 6px 6px 0; background: var(--surface); border-bottom: 1px solid var(--border); }
+.tab-group-btn {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 600;
+    padding: 7px 14px;
+    border-radius: 8px 8px 0 0;
+    border: 1px solid transparent;
+    border-bottom: none;
+    background: none;
+    color: var(--text-muted);
+    cursor: pointer;
+    transition: all 0.15s;
+}
+.tab-group-btn.active { background: var(--bg); color: var(--text); border-color: var(--border); border-bottom-color: var(--bg); }
+.tab-group-panel { display: none; padding: 20px; background: var(--bg); }
+.tab-group-panel.active { display: block; }`,
+      },
+    ],
+  },
+  {
+    label: 'Tab Groups (Vertical)',
+    demo: `<div class="tab-group-v">
+  <div class="tab-group-v-sidebar">
+    <button class="tab-group-v-btn active" onclick="switchVertical(this,'v1')">Profile</button>
+    <button class="tab-group-v-btn" onclick="switchVertical(this,'v2')">Password</button>
+    <button class="tab-group-v-btn" onclick="switchVertical(this,'v3')">Notifications</button>
+    <button class="tab-group-v-btn" onclick="switchVertical(this,'v4')">API Keys</button>
+  </div>
+  <div class="tab-group-v-content">
+    <div class="tab-group-v-panel active" id="v1" style="color:var(--text-muted);font-size:13px">Profile settings content</div>
+    <div class="tab-group-v-panel" id="v2" style="color:var(--text-muted);font-size:13px">Password settings content</div>
+    <div class="tab-group-v-panel" id="v3" style="color:var(--text-muted);font-size:13px">Notification preferences</div>
+    <div class="tab-group-v-panel" id="v4" style="color:var(--text-muted);font-size:13px">API key management</div>
+  </div>
+</div>
+<script>function switchVertical(btn,id){btn.closest('.tab-group-v-sidebar').querySelectorAll('.tab-group-v-btn').forEach(b=>b.classList.remove('active'));btn.classList.add('active');btn.closest('.tab-group-v').querySelectorAll('.tab-group-v-panel').forEach(p=>p.classList.remove('active'));document.getElementById(id).classList.add('active');}</script>`,
+    tabs: [
+      {
+        label: 'HTML', lang: 'html', code: `<div class="tab-group-v">
+  <div class="tab-group-v-sidebar">
+    <button class="tab-group-v-btn active">Profile</button>
+    <button class="tab-group-v-btn">Password</button>
+    <button class="tab-group-v-btn">Notifications</button>
+  </div>
+  <div class="tab-group-v-content">
+    <div class="tab-group-v-panel active">Profile settings...</div>
+    <div class="tab-group-v-panel">Password settings...</div>
+  </div>
+</div>`,
+      },
+      {
+        label: 'CSS', lang: 'css', code: `.tab-group-v { display: flex; border: 1px solid var(--border); border-radius: 12px; overflow: hidden; }
+.tab-group-v-sidebar { min-width: 160px; background: var(--surface); border-right: 1px solid var(--border); padding: 8px; }
+.tab-group-v-btn {
+    width: 100%;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 600;
+    padding: 8px 12px;
+    border-radius: 8px;
+    border: none;
+    background: none;
+    color: var(--text-muted);
+    cursor: pointer;
+    text-align: left;
+    border-left: 3px solid transparent;
+    transition: all 0.15s;
+}
+.tab-group-v-btn.active {
+    color: var(--accent-500);
+    background: var(--accent-50);
+    border-left-color: var(--accent-500);
+}
+.tab-group-v-panel { display: none; padding: 20px; }
+.tab-group-v-panel.active { display: block; }`,
+      },
+    ],
+  },
+];

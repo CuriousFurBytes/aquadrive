@@ -1,0 +1,114 @@
+---
+title: Table
+description: Data table for displaying structured information.
+group: Data Display
+slug: table
+---
+
+export const componentCSS = `
+.table-responsive { overflow-x: auto; }
+.demo-table { width: 100%; border-collapse: collapse; font-size: var(--text-small); }
+.demo-table thead th {
+    font-family: var(--font-mono);
+    font-size: var(--text-label);
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    padding: 10px 16px;
+    text-align: left;
+    border-bottom: 1px solid var(--border);
+}
+.demo-table tbody tr { border-bottom: 1px solid var(--border); transition: background 0.12s; }
+.demo-table tbody tr:last-child { border-bottom: none; }
+.demo-table tbody tr:hover { background: var(--accent-50); }
+.demo-table tbody td { padding: 12px 16px; color: var(--text); }
+.demo-table .td-mono { font-family: var(--font-mono); font-size: var(--text-caption); color: var(--text-muted); }
+.demo-table .badge { display: inline-block; font-family: var(--font-mono); font-size: 10px; font-weight: 600; padding: 3px 10px; border-radius: 100px; }
+.demo-table .badge--success { background: var(--green-tint); color: var(--green-main); }
+.demo-table .badge--warning { background: var(--yellow-tint); color: var(--yellow-main); }
+.demo-table .badge--error { background: var(--red-tint); color: var(--red-main); }
+`;
+
+export const sections = [
+  {
+    label: 'Table',
+    demo: `<div class="table-responsive">
+  <table class="demo-table">
+    <thead>
+      <tr>
+        <th>Invoice</th>
+        <th>Customer</th>
+        <th>Amount</th>
+        <th>Date</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="td-mono">#INV-001</td>
+        <td>Jane Cooper</td>
+        <td class="td-mono">$240.00</td>
+        <td class="td-mono">Apr 12, 2025</td>
+        <td><span class="badge badge--success">Paid</span></td>
+      </tr>
+      <tr>
+        <td class="td-mono">#INV-002</td>
+        <td>Robert Fox</td>
+        <td class="td-mono">$125.00</td>
+        <td class="td-mono">Apr 14, 2025</td>
+        <td><span class="badge badge--warning">Pending</span></td>
+      </tr>
+      <tr>
+        <td class="td-mono">#INV-003</td>
+        <td>Esther Howard</td>
+        <td class="td-mono">$580.00</td>
+        <td class="td-mono">Apr 15, 2025</td>
+        <td><span class="badge badge--error">Overdue</span></td>
+      </tr>
+    </tbody>
+  </table>
+</div>`,
+    tabs: [
+      {
+        label: 'HTML', lang: 'html', code: `<div class="table-responsive">
+  <table class="demo-table">
+    <thead>
+      <tr>
+        <th>Invoice</th>
+        <th>Customer</th>
+        <th>Amount</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="td-mono">#INV-001</td>
+        <td>Jane Cooper</td>
+        <td class="td-mono">$240.00</td>
+        <td><span class="badge badge--success">Paid</span></td>
+      </tr>
+    </tbody>
+  </table>
+</div>`,
+      },
+      {
+        label: 'CSS', lang: 'css', code: `.demo-table { width: 100%; border-collapse: collapse; font-size: var(--text-small); }
+.demo-table thead th {
+    font-family: var(--font-mono);
+    font-size: var(--text-label);
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    padding: 10px 16px;
+    text-align: left;
+    border-bottom: 1px solid var(--border);
+}
+.demo-table tbody tr { border-bottom: 1px solid var(--border); transition: background 0.12s; }
+.demo-table tbody tr:hover { background: var(--accent-50); }
+.demo-table tbody td { padding: 12px 16px; color: var(--text); }`,
+      },
+    ],
+  },
+];

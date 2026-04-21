@@ -1,0 +1,506 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AquaDrive — Forms</title>
+    <link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml" />
+    <script>(function(){var t=localStorage.getItem('aquadrive-theme');var a=localStorage.getItem('aquadrive-accent')||'blue';if(!t)t=window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light';if(t==='dark'){document.documentElement.setAttribute('data-theme','dark');}else{document.documentElement.removeAttribute('data-theme');}document.documentElement.setAttribute('data-accent',a);})()</script>
+    <link rel="stylesheet" href="../assets/css/style.css" />
+    <style>
+
+.aqua-label {
+    display: block;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 6px;
+}
+.aqua-input, .aqua-textarea, .aqua-select {
+    width: 100%;
+    font-family: var(--font-body);
+    font-size: var(--text-body);
+    color: var(--text);
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 10px 14px;
+    transition: border-color 0.15s, box-shadow 0.15s;
+    outline: none;
+    box-sizing: border-box;
+}
+.aqua-input:focus, .aqua-textarea:focus, .aqua-select:focus {
+    border-color: var(--accent-500);
+    box-shadow: 0 0 0 3px var(--accent-50);
+}
+.aqua-textarea { min-height: 100px; resize: vertical; }
+.aqua-select {
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath d='M2 4l4 4 4-4' stroke='%239A8E8E' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    padding-right: 36px;
+    cursor: pointer;
+}
+.aqua-toggle-wrapper { display: flex; align-items: center; gap: 10px; cursor: pointer; }
+.aqua-toggle { position: relative; display: inline-block; width: 44px; height: 24px; }
+.aqua-toggle input { opacity: 0; width: 0; height: 0; }
+.aqua-toggle-slider {
+    position: absolute;
+    inset: 0;
+    background: var(--border);
+    border-radius: 24px;
+    transition: background 0.2s;
+    cursor: pointer;
+}
+.aqua-toggle-slider::before {
+    content: '';
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    left: 3px;
+    top: 3px;
+    background: var(--surface);
+    border-radius: 50%;
+    transition: transform 0.2s;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.15);
+}
+.aqua-toggle input:checked + .aqua-toggle-slider { background: var(--accent-500); }
+.aqua-toggle input:checked + .aqua-toggle-slider::before { transform: translateX(20px); }
+.aqua-checkbox-wrapper { display: flex; align-items: flex-start; gap: 10px; cursor: pointer; }
+.aqua-checkbox {
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border: 1.5px solid var(--border);
+    border-radius: 5px;
+    background: var(--surface);
+    cursor: pointer;
+    flex-shrink: 0;
+    margin-top: 1px;
+    transition: all 0.15s;
+    position: relative;
+}
+.aqua-checkbox:checked { background: var(--accent-500); border-color: var(--accent-500); }
+.aqua-checkbox:checked::after { content: ''; position: absolute; left: 5px; top: 2px; width: 6px; height: 10px; border: 2px solid #fff; border-top: none; border-left: none; transform: rotate(45deg); }
+.field-group { margin-bottom: 16px; }
+.field-hint { font-size: var(--text-caption); color: var(--text-muted); margin-top: 5px; }
+.field-group.is-success .aqua-input { border-color: var(--green-main); box-shadow: 0 0 0 3px var(--green-tint); }
+.field-group.is-success .field-hint { color: var(--green-main); }
+.field-group.is-error .aqua-input { border-color: var(--red-main); box-shadow: 0 0 0 3px var(--red-tint); }
+.field-group.is-error .field-hint { color: var(--red-main); }
+.form-card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 24px; max-width: 420px; }
+.form-card-title { font-family: var(--font-display); font-size: var(--text-h3); font-weight: 700; color: var(--text); margin-bottom: 20px; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.form-actions { display: flex; gap: 10px; justify-content: flex-end; margin-top: 20px; }
+
+    </style>
+    <script src="../assets/js/highlight.js" defer></script>
+  </head>
+  <body>
+    <nav class="aqua-navbar">
+  <a href="../index.html" class="aqua-navbar-brand"><svg viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M14 3C14 3 5 10 5 17C5 21.4183 9.02944 25 14 25C18.9706 25 23 21.4183 23 17C23 10 14 3 14 3Z" fill="var(--accent-500)"/><path d="M14 9C14 9 9 13.5 9 17C9 19.7614 11.2386 22 14 22C16.7614 22 19 19.7614 19 17C19 13.5 14 9 14 9Z" fill="var(--bg)" opacity="0.7"/></svg>Aqua<span>Drive</span></a>
+  <button class="aqua-navbar-toggle" onclick="toggleNav()" aria-label="Toggle menu"><span></span></button>
+  <div class="aqua-navbar-collapse">
+    <div class="aqua-navbar-links">
+      <a href="../index.html">Colors</a>
+      <a href="../typography.html">Typography</a>
+      <a href="../elements.html">Elements</a>
+      <a href="../ports.html">Ports</a>
+    </div>
+    <div class="aqua-navbar-actions">
+      <div class="aqua-navbar-settings">
+        <button class="aqua-navbar-settings-btn" onclick="toggleSettings(event)"><svg viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="3" stroke="currentColor" stroke-width="1.5"/><path d="M8 1v2M8 13v2M1 8h2M13 8h2M3.05 3.05l1.41 1.41M11.54 11.54l1.41 1.41M3.05 12.95l1.41-1.41M11.54 4.46l1.41-1.41" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg> Settings</button>
+        <div class="aqua-navbar-dropdown" id="navSettingsDropdown">
+          <div class="aqua-navbar-dropdown-label">Accent Color</div>
+          <div class="aqua-navbar-dropdown-row">
+            <button class="accent-dot" data-color="blue" onclick="setAccent('blue')" aria-label="Blue accent"></button>
+            <button class="accent-dot" data-color="purple" onclick="setAccent('purple')" aria-label="Purple accent"></button>
+            <button class="accent-dot" data-color="cyan" onclick="setAccent('cyan')" aria-label="Cyan accent"></button>
+            <button class="accent-dot" data-color="rose" onclick="setAccent('rose')" aria-label="Rose accent"></button>
+          </div>
+          <div class="aqua-navbar-dropdown-divider"></div>
+          <button class="aqua-navbar-dropdown-item" onclick="toggleTheme()"><svg viewBox="0 0 16 16" fill="none"><path d="M8 1a7 7 0 1 0 0 14A7 7 0 0 0 8 1Z" stroke="currentColor" stroke-width="1.5"/><path d="M8 3v10a5 5 0 0 0 0-10Z" fill="currentColor"/></svg> <span class="theme-toggle-label">Toggle Theme</span></button>
+          <button class="aqua-navbar-dropdown-item" onclick="toggleMobile()"><svg viewBox="0 0 16 16" fill="none"><rect x="4" y="1" width="8" height="14" rx="1.5" stroke="currentColor" stroke-width="1.5"/><line x1="6.5" y1="12.5" x2="9.5" y2="12.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg> Mobile Preview</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+    <nav class="breadcrumb"><a href="../index.html">AquaDrive</a><span class="sep">/</span><a href="../elements.html">Elements</a><span class="sep">/</span><span class="current">Forms</span></nav>
+    <header>
+      <div class="brand-tag">AquaDrive · Design System</div>
+      <h1>Forms</h1>
+      <p class="subtitle">Form controls, inputs, and validation patterns.</p>
+    </header>
+    <section class="section">
+  <div class="section-label">Text Input</div>
+  <div class="demo-box"><div style="max-width:360px">
+  <label class="aqua-label" for="demo-input">Label</label>
+  <input class="aqua-input" id="demo-input" type="text" placeholder="Placeholder text..." />
+</div></div>
+  <div class="code-wrapper">
+  <div class="code-tabs"><button class="code-tab active" data-lang="html">HTML</button><button class="code-tab" data-lang="css">CSS</button></div>
+  <div class="code-panel active" data-lang="html">
+      <button class="code-copy">Copy</button>
+      <pre data-lang="html">&lt;label class=&quot;aqua-label&quot; for=&quot;my-input&quot;&gt;Label&lt;/label&gt;
+&lt;input class=&quot;aqua-input&quot; id=&quot;my-input&quot; type=&quot;text&quot; placeholder=&quot;Placeholder text...&quot; /&gt;</pre>
+    </div>
+<div class="code-panel" data-lang="css">
+      <button class="code-copy">Copy</button>
+      <pre data-lang="css">.aqua-label {
+    display: block;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 6px;
+}
+.aqua-input {
+    width: 100%;
+    font-family: var(--font-body);
+    font-size: var(--text-body);
+    color: var(--text);
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 10px 14px;
+    transition: border-color 0.15s, box-shadow 0.15s;
+    outline: none;
+}
+.aqua-input:focus {
+    border-color: var(--accent-500);
+    box-shadow: 0 0 0 3px var(--accent-50);
+}</pre>
+    </div>
+</div>
+</section>
+<section class="section">
+  <div class="section-label">Textarea</div>
+  <div class="demo-box"><div style="max-width:360px">
+  <label class="aqua-label" for="demo-ta">Message</label>
+  <textarea class="aqua-textarea" id="demo-ta" placeholder="Write something..."></textarea>
+</div></div>
+  <div class="code-wrapper">
+  <div class="code-tabs"><button class="code-tab active" data-lang="html">HTML</button><button class="code-tab" data-lang="css">CSS</button></div>
+  <div class="code-panel active" data-lang="html">
+      <button class="code-copy">Copy</button>
+      <pre data-lang="html">&lt;label class=&quot;aqua-label&quot; for=&quot;msg&quot;&gt;Message&lt;/label&gt;
+&lt;textarea class=&quot;aqua-textarea&quot; id=&quot;msg&quot; placeholder=&quot;Write something...&quot;&gt;&lt;/textarea&gt;</pre>
+    </div>
+<div class="code-panel" data-lang="css">
+      <button class="code-copy">Copy</button>
+      <pre data-lang="css">.aqua-textarea {
+    width: 100%;
+    font-family: var(--font-body);
+    font-size: var(--text-body);
+    color: var(--text);
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 10px 14px;
+    min-height: 100px;
+    resize: vertical;
+    outline: none;
+    transition: border-color 0.15s, box-shadow 0.15s;
+}
+.aqua-textarea:focus {
+    border-color: var(--accent-500);
+    box-shadow: 0 0 0 3px var(--accent-50);
+}</pre>
+    </div>
+</div>
+</section>
+<section class="section">
+  <div class="section-label">Toggle Switch</div>
+  <div class="demo-box"><div style="display:flex;flex-direction:column;gap:14px">
+  <label class="aqua-toggle-wrapper">
+    <span class="aqua-toggle"><input type="checkbox" checked /><span class="aqua-toggle-slider"></span></span>
+    <span>Enabled</span>
+  </label>
+  <label class="aqua-toggle-wrapper">
+    <span class="aqua-toggle"><input type="checkbox" /><span class="aqua-toggle-slider"></span></span>
+    <span>Disabled</span>
+  </label>
+</div></div>
+  <div class="code-wrapper">
+  <div class="code-tabs"><button class="code-tab active" data-lang="html">HTML</button><button class="code-tab" data-lang="css">CSS</button></div>
+  <div class="code-panel active" data-lang="html">
+      <button class="code-copy">Copy</button>
+      <pre data-lang="html">&lt;label class=&quot;aqua-toggle-wrapper&quot;&gt;
+  &lt;span class=&quot;aqua-toggle&quot;&gt;
+    &lt;input type=&quot;checkbox&quot; checked /&gt;
+    &lt;span class=&quot;aqua-toggle-slider&quot;&gt;&lt;/span&gt;
+  &lt;/span&gt;
+  &lt;span&gt;Enable notifications&lt;/span&gt;
+&lt;/label&gt;</pre>
+    </div>
+<div class="code-panel" data-lang="css">
+      <button class="code-copy">Copy</button>
+      <pre data-lang="css">.aqua-toggle { position: relative; display: inline-block; width: 44px; height: 24px; }
+.aqua-toggle input { opacity: 0; width: 0; height: 0; }
+.aqua-toggle-slider {
+    position: absolute;
+    inset: 0;
+    background: var(--border);
+    border-radius: 24px;
+    transition: background 0.2s;
+    cursor: pointer;
+}
+.aqua-toggle-slider::before {
+    content: '';
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    left: 3px;
+    top: 3px;
+    background: var(--surface);
+    border-radius: 50%;
+    transition: transform 0.2s;
+}
+.aqua-toggle input:checked + .aqua-toggle-slider { background: var(--accent-500); }
+.aqua-toggle input:checked + .aqua-toggle-slider::before { transform: translateX(20px); }</pre>
+    </div>
+</div>
+</section>
+<section class="section">
+  <div class="section-label">Checkbox</div>
+  <div class="demo-box"><div style="display:flex;flex-direction:column;gap:12px">
+  <label class="aqua-checkbox-wrapper"><input class="aqua-checkbox" type="checkbox" checked /><span>Option one (checked)</span></label>
+  <label class="aqua-checkbox-wrapper"><input class="aqua-checkbox" type="checkbox" /><span>Option two</span></label>
+  <label class="aqua-checkbox-wrapper"><input class="aqua-checkbox" type="checkbox" /><span>Option three</span></label>
+</div></div>
+  <div class="code-wrapper">
+  <div class="code-tabs"><button class="code-tab active" data-lang="html">HTML</button><button class="code-tab" data-lang="css">CSS</button></div>
+  <div class="code-panel active" data-lang="html">
+      <button class="code-copy">Copy</button>
+      <pre data-lang="html">&lt;label class=&quot;aqua-checkbox-wrapper&quot;&gt;
+  &lt;input class=&quot;aqua-checkbox&quot; type=&quot;checkbox&quot; checked /&gt;
+  &lt;span&gt;Option one&lt;/span&gt;
+&lt;/label&gt;</pre>
+    </div>
+<div class="code-panel" data-lang="css">
+      <button class="code-copy">Copy</button>
+      <pre data-lang="css">.aqua-checkbox {
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border: 1.5px solid var(--border);
+    border-radius: 5px;
+    background: var(--surface);
+    cursor: pointer;
+    flex-shrink: 0;
+    transition: all 0.15s;
+    position: relative;
+}
+.aqua-checkbox:checked {
+    background: var(--accent-500);
+    border-color: var(--accent-500);
+}
+.aqua-checkbox:checked::after {
+    content: '';
+    position: absolute;
+    left: 5px;
+    top: 2px;
+    width: 6px;
+    height: 10px;
+    border: 2px solid #fff;
+    border-top: none;
+    border-left: none;
+    transform: rotate(45deg);
+}</pre>
+    </div>
+</div>
+</section>
+<section class="section">
+  <div class="section-label">Select</div>
+  <div class="demo-box"><div style="max-width:360px">
+  <label class="aqua-label" for="demo-sel">Plan</label>
+  <select class="aqua-select" id="demo-sel">
+    <option>Starter</option>
+    <option>Pro</option>
+    <option>Enterprise</option>
+  </select>
+</div></div>
+  <div class="code-wrapper">
+  <div class="code-tabs"><button class="code-tab active" data-lang="html">HTML</button><button class="code-tab" data-lang="css">CSS</button></div>
+  <div class="code-panel active" data-lang="html">
+      <button class="code-copy">Copy</button>
+      <pre data-lang="html">&lt;label class=&quot;aqua-label&quot; for=&quot;plan&quot;&gt;Plan&lt;/label&gt;
+&lt;select class=&quot;aqua-select&quot; id=&quot;plan&quot;&gt;
+  &lt;option&gt;Starter&lt;/option&gt;
+  &lt;option&gt;Pro&lt;/option&gt;
+  &lt;option&gt;Enterprise&lt;/option&gt;
+&lt;/select&gt;</pre>
+    </div>
+<div class="code-panel" data-lang="css">
+      <button class="code-copy">Copy</button>
+      <pre data-lang="css">.aqua-select {
+    width: 100%;
+    font-family: var(--font-body);
+    font-size: var(--text-body);
+    color: var(--text);
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 10px 36px 10px 14px;
+    appearance: none;
+    background-image: url(&quot;data:image/svg+xml,...&quot;);
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    outline: none;
+    cursor: pointer;
+}
+.aqua-select:focus {
+    border-color: var(--accent-500);
+    box-shadow: 0 0 0 3px var(--accent-50);
+}</pre>
+    </div>
+</div>
+</section>
+<section class="section">
+  <div class="section-label">Field Highlight & Labeling</div>
+  <div class="demo-box"><div style="max-width:360px;display:flex;flex-direction:column;gap:16px">
+  <div class="field-group is-success">
+    <label class="aqua-label">Username</label>
+    <input class="aqua-input" type="text" value="aquadrive" readonly />
+    <p class="field-hint">&#10003; Username is available.</p>
+  </div>
+  <div class="field-group is-error">
+    <label class="aqua-label">Email</label>
+    <input class="aqua-input" type="email" value="invalid-email" />
+    <p class="field-hint">&#9785; Please enter a valid email address.</p>
+  </div>
+</div></div>
+  <div class="code-wrapper">
+  <div class="code-tabs"><button class="code-tab active" data-lang="html">HTML</button><button class="code-tab" data-lang="css">CSS</button></div>
+  <div class="code-panel active" data-lang="html">
+      <button class="code-copy">Copy</button>
+      <pre data-lang="html">&lt;div class=&quot;field-group is-success&quot;&gt;
+  &lt;label class=&quot;aqua-label&quot;&gt;Username&lt;/label&gt;
+  &lt;input class=&quot;aqua-input&quot; type=&quot;text&quot; value=&quot;aquadrive&quot; /&gt;
+  &lt;p class=&quot;field-hint&quot;&gt;&amp;#10003; Username is available.&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;field-group is-error&quot;&gt;
+  &lt;label class=&quot;aqua-label&quot;&gt;Email&lt;/label&gt;
+  &lt;input class=&quot;aqua-input&quot; type=&quot;email&quot; /&gt;
+  &lt;p class=&quot;field-hint&quot;&gt;Please enter a valid email address.&lt;/p&gt;
+&lt;/div&gt;</pre>
+    </div>
+<div class="code-panel" data-lang="css">
+      <button class="code-copy">Copy</button>
+      <pre data-lang="css">.field-group.is-success .aqua-input {
+    border-color: var(--green-main);
+    box-shadow: 0 0 0 3px var(--green-tint);
+}
+.field-group.is-success .field-hint { color: var(--green-main); }
+
+.field-group.is-error .aqua-input {
+    border-color: var(--red-main);
+    box-shadow: 0 0 0 3px var(--red-tint);
+}
+.field-group.is-error .field-hint { color: var(--red-main); }
+
+.field-hint {
+    font-size: var(--text-caption);
+    color: var(--text-muted);
+    margin-top: 5px;
+}</pre>
+    </div>
+</div>
+</section>
+<section class="section">
+  <div class="section-label">Form Group</div>
+  <div class="demo-box"><div class="form-card">
+  <div class="form-card-title">Create Account</div>
+  <div class="form-row">
+    <div class="field-group">
+      <label class="aqua-label">First Name</label>
+      <input class="aqua-input" type="text" placeholder="Jane" />
+    </div>
+    <div class="field-group">
+      <label class="aqua-label">Last Name</label>
+      <input class="aqua-input" type="text" placeholder="Doe" />
+    </div>
+  </div>
+  <div class="field-group">
+    <label class="aqua-label">Email</label>
+    <input class="aqua-input" type="email" placeholder="jane@example.com" />
+  </div>
+  <div class="field-group" style="margin-bottom:0">
+    <label class="aqua-label">Password</label>
+    <input class="aqua-input" type="password" placeholder="••••••••" />
+  </div>
+  <div class="form-actions">
+    <button class="aqua-btn aqua-btn-ghost">Cancel</button>
+    <button class="aqua-btn aqua-btn-primary">Create Account</button>
+  </div>
+</div></div>
+  <div class="code-wrapper">
+  <div class="code-tabs"><button class="code-tab active" data-lang="html">HTML</button><button class="code-tab" data-lang="css">CSS</button></div>
+  <div class="code-panel active" data-lang="html">
+      <button class="code-copy">Copy</button>
+      <pre data-lang="html">&lt;div class=&quot;form-card&quot;&gt;
+  &lt;div class=&quot;form-card-title&quot;&gt;Create Account&lt;/div&gt;
+  &lt;div class=&quot;form-row&quot;&gt;
+    &lt;div class=&quot;field-group&quot;&gt;
+      &lt;label class=&quot;aqua-label&quot;&gt;First Name&lt;/label&gt;
+      &lt;input class=&quot;aqua-input&quot; type=&quot;text&quot; placeholder=&quot;Jane&quot; /&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;field-group&quot;&gt;
+      &lt;label class=&quot;aqua-label&quot;&gt;Last Name&lt;/label&gt;
+      &lt;input class=&quot;aqua-input&quot; type=&quot;text&quot; placeholder=&quot;Doe&quot; /&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;field-group&quot;&gt;
+    &lt;label class=&quot;aqua-label&quot;&gt;Email&lt;/label&gt;
+    &lt;input class=&quot;aqua-input&quot; type=&quot;email&quot; placeholder=&quot;jane@example.com&quot; /&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;form-actions&quot;&gt;
+    &lt;button class=&quot;aqua-btn aqua-btn-ghost&quot;&gt;Cancel&lt;/button&gt;
+    &lt;button class=&quot;aqua-btn aqua-btn-primary&quot;&gt;Create Account&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</pre>
+    </div>
+<div class="code-panel" data-lang="css">
+      <button class="code-copy">Copy</button>
+      <pre data-lang="css">.form-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 24px;
+    max-width: 420px;
+}
+.form-card-title {
+    font-family: var(--font-display);
+    font-size: var(--text-h3);
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 20px;
+}
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.form-actions { display: flex; gap: 10px; justify-content: flex-end; margin-top: 20px; }</pre>
+    </div>
+</div>
+</section>
+    <script>
+function toggleTheme(){var d=document.documentElement.getAttribute('data-theme')==='dark';var n=d?'light':'dark';n==='dark'?document.documentElement.setAttribute('data-theme','dark'):document.documentElement.removeAttribute('data-theme');localStorage.setItem('aquadrive-theme',n);}
+function toggleSettings(e){if(e)e.stopPropagation();document.getElementById('navSettingsDropdown').classList.toggle('open');}
+document.addEventListener('click',function(e){var s=document.querySelector('.aqua-navbar-settings');if(s&&!s.contains(e.target)){document.getElementById('navSettingsDropdown').classList.remove('open');}});
+function toggleNav(){document.querySelector('.aqua-navbar').classList.toggle('nav-open');}
+function setAccent(c){document.documentElement.setAttribute('data-accent',c);localStorage.setItem('aquadrive-accent',c);updateAccentDots();}
+function updateAccentDots(){var c=document.documentElement.getAttribute('data-accent')||'blue';document.querySelectorAll('.accent-dot').forEach(function(d){d.classList.toggle('active',d.getAttribute('data-color')===c);});}
+function switchTab(btn,lang){var w=btn.closest('.code-wrapper');w.querySelectorAll('.code-tab').forEach(function(t){t.classList.remove('active');});btn.classList.add('active');w.querySelectorAll('.code-panel').forEach(function(p){p.classList.toggle('active',p.getAttribute('data-lang')===lang);});}
+function copyCode(btn){var pre=btn.nextElementSibling;navigator.clipboard.writeText(pre.textContent).then(function(){btn.textContent='Copied!';setTimeout(function(){btn.textContent='Copy';},1500);});}
+function toggleMobile(){var existing=document.querySelector('.mobile-preview-backdrop');if(existing){existing.classList.toggle('open');return;}var backdrop=document.createElement('div');backdrop.className='mobile-preview-backdrop open';backdrop.onclick=function(e){if(e.target===backdrop)backdrop.classList.remove('open');};var device=document.createElement('div');device.className='mobile-preview-device';var notch=document.createElement('div');notch.className='mobile-preview-notch';var screen=document.createElement('div');screen.className='mobile-preview-screen';var iframe=document.createElement('iframe');iframe.src=window.location.href;var close=document.createElement('button');close.className='mobile-preview-close';close.innerHTML='&times;';close.onclick=function(){backdrop.classList.remove('open');};var label=document.createElement('div');label.className='mobile-preview-label';label.textContent='390 × 844 — iPhone 14 Pro';screen.appendChild(iframe);device.appendChild(notch);device.appendChild(screen);device.appendChild(close);device.appendChild(label);backdrop.appendChild(device);document.body.appendChild(backdrop);}
+document.querySelectorAll('.code-tab').forEach(function(btn){btn.addEventListener('click',function(){switchTab(btn,btn.getAttribute('data-lang'));});});
+document.querySelectorAll('.code-copy').forEach(function(btn){btn.addEventListener('click',function(){copyCode(btn);});});
+updateAccentDots();</script>
+  </body>
+</html>

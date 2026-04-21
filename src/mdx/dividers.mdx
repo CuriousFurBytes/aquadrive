@@ -1,0 +1,96 @@
+---
+title: Dividers
+description: Horizontal rules and visual separators for content sections.
+group: Layout & Dividers
+slug: dividers
+---
+
+export const componentCSS = `
+.hr-neutral { border: none; border-top: 1px solid var(--border); margin: 20px 0; }
+.hr-accent { border: none; border-top: 1px solid var(--accent-500); margin: 20px 0; }
+.hr-gradient { border: none; height: 1px; background: linear-gradient(90deg, transparent, var(--accent-500), transparent); margin: 20px 0; }
+.hr-text {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 20px 0;
+}
+.hr-text::before, .hr-text::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+}
+.hr-text span {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    white-space: nowrap;
+}
+`;
+
+export const sections = [
+  {
+    label: 'Horizontal Rules',
+    demo: `<div>
+  <p style="font-size:13px;color:var(--text-muted);margin:0 0 8px">Neutral</p>
+  <hr class="hr-neutral" />
+  <p style="font-size:13px;color:var(--text-muted);margin:0 0 8px">Accent</p>
+  <hr class="hr-accent" />
+  <p style="font-size:13px;color:var(--text-muted);margin:0 0 8px">Gradient</p>
+  <hr class="hr-gradient" />
+  <p style="font-size:13px;color:var(--text-muted);margin:0 0 8px">With Text</p>
+  <div class="hr-text"><span>or continue with</span></div>
+</div>`,
+    tabs: [
+      {
+        label: 'HTML', lang: 'html', code: `<!-- Neutral -->
+<hr class="hr-neutral" />
+
+<!-- Accent color -->
+<hr class="hr-accent" />
+
+<!-- Gradient -->
+<hr class="hr-gradient" />
+
+<!-- With text -->
+<div class="hr-text">
+  <span>or continue with</span>
+</div>`,
+      },
+      {
+        label: 'CSS', lang: 'css', code: `.hr-neutral { border: none; border-top: 1px solid var(--border); margin: 20px 0; }
+.hr-accent { border: none; border-top: 1px solid var(--accent-500); margin: 20px 0; }
+.hr-gradient {
+    border: none;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--accent-500), transparent);
+    margin: 20px 0;
+}
+.hr-text {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 20px 0;
+}
+.hr-text::before, .hr-text::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+}
+.hr-text span {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+}`,
+      },
+    ],
+  },
+];

@@ -1,0 +1,106 @@
+---
+title: Chips
+description: Interactive selection and filter elements.
+group: Labels & Taxonomy
+slug: chips
+---
+
+export const componentCSS = `
+.chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--font-body);
+    font-size: 13px;
+    font-weight: 500;
+    padding: 6px 14px;
+    border-radius: 999px;
+    background: var(--accent-50);
+    color: var(--text);
+    cursor: pointer;
+    transition: background 0.15s, box-shadow 0.15s;
+    border: none;
+    line-height: 1.4;
+}
+.chip:hover { background: var(--accent-200); }
+.chip.active { background: var(--accent-500); color: #fff; }
+.chip-outlined {
+    background: transparent;
+    border: 1px solid var(--accent-400);
+    color: var(--text);
+}
+.chip-outlined:hover { background: var(--accent-50); }
+.chip-outlined.active { background: var(--accent-500); color: #fff; border-color: var(--accent-500); }
+.chip-avatar {
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: var(--accent-400);
+    color: var(--bg);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+.chip-row { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+`;
+
+export const sections = [
+  {
+    label: 'Chips',
+    demo: `<div style="display:flex;flex-direction:column;gap:16px">
+  <div class="chip-row">
+    <button class="chip active">All</button>
+    <button class="chip">Design</button>
+    <button class="chip">Development</button>
+    <button class="chip">Marketing</button>
+  </div>
+  <div class="chip-row">
+    <button class="chip chip-outlined active">Selected</button>
+    <button class="chip chip-outlined">Option B</button>
+    <button class="chip chip-outlined">Option C</button>
+  </div>
+  <div class="chip-row">
+    <button class="chip"><span class="chip-avatar">JC</span> Jane Cooper</button>
+    <button class="chip"><span class="chip-avatar" style="background:var(--purple-400)">RF</span> Robert Fox</button>
+  </div>
+</div>`,
+    tabs: [
+      {
+        label: 'HTML', lang: 'html', code: `<button class="chip active">All</button>
+<button class="chip">Design</button>
+<button class="chip">Development</button>
+
+<!-- Outlined variant -->
+<button class="chip chip-outlined active">Selected</button>
+
+<!-- With avatar -->
+<button class="chip">
+  <span class="chip-avatar">JC</span>
+  Jane Cooper
+</button>`,
+      },
+      {
+        label: 'CSS', lang: 'css', code: `.chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    font-weight: 500;
+    padding: 6px 14px;
+    border-radius: 999px;
+    background: var(--accent-50);
+    color: var(--text);
+    cursor: pointer;
+    transition: background 0.15s;
+    border: none;
+}
+.chip:hover { background: var(--accent-200); }
+.chip.active { background: var(--accent-500); color: #fff; }
+.chip-outlined { background: transparent; border: 1px solid var(--accent-400); }`,
+      },
+    ],
+  },
+];

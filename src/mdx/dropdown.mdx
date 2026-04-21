@@ -1,0 +1,138 @@
+---
+title: Dropdown
+description: Contextual floating menus for navigation and actions.
+group: Overlays
+slug: dropdown
+---
+
+export const componentCSS = `
+.dropdown-wrapper { position: relative; display: inline-block; }
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    top: calc(100% + 6px);
+    left: 0;
+    min-width: 200px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+    z-index: 500;
+    padding: 6px;
+    overflow: hidden;
+}
+.dropdown-menu.open { display: block; }
+.dropdown-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    padding: 9px 12px;
+    font-family: var(--font-body);
+    font-size: 13px;
+    color: var(--text);
+    background: none;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    text-align: left;
+    transition: background 0.12s;
+    text-decoration: none;
+}
+.dropdown-item:hover { background: var(--accent-50); }
+.dropdown-item .item-icon {
+    width: 18px;
+    height: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    color: var(--text-muted);
+    flex-shrink: 0;
+}
+.dropdown-divider { height: 1px; background: var(--border); margin: 4px 0; }
+`;
+
+export const sections = [
+  {
+    label: 'Dropdown',
+    demo: `<div style="padding:16px;height:220px">
+  <div class="dropdown-wrapper">
+    <button class="demo-btn" onclick="this.nextElementSibling.classList.toggle('open')">Options &#9660;</button>
+    <div class="dropdown-menu open">
+      <button class="dropdown-item"><span class="item-icon">&#9998;</span> Edit</button>
+      <button class="dropdown-item"><span class="item-icon">&#128190;</span> Duplicate</button>
+      <button class="dropdown-item"><span class="item-icon">&#128279;</span> Copy link</button>
+      <div class="dropdown-divider"></div>
+      <button class="dropdown-item" style="color:var(--red-main)"><span class="item-icon">&#128465;</span> Delete</button>
+    </div>
+  </div>
+</div>`,
+    tabs: [
+      {
+        label: 'HTML', lang: 'html', code: `<div class="dropdown-wrapper">
+  <button id="dropBtn">Options &#9660;</button>
+  <div class="dropdown-menu" id="dropMenu">
+    <button class="dropdown-item">
+      <span class="item-icon">&#9998;</span>
+      Edit
+    </button>
+    <button class="dropdown-item">
+      <span class="item-icon">&#128190;</span>
+      Duplicate
+    </button>
+    <div class="dropdown-divider"></div>
+    <button class="dropdown-item">
+      <span class="item-icon">&#128465;</span>
+      Delete
+    </button>
+  </div>
+</div>`,
+      },
+      {
+        label: 'CSS', lang: 'css', code: `.dropdown-wrapper { position: relative; display: inline-block; }
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    top: calc(100% + 6px);
+    left: 0;
+    min-width: 200px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+    z-index: 500;
+    padding: 6px;
+}
+.dropdown-menu.open { display: block; }
+.dropdown-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    padding: 9px 12px;
+    font-size: 13px;
+    border-radius: 8px;
+    cursor: pointer;
+    border: none;
+    background: none;
+    transition: background 0.12s;
+}
+.dropdown-item:hover { background: var(--accent-50); }`,
+      },
+      {
+        label: 'JS', lang: 'js', code: `const btn = document.getElementById('dropBtn');
+const menu = document.getElementById('dropMenu');
+
+btn.addEventListener('click', (e) => {
+  e.stopPropagation();
+  menu.classList.toggle('open');
+});
+
+document.addEventListener('click', () => {
+  menu.classList.remove('open');
+});`,
+      },
+    ],
+  },
+];

@@ -1,0 +1,97 @@
+---
+title: Alerts
+description: Contextual feedback messages for user actions and system states.
+group: Feedback & Status
+slug: alerts
+---
+
+export const componentCSS = `
+.alert {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 14px 18px;
+    border-radius: 8px;
+    border-left: 4px solid;
+    margin-bottom: 10px;
+    font-size: var(--text-body);
+}
+.alert:last-child { margin-bottom: 0; }
+.alert-icon { font-size: 18px; line-height: 1; flex-shrink: 0; margin-top: 1px; }
+.alert-body { flex: 1; }
+.alert-title { font-family: var(--font-display); font-weight: 600; font-size: var(--text-body); margin-bottom: 2px; }
+.alert-message { font-size: var(--text-small); color: var(--text-muted); }
+.alert--success { background: var(--green-tint); border-left-color: var(--green-main); }
+.alert--success .alert-icon, .alert--success .alert-title { color: var(--green-main); }
+.alert--warning { background: var(--yellow-tint); border-left-color: var(--yellow-main); }
+.alert--warning .alert-icon, .alert--warning .alert-title { color: var(--yellow-main); }
+.alert--error { background: var(--red-tint); border-left-color: var(--red-main); }
+.alert--error .alert-icon, .alert--error .alert-title { color: var(--red-main); }
+.alert--info { background: var(--accent-50); border-left-color: var(--accent-500); }
+.alert--info .alert-icon, .alert--info .alert-title { color: var(--accent-500); }
+`;
+
+export const sections = [
+  {
+    label: 'Alerts',
+    demo: `<div class="alert alert--success">
+  <span class="alert-icon">&#10003;</span>
+  <div class="alert-body">
+    <div class="alert-title">Payment successful</div>
+    <div class="alert-message">Your invoice has been paid. A receipt has been sent to your email.</div>
+  </div>
+</div>
+<div class="alert alert--warning">
+  <span class="alert-icon">&#9888;</span>
+  <div class="alert-body">
+    <div class="alert-title">Payment pending</div>
+    <div class="alert-message">Your payment is being processed. This may take up to 24 hours.</div>
+  </div>
+</div>
+<div class="alert alert--error">
+  <span class="alert-icon">&#10005;</span>
+  <div class="alert-body">
+    <div class="alert-title">Payment failed</div>
+    <div class="alert-message">Your card was declined. Please update your payment method.</div>
+  </div>
+</div>
+<div class="alert alert--info">
+  <span class="alert-icon">&#9432;</span>
+  <div class="alert-body">
+    <div class="alert-title">Scheduled maintenance</div>
+    <div class="alert-message">System maintenance is scheduled for Sunday, Apr 20 at 2:00 AM UTC.</div>
+  </div>
+</div>`,
+    tabs: [
+      {
+        label: 'HTML', lang: 'html', code: `<div class="alert alert--success">
+  <span class="alert-icon">&#10003;</span>
+  <div class="alert-body">
+    <div class="alert-title">Payment successful</div>
+    <div class="alert-message">Your invoice has been paid.</div>
+  </div>
+</div>
+
+<div class="alert alert--warning">...</div>
+<div class="alert alert--error">...</div>
+<div class="alert alert--info">...</div>`,
+      },
+      {
+        label: 'CSS', lang: 'css', code: `.alert {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 14px 18px;
+    border-radius: 8px;
+    border-left: 4px solid;
+    font-size: var(--text-body);
+}
+.alert--success { background: var(--green-tint); border-left-color: var(--green-main); }
+.alert--success .alert-title { color: var(--green-main); }
+.alert--warning { background: var(--yellow-tint); border-left-color: var(--yellow-main); }
+.alert--error { background: var(--red-tint); border-left-color: var(--red-main); }
+.alert--info { background: var(--accent-50); border-left-color: var(--accent-500); }`,
+      },
+    ],
+  },
+];

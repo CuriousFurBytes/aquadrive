@@ -9,6 +9,9 @@ function escapeHtml(str) {
 export function renderCodeBlock(tabs) {
   if (!tabs || !tabs.length) return '';
 
+  tabs = tabs.filter(t => t.lang !== 'css');
+  if (!tabs.length) return '';
+
   const tabsHTML = tabs.map((t, i) =>
     `<button class="code-tab${i === 0 ? ' active' : ''}" data-lang="${t.lang}">${t.label}</button>`
   ).join('');

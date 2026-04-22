@@ -86,7 +86,7 @@
   <div class="hr-text"><span>or continue with</span></div>
 </div></div>
   <div class="code-wrapper">
-  <div class="code-tabs"><button class="code-tab active" data-lang="html">HTML</button><button class="code-tab" data-lang="css">CSS</button></div>
+  <div class="code-tabs"><button class="code-tab active" data-lang="html">HTML</button></div>
   <div class="code-panel active" data-lang="html">
       <button class="code-copy">Copy</button>
       <pre data-lang="html">&lt;!-- Neutral --&gt;
@@ -102,37 +102,6 @@
 &lt;div class=&quot;hr-text&quot;&gt;
   &lt;span&gt;or continue with&lt;/span&gt;
 &lt;/div&gt;</pre>
-    </div>
-<div class="code-panel" data-lang="css">
-      <button class="code-copy">Copy</button>
-      <pre data-lang="css">.hr-neutral { border: none; border-top: 1px solid var(--border); margin: 20px 0; }
-.hr-accent { border: none; border-top: 1px solid var(--accent-500); margin: 20px 0; }
-.hr-gradient {
-    border: none;
-    height: 1px;
-    background: linear-gradient(90deg, transparent, var(--accent-500), transparent);
-    margin: 20px 0;
-}
-.hr-text {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    margin: 20px 0;
-}
-.hr-text::before, .hr-text::after {
-    content: '';
-    flex: 1;
-    height: 1px;
-    background: var(--border);
-}
-.hr-text span {
-    font-family: var(--font-mono);
-    font-size: 10px;
-    font-weight: 500;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--text-muted);
-}</pre>
     </div>
 </div>
 </section>

@@ -102,7 +102,7 @@
   </details>
 </div></div>
   <div class="code-wrapper">
-  <div class="code-tabs"><button class="code-tab active" data-lang="html">HTML</button><button class="code-tab" data-lang="css">CSS</button></div>
+  <div class="code-tabs"><button class="code-tab active" data-lang="html">HTML</button></div>
   <div class="code-panel active" data-lang="html">
       <button class="code-copy">Copy</button>
       <pre data-lang="html">&lt;div class=&quot;accordion-group&quot;&gt;
@@ -119,36 +119,6 @@
     &lt;/div&gt;
   &lt;/details&gt;
 &lt;/div&gt;</pre>
-    </div>
-<div class="code-panel" data-lang="css">
-      <button class="code-copy">Copy</button>
-      <pre data-lang="css">.accordion-group { border: 1px solid var(--border); border-radius: 12px; overflow: hidden; }
-.accordion-group details { border-top: 1px solid var(--border); }
-.accordion-group details:first-child { border-top: none; }
-.accordion-group summary {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 14px 18px;
-    font-size: var(--text-body);
-    font-weight: 500;
-    cursor: pointer;
-    list-style: none;
-    transition: background 0.15s;
-}
-.accordion-group summary:hover { background: var(--accent-50); }
-.accordion-group summary::after {
-    content: '';
-    width: 6px;
-    height: 6px;
-    border-right: 1.5px solid var(--text-muted);
-    border-bottom: 1.5px solid var(--text-muted);
-    transform: rotate(45deg);
-    transition: transform 0.2s;
-    flex-shrink: 0;
-}
-.accordion-group details[open] summary::after { transform: rotate(-135deg); }
-.accordion-content { padding: 4px 18px 18px; font-size: var(--text-small); color: var(--text-muted); line-height: 1.7; }</pre>
     </div>
 </div>
 </section>
